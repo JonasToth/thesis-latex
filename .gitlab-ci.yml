@@ -5,7 +5,7 @@ stages:
 compile_document:
   image: 
     name: tubaf_latex
-    entrypoint: ["/bin/bash", "-c"]
+    entrypoint: ["/bin/sh", "-c"]
   stage: build
   script:
     - latexmk -pdf main.tex
