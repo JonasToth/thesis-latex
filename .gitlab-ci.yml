@@ -2,8 +2,9 @@
 stages:
   - build
 
-build:
+compile_document:
   image: tubaf_latex
+  stage: build
   scripts:
     - latexmk -pdf main.tex
   artifacts:
