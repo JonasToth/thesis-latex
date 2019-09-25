@@ -1,0 +1,13 @@
+---
+stages:
+  - build
+
+build:
+  image: tubaf_latex
+  scripts:
+    - latexmk -pdf main.tex
+  artifacts:
+    path:
+      - main.pdf
+  tags:
+    - latex
