@@ -10,9 +10,27 @@ compile_document:
   script:
     - latexmk -pdf main.tex
   artifacts:
-    name: "Masterthesis.pdf"
+    name: "$CI_BUILD_ID-$CI_PIPELINE_ID"
     paths:
       - main.pdf
     expire_in: 4 week
+  tags:
+    - latex
+
+upload_as_page:
+  image: 
+    name: tubaf_latex
+    entrypoint: [""]
+  stage: build
+  script:
+    - latexmk -pdf main.tex
+    - mkdir public
+    - mv main.pdf public/
+  artifacts:
+    paths:
+      - public
+  only:
+    refs:
+      - master
   tags:
     - latex
