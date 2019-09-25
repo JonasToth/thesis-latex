@@ -22,8 +22,8 @@ upload_as_page:
     name: tubaf_latex
     entrypoint: [""]
   stage: build
+  needs: ["compile_document"]
   script:
-    - latexmk -pdf main.tex
     - mkdir public
     - mv main.pdf public/
   artifacts:
