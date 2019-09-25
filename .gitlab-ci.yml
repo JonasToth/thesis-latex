@@ -5,10 +5,12 @@ stages:
 compile_document:
   image: tubaf_latex
   stage: build
-  scripts:
+  script:
     - latexmk -pdf main.tex
   artifacts:
+    name: "Masterthesis.pdf"
     path:
       - main.pdf
+    expire_in: 4 week
   tags:
     - latex
