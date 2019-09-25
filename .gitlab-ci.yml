@@ -3,7 +3,9 @@ stages:
   - build
 
 compile_document:
-  image: tubaf_latex
+  image: 
+    name: tubaf_latex
+    entrypoint: ["/bin/bash", "-c"]
   stage: build
   script:
     - latexmk -pdf main.tex
