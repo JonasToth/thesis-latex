@@ -1,6 +1,7 @@
 ---
 stages:
   - build
+  - upload
 
 compile_document:
   image: 
@@ -21,7 +22,7 @@ upload_as_page:
   image: 
     name: tubaf_latex
     entrypoint: [""]
-  stage: build
+  stage: upload
   needs: ["compile_document"]
   script:
     - mkdir public
