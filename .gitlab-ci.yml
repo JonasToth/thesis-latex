@@ -9,7 +9,7 @@ compile_document:
     - latexmk -pdf main.tex
   artifacts:
     name: "Masterthesis.pdf"
-    path:
+    paths:
       - main.pdf
     expire_in: 4 week
   tags:
