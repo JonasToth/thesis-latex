@@ -14,7 +14,7 @@ compile_document:
     name: "$CI_BUILD_ID-$CI_PIPELINE_ID"
     paths:
       - main.pdf
-    expire_in: 4 week
+    expire_in: 1 week
   tags:
     - latex
 
