@@ -25,26 +25,30 @@
 
 \DeclarePairedDelimiter{\abs}{\lVert}{\rVert} % definiere absoluten betrag
 
-\usepackage{glossaries}
-\newglossary[nlg]{things}{nls}{nlo}{Glossary}
+\usepackage[acronym,toc]{glossaries}
+\glstoctrue%
+
 \newglossary[nlg]{symbols}{nls}{nlo}{Symbol Definition}
 \makeglossaries%
 
-\newglossaryentry{SIFT}{%
-    name={SIFT},
-    description={Scale Invariant Feature Transform},
-    type=things}
-\newglossaryentry{SURF}{%
-    name={SURF},
-    description={Speeded-Up Robust Features},
-    type=things}
+\newacronym{icp}{ICP}{Iterative Closest Points}
+\newacronym{sift}{SIFT}{Scale Invariant Feature Transform}
+\newacronym{surf}{SURF}{Speeded-Up Robust Features}
+\newglossaryentry{flexion-image}{%
+    name={Flexion Image},
+    description={The flexion image is a way to convert range data.
+    For each pixel of the depth image a scalar value that measures the angle between the estimated surface normals is computed and stored.
+    This measure is useful for obtaining high-level image features from low-level geometry information.},
+    type=\acronymtype}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newglossaryentry{Vectors}{%
     name={$\vec{v}$},
     description={mathematical vectors are written as small letters with arrow},
     type=symbols}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % tubaf zeugs
 \TUBAFFakultaet{Fakultät für Mathematik und Informatik}
@@ -71,11 +75,13 @@
 
 \TUBAFErklaerungsseite%
 \tableofcontents
-
-\printglossaries[type=things]%
 \newpage
 
-\printglossaries[type=symbols]%
+\printglossary[type=\acronymtype]%
+\newpage
+ 
+\printglossary[type=symbols]%
+\glsaddallunused[symbols]
 \newpage
 
 % \newpage
@@ -83,8 +89,8 @@
 \section{Proposal}
 
 The dominant method to register pointclouds with pointclouds or depth
-images is the use of a variant of the ICP (Iterative Closest Points)
-algorithm. Even though there are many different approaches to ICP, it has
+images is the use of a variant of the \gls{icp}
+algorithm. Even though there are many different approaches to \gls{icp}, it has
 some common problems. The algorithm requires a good initial
 transformation. Pointclouds with order-of-magnitude different
 resolutions can produce unstable results. Convergence might require many
@@ -108,7 +114,7 @@ high-resolution pointclouds.
 
 Instead of registering the depth images based on single points and their
 distance to other points, this thesis develops a new framework to use
-existing image features like SIFT and SURF to calculate the
+existing image features like \Gls{sift} and \Gls{surf} to calculate the
 transformation between pointcloud and depth image. Both, the pointcloud
 and the depth image, are first converted to a gray-scale image. Instead
 of just using the distance present in depth-images these new images
@@ -117,9 +123,9 @@ encode the local geometry, called feature-images.
 Existing literature proposes Bearing Angle images were each pixel is the
 angle between the current point, the optical center and the previous
 point. Part of this thesis is the development of a new calculation
-method named flexion images.
+method named \Glspl{flexion-image}.
 
-Each pixel of a flexion image is dot-product of the local normal
+Each pixel of a \Gls{flexion-image} is dot-product of the local normal
 calculated from horizontal and vertical neighbouring pixel with the
 normal calculated with the diagonal neighbours.
 
@@ -127,7 +133,7 @@ The dot-product then results in the angle between both of these vectors.
 The smaller the dot-product gets, the higher is the local flexion of the
 surface. This local property of the geometry then results in visual
 features detectable with classical feature detectors and descriptors like
-\gls{SIFT} or \gls{SURF}.
+\Gls{sift} or \Gls{surf}.
 
 Futhermore, the conversion of range data to feature images can be done
 for laserscans and virtual laserscans, e.g.~from a reconstructed mesh,
@@ -211,14 +217,15 @@ available in robotic operations.
     % \input{anhang/content}
     \newpage
 
+    \addcontentsline{toc}{section}{\bibname}
     \bibliographystyle{IEEEtran}
     \bibliography{references}
      
     \newpage
-    \listoftables
+    \addcontentsline{toc}{section}{\listtablename}\listoftables 
 
     \newpage
-    \listoffigures
+    \addcontentsline{toc}{section}{\listfigurename}\listoffigures
     % \newpage
 
     %\renewcommand{\indexname}{Stichwortverzeichnis}
