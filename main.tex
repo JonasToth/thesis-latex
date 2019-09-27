@@ -25,6 +25,19 @@
 
 \DeclarePairedDelimiter{\abs}{\lVert}{\rVert} % definiere absoluten betrag
 
+\usepackage{glossaries}\makeglossaries%
+
+\newglossaryentry{SIFT}{%
+    name={SIFT},
+    description={Scale Invariant Feature Transform}}
+\newglossaryentry{SURF}{%
+    name={SURF},
+    description={Speeded-Up Robust Features}
+}
+
+
+
+
 % tubaf zeugs
 \TUBAFFakultaet{Fakultät für Mathematik und Informatik}
 \TUBAFInstitut{Institut für Informatik}
@@ -62,7 +75,7 @@ transformation. Pointclouds with order-of-magnitude different
 resolutions can produce unstable results. Convergence might require many
 iterative steps and can not be predicted. Each of these iterative steps
 is computationally expensive and does not scale very well to massive
-datasets.\cite{Alba2012}
+datasets.
 
 All these apsects give opportunity for a better solution to the problem
 of registering depth images, e.g.~from the Kinect-v2, to existing
@@ -99,7 +112,7 @@ The dot-product then results in the angle between both of these vectors.
 The smaller the dot-product gets, the higher is the local flexion of the
 surface. This local property of the geometry then results in visual
 features detectable with classical feature detectors and descriptors like
-SIFT.
+\gls{SIFT} or \gls{SURF}.
 
 Futhermore, the conversion of range data to feature images can be done
 for laserscans and virtual laserscans, e.g.~from a reconstructed mesh,
@@ -186,6 +199,7 @@ available in robotic operations.
 \bibliographystyle{IEEEtran}
 \bibliography{references}
  
+\printglossaries%
 % \listoftables
 \listoffigures
 % \newpage
