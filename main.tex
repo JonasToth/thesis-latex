@@ -62,8 +62,9 @@
 \section{Proposal}
 
 The dominant method to register pointclouds with pointclouds or depth
-images is the use of a variant of the \gls{icp}
-algorithm. Even though there are many different approaches to \gls{icp}, it has
+images is the use of a variant of the \gls{icp}\cite{Besl1992}
+algorithm. Pomerleau et.al\cite{Pomerleau2015} provide a review of pointcloud registration methods.
+Even though there are many different variations of \gls{icp}, it has
 some common problems. The algorithm requires a good initial
 transformation. Pointclouds with order-of-magnitude different
 resolutions can produce unstable results. Convergence might require many
@@ -74,6 +75,10 @@ datasets.
 All these apsects give opportunity for a better solution to the problem
 of registering depth images, e.g.~from the Kinect-v2, to existing
 high-resolution pointclouds.
+Inspired by Scaramuzza's \Glspl{bearing-angle-image}\cite{Scaramuzza2007}, Lin et.al\cite{Lin2017} apply the classical feature detector \gls{surf}\cite{Bay2006} on \Glspl{bearing-angle-image} and are able to register pointclouds to each other.
+This work improves upon this idea in multiple ways.
+\Glspl{bearing-angle-image} are not rotation invariant as they encode local geometry only in one direction.
+They are not viewpoint invariant as the \gls{bearing-angle} changes when the sensing lightray hits the same surface from a different angle.
 
 \subsection{Approach}\label{approach}
 
