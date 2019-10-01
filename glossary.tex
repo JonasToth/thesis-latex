@@ -5,7 +5,8 @@
 \newglossaryentry{bearing-angle}{%
     name={Bearing-Angle},
     description={The Bearing-Angle represents the angle betwen the lightray from the sensor to the depth value and the connection to a neighbouring depth value. The Bearing Angle can be calculated to arbitrary neighbouring depth values. Both laserscans and depth images can be converted using a proper intrinsic calibration of the sensors.},
-    }
+    type=\acronymtype}
+
 \newglossaryentry{bearing-angle-image}{%
     name={Bearing-Angle Image},
     description={The Bearing-Angle Image is a derived image type where each pixel encodes the Bearing-Angle for the lightray of this pixel. The angle is discretized from the range $(0, \pi)$ to the color depth of the target image. The resulting images are grayscale.},
@@ -16,4 +17,19 @@
     description={The Flexion Image is a way to convert range data.
     For each pixel of the depth image a scalar value that measures the angle between the estimated surface normals is computed and stored.
     This measure is useful for obtaining high-level image features from low-level geometry information.},
+    type=\acronymtype}
+
+\newglossaryentry{curvature}{%
+    name={Curvature},
+    description={Curvature is a concept from Differential Geometry that applies to manifolds. The principal curvatures $k_1$ and $k_2$ measure how surfaces bend at that point. Different specific types of curvature do exist.},
+    type=\acronymtype}
+
+\newglossaryentry{mean-curvature}{%
+    name={Mean Curvature},
+    description={Mean Curvature is the sum of $k_1$ and $k_2$ and of the main curvature types.},
+    type=\acronymtype}
+
+\newglossaryentry{gaussian-curvature}{%
+    name={Gaussian Curvature},
+    description={Gaussian Curvature is the product of $k_1$ and $k_2$ and is used in many fields. It gives the tool to classify points on a surface based onf sign and magnitude. For negative values of the Gaussian Curvature the point is said to be hyperbolic, for positive values the point is said to be an elliptic point. Points with Gaussian Curvature being zero are parabolic points.},
     type=\acronymtype}
