@@ -109,10 +109,12 @@ The second variable is the direction the angle is calculted, e.g.~for horizontal
 This does not exhibit new information, because the angle of the other direction is immediatly known from the fact that the sum of the angles is $180\degree$.
 Nontheless, the direction must be defined to obtain stable visual features.
 
-The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
-\[
-    \beta = \arccos \frac{2 \rho_{i,j}^2 - 2 \rho_{i,j} \rho_{i-1,j-1} \cos d\phi}{2 \rho_{i,j} \sqrt{\rho_{i,j}^2 + \rho_{i-1,j-1}^2 - 2 \rho_{i,j} \rho_{i-1,j-1} \cos d\phi}}
-\]
+%The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
+%\[
+    %\beta = \arccos %
+            %\frac{\rho_{i,j} - \rho_{i-1,j-1} \cos d\phi}%
+                 %{\sqrt{\rho_{i,j}^2 + \rho_{i-1,j-1}^2 - 2 \rho_{i,j} \rho_{i-1,j-1} \cos d\phi}}
+%\]
 
 \subsubsection{\Glspl{flexion-image}}
 
@@ -128,10 +130,18 @@ features detectable with classical feature detectors and descriptors like
 
 \subsubsection{Other derived image types}
 
-- \gls{curvature} from differential geometry, experimenting with \gls{gaussian-curvature} and \gls{mean-curvature}.
-- Different calculation for angles from local geometry
-- curvature
-- max-curve
+Other attempts to create feature images are described in the thesis as well.
+The performance in feature detection and matching is compared.
+From visual inspection the author expects \Glspl{flexion-image} to perform best though.
+
+The \gls{max-curve-image} tries generalize the \gls{bearing-angle} to be rotation invariant as it takes the \gls{bearing-angle} in each direction into account.
+It uses the maximum angle in vertical, horizontal and both diagonals.
+This makes the measure more robust to rotation, but does not produce good features.
+
+As a different analytical approach to producing feature images the calculation of the \gls{curvature} for each depth value.
+The two common measures of curvature in differential geometry are \gls{gaussian-curvature} and \gls{mean-curvature}\cite{Kuhnel2008}.
+
+All of those experiments are implemented and compared in the thesis.
 
 \subsubsection{Transformation calculation}\label{transformation-calculation}
 
