@@ -52,7 +52,7 @@
 
 \printglossary[type=\acronymtype]%
 \newpage
- 
+
 \printglossary[type=symbols]%
 \glsaddallunused[symbols]
 \newpage
@@ -78,7 +78,7 @@ high-resolution pointclouds.
 Inspired by Scaramuzza's \Glspl{bearing-angle-image}\cite{Scaramuzza2007}, Lin et.al\cite{Lin2017} apply the classical feature detector \gls{surf}\cite{Bay2006} on \Glspl{bearing-angle-image} and are able to register pointclouds to each other.
 This work improves upon this idea in multiple ways.
 \Glspl{bearing-angle-image} are not rotation invariant as they encode local geometry only in one direction.
-They are not viewpoint invariant as the \gls{bearing-angle} changes when the sensing lightray hits the same surface from a different angle.
+Neither are they viewpoint invariant, as the \gls{bearing-angle} changes when the sensing lightray hits the same surface from a different angle.
 In an attempt to overcome these limitations this work proposes new derived images that are rotation and viewpoint invariant, with the most promising variant being \Glspl{flexion-image}.
 
 \subsection{Approach}\label{approach}
@@ -88,20 +88,31 @@ In an attempt to overcome these limitations this work proposes new derived image
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/collage_v3.png}
-    \caption{Overview of possible Feature-Images from a (in this image scaled) depth image}
+    \caption{Overview of possible Feature-Images from a depth image.}
 \end{figure}
 
 Instead of registering the depth images based on single points as \gls{icp} algorithms do, this thesis develops a new framework to use existing image features like \Gls{sift} and \Gls{surf} to calculate the transformation between pointcloud and depth image.
-Both, the pointcloud and the depth image, are first converted to a gray-scale image. 
-Instead of just using the distance present in depth-images these new images encode the local geometry, called feature-images.
+Both, the pointcloud and the depth image, are first converted to a gray-scale feature image.
+Local geometric structure is encoded through the visual structure of the feature image and is detected and matched via a classical matching pipeline.
 
 \subsubsection{\Glspl{bearing-angle-image}}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/scetch_bearing.png}
+    \caption{This figure shows the relationship of the light rays that form the \gls{bearing-angle}.}
+\end{figure}
 
 Existing literature\cite{Scaramuzza2007,Lin2017} proposes \Glspl{bearing-angle-image} were each pixel is the angle between the current point, the optical center and the previous point.
 The neighbourhood relationship can be choosen arbitrarily resulting in four first-order \Glspl{bearing-angle-image}, horizontal, vertical, diagonal and antidiagonal.
 The second variable is the direction the angle is calculted, e.g.~for horizontal images it can be calculated from left-to-right or right-to-left.
 This does not exhibit new information, because the angle of the other direction is immediatly known from the fact that the sum of the angles is $180\degree$.
 Nontheless, the direction must be defined to obtain stable visual features.
+
+The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
+\[
+    \beta = \acos \frac{2 \rho_{i,j} \rho_{i,j} - 2 \rho_{i,j} \rho{i-1,j-1} \cos d\phi}{2 \rho_{i,j} \sqrt{\rho_{i,j} \rho_{i,j} + \rho{i-1,j-1} \rho{i-1,j-1} - 2 \rho_{i,j} \rho{i-1,j-1} \cos d\phi}}
+\]
 
 \subsubsection{\Glspl{flexion-image}}
 
@@ -176,10 +187,10 @@ intermodal approach to localization and visual odometry.
 Futhermore, it allows to apply algorithms and approaches from the
 classical visual feature-world to depth sensors that became widely
 available in robotic operations.
- 
+
 % \input{verzeichnisse/bezeichnungen.tex}
 % \newpage
-% 
+%
 % \input{einfuehrung/content.tex}
 % \newpage
 % \input{grundlagen/content.tex}
@@ -203,9 +214,9 @@ available in robotic operations.
     \addcontentsline{toc}{section}{\bibname}
     \bibliographystyle{IEEEtran}
     \bibliography{references}
-     
+
     \newpage
-    \addcontentsline{toc}{section}{\listtablename}\listoftables 
+    \addcontentsline{toc}{section}{\listtablename}\listoftables
 
     \newpage
     \addcontentsline{toc}{section}{\listfigurename}\listoffigures
