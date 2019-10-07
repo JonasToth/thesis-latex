@@ -8,7 +8,6 @@
 \usepackage{calc}
 \usepackage{cite}
 \usepackage{enumitem}
-%\usepackage{float} % for better picture
 \usepackage[T1]{fontenc}
 \usepackage{floatrow} % rows of table and pictures
 \usepackage{graphicx}
@@ -46,11 +45,21 @@
 
 \newglossary[nlg]{symbols}{nls}{nlo}{Symbol Definition}
 \makeglossaries%
+\loadglsentries{glossary}
+\loadglsentries{symbols}
 
-\input{glossary}
-\input{symbols}
-
-\input{thesis-metadata}
+% tubaf zeugs
+\TUBAFFakultaet{Fakultaet für Mathematik und Informatik}
+\TUBAFInstitut{Institut für Informatik}
+\TUBAFLehrstuhl{Lehrstuhl für virtuelle Realitaet und Robotik}
+\TUBAFTitel{Sensor Localization of Range Data using a Feature based Registration}
+\TUBAFBetreuer{Prof.\ Dr.\ Bernhard Jung}
+\TUBAFKorrektor{Dipl-Ing. Mark Sastuba}
+\TUBAFAutor[J. Toth]{Jonas Toth}
+\TUBAFStudiengang{Angewandte Informatik}
+\TUBAFMatrikel{57319}
+%\TUBAFAnmeldeDatum[2017-02-8]{8. Februar 2017}
+\TUBAFDatum{25. September 2019}
 
 \setcounter{tocdepth}{2}
 %\setcounter{secnumdepth}{3}
@@ -133,18 +142,26 @@ Nontheless, the direction must be defined to obtain stable visual features.
                  %{\sqrt{\rho_{i,j}^2 + \rho_{i-1,j-1}^2 - 2 \rho_{i,j} \rho_{i-1,j-1} \cos d\phi}}
 %\]
 
-\subsubsection{\Glspl{flexion-image}}
+\subsubsection{\Glspl{flexion-image}}\label{flexion-image-section}
 
-Each pixel of a \Gls{flexion-image} is dot-product of the local normal
+Each pixel of a \Gls{flexion-image} is the dot-product of the local normal
 calculated from horizontal and vertical neighbouring pixel with the
 normal calculated with the diagonal neighbours.
+Figure~\ref{fig:flexion-image-scetched} demonstrates the disparity of both normals for an arbitrary surface patch.
+The normal calculated from the diagonal and vertical neighbouring vertices are drawn in blue and the normal calculated with the diagonals red.
+Both normal-vectors are drawn with their origin in the central depth value.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/scetch_flexion.png}
-    \caption{This figure demonstrates how flexed surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}
+    \caption{This figure demonstrates how flexed surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}%
+    \label{fig:flexion-image-scetched}
 \end{figure}
 
+The flexion is defined as
+\[
+    \mathfrak{F} = \abs{n_1 \cdotp n_2}
+\]
 The dot-product then results in the angle between both of these vectors.
 The smaller the dot-product gets, the higher is the local flexion of the
 surface. This local property of the geometry then results in visual
