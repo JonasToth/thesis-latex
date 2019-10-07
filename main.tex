@@ -122,6 +122,12 @@ Each pixel of a \Gls{flexion-image} is dot-product of the local normal
 calculated from horizontal and vertical neighbouring pixel with the
 normal calculated with the diagonal neighbours.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/scetch_flexion.png}
+    \caption{This figure demonstrates how flexed surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}
+\end{figure}
+
 The dot-product then results in the angle between both of these vectors.
 The smaller the dot-product gets, the higher is the local flexion of the
 surface. This local property of the geometry then results in visual
