@@ -16,8 +16,24 @@
 \usepackage[utf8]{inputenc}
 \usepackage{makeidx}
 \usepackage[fleqn]{mathtools} % mathtools und links buendig machen
-\usepackage{multirow} % tabellen mit mehreren zeilen pro zelle
 \usepackage{subcaption}
+
+% Images with mathcha.io 
+\usepackage{tikz}
+\usetikzlibrary{fadings}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{booktabs}
+% Images end
+
 \usepackage{subscript} % tief stellen
 %\usepackage[square]{natbib}
 \usepackage{setspace}
@@ -97,9 +113,11 @@ Local geometric structure is encoded through the visual structure of the feature
 
 \subsubsection{\Glspl{bearing-angle-image}}
 
+\input{images/bearing_angle.tikz}%
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/scetch_bearing.png}
+    \includegraphics[width=0.6\textwidth]{images/scetch_bearing.png}
     \caption{This figure shows the relationship of the light rays that form the \gls{bearing-angle}.}
 \end{figure}
 
@@ -124,7 +142,7 @@ normal calculated with the diagonal neighbours.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/scetch_flexion.png}
+    \includegraphics[width=0.6\textwidth]{images/scetch_flexion.png}
     \caption{This figure demonstrates how flexed surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}
 \end{figure}
 
