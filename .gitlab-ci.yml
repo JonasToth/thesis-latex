@@ -5,7 +5,7 @@ stages:
 
 compile_document:
   image: 
-    name: tubaf_latex
+    name: git.informatik.tu-freiberg.de:5050/jtoth/thesis-latex:latest
     entrypoint: [""]
   stage: build
   script:
@@ -16,11 +16,11 @@ compile_document:
       - main.pdf
     expire_in: 1 week
   tags:
-    - latex
+    - docker
 
 upload_as_page:
   image: 
-    name: tubaf_latex
+    name: git.informatik.tu-freiberg.de:5050/jtoth/thesis-latex:latest
     entrypoint: [""]
   stage: upload
   needs: ["compile_document"]
@@ -34,4 +34,4 @@ upload_as_page:
     refs:
       - master
   tags:
-    - latex
+    - docker
