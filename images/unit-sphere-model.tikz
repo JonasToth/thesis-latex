@@ -1,0 +1,36 @@
+
+
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Circle [id:dp9330703578589419] 
+\draw   (21.58,147.92) .. controls (21.58,67.33) and (86.91,2) .. (167.5,2) .. controls (248.09,2) and (313.42,67.33) .. (313.42,147.92) .. controls (313.42,228.5) and (248.09,293.83) .. (167.5,293.83) .. controls (86.91,293.83) and (21.58,228.5) .. (21.58,147.92) -- cycle ;
+%Shape: Circle [id:dp9657721103702154] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (163.08,147.92) .. controls (163.08,145.48) and (165.06,143.5) .. (167.5,143.5) .. controls (169.94,143.5) and (171.92,145.48) .. (171.92,147.92) .. controls (171.92,150.36) and (169.94,152.33) .. (167.5,152.33) .. controls (165.06,152.33) and (163.08,150.36) .. (163.08,147.92) -- cycle ;
+%Shape: Circle [id:dp5918706400105579] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (262.08,71.92) .. controls (262.08,69.48) and (264.06,67.5) .. (266.5,67.5) .. controls (268.94,67.5) and (270.92,69.48) .. (270.92,71.92) .. controls (270.92,74.36) and (268.94,76.33) .. (266.5,76.33) .. controls (264.06,76.33) and (262.08,74.36) .. (262.08,71.92) -- cycle ;
+%Shape: Ellipse [id:dp7276506054694092] 
+\draw  [color={rgb, 255:red, 155; green, 155; blue, 155 }  ,draw opacity=1 ][dash pattern={on 4.5pt off 4.5pt}] (21.58,147.92) .. controls (21.58,123.89) and (86.91,104.42) .. (167.5,104.42) .. controls (248.09,104.42) and (313.42,123.89) .. (313.42,147.92) .. controls (313.42,171.94) and (248.09,191.42) .. (167.5,191.42) .. controls (86.91,191.42) and (21.58,171.94) .. (21.58,147.92) -- cycle ;
+%Shape: Circle [id:dp534532540383378] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (292.08,117.92) .. controls (292.08,115.48) and (294.06,113.5) .. (296.5,113.5) .. controls (298.94,113.5) and (300.92,115.48) .. (300.92,117.92) .. controls (300.92,120.36) and (298.94,122.33) .. (296.5,122.33) .. controls (294.06,122.33) and (292.08,120.36) .. (292.08,117.92) -- cycle ;
+%Straight Lines [id:da5608352336717536] 
+\draw    (167.5,147.92) -- (266.5,71.92) ;
+
+
+%Straight Lines [id:da5901973594450144] 
+\draw    (167.5,147.92) -- (296.5,117.92) ;
+
+
+%Shape: Arc [id:dp17654467766402726] 
+\draw  [draw opacity=0] (233.41,97.68) .. controls (242.7,102.78) and (249,112.66) .. (249,124) .. controls (249,125.96) and (248.81,127.88) .. (248.45,129.74) -- (219,124) -- cycle ; \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ] (233.41,97.68) .. controls (242.7,102.78) and (249,112.66) .. (249,124) .. controls (249,125.96) and (248.81,127.88) .. (248.45,129.74) ;
+
+% Text Node
+\draw (225,120) node [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ] [align=left] {$\displaystyle \Delta \varphi $};
+% Text Node
+\draw (167,165) node  [align=left] {C};
+
+
+\end{tikzpicture}
+

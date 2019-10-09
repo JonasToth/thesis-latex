@@ -1,4 +1,4 @@
-\documentclass[doktyp=marbeit,fontsize=12pt,sprache=english,draft=true,hausschrift=true]{TUBAFarbeiten}
+\documentclass[doktyp=marbeit,fontsize=12pt,sprache=english,draft=true,hausschrift=true,fleqn]{TUBAFarbeiten}
 
 % packages
 \usepackage{amsmath}
@@ -38,6 +38,9 @@
 \usepackage{setspace}
 \renewcommand{\baselinestretch}{1.5}
 
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 \DeclarePairedDelimiter{\abs}{\lVert}{\rVert} % definiere absoluten betrag
 
 \usepackage[acronym,toc]{glossaries}
@@ -49,17 +52,7 @@
 \loadglsentries{symbols}
 
 % tubaf zeugs
-\TUBAFFakultaet{Fakultaet für Mathematik und Informatik}
-\TUBAFInstitut{Institut für Informatik}
-\TUBAFLehrstuhl{Lehrstuhl für virtuelle Realitaet und Robotik}
-\TUBAFTitel{Sensor Localization of Range Data using a Feature based Registration}
-\TUBAFBetreuer{Prof.\ Dr.\ Bernhard Jung}
-\TUBAFKorrektor{Dipl-Ing. Mark Sastuba}
-\TUBAFAutor[J. Toth]{Jonas Toth}
-\TUBAFStudiengang{Angewandte Informatik}
-\TUBAFMatrikel{57319}
-%\TUBAFAnmeldeDatum[2017-02-8]{8. Februar 2017}
-\TUBAFDatum{25. September 2019}
+\input{thesis-meta}
 
 \setcounter{tocdepth}{2}
 %\setcounter{secnumdepth}{3}
@@ -106,9 +99,50 @@ This work improves upon this idea in multiple ways.
 Neither are they viewpoint invariant, as the \gls{bearing-angle} changes when the sensing lightray hits the same surface from a different angle.
 In an attempt to overcome these limitations this work proposes new derived images that are rotation and viewpoint invariant, with the most promising variant being \Glspl{flexion-image}.
 
-\subsection{Approach}\label{approach}
+\section{Approach}\label{approach}
 
-\subsubsection{Preprocessing of range Data}\label{preprocessing-of-range-data}
+\subsection{Sensor description}
+
+\begin{itemize}
+    \item Determine Angular resolution for two light-rays, Laserscans are known and image sensors require intrinsic
+    \item for Kinect, simplified pinhole model without distortion is assumed, rectification can be done beforehand
+    \item resulting pictures are depth maps, that need conversion to euclidian distances
+    \item Depth-Maps need to be converted into range data
+\end{itemize}
+
+\begin{figure}[H]
+    \input{images/depth-map.tikz}
+    \caption[Range Data and Depth Maps visualized]{Depthimages encode the othorgraphic depth. For the following calculations the conversion to the euclidian depth is necessary as first preprocessing step.}
+\end{figure}
+
+Projecting pixels onto the unit sphere.
+\begin{align}
+	\begin{pmatrix}x \\ y \\ z \end{pmatrix} &= \begin{pmatrix} \frac{u - c_x}{f_x} \\ \frac{v - c_y}{f_y} \\ 1 \end{pmatrix} \\
+	\begin{pmatrix}x_s \\ y_s \\ z_s \end{pmatrix} &= \frac{\sqrt{1 + x^2 + y^2}}{1 + x^2 + y^2} \begin{pmatrix} x \\ y \\ z \end{pmatrix}
+\end{align}
+
+\begin{itemize}
+    \item Angular resolution between two pixels needs to be calculated for the camera
+    \item intrinsic calibration required, but can be cached statically afterwards
+\end{itemize}
+
+\begin{figure}[H]
+    \input{images/unit-sphere-model.tikz}
+	\caption[Angle between two pixels in the pinhole model]{The angle between two pixels of a rectified pinhole image.}
+\end{figure}
+To determine the angle spanned between two corresponding lightrays for two pixels the pixel coordinate needs to be backprojected to the unit sphere.
+\begin{align}
+    \begin{pmatrix} u \\ v \end{pmatrix} \mapsto \begin{pmatrix} x_s \\ y_s \\ z_s \end{pmatrix}
+\end{align}
+The resulting vectors have unit length, simplifying the angle-calculation.
+\begin{align}
+    \vec{r_1} \cdot \vec{r_2} &= \abs{\vec{r_1}} \abs{\vec{r_2}} \cos \Delta\varphi \\
+    \cos \Delta\varphi &= x_{s,1} x_{s,2} + y_{s,1} y_{s,2} + z_{s,1} z_{s,2} \\
+    \Delta\varphi &= \arccos{x_{s,1} x_{s,2} + y_{s,1} y_{s,2} + z_{s,1} z_{s,2}}
+\end{align}
+The angle $\Delta\varphi$ is not a constant for the pinhole model for different pixels but can be calculated once for each intrinsic.
+
+\subsection{Preprocessing of range Data}\label{preprocessing-of-range-data}
 
 \begin{figure}[H]
     \centering
@@ -120,13 +154,25 @@ Instead of registering the depth images based on single points as \gls{icp} algo
 Both, the pointcloud and the depth image, are first converted to a gray-scale feature image.
 Local geometric structure is encoded through the visual structure of the feature image and is detected and matched via a classical matching pipeline.
 
-\subsubsection{\Glspl{bearing-angle-image}}
+In general depth images do not contain a valid value for each pixel.
+The Kinectv2 returns $0$ if no measurement was possible.
+Whenever such a value would be included in the calculation of the derived quantities the value is set to $0$ as well.
 
+Each feature quantity has a different range of valid values.
+To create visually distinct images these values are scaled and quantized to the image depth.
+With $p$ the final value for the pixel, $t_{min}$ and $t_{max}$ the value range for the target image depth and $v$ the scalar value of the feature quantity, the conversion is done with the following formula.
+\begin{align}
+    p = \floor[\Bigg]{\frac{{(t_{max} - t_{min})} {(v - t_{min})}}{t_{max} - t_{min}} + t_{min}}
+\end{align}
+Depth images themself are usually stored as $16~bit~unsigned$ grayscale images.
+For feature images with the same image depth $t_{min} = 0$ and $t_{max} = 65535$
+
+\subsection{\Glspl{bearing-angle-image}}
 
 \begin{figure}[H]
     \centering
     \input{images/bearing_angle.tikz}%
-    \caption{This figure shows the relationship of the light rays that form the \gls{bearing-angle}.}
+    \caption[Schematic Representation of Bearing-Angles]{This figure shows the relationship of the light rays that form the \gls{bearing-angle}.}
 \end{figure}
 
 Existing literature\cite{Scaramuzza2007,Lin2017} proposes \Glspl{bearing-angle-image} were each pixel is the angle between the current point, the optical center and the previous point.
@@ -135,14 +181,17 @@ The second variable is the direction the angle is calculted, e.g.~for horizontal
 This does not exhibit new information, because the angle of the other direction is immediatly known from the fact that the sum of the angles is $180\degree$.
 Nontheless, the direction must be defined to obtain stable visual features.
 
-%The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
-%\[
-    %\beta = \arccos %
-            %\frac{\rho_{i,j} - \rho_{i-1,j-1} \cos d\phi}%
-                 %{\sqrt{\rho_{i,j}^2 + \rho_{i-1,j-1}^2 - 2 \rho_{i,j} \rho_{i-1,j-1} \cos d\phi}}
-%\]
+The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
+For the horizontal left-to-right calculation the formula is as follows.
+\begin{align}
+    \beta&= \arccos%
+            \frac{d_{i,j} - d_{i-1,j} \cos \Delta\varphi}%
+                 {\sqrt{d_{i,j}^2 + d_{i-1,j}^2 - 2 d_{i,j} d_{i-1,j} \cos \Delta\varphi}}
+\end{align}
+Using a different direction or other neighbourhood relation the indices for the depth values need to be changed and a different angular resolution needs to be calculated.
+The \Gls{bearing-angle} is in the range $(0, \pi)~rad$ and gets scaled accordingly.
 
-\subsubsection{\Glspl{flexion-image}}\label{flexion-image-section}
+\subsection{\Glspl{flexion-image}}\label{flexion-image-section}
 
 Each pixel of a \Gls{flexion-image} is the dot-product of the local normal
 calculated from horizontal and vertical neighbouring pixel with the
@@ -154,36 +203,66 @@ Both normal-vectors are drawn with their origin in the central depth value.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/scetch_flexion.png}
-    \caption{This figure demonstrates how flexed surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}%
+    \caption[Schematic Representation of Flexion]{This figure demonstrates how flexed surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}%
     \label{fig:flexion-image-scetched}
 \end{figure}
 
-The flexion is defined as
-\[
-    \mathfrak{F} = \abs{n_1 \cdotp n_2}
-\]
-The dot-product then results in the angle between both of these vectors.
+The flexion $f$ is defined as
+\begin{align}
+    f &= \abs{n_1 \cdotp n_2}
+\end{align}
+Because $n_1$ and $n_2$ are of length $1$ the value of $f$ is in the range $[0, 1]$ and gets scaled accordingly.
+
 The smaller the dot-product gets, the higher is the local flexion of the
 surface. This local property of the geometry then results in visual
 features detectable with classical feature detectors and descriptors like
 \Gls{sift} or \Gls{surf}.
 
-\subsubsection{Other derived image types}
+\subsection{Other derived feature quantities}
 
 Other attempts to create feature images are described in the thesis as well.
 The performance in feature detection and matching is compared.
 From visual inspection the author expects \Glspl{flexion-image} to perform best though.
 
 The \gls{max-curve-image} tries generalize the \gls{bearing-angle} to be rotation invariant as it takes the \gls{bearing-angle} in each direction into account.
-It uses the maximum angle in vertical, horizontal and both diagonals.
+Additionally to the left-sided \gls{bearing-angle} the right-sided angle is calculated as well and finally added.
+
+\begin{figure}
+    \input{images/max-curve.tikz}
+    \caption[Schematic Representation of the Max-Curve]{The Max-Curve composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and antidiagonal direction. The maximum angle is then selected as pixel value.}
+\end{figure}
+
 This makes the measure more robust to rotation, but does not produce good features.
+\begin{align}
+    B_{max} &= \max{\{B_{diagonal}, B_{antidiagonal}, B_{horizontal}, B_{vertical}\}}
+\end{align}
 
 As a different analytical approach to producing feature images the calculation of the \gls{curvature} for each depth value.
 The two common measures of curvature in differential geometry are \gls{gaussian-curvature} and \gls{mean-curvature}\cite{Kuhnel2008}.
 
+If the function is known as a graph the \Gls{gaussian-curvature} can be estimated using the derivatives of the function.
+For depth data each depth value is a sample of this function graph and numeric approximation of the derivatives allows the calculation of the curvature.
+\begin{align}
+    \mathfrak{K} &= \frac{f_{uu} f_{vv} - f_{uv}^2}{{(1 + f_u^2 + f_v^2)}^2}
+\end{align}
+With
+\begin{align*}
+    f_{x} &= \frac{y_1 - y_0}{\Delta x} \\
+    f_{xx} &= \frac{y_1 + y_{-1} - 2 y_0}{{\Delta x}^2}
+\end{align*}
+as approximation for the derivatives.
+
+Similarly, the \Gls{mean-curvature} can be calculated with a different formula.
+\begin{align}
+    \mathfrak{H} &= \frac{{(1 + f_{v}^2)} f_{uu} - 2 f_u f_v f_{uv} + {(1 + f_u^2)} f_{vv}}{2 \sqrt{1 + f_u^2 + f_v^2}^3}
+\end{align}
+Both measures of curvature are $\mathfrak{K},\mathfrak{H} \in {\rm I\!R}$.
+To convert them into a meaningful grayscale image they need to be clamped to arbitrary bounds, that can be choosen based on visual distinctiveness or other heuristics.
+After clamping the values are scaled and quantized accordingly.
+
 All of those experiments are implemented and compared in the thesis.
 
-\subsubsection{Transformation calculation}\label{transformation-calculation}
+\subsection{Transformation calculation}\label{transformation-calculation}
 
 Starting with the feature image, a visual localization pipeline is
 established that works solely on omnidirectional data, thus is general
@@ -211,7 +290,7 @@ The full workflow of the pipeline is as follows:
 
 The result is the pose of the camera relative to the registered image as well as an error of the pose.
 
-\subsection{Novelity}\label{novelity}
+\section{Novelity}\label{novelity}
 
 The idea to use optical features for multimodal sensor registration is
 not new and goes back to Scaramuzza's approach to calibrate a

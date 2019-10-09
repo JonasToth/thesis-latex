@@ -1,0 +1,32 @@
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Straight Lines [id:da4352835258494677] 
+\draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=2.25]    (173.83,252) -- (376.83,252) ;
+
+
+%Flowchart: Connector [id:dp7899195950713407] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (326,252) .. controls (326,249.81) and (327.77,248.04) .. (329.96,248.04) .. controls (332.14,248.04) and (333.92,249.81) .. (333.92,252) .. controls (333.92,254.19) and (332.14,255.96) .. (329.96,255.96) .. controls (327.77,255.96) and (326,254.19) .. (326,252) -- cycle ;
+%Flowchart: Connector [id:dp5223576666610675] 
+\draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (223,50) .. controls (223,47.81) and (224.77,46.04) .. (226.96,46.04) .. controls (229.14,46.04) and (230.92,47.81) .. (230.92,50) .. controls (230.92,52.19) and (229.14,53.96) .. (226.96,53.96) .. controls (224.77,53.96) and (223,52.19) .. (223,50) -- cycle ;
+%Straight Lines [id:da7852815672316228] 
+\draw    (226.96,50) -- (226.96,252) ;
+
+
+%Straight Lines [id:da3653242786315575] 
+\draw    (226.96,50) -- (329.96,252) ;
+
+
+
+% Text Node
+\draw (251,271) node  [align=left] {Image Plane};
+% Text Node
+\draw (330,271) node  [align=left] {C};
+% Text Node
+\draw (215.96,157) node [rotate=-90] [align=left] {orthographic depth};
+% Text Node
+\draw (287,135) node [rotate=-63.14] [align=left] {euclidian depth};
+
+\end{tikzpicture}
