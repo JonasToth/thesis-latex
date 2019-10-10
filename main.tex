@@ -77,7 +77,36 @@
 
 % \newpage
 
-\section{Proposal}
+\subsection{Goals}
+
+Goals are registering pointclouds
+
+\begin{figure}[H]
+    \input{images/full-flow.tikz}
+	\caption[Flowchart of final processing pipeline]{The final processing pipeline is able to register depth images in existing pointclouds with much higher resolution}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/collage_v3.png}
+    \caption{Overview of possible Feature-Images from a depth image.}
+\end{figure}
+
+\subsection{Reference Data Processing}
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{images/bild1.png}
+	\caption[Laserscan as equirectangular depth image]{This image shows a laserscan that is converted into an equirectangular depth image}
+\end{figure}
+
+\subsection{Feature Matching}
+
+\begin{figure}[H]
+	\includegraphics[width=\linewidth]{images/match-result.png}
+	\caption[Examplaric Image Matching]{Matching two flexion images is possible, the results are mixed though.}
+\end{figure}
+
+\section{Introduction}
 
 The dominant method to register pointclouds with pointclouds or depth
 images is the use of a variant of the \gls{icp}\cite{Besl1992}

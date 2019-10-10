@@ -1,0 +1,86 @@
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,519.5); %set diagram left start at 0, and has height of 519.5
+
+%Flowchart: Data [id:dp9599947060349776] 
+\draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ] (60.98,13) -- (203.9,13) -- (170.92,53) -- (28,53) -- cycle ;
+%Flowchart: Data [id:dp6428232547076108] 
+\draw  [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ] (253.42,13) -- (406.9,13) -- (371.48,53) -- (218,53) -- cycle ;
+%Flowchart: Process [id:dp1608692692695335] 
+\draw  [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ] (218,104) -- (406.9,104) -- (406.9,174) -- (218,174) -- cycle ;
+%Flowchart: Process [id:dp33893985253847336] 
+\draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ] (28,105) -- (203.9,105) -- (203.9,175) -- (28,175) -- cycle ;
+%Straight Lines [id:da04782712814893719] 
+\draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (104.9,52.95) -- (104.9,103.95) ;
+\draw [shift={(104.9,105.95)}, rotate = 270] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Straight Lines [id:da7341299406677789] 
+\draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (310.9,52.95) -- (310.9,101.95) ;
+\draw [shift={(310.9,103.95)}, rotate = 270] [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Straight Lines [id:da8466739584512232] 
+\draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (105.75,175) -- (105.75,200.87) ;
+\draw [shift={(105.75,202.87)}, rotate = 270] [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Flowchart: Data [id:dp9829119198657832] 
+\draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ] (60.98,203.55) -- (203.9,203.55) -- (170.92,243.55) -- (28,243.55) -- cycle ;
+%Flowchart: Process [id:dp7985266301959889] 
+\draw  [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ] (218,202.95) -- (406.9,202.95) -- (406.9,243.95) -- (218,243.95) -- cycle ;
+%Flowchart: Merge [id:dp5897490340352475] 
+\draw  [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ] (137.5,335.5) -- (284.5,335.5) -- (211,406.95) -- cycle ;
+%Curve Lines [id:da7376618706424286] 
+\draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (105.78,244.87) .. controls (105.78,312.19) and (193.96,282.56) .. (196.69,333.38) ;
+\draw [shift={(196.75,334.95)}, rotate = 268.92] [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Curve Lines [id:da031417808526526425] 
+\draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (310.78,244.87) .. controls (310.78,281.31) and (242.84,297.46) .. (240.8,333.3) ;
+\draw [shift={(240.75,334.95)}, rotate = 270] [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Flowchart: Process [id:dp6519384117074126] 
+\draw  [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ] (130.75,442.15) -- (294.75,442.15) -- (294.75,493.15) -- (130.75,493.15) -- cycle ;
+%Straight Lines [id:da11178033003390464] 
+\draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (211,406.95) -- (211,441.3) ;
+\draw [shift={(211,443.3)}, rotate = 270] [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+%Straight Lines [id:da5794219109061295] 
+\draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ]   (422,25) -- (442.75,25) ;
+
+
+%Straight Lines [id:da9483137381576471] 
+\draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (422,54) -- (442.75,54) ;
+
+
+%Straight Lines [id:da6404550524489918] 
+\draw [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ]   (310.78,174.87) -- (310.78,200.87) ;
+\draw [shift={(310.78,202.87)}, rotate = 270] [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,draw opacity=1 ][line width=0.75]    (10.93,-3.29) .. controls (6.95,-1.4) and (3.31,-0.3) .. (0,0) .. controls (3.31,0.3) and (6.95,1.4) .. (10.93,3.29)   ;
+
+
+% Text Node
+\draw (120.95,33) node [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ] [align=left] {reference data\\pointclouds};
+% Text Node
+\draw (312.45,33) node [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,opacity=1 ] [align=left] {sensor data\\depth images};
+% Text Node
+\draw (312.45,139) node [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,opacity=1 ] [align=left] {conversion\\feature image};
+% Text Node
+\draw (115.95,140) node [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ] [align=left] {conversion\\feature image};
+% Text Node
+\draw (115.95,223.55) node [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ] [align=left] {Bag-of-Words};
+% Text Node
+\draw (312.45,223.45) node [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,opacity=1 ] [align=left] {Feature Detection};
+% Text Node
+\draw (212,357.5) node [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,opacity=1 ] [align=left] {Feature\\Matching};
+% Text Node
+\draw (212.75,467.65) node [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,opacity=1 ] [align=left] {Pose Optimization};
+% Text Node
+\draw (527,24) node [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,opacity=1 ] [align=left] {Offline Preprocessing};
+% Text Node
+\draw (516.5,53) node [color={rgb, 255:red, 65; green, 117; blue, 5 }  ,opacity=1 ] [align=left] {Online Processing};
+% Text Node
+\draw (156.9,79) node  [align=left] {{\footnotesize \textcolor[rgb]{0.29,0.7,0.89}{Keyframes as}}\\{\footnotesize \textcolor[rgb]{0.29,0.7,0.89}{Equirectangular}}\\{\footnotesize \textcolor[rgb]{0.29,0.7,0.89}{Images}}};
+% Text Node
+\draw (355,76) node [color={rgb, 255:red, 126; green, 211; blue, 33 }  ,opacity=1 ] [align=left] {{\footnotesize \textcolor[rgb]{0.49,0.83,0.13}{Pinhole}}\\{\footnotesize \textcolor[rgb]{0.49,0.83,0.13}{Intrinsic}}};
+% Text Node
+\draw (218,282.4) node  [align=left] {SIFT\\SURF\\KAZE};
+
+
+\end{tikzpicture}
+
