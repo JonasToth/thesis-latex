@@ -103,8 +103,21 @@ Goals are registering pointclouds
 
 \begin{figure}[H]
 	\includegraphics[width=\linewidth]{images/match-result.png}
-	\caption[Examplaric Image Matching]{Matching two flexion images is possible, the results are mixed though.}
+	\caption[Examplaric Image Matching]{Matching two flexion images is possible, the results are mixed though. This match is done with ORB}
 \end{figure}
+
+\subsection{Potential Deviations from Plan}
+
+\subsubsection*{Feature Matching Considerations}
+\begin{itemize}
+    \item depth-map preprocessing to fill holes and improve their quality
+    \item smoothing or either depth-maps or feature images
+    \item pyramid approach for multi-resolution feature images (similar to SIFT)
+    \item change offset of neighbour pixels (e.g.~four pixel difference in each direction instead of just one)
+    \item concentrate more on deep and wide evaluation of feature matching instead of full localization pipeline as a more robust foundation for future work
+    \item just try out an out-of-the-box SfM-solution
+\end{itemize}
+
 
 \section{Introduction}
 
