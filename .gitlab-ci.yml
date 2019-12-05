@@ -15,8 +15,6 @@ compile_document:
     paths:
       - main.pdf
     expire_in: 1 week
-  tags:
-    - docker
 
 upload_as_page:
   image: 
@@ -33,5 +31,3 @@ upload_as_page:
   only:
     refs:
       - master
-  tags:
-    - docker
