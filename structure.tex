@@ -1,0 +1,102 @@
+\section{Motivation}
+
+\subsection{Current State-of-the-Art}
+\begin{itemize}
+    \item registering depth and range data
+    \item state of the art is ICP and variants, working point based or point to plane (TODO: cite ICP comparison paper)
+    \item requires pointclouds of similar resolutions
+    \item dependent on initial pose
+    \item global positioning not easily done, because of local maxima and computational cost of for example particle based approaches
+\end{itemize}
+
+\subsection{Other Approach}
+
+\begin{itemize}
+    \item Scaramuzza\cite{Scaramuzza2007} presented work on registering a camera to a laserscaner using manually selected features in the laserscan and the image
+    \item prior conversion of the laserscan to an image dubbed \Glspl{bearing-angle-image}
+    \item converted image shows the local geometric structure exposed to the scan
+
+    \item Lin et.al \cite{Lin2017} applied SURF feature detection on \Glspl{bearing-angle-image}
+    \item this allows feature based posed estimation with the classical workflow used in SLAM algorithms
+\end{itemize}
+
+\subsection{Improvements}
+
+\begin{itemize}
+    \item \Glspl{bearing-angle} is calculated in only one direction and can therefore not be rotation invariant
+    \item this work proposes \Glspl{flexion-image} that encodes the local geometry in all directions and is rotation invariant
+    \item multiple state-of-the-art keypoint detectors and feature descriptors are compared between \Glspl{flexion-image} and \Glspl{bearing-angle-image} on various datasets taken with Kinect v2 and a full Laserscan
+    \item evaluation shows better performance of \Glspl{flexion-image} with regard to keypoint quality and feature description
+\end{itemize}
+
+
+\section{Related Work}
+
+\subsection{Bearing-Angle and SURF}
+Erratum for Scaramuzza and Lin
+\subsection{Other Registrations (ICP)}
+\subsection{Multi-Modal Sensor Registration}
+
+\section{Basics}
+
+\subsection{Depth Sensors}
+\subsubsection{Time-of-Flight}
+\subsubsection{Structured Light}
+\subsubsection{Laserscanner}
+
+\subsection{Image formation and camera models}
+
+\subsection{Keypoint Detection and Feature Description}
+\subsection{Statistic of Binary Classifier}
+
+\section{Feature Images}
+
+\subsection{Bearing-Angle}
+\subsection{Flexion-Image}
+\subsection{Discarded Approaches}
+\subsubsection{Curvature}
+\subsubsection{Multi-Directional Bearing Angle}
+
+Formulas pictures and short computational evaluation.
+Discussion of characteristic for Bearing Flexion.
+
+\section{Experiments}
+
+\subsection{Datasets}
+\subsubsection{Synthetic Scene}
+Blender with known trajectory?
+\subsubsection{Lehrpfad Kinect}
+\subsubsection{Office Kinect}
+\subsubsection{Laserscans of Reiche Zeche, Wilhelm Süd}
+\subsubsection{Laserscan transformed to pinhole}
+
+\subsection{Implementation of Algorithms}
+\subsection{Groundtruth Poses}
+\subsection{Classification Evaluation}
+\subsubsection{Approach with Backprojection and Distance Threshold}
+\subsubsection{Statistical Kennziffern, what was looked at}
+(Descriptors, Keypoints, Distribution, Size, Response)
+\subsection{Algorithm Parameters}
+\subsection{With insights, do another experiment with tuned parameters}
+\subsection{Odometry with SLAM?!}
+
+\section{Results}
+\subsection{Show plain results and discuss outcome}
+
+\section{Rest}
+
+Very Sensors dependent, Time-of-flight and Laserscan gives the best quality.
+SURF does not perform well, Bearing Angle gives lower response and less stability
+Flexion is very nice.
+FAST based stuff does not perform well, more exotic descriptors neither.
+SIFT best, AKAZE very good.
+Approach to transform depth image first before processing further works and gives results.
+
+\section{Future Work}
+
+\begin{itemize}
+    \item BoW
+    \item Laserscan with Kinect
+    \item Other form of Ransac, that considers the depth information
+    \item Performance Optimization, conversion is embarassingly parallel and computed on GPU
+\end{itemize}
