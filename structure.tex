@@ -1,4 +1,13 @@
-\section{Motivation}
+\section{Introduction}
+
+\subsection{Reasons for Importance}
+\begin{itemize}
+    \item multiple sensors per sensors
+    \item depth sensors increasingly used in the field
+    \item not-multimodal, laserscan can not be used / hardly used
+    \item global positioning not easily done, because of local maxima and computational cost of for example particle based approaches
+    \item performance/compute costs of ICP high
+\end{itemize}
 
 \subsection{Current State-of-the-Art}
 \begin{itemize}
@@ -6,7 +15,6 @@
     \item state of the art is ICP and variants, working point based or point to plane (TODO: cite ICP comparison paper)
     \item requires pointclouds of similar resolutions
     \item dependent on initial pose
-    \item global positioning not easily done, because of local maxima and computational cost of for example particle based approaches
 \end{itemize}
 
 \subsection{Other Approach}
@@ -29,6 +37,7 @@
     \item evaluation shows better performance of \Glspl{flexion-image} with regard to keypoint quality and feature description
 \end{itemize}
 
+\subsection{Structure of this Thesis}
 
 \section{Related Work}
 
@@ -37,7 +46,7 @@ Erratum for Scaramuzza and Lin
 \subsection{Other Registrations (ICP)}
 \subsection{Multi-Modal Sensor Registration}
 
-\section{Basics}
+\section{Fundamentals}
 
 \subsection{Depth Sensors}
 \subsubsection{Time-of-Flight}
@@ -48,6 +57,7 @@ Erratum for Scaramuzza and Lin
 
 \subsection{Keypoint Detection and Feature Description}
 \subsection{Statistic of Binary Classifier}
+\subsection{Edge-Preserving Filtering}
 
 \section{Feature Images}
 
@@ -83,7 +93,7 @@ Blender with known trajectory?
 \section{Results}
 \subsection{Show plain results and discuss outcome}
 
-\section{Rest}
+\section{Conclusion}
 
 Very Sensors dependent, Time-of-flight and Laserscan gives the best quality.
 SURF does not perform well, Bearing Angle gives lower response and less stability
@@ -92,7 +102,7 @@ FAST based stuff does not perform well, more exotic descriptors neither.
 SIFT best, AKAZE very good.
 Approach to transform depth image first before processing further works and gives results.
 
-\section{Future Work}
+\subsection{Future Work}
 
 \begin{itemize}
     \item BoW

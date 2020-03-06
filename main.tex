@@ -63,8 +63,9 @@
 \begin{document}
 
 \maketitle
-
 \TUBAFErklaerungsseite%
+
+\pagenumbering{roman}
 \tableofcontents
 \newpage
 
@@ -74,6 +75,8 @@
 \printglossary[type=symbols]%
 \glsaddallunused[symbols]
 \newpage
+
+\pagenumbering{arabic}
 
 \input{structure}
 
@@ -384,8 +387,8 @@ Und so weiter.
 % \input{fazit/content.tex}
 % \newpage
 
-\begin{appendix}
-    % \appendix
+% \begin{appendix}
+    \appendix
     % \input{anhang/content}
     \newpage
 
@@ -403,6 +406,5 @@ Und so weiter.
     %\renewcommand{\indexname}{Stichwortverzeichnis}
     %\addcontentsline{toc}{section}{Stichwortverzeichnis}
     % \printindex
-\end{appendix}
-
+% \end{appendix}
 \end{document}
