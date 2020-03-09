@@ -59,16 +59,31 @@ Erratum for Scaramuzza and Lin
 \subsection{Statistic of Binary Classifier}
 \subsection{Edge-Preserving Filtering}
 
-\section{Feature Images}
+\section{Depth Image Processing}
 
-\subsection{Bearing-Angle}
-\subsection{Flexion-Image}
-\subsection{Discarded Approaches}
+\subsection{Edge-Preserving Filtering}
+\subsubsection{Median Blur}
+\subsubsection{Bilateral Filter}
+
+\subsection{Conversion from Depth-Image to Feature Image}
+\subsubsection{Bearing-Angle}
+\subsubsection{Flexion-Image}
 \subsubsection{Curvature}
 \subsubsection{Multi-Directional Bearing Angle}
+\subsubsection{Viability of Conversions}
+\subsubsection{Implementation Notes}
 
 Formulas pictures and short computational evaluation.
 Discussion of characteristic for Bearing Flexion.
+
+\subsection{Feature Detection and Description}
+\subsubsection{Feature Description and Matching}
+\subsubsection{Filtering Keypoints}
+\subsubsection{SIFT}
+\subsubsection{SURF}
+\subsubsection{ORB}
+\subsubsection{AKAZE}
+\subsubsection{BRISK}
 
 \section{Experiments}
 
@@ -80,18 +95,37 @@ Blender with known trajectory?
 \subsubsection{Laserscans of Reiche Zeche, Wilhelm Süd}
 \subsubsection{Laserscan transformed to pinhole}
 
-\subsection{Implementation of Algorithms}
-\subsection{Groundtruth Poses}
-\subsection{Classification Evaluation}
-\subsubsection{Approach with Backprojection and Distance Threshold}
+\subsection{Metrics}
+
 \subsubsection{Statistical Kennziffern, what was looked at}
+\subsubsection{Classification Evaluation}
+\subsubsection{Groundtruth Poses}
+\subsubsection{Approach with Backprojection and Distance Threshold}
 (Descriptors, Keypoints, Distribution, Size, Response)
-\subsection{Algorithm Parameters}
-\subsection{With insights, do another experiment with tuned parameters}
-\subsection{Odometry with SLAM?!}
+
+\subsection{Parameter Search}
+\subsection{Optimized Parameters}
+
+\subsection{Odometry on Benchmark Dataset}
 
 \section{Results}
 \subsection{Show plain results and discuss outcome}
+\subsection{Keypoint-Detector discussion}
+\begin{itemize}
+    \item Stable Keypoints are important
+    \item good Keypoint distribution
+\end{itemize}
+\subsection{Feature-Descriptor discussion}
+\begin{itemize}
+    \item matching performance
+    \item Computational Complexity
+\end{itemize}
+
+\subsection{Challenges}
+\begin{itemize}
+    \item Sensor noise
+    \item Missing Sensordata in combination with noise gives bad flexion images
+\end{itemize}
 
 \section{Conclusion}
 
