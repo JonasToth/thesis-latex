@@ -1,4 +1,4 @@
-\documentclass[doktyp=marbeit,fontsize=12pt,sprache=english,draft=true,hausschrift=true,fleqn]{TUBAFarbeiten}
+\documentclass[doktyp=marbeit,fontsize=12pt,sprache=english,hausschrift=true,fleqn]{TUBAFarbeiten}
 
 % packages
 \usepackage{amsmath}
@@ -33,6 +33,7 @@
 \usepackage{booktabs}
 % Images end
 
+
 \usepackage{subscript} % tief stellen
 %\usepackage[square]{natbib}
 \usepackage{setspace}
@@ -58,6 +59,16 @@
 %\setcounter{secnumdepth}{3}
 
 % \makeindex
+
+\usepackage[pdftex, unicode, hidelinks,
+            pdfproducer={Latex with hyperref},
+            pdfcreator={pdflatex}]{hyperref}
+\hypersetup{colorlinks=false,
+            citecolor=black,
+            filecolor=black,
+            linkcolor=black,
+            urlcolor=black,
+            linktoc=all}
 
 % start the content
 \begin{document}
