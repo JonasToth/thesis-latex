@@ -1,20 +1,29 @@
 \section{Introduction}
 
-\subsection{Reasons for Importance}
+\subsection{Motivation}
+
 \begin{itemize}
-    \item multiple sensors per sensors
-    \item depth sensors increasingly used in the field
-    \item not-multimodal, laserscan can not be used / hardly used
-    \item global positioning not easily done, because of local maxima and computational cost of for example particle based approaches
+    \item multiple sensors per robot resulting in multimodal sensor fusion requirements
+    \item depth sensors increasingly used in the field and quality of sensors improve dramatically
     \item performance/compute costs of ICP high
+    \item other approaches require many compuations as well, parallelization is major concern for improving performance
+    \item due to ICP limitations, combining laserscan and depth sensor hard
+    \item ICP requires correspondent in the pointclouds and inital pose
+    \item global positioning not easily done, because of local maxima and computational cost of for example particle based approaches
 \end{itemize}
 
-\subsection{Current State-of-the-Art}
+\subsection{Problem Definition}
+
 \begin{itemize}
+    \item rigid and non-rigid registration
     \item registering depth and range data
-    \item state of the art is ICP and variants, working point based or point to plane (TODO: cite ICP comparison paper)
-    \item requires pointclouds of similar resolutions
+    \item Kinect fusion
     \item dependent on initial pose
+    \item some algorithms for laserscan matching work on 2D laser scans, but not dense 3D scans
+    \item other multi-modal registrations
+    \item mining environment
+    \item prior high resolution laser scans exist
+    \item bad lighting conditions
 \end{itemize}
 
 \subsection{Other Approach}
@@ -24,7 +33,7 @@
     \item prior conversion of the laserscan to an image dubbed \Glspl{bearing-angle-image}
     \item converted image shows the local geometric structure exposed to the scan
 
-    \item Lin et.al \cite{Lin2017} applied SURF feature detection on \Glspl{bearing-angle-image}
+    \item Lin et.al\cite{Lin2017} applied SURF feature detection on \Glspl{bearing-angle-image}
     \item this allows feature based posed estimation with the classical workflow used in SLAM algorithms
 \end{itemize}
 
@@ -42,26 +51,222 @@
 \section{Related Work}
 
 \subsection{Bearing-Angle and SURF}
+
+\begin{itemize}
+    \item scaramuzza calibration of laser scan to camera
+    \item conversion of laser-scan to bearing angle image
+    \item manual selection of corresponding corner features in bearing angle image and color image
+    \item rigid transformation calculation with error minimization
+
+    \item Lin et.al use automatic feature extraction on bearing angle image with SURF
+    \item use for pose estimation, inital pose for ICP
+
+    \item both formulations of the bearing angle calculation incorrect
+    \item scaramuzzas formulation produces sqrt of negative number
+    \item lin seem to forget the sqrt of denominator, proper derivation is done in attachement
+\end{itemize}
 Erratum for Scaramuzza and Lin
-\subsection{Other Registrations (ICP)}
+
+\subsection{Rigid and Non-Rigid Pointcloud Registration}
+
+\begin{itemize}
+    \item goal is to find a transformation between two point sets that to map one pointset to the other
+    \item process is called registration and used in robotics, medicine and field
+    \item 6-DoF transformation is a rigid registration and is equivalent to find the common frame of reference of both point clouds
+    \item non-rigid registration includes shearing and scaling but can also imply non-linear transformations
+    \item non-rigid is not considered in this thesis, because the goal is to find a pose with the precondition of rigid transformation
+\end{itemize}
+
+\subsubsection{Correspondence Based Approaches}
+\begin{itemize}
+    \item ICP with different formulations
+    \item point-to-plane ICP
+    \item plane-to-plane ICP
+    \item generalized ICP
+\end{itemize}
+
+\subsubsection{Otha}
+\begin{itemize}
+    \item normal distribution transformation
+    \item coherent point drift
+\end{itemize}
+
 \subsection{Multi-Modal Sensor Registration}
+
+\begin{itemize}
+    \item Kinect Fusion\cite{newcombe_ismar2011}
+    \item dense visual odometrie\cite{kerl_icra2013}
+    \item multi-cue photometric registration\cite{corte_2017}
+    \item all are focussed on RGB-D data and do not consider dense laser scans
+    \item alignment using normalized mutual information
+\end{itemize}
 
 \section{Fundamentals}
 
-\subsection{Depth Sensors}
-\subsubsection{Time-of-Flight}
-\subsubsection{Structured Light}
-\subsubsection{Laserscanner}
+This section of the thesis introduces the relevant theory and principles building the foundation of the describes approach.
 
-\subsection{Image formation and camera models}
+\subsection{Depth Sensors}
+
+\subsubsection{Structured Light}
+
+\begin{itemize}
+    \item Kinectv1
+    \item Intel Realsense
+    \item project grid structure in the world with infrared light
+    \item sense the deformation of the grid lines and calculate the distance of an object from this deformation
+\end{itemize}
+
+\subsubsection{Time-of-Flight}
+
+\begin{itemize}
+    \item range imaging camera system to measure the distance of world point by measuring the time, light needs to travel to the object and back for every pixel of an image
+    \item the light source can be a laser or a LED
+    \item the technology is related to LIDAR
+    \item these camera systems operate faster than LIDAR but have lower resolution
+    \item especially in robotics the kinect v2 is commonly found as time-of-flight sensor
+\end{itemize}
+
+\subsubsection{LIDAR}
+
+\begin{itemize}
+    \item light detection and ranging
+    \item measure the time a laser beam requires travels to an obstacle
+    \item reflected light is analyzed, both phase shift and time of travel give information about distance
+    \item intensity can be measured by some laser scanners as well
+    \item broad spectrum of application in various disciplines
+    \item can be full resolution 3D scanning or provide vertically sparse scan lines
+    \item in this work dense laser scans are of interest
+\end{itemize}
+
+\subsection{Image Formation and Camera Models}
+
+\subsubsection{Pinhole camera model}
+
+Forward projection, backward projection.
+Very common, and depth sensor can be modeled with this
+
+\subsubsection{Equirectangular Camera Model}
+
+Image to sphere, forward and backward projection
+Laser scan can be modeled with this
+Vertical field of view is limited
+
+\subsection{Noise Filtering}
+
+Commonly used a preprocessing step for other algorithms.
+Measurements are usually noisy. Filtering evens out the signal
+Can be normal like gaussian blur or box filter.
+Can be edge preserving to keep edge features.
 
 \subsection{Keypoint Detection and Feature Description}
-\subsection{Statistic of Binary Classifier}
-\subsection{Edge-Preserving Filtering}
+
+Technique from computer vision on color images.
+Salient regions of the image are of interest to extract further information.
+Can be used for triangulation, for example in stereo camera systems.
+Can be used to determine trajectory of single camera.
+Can be used to recognize a place or search for similar images --- document extraction.
+
+Common features are corners, edges and more complex features that are extracted with the common algorithms described later.
+Each feature has a pixel location in the image and optionally a response and a size.
+
+Recognizing such a salient point in the image from another image that is taken from a different perspective or for example after a change in the scene requires to model the local surroundings of that spot.
+This step is done by feature descriptors, sometimes called keypoint descriptors.
+
+Such a descriptor builds a model of the region around that specific keypoint.
+Such a model can be a histogram of brightness values at various distances around that point.
+Optionally either the descriptor or the keypoint can be assigned a rotation.
+This step is not consistently done be one or the other and sometimes saved completly, because not rotation is expected to happen and the computational cost can be saved.
+The model is then stored as a vector.
+This vector can be of type real or contains boolean values, too.
+The length varies from algorithm to algorithm, but 64 elements or more are common dimensions.
+Descriptors that result in booleans can for example sample the environment of a keypoint in a predefined order and just store if the brightness is higher or lower then the previous sample.
+
+The last and final step is matching descriptors, for simplicity reasons the case of two consecutive images in a video stream is choosen to demonstrate the principle workings.
+The simplest method is to calculate the distance of each descriptor of the first image with each descriptor of the second image.
+Choosing the right norm is crucial for both accuracy and speed of this step.
+Dense real descriptors usually choose the L2 or L1 norm resulting in higher computational cost due to the floating point operations.
+Binary descriptors use the Hamming Norm which is very cheap to compute.
+Both descriptors are XOR'ed together and the number of set bits of the result is the distance of these descriptors.
+
+Conceptually, descriptors with minimal distance correspond to each other.
+
+Further heuristics should be applied to reduce the number of false positives and to improve the results.
+The first heuristic is called cross checking. Descriptors correspond only if the distance of the descriptors is minimal in both directions.
+That means that descriptor 1 has no closer descriptor in image 2, and the matched descriptor from image 2 has no closer descriptor in image 1 then descriptor 1.
+
+The second commonly used heuristic is the lowe ratio check\cite{lowe_ijcv2004} that requires that the second best match for a descriptor must succeed a certain distance ratio.
+
+Another simple heuristic is a maximum accepted descriptor distance.
+This is different for descriptor type, -size and matching norm and requires empirical data for a given use case.
+Therefore, it is not simple to define which value to choose but requires careful consideration of the operational environment and parameters in use.
+
+More complicated preprocessing can be done to reduce the number of descriptors to match.
+Some keypoints can be discarded to achieve a good distribution over the image and avoid clusters of keypoints.
+Keypoints can be discarded on the response or size.
+Filtering by response is commonly done when selecting only e.g. 300 keypoints.
+If apriori information of the approximate motion of the camera is known matches can be ranked based on the expected displacement of the keypoint given the known motion.
+
+In information retrieval scenarios, e.g.~a search engine for similar images, further processing is necessary.
+This includes clustering of descriptors and only storing a representative as well as dimension reduction and hierarchical data structures to store the descriptors in to make the matching of a vast number of descriptor feasable.
+
+\subsection{Statistics of Binary Classifiers}
+
+To evaluate the performance of keypoint detection and feature matching such a system can be considered a binary classifier.
+The clasification task is to determine if a keypoint X1 of image I1 corresponds with keypoint X2 in image I2 with a true or false outcome.
+
+The evaluation of the performance of various keypoint detection and matching algorithms makes extensive use of this idea.
+As with most statistics it is necessary to consider the distribution of a quantity and analyze it from multiple view points.
+Therefor the final evaluation will consider other criteria, like keypoint distribution and number of keypoints per frame as well.
+
+\begin{itemize}
+    \item error categories, true positive, true negative, false postive and false negative
+    \item leading to accuracy (percentage of correct decisions)
+    \item this leads to various ratios describing the performance 
+    \item common measures precision-recall
+    \item common measures sensitivity-specificity
+    \item comparibility in ROC space
+    \item informedness of the system as youden index and correspondence to ROC space
+    \item degress of freedom in roc space and generally dependence on absolute numbers for decision 
+\end{itemize}
 
 \section{Depth Image Processing}
 
+As with most sensor data the sensory input requires some preprocessing.
+Error sources for depth sensors are absorption or reflexion of the infrared light, for example by water or glass.
+Additionally each sensors has a range of sensing.
+Every object too near or far can not be measured, sharp edges produce shadows.
+Those conditions lead to missing distance values for such pixels, represented by zeros.
+
+Another source of error are inaccurate measurements by the sensor.
+Some sensors, like the Intel Realsense even have visible waves in the sensor output.
+Additionally, depth images are discretized to integer precision.
+
+These errors can be partially mitigated by preprocessing and filtering.
+
+\subsection{Depth Image Impainting}
+
+Filling holes in the depth image can be done with depth image impainting techniques.
+
+\begin{itemize}
+    \item interpolation between neighbouring pixels
+    \item using the color image to find edges
+    \item estimation of planes or other geometric primitives and filling the depth values to match those primitives
+\end{itemize}
+
+Those techniques have different level of quality.
+Manual testing for the scenes presented later showed no noticeable improvement.
+This is due to the walls inside the mine have many sharp edges that do not follow normal manbuild structures.
+Impainting-techniques work better when planes and bigger surfaces can be used to estimate the real world geometry, which is not the case for the experiments.
+
 \subsection{Edge-Preserving Filtering}
+
+Filtering is an operation to reduce the impact of sensor noise.
+One common filter is gaussian blur or the computationally cheaper box filter.
+Those filters distribute each sensory value over a local neighbourhood with different weights.
+This reduces white noise but blurs edges and shapes as well.
+Therefore, these filters are not edge preserving and undesirable for the use-case of this work.
+As described later, preserving sharp edges is requirement to be able to extract features from the converted depth images.
+
 \subsubsection{Median Blur}
 \subsubsection{Bilateral Filter}
 
@@ -92,15 +297,16 @@ Discussion of characteristic for Bearing Flexion.
 Blender with known trajectory?
 \subsubsection{Lehrpfad Kinect}
 \subsubsection{Office Kinect}
-\subsubsection{Laserscans of Reiche Zeche, Wilhelm Süd}
-\subsubsection{Laserscan transformed to pinhole}
+\subsubsection{Laserscans of Reiche Zeche - Wilhelm Stehender Süd}
+\subsubsection{Laserscans Transformed to Pinhole Images}
 
 \subsection{Metrics}
 
-\subsubsection{Statistical Kennziffern, what was looked at}
+\subsubsection{Summary Statistics}
 \subsubsection{Classification Evaluation}
 \subsubsection{Groundtruth Poses}
 \subsubsection{Approach with Backprojection and Distance Threshold}
+
 (Descriptors, Keypoints, Distribution, Size, Response)
 
 \subsection{Parameter Search}
@@ -108,20 +314,22 @@ Blender with known trajectory?
 
 \subsection{Odometry on Benchmark Dataset}
 
-\section{Results}
-\subsection{Show plain results and discuss outcome}
+\section{Results and Discussion}
+\subsection{Algorithm Performance}
 \subsection{Keypoint-Detector discussion}
+
 \begin{itemize}
     \item Stable Keypoints are important
     \item good Keypoint distribution
 \end{itemize}
-\subsection{Feature-Descriptor discussion}
+
+\subsection{Feature-Descriptor Discussion}
 \begin{itemize}
     \item matching performance
     \item Computational Complexity
 \end{itemize}
 
-\subsection{Challenges}
+\subsection{Error Discussion}
 \begin{itemize}
     \item Sensor noise
     \item Missing Sensordata in combination with noise gives bad flexion images
