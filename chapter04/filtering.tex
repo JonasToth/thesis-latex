@@ -1,0 +1,36 @@
+\subsection{Noise Filtering}
+
+Commonly used a preprocessing step for other algorithms.
+Measurements are usually noisy. Filtering evens out the signal
+Can be normal like gaussian blur or box filter.
+Can be edge preserving to keep edge features.
+
+\subsection{Edge-Preserving Filtering}
+
+Filtering is an operation to reduce the impact of sensor noise.
+One common filter is gaussian blur or the computationally cheaper box filter.
+Those filters distribute each sensory value over a local neighbourhood with different weights.
+This reduces white noise but blurs edges and shapes as well.
+Therefore, these filters are not edge preserving and undesirable for the use-case of this work.
+As described later, preserving sharp edges is requirement to be able to extract features from the converted depth images.
+Using proven implementations from OpenCV\cite{opencv_library}.
+
+\subsubsection{Median Blur}
+
+\begin{itemize}
+    \item kernel of odd size greater then one $ksize \times ksize$
+    \item replacing the center pixel with median over all pixel in that kernel
+    \item computationally cheap, easy to utilize SIMD instructions
+    \item edge preserving and smoothing
+    \item filling single pixel errors with reasonable value of surrounding
+    \item cite a paper/book
+\end{itemize}
+
+\subsubsection{Bilateral Filter}
+
+\begin{itemize}
+    \item edge preserving filter that considers both spatial proximity as well as proximity of surrounding values
+    \item smooths out smaller fluctuations in local neighbourhood, but maintains sharp edges
+    \item cite proper paper
+\end{itemize}
+

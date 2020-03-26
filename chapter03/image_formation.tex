@@ -1,0 +1,22 @@
+\subsection{Image Formation and Camera Models}
+
+\subsubsection{Pinhole camera model}
+
+Forward projection, backward projection.
+Very common, and depth sensor can be modeled with this
+
+\subsubsection{Equirectangular Camera Model}
+
+Image to sphere, forward and backward projection
+Laser scan can be modeled with this
+Vertical field of view is limited
+
+\subsubsection{Range and Depth Conversion}
+
+There are two possible conventions on how to store depth data.
+Depth is the distance from coordinate plane.
+Range is the length of the light ray that corresponds to a pixel value.
+Depth-Sensors usually provide depth information, LIDAR range information.
+For consistency and generality depth data is converted to range data.
+This simplifies later conversion and mixing of different camera models.
+

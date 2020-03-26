@@ -1,0 +1,40 @@
+\subsection{Datasets}
+\subsubsection{Synthetic Scene}
+
+Manually created synthetic scene with geometric primitives.
+This shows the effect of translation and rotation on the provided feature images.
+Furthermore, it is the basis to judge the feasability of the different feature images.
+
+\subsubsection{Lehrpfad Kinect}
+
+Kinectv2-data from a robot drive in the Reiche Zeche.
+It provides groundthruth data from a prior reconstruction after global optimization.
+It contains a loop closure and different section of the mining environment, from man made concrete walls to raw stone walls.
+The groundthruth poses do not match the scale of the depth sensor anymore, as global optimization adjusted the translation too much.
+The rotation is proper, each pose is adjusted with ICP that uses the provided pose as initial guess.
+
+\subsubsection{Office Kinect}
+
+
+
+\subsubsection{Laserscans of Reiche Zeche - Wilhelm Stehender Süd}
+
+LIDAR based high resolution scans that are used in the context of mine surveying.
+Those scans are not made for robotic or computer vision purposes.
+This is the reason, why they have little overlap between each scan.
+Special reflectors are used as landmarks to register the point clouds to each other.
+Only a subset of the scans is used in this evaluation, to demonstrate the functionality and generality of the approach.
+Statistics of the distribution and response of the keypoints are provided.
+
+\subsubsection{LIDAR and Pinhole Camera matching}
+
+One advantage of the feature based approach is mixing highly different depth sensors with ease.
+Examplaric scene with data from Kinectv2 sensor and the LIDAR that demonstrates, that matching between those two sensors is possible.
+Demonstrate, that prior conversion from equirectangular to pinhole reduces the distortion and therefore change in appearance between different camera models.
+
+% Lehrpfad Ziege ist auch im Wilhelm-Sued-Kinect Datensatz. Damit ist da Equi, +Laserscan Pinhole + Kinect vorhanden
+
+\subsubsection{Synthetic City Scene}
+
+City walkthrough that is used as odometry benchmark.
+

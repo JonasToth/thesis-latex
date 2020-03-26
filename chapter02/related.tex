@@ -1,0 +1,51 @@
+\subsection{Bearing-Angle and SURF}
+
+\begin{itemize}
+    \item scaramuzza calibration of laser scan to camera
+    \item conversion of laser-scan to bearing angle image
+    \item manual selection of corresponding corner features in bearing angle image and color image
+    \item rigid transformation calculation with error minimization
+
+    \item Lin et.al use automatic feature extraction on bearing angle image with SURF
+    \item use for pose estimation, inital pose for ICP
+
+    \item both formulations of the bearing angle calculation incorrect
+    \item scaramuzzas formulation produces sqrt of negative number
+    \item lin seem to forget the sqrt of denominator, proper derivation is done in attachement
+\end{itemize}
+Erratum for Scaramuzza and Lin
+
+\subsection{Rigid and Non-Rigid Pointcloud Registration}
+
+\begin{itemize}
+    \item goal is to find a transformation between two point sets that to map one pointset to the other
+    \item process is called registration and used in robotics, medicine and field
+    \item 6-DoF transformation is a rigid registration and is equivalent to find the common frame of reference of both point clouds
+    \item non-rigid registration includes shearing and scaling but can also imply non-linear transformations
+    \item non-rigid is not considered in this thesis, because the goal is to find a pose with the precondition of rigid transformation
+\end{itemize}
+
+\subsubsection{Correspondence Based Approaches}
+\begin{itemize}
+    \item ICP with different formulations
+    \item point-to-plane ICP
+    \item plane-to-plane ICP
+    \item generalized ICP
+\end{itemize}
+
+\subsubsection{Otha}
+\begin{itemize}
+    \item normal distribution transformation
+    \item coherent point drift
+\end{itemize}
+
+\subsection{Multi-Modal Sensor Registration}
+
+\begin{itemize}
+    \item Kinect Fusion\cite{newcombe_ismar2011}
+    \item dense visual odometrie\cite{kerl_icra2013}
+    \item multi-cue photometric registration\cite{corte_2017}
+    \item all are focussed on RGB-D data and do not consider dense laser scans
+    \item alignment using normalized mutual information
+\end{itemize}
+

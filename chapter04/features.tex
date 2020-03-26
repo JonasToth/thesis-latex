@@ -1,0 +1,43 @@
+\subsection{Feature Detection and Description}
+
+Introduction to feature detection and matching.
+Goals and basic principles.
+Use cases like RANSAC, Bag-of-Words and stuff.
+
+\subsubsection{Feature Description and Matching}
+
+maybe delete?
+
+\subsubsection{Filtering Keypoints}
+
+Because feature detection algorithms usually produce hundreds of keypoints per HD image it is necessary to reduce the number and only choose the best keypoints.
+Most common way is to filter by response and choose only the best responses.
+
+Segmenting the image in multiple regions and keep a constant number of keypoints per region.
+This increase the coverage of the image.
+If transformation between two images is calculated it reduces the error from one sided focus and helps to keep track of the image when the camera moves in arbitrary direction.
+
+Filtering by keypoint size is an option. The experiments showed showed many very small keypoints that resulted from noisy sections.
+Removing these keypoints improves matching quality and chance for false positives.
+
+\subsubsection{SIFT}
+
+Describe approach of SIFT keypoints and descriptor.
+
+\subsubsection{SURF}
+
+Describe approach of SURF keypoints and descriptor.
+
+\subsubsection{ORB}
+
+Describe combination of ORB algorithms, Harris Corner, FAST features.
+BRIEF descriptor on multiple levels.
+
+\subsubsection{AKAZE}
+
+Describe AKAZE and its variants.
+
+\subsubsection{BRISK}
+
+Describe BRISK and AGAST keypoint detector.
+

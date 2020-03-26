@@ -1,0 +1,33 @@
+\subsection{Depth Sensors}
+
+\subsubsection{Structured Light}
+
+\begin{itemize}
+    \item Kinectv1
+    \item Intel Realsense
+    \item project grid structure in the world with infrared light
+    \item sense the deformation of the grid lines and calculate the distance of an object from this deformation
+\end{itemize}
+
+\subsubsection{Time-of-Flight}
+
+\begin{itemize}
+    \item range imaging camera system to measure the distance of world point by measuring the time, light needs to travel to the object and back for every pixel of an image
+    \item the light source can be a laser or a LED
+    \item the technology is related to LIDAR
+    \item these camera systems operate faster than LIDAR but have lower resolution
+    \item especially in robotics the kinect v2 is commonly found as time-of-flight sensor
+\end{itemize}
+
+\subsubsection{LIDAR}
+
+\begin{itemize}
+    \item light detection and ranging
+    \item measure the time a laser beam requires travels to an obstacle
+    \item reflected light is analyzed, both phase shift and time of travel give information about distance
+    \item intensity can be measured by some laser scanners as well
+    \item broad spectrum of application in various disciplines
+    \item can be full resolution 3D scanning or provide vertically sparse scan lines
+    \item in this work dense laser scans are of interest
+\end{itemize}
+

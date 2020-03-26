@@ -1,0 +1,51 @@
+\subsection{Keypoint Detection and Feature Description}
+
+Technique from computer vision on color images.
+Salient regions of the image are of interest to extract further information.
+Can be used for triangulation, for example in stereo camera systems.
+Can be used to determine trajectory of single camera.
+Can be used to recognize a place or search for similar images --- document extraction.
+
+Common features are corners, edges and more complex features that are extracted with the common algorithms described later.
+Each feature has a pixel location in the image and optionally a response and a size.
+
+Recognizing such a salient point in the image from another image that is taken from a different perspective or for example after a change in the scene requires to model the local surroundings of that spot.
+This step is done by feature descriptors, sometimes called keypoint descriptors.
+
+Such a descriptor builds a model of the region around that specific keypoint.
+Such a model can be a histogram of brightness values at various distances around that point.
+Optionally either the descriptor or the keypoint can be assigned a rotation.
+This step is not consistently done be one or the other and sometimes saved completly, because not rotation is expected to happen and the computational cost can be saved.
+The model is then stored as a vector.
+This vector can be of type real or contains boolean values, too.
+The length varies from algorithm to algorithm, but 64 elements or more are common dimensions.
+Descriptors that result in booleans can for example sample the environment of a keypoint in a predefined order and just store if the brightness is higher or lower then the previous sample.
+
+The last and final step is matching descriptors, for simplicity reasons the case of two consecutive images in a video stream is choosen to demonstrate the principle workings.
+The simplest method is to calculate the distance of each descriptor of the first image with each descriptor of the second image.
+Choosing the right norm is crucial for both accuracy and speed of this step.
+Dense real descriptors usually choose the L2 or L1 norm resulting in higher computational cost due to the floating point operations.
+Binary descriptors use the Hamming Norm which is very cheap to compute.
+Both descriptors are XOR'ed together and the number of set bits of the result is the distance of these descriptors.
+
+Conceptually, descriptors with minimal distance correspond to each other.
+
+Further heuristics should be applied to reduce the number of false positives and to improve the results.
+The first heuristic is called cross checking. Descriptors correspond only if the distance of the descriptors is minimal in both directions.
+That means that descriptor 1 has no closer descriptor in image 2, and the matched descriptor from image 2 has no closer descriptor in image 1 then descriptor 1.
+
+The second commonly used heuristic is the lowe ratio check\cite{lowe_ijcv2004} that requires that the second best match for a descriptor must succeed a certain distance ratio.
+
+Another simple heuristic is a maximum accepted descriptor distance.
+This is different for descriptor type, -size and matching norm and requires empirical data for a given use case.
+Therefore, it is not simple to define which value to choose but requires careful consideration of the operational environment and parameters in use.
+
+More complicated preprocessing can be done to reduce the number of descriptors to match.
+Some keypoints can be discarded to achieve a good distribution over the image and avoid clusters of keypoints.
+Keypoints can be discarded on the response or size.
+Filtering by response is commonly done when selecting only e.g. 300 keypoints.
+If apriori information of the approximate motion of the camera is known matches can be ranked based on the expected displacement of the keypoint given the known motion.
+
+In information retrieval scenarios, e.g.~a search engine for similar images, further processing is necessary.
+This includes clustering of descriptors and only storing a representative as well as dimension reduction and hierarchical data structures to store the descriptors in to make the matching of a vast number of descriptor feasable.
+

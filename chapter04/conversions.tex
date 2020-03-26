@@ -1,0 +1,168 @@
+\subsection{Conversion from Depth-Image to Feature Image}
+
+For transition from depth-based to feature-based registration a prior conversion from depth values to a derived image is required.
+Every feature-image is calculated on range data in floating point format.
+Conversion from integer data does no further processing then simply type conversion.
+
+\subsubsection{\Glspl{bearing-angle-image}}
+
+\begin{figure}[H]
+    \centering
+    \input{images/bearing_angle.tikz}%
+    \caption[Schematic Representation of Bearing-Angles]{This figure shows the relationship of the light rays that form the \gls{bearing-angle}.}
+\end{figure}
+
+Existing literature\cite{Scaramuzza2007,Lin2017} proposes \Glspl{bearing-angle-image} were each pixel is the angle between the current point, the optical center and the previous point.
+The neighbourhood relationship can be choosen arbitrarily resulting in four first-order \Glspl{bearing-angle-image}, horizontal, vertical, diagonal and antidiagonal.
+The second variable is the direction the angle is calculted, e.g.~for horizontal images it can be calculated from left-to-right or right-to-left.
+This does not exhibit new information, because the angle of the other direction is immediatly known from the fact that the sum of the angles is $180\degree$.
+Nontheless, the direction must be defined to obtain stable visual features.
+
+The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
+For the horizontal left-to-right calculation the formula is as follows.
+\begin{align}
+    \beta&= \arccos%
+            \frac{d_{i,j} - d_{i-1,j} \cos \Delta\varphi}%
+                 {\sqrt{d_{i,j}^2 + d_{i-1,j}^2 - 2 d_{i,j} d_{i-1,j} \cos \Delta\varphi}}
+\end{align}
+Using a different direction or other neighbourhood relation the indices for the depth values need to be changed and a different angular resolution needs to be calculated.
+The \Gls{bearing-angle} is in the range $(0, \pi)~rad$ and gets scaled accordingly.
+
+\subsubsection{\Glspl{flexion-image}}\label{flexion-image-section}
+
+Each pixel of a \Gls{flexion-image} is the dot-product of the local normal
+calculated from horizontal and vertical neighbouring pixel with the
+normal calculated with the diagonal neighbours.
+Figure~\ref{fig:flexion-image-scetched} demonstrates the disparity of both normals for an arbitrary surface patch.
+The normal calculated from the diagonal and vertical neighbouring vertices are drawn in blue and the normal calculated with the diagonals red.
+Both normal-vectors are drawn with their origin in the central depth value.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/scetch_flexion.png}
+    \caption[Schematic Representation of Flexion]{This figure demonstrates how flexed surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}%
+    \label{fig:flexion-image-scetched}
+\end{figure}
+
+The flexion $f$ is defined as
+\begin{align}
+    f &= \abs{n_1 \cdotp n_2}
+\end{align}
+Because $n_1$ and $n_2$ are of length $1$ the value of $f$ is in the range $[0, 1]$ and gets scaled accordingly.
+
+The smaller the dot-product gets, the higher is the local flexion of the
+surface. This local property of the geometry then results in visual
+features detectable with classical feature detectors and descriptors like
+\Gls{sift} or \Gls{surf}.
+
+\subsubsection{Curvature}
+
+As a different analytical approach to producing feature images the calculation of the \gls{curvature} for each depth value.
+The two common measures of curvature in differential geometry are \gls{gaussian-curvature} and \gls{mean-curvature}\cite{Kuhnel2008}.
+
+If the function is known as a graph the \Gls{gaussian-curvature} can be estimated using the derivatives of the function.
+For depth data each depth value is a sample of this function graph and numeric approximation of the derivatives allows the calculation of the curvature.
+\begin{align}
+    \mathfrak{K} &= \frac{f_{uu} f_{vv} - f_{uv}^2}{{(1 + f_u^2 + f_v^2)}^2}
+\end{align}
+With
+\begin{align*}
+    f_{x} &= \frac{y_1 - y_0}{\Delta x} \\
+    f_{xx} &= \frac{y_1 + y_{-1} - 2 y_0}{{\Delta x}^2}
+\end{align*}
+as approximation for the derivatives.
+
+Similarly, the \Gls{mean-curvature} can be calculated with a different formula.
+\begin{align}
+    \mathfrak{H} &= \frac{{(1 + f_{v}^2)} f_{uu} - 2 f_u f_v f_{uv} + {(1 + f_u^2)} f_{vv}}{2 \sqrt{1 + f_u^2 + f_v^2}^3}
+\end{align}
+Both measures of curvature are $\mathfrak{K},\mathfrak{H} \in {\rm I\!R}$.
+To convert them into a meaningful grayscale image they need to be clamped to arbitrary bounds, that can be choosen based on visual distinctiveness or other heuristics.
+After clamping the values are scaled and quantized accordingly.
+
+\subsubsection{Multi-Directional Bearing Angle}
+
+The \gls{max-curve-image} tries generalize the \gls{bearing-angle} to be rotation invariant as it takes the \gls{bearing-angle} in each direction into account.
+Additionally to the left-sided \gls{bearing-angle} the right-sided angle is calculated as well and finally added.
+
+\begin{figure}
+    \input{images/max-curve.tikz}
+    \caption[Schematic Representation of the Max-Curve]{The Max-Curve composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and antidiagonal direction. The maximum angle is then selected as pixel value.}
+\end{figure}
+
+This makes the measure more robust to rotation, but does not produce good features.
+\begin{align}
+    B &= \max{\{B_{diagonal}, B_{antidiagonal}, B_{horizontal}, B_{vertical}\}}
+\end{align}
+
+\subsubsection{Viability of Conversions}
+
+\begin{itemize}
+    \item effect of noisy input
+    \item soundness and mathematical foundation
+    \item computational complexity
+    \item Discussion of characteristic for Bearing Flexion.
+\end{itemize}
+
+\subsubsection{Implementation Notes}
+
+Formulas pictures and short computational evaluation.
+Each implementation is independent of the camera model.
+Describe the concepts required for implementation.
+Both serial and parallel execution.
+Parallel execution is done row-wise over all cores using CppTaskflow based Task Scheduling.
+No explicit use SIMD, because OpenCV\cite{opencv_library} is used for data storing proper memory alignment is already ensured.
+Specialized optimiziation should allow the use of SIMD with OpenCV's Hardware Abstraction Layer.
+
+Focus on correctness and generality.
+Provided implementation should rather serve as reference implementation that can be used to validate optimized implementations.
+
+\begin{lstlisting}
+template <template <typename> typename Intrinsic,
+          typename Real>
+inline constexpr bool is_intrinsic_v =
+  std::is_floating_point_v<Real>
+  &&
+  std::is_same_v<typename Intrinsic<Real>::real_type, Real>
+  &&
+  std::is_invocable_r_v<
+    int,
+    decltype(&Intrinsic<Real>::w),
+    Intrinsic<Real>
+  >
+  &&
+  std::is_invocable_r_v<
+    int,
+    decltype(&Intrinsic<Real>::h),
+    Intrinsic<Real>
+  >
+  &&
+  std::is_invocable_r_v<
+    math::sphere_coord<Real>,
+    decltype(&Intrinsic<Real>::template pixel_to_sphere<int>),
+    Intrinsic<Real>,
+    math::pixel_coord<int>
+  >
+  &&
+  std::is_invocable_r_v<
+    math::sphere_coord<Real>,
+    decltype(&Intrinsic<Real>::template pixel_to_sphere<Real>),
+    Intrinsic<Real>,
+    math::pixel_coord<Real>
+  >
+  &&
+  std::is_invocable_r_v<
+    math::pixel_coord<Real>,
+    decltype(&Intrinsic<Real>::template camera_to_pixel<Real>),
+    Intrinsic<Real>,
+    math::camera_coord<Real>
+  >
+  &&
+  std::is_invocable_r_v<
+    math::pixel_coord<int>,
+    decltype(&Intrinsic<Real>::template camera_to_pixel<int>),
+    Intrinsic<Real>,
+    math::camera_coord<Real>
+  >;
+\end{lstlisting}
+

@@ -1,0 +1,21 @@
+\subsection{Statistics of Binary Classifiers}
+
+To evaluate the performance of keypoint detection and feature matching such a system can be considered a binary classifier.
+The clasification task is to determine if a keypoint X1 of image I1 corresponds with keypoint X2 in image I2 with a true or false outcome.
+
+The evaluation of the performance of various keypoint detection and matching algorithms makes extensive use of this idea.
+As with most statistics it is necessary to consider the distribution of a quantity and analyze it from multiple view points.
+Therefor the final evaluation will consider other criteria, like keypoint distribution and number of keypoints per frame as well.
+
+\begin{itemize}
+    \item error categories, true positive, true negative, false postive and false negative
+    \item contingency-table
+    \item leading to accuracy (percentage of correct decisions)
+    \item this leads to various ratios describing the performance 
+    \item common measures precision-recall
+    \item common measures sensitivity-specificity
+    \item comparibility in \gls{ROC} space
+    \item informedness of the system as youden index and correspondence to \gls{ROC} space
+    \item degress of freedom in roc space and generally dependence on absolute numbers for decision 
+\end{itemize}
+

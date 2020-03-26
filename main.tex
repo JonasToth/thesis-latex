@@ -71,14 +71,14 @@
 
 \newglossary[nlg]{symbols}{nls}{nlo}{Symbol Definition}
 \makeglossaries%
-\loadglsentries{glossary}
-\loadglsentries{symbols}
+\loadglsentries{chapter00/acronyms}
+\loadglsentries{chapter00/symbols}
 
 % tubaf zeugs
 \input{thesis-meta}
 
 \setcounter{tocdepth}{3}
-%\setcounter{secnumdepth}{3}
+\setcounter{secnumdepth}{3}
 
 % \makeindex
 
@@ -102,16 +102,84 @@
 \tableofcontents
 \newpage
 
-\printglossary[type=\acronymtype]%
-\newpage
-
-\printglossary[type=symbols]%
-\glsaddallunused[symbols]
-\newpage
+\input{chapter00/glossary}
 
 \pagenumbering{arabic}
+\newpage
 
-\input{structure}
+\section{Introduction}
+\input{chapter01/introduction}
+\newpage
+
+\section{Related Work}
+\input{chapter02/related}
+\newpage
+
+\section{Fundamentals}
+
+This section of the thesis introduces the relevant theory and principles building the foundation of the describes approach.
+
+\input{chapter03/sensors}
+\input{chapter03/image_formation}
+\input{chapter03/features}
+\input{chapter03/statistics}
+\newpage
+
+\section{Depth Image Processing}
+
+As with most sensor data the sensory input requires some preprocessing.
+Error sources for depth sensors are absorption or reflexion of the infrared light, for example by water or glass.
+Additionally each sensors has a range of sensing.
+Every object too near or far can not be measured, sharp edges produce shadows.
+Those conditions lead to missing distance values for such pixels, represented by zeros.
+
+Another source of error are inaccurate measurements by the sensor.
+Some sensors, like the Intel Realsense even have visible waves in the sensor output.
+Additionally, depth images are discretized to integer precision.
+
+These errors can be partially mitigated by preprocessing and filtering.
+
+\input{chapter04/impainting}
+\input{chapter04/filtering}
+\input{chapter04/conversions}
+\input{chapter04/features}
+\newpage
+
+\section{Experiments}
+
+Experiments show the feature performance of the converted feature images with various state-of-the-art algorithms.
+The provided data ranges from a synthetic scene, images taken by the kinectv2 and one high resolution LIDAR dataset.
+
+Each dataset is processed with different filters and detection algorithm configurations.
+Both the pinhole camera model and equirectangular model are used.
+
+\input{chapter05/datasets}
+\input{chapter05/metrics}
+\input{chapter05/parameters}
+\input{chapter05/odometry}
+\newpage
+
+\section{Results and Discussion}
+
+Show the results for ROC curves.
+Present histograms for size, response, distribution and descriptor distances.
+
+\input{chapter06/algorithms}
+\input{chapter06/detector}
+\input{chapter06/descriptor}
+\input{chapter06/error_discussion}
+\newpage
+
+\section{Conclusion}
+
+Very Sensors dependent, Time-of-flight and Laserscan gives the best quality.
+SURF does not perform well, Bearing Angle gives lower response and less stability
+Flexion is very nice.
+FAST based stuff does not perform well, more exotic descriptors neither.
+SIFT best, AKAZE very good.
+Approach to transform depth image first before processing further works and gives results.
+
+\input{chapter07/future_work}
 \newpage
 
 \begin{appendix}

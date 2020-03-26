@@ -1,0 +1,84 @@
+\subsection{Metrics}
+
+The measure for accuracy for each algorithm is developed in this section.
+To determine the performance of the feature-based approach the matching of keypoints is framed in terms of a binary classifier.
+For a keypoint correspondence between two images the classification task is to determine if those keypoint correspond to the same point in the real world or not.
+This evaluation is done for \Glspl{bearing-angle-image} and \Glspl{flexion-image}.
+Only two consecutive images are matched in the pinhole datasets. 
+The author does not have knowledge of other approaches to evaluate feature detector and descriptors in this manner.
+
+The following subsections describe each component of this evaluation pipeline in more detail.
+
+\subsubsection{Groundtruth Poses}
+
+The dataset \emph{lehrpfad} provides groundthruth poses from \gls{sfm}.
+Due to the global optimization of the \gls{sfm} algorithm these poses do not match with the depth values of the depth images.
+Therefore, each pose is refined with an ICP algorithm, namely OpenCV's \emph{FASTICPOdometry} that is based on KinectFusion\cite{newcombe_ismar2011}.
+
+The other pinhole based datasets use only the ICP to provide the groundthrouth pose.
+Manual inspection of the results and careful evaluation of the reprojection error validate the correctness of these poses.
+
+\subsubsection{Approach with Backprojection and Distance Threshold}
+
+To measure matching performance, each keypoint of two frames is classified of having a corresponding keypoint in the other frame.
+This is done by projecting each keypoints camera coordinates of the previous frame into the current frame using the groundthruth pose.
+The new camera coordinates in the current frame are then projected into the image with the intrinsic of the sensor.
+
+This gives two sets of keypoints in the current frame, the keypoints detected in this frame and the keypoints detected in the previous frame, seen from this frames pose.
+
+% TODO: Mathematik dafür einfügen
+
+Corresponding keypoints have a small pixel distance and not corresponding keypoints a bigger pixel distance.
+\emph{Small} is a relative value, but the experiments use 2 pixel as threshold.
+
+To classify the result of the descriptor matching each keypoint needs to be analyzed in the following order.
+The result are four sets \emph{true-positive}, \emph{false-positive}, \emph{true-negative} and \emph{false-negative}.
+The union of these sets are all detected keypoints.
+
+\begin{enumerate}
+    \item each matched keypoint correspondence is partitioned into true positive and false positive, using the distance threshold as deciding factor
+    \item false negatives are searched in the remaining query-indices, using the same distance threshold
+    \item every unhandled keypoint is a \emph{true-negative} as there are no corresponding keypoints left
+\end{enumerate}
+
+The partitioning of the keypoints is the foundation for the rest of the evaluation.
+
+\subsubsection{Histograms and Summary Statistics}
+
+To understand the characteristics of a quantity a common approach is to create a histogram.
+The histograms counts frequencies for a specific range of data.
+
+Summary statistics are used to reduce a statistical distribution to a few representative values.
+Different measures are used, such as the measure of location, distribution and shape.
+Those values help to understand and compare different setups and configurations.
+
+Both histograms and its summary statistics are created for the keypoint size, keypoint response, descriptor distance between all keypoints and both descriptor distance for \emph{true-positives} and \emph{false-positives}.
+
+The used measures are
+\begin{itemize}
+    \item $\min$ and $\max$
+    \item median and arithmetic mean
+    \item variance and standard deviation
+    \item skeweness
+\end{itemize}
+
+\subsubsection{Classification Evaluation}
+
+The analysis of the keypoint and descriptor characteristics give already some insight into the algorithm performance but are not suitable for a comparison between different algorithms and do not give insight into potential trade-offs.
+For this task the quality of the decisions the keypoint matching algorithm is required.
+This is a common task in different scientific disciplines when using the classification formualation from above.
+For a broad picture this evaluation uses multiple performance numbers.
+
+\begin{itemize}
+    \item precision
+    \item recall or sensitivity
+    \item fallout or false alarm rate
+    \item accuracy or rand-index, as measure of correct decisions of the system
+    \item youden-index as measure of informedness of the classifier
+\end{itemize}
+
+Each of these single measures gives insight into one aspect of decision making performance.
+They do not give a systematic way to judge tradeoffs and no easy way to compare different configurations visually.
+
+For this task, each configuration of an algorithm is plotted in \gls{ROC}-Space as a single point.
+These plots make all provided configurations comparable and provide a simple way to judge the performance of a configuration.
