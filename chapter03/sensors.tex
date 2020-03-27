@@ -1,15 +1,49 @@
 \subsection{Depth Sensors}
 
-\subsubsection{Structured Light}
+Depth sensors play an increasingly important role in modern robotic applications.
+They give a robot a fast mean to detect obstacles and locate itself in its environment.
+Additionally gathering this information does not require expensive computations as for example stereo triangulation does.
+
+The following paragraphs describe the underlying sensor principles for the depth sensors used in this thesis, but does not introduce the general area of depth sensing.
+Technologies like RADAR and Ultrasonic Sensors as well as sensor setups used in different contexts that do not apply to the conditions of this thesis are not considered.
+
+\subsubsection{Structured-Light Depth Sensors}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{chapter03/img/depth_pattern_face.png}
+        \caption{Structured light depth sensors project a predefined light pattern into the environment and observe the deformation of that pattern\cite{sl_depthsensor_calibration}.}
+    \end{subfigure}~
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{chapter03/img/depth_face_reconstructed.png}
+        \caption{This figure shows the reconstruction result of the scanned face scanned\cite{sl_depthsensor_calibration}.}
+    \end{subfigure}
+    \caption[Visible light pattern used for structured-light depth sensors]{One way to reconstruct depth information are structured light depth sensors. A predefined light pattern is projected into space. As the photons reflect from obstacles at different distances relative to the observer, the light pattern appears transformed. This deformation is used to reconstruct the geometry of the objects. The light emitted is usually not visible to humans as infrared light sources and cameras are commonly used in robotic applications.\label{fig:sl_face}}
+\end{figure}
 
 \begin{itemize}
-    \item Kinectv1
-    \item Intel Realsense
+    \item commonly found depth sensor in robotic applications
+    \item most notable kinectv1 is a structured light sensors
     \item project grid structure in the world with infrared light
     \item sense the deformation of the grid lines and calculate the distance of an object from this deformation
+    \item because the whole scene is captured at once, SL sensor operate at real time frame rates
 \end{itemize}
 
-\subsubsection{Time-of-Flight}
+\subsubsection{Time-of-Flight Cameras}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{chapter03/img/tof_traveltime_original.png}
+        \caption{One way to measure the time-of-flight for photons is to emit a light pulse and measure the roundtrip time until sensing. Illustration adopted from\cite{tof_cameras}.}
+    \end{subfigure}~
+    \begin{subfigure}[t]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{chapter03/img/tof_phase_shift_original.png}
+        \caption{The second, more recent approach is measuring the phase-shift of photons relative to the light source. This allows a continously emitting light source. Illustration adopted from\cite{tof_cameras}.}
+    \end{subfigure}
+    \caption[Illustration of two commonly used measuring principle for Time-of-Flight cameras]{Measuring the distance of objects via time-of-flight\label{fig:tof_illustration}}
+\end{figure}
 
 \begin{itemize}
     \item range imaging camera system to measure the distance of world point by measuring the time, light needs to travel to the object and back for every pixel of an image
@@ -31,3 +65,11 @@
     \item in this work dense laser scans are of interest
 \end{itemize}
 
+\subsubsection{Depth Sensors used in Experiments}
+
+\begin{tabular}
+\begin{table}
+    
+    \caption[List of tested depth sensors]{This table lists all depth sensors that are tested during the master thesis. Not all of them give in usable results for the intended feature-based registration.}
+\end{table}
+\end{tabular}
