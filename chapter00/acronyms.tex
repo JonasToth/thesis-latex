@@ -1,50 +1,8 @@
 \newacronym{icp}{ICP}{Iterative Closest Points, is an algorithm to register two pointclouds to each other}
 \newacronym{sift}{SIFT}{Scale Invariant Feature Transform, is an algorithm to detect features and describe them on grayscale images}
 \newacronym{surf}{SURF}{Speeded-Up Robust Features, has the same goal as SIFT but uses a different approach to detect and describe features}
-
-\newglossaryentry{bearing-angle}{%
-    name={Bearing-Angle},
-    description={The Bearing-Angle represents the angle betwen the lightray from the sensor to the depth value and the connection to a neighbouring depth value. The Bearing Angle can be calculated to arbitrary neighbouring depth values. Both laserscans and depth images can be converted using a proper intrinsic calibration of the sensors},
-    type=\acronymtype}
-
-\newglossaryentry{bearing-angle-image}{%
-    name={Bearing-Angle Image},
-    description={The Bearing-Angle Image is a derived image type where each pixel encodes the Bearing-Angle for the lightray of this pixel. The angle is discretized from the range $(0, \pi)$ to the color depth of the target image. The resulting images are grayscale},
-    type=\acronymtype}
-
-\newglossaryentry{flexion-image}{%
-    name={Flexion Image},
-    description={The Flexion Image is a way to convert range data.
-    For each pixel of the depth image a scalar value that measures the angle between the estimated surface normals is computed and stored.
-    This measure is useful for obtaining high-level image features from low-level geometry information},
-    type=\acronymtype}
-
-\newglossaryentry{curvature}{%
-    name={Curvature},
-    description={Curvature is a concept from Differential Geometry that applies to manifolds. The principal curvatures $k_1$ and $k_2$ measure how surfaces bend at that point. Different specific types of curvature do exist},
-    type=\acronymtype}
-
-\newglossaryentry{mean-curvature}{%
-    name={Mean Curvature},
-    description={Mean Curvature is the sum of $k_1$ and $k_2$ and of the main curvature types},
-    type=\acronymtype}
-
-\newglossaryentry{gaussian-curvature}{%
-    name={Gaussian Curvature},
-    description={Gaussian Curvature is the product of $k_1$ and $k_2$ and is used in many fields. It gives the tool to classify points on a surface based onf sign and magnitude. For negative values of the Gaussian Curvature the point is said to be hyperbolic, for positive values the point is said to be an elliptic point. Points with Gaussian Curvature being zero are parabolic points},
-    type=\acronymtype}
-
-\newglossaryentry{max-curve-image}{%
-    name={Max-Curve Image},
-    description={This image is a feature image, similar to \Glspl{bearing-angle-image}. For each pixel the sum of each \Gls{bearing-angle} in forward and backward direction is calculated. This angle is calculated in both diagonals, horizontal and vertical direction. Finally the maximum value is used as pixel value after scaling},
-    type=\acronymtype}
-
-\newglossaryentry{sfm}{
-    name={Structure-from-Motion},
-    description={A processing pipeline that reconstructs world geometry from processing camera footage, extracting distance information in multiple processing steps. A final global optimization of backprojection errors can be done to improve the overall quality of the resulting model.},
-    type=\acronymtype}
-
-\newglossaryentry{ROC}{
-    name={Receiver-Operating-Characteristics},
-    description={}
-    type=\acronymtype}
+\newacronym{ROC}{ROC}{Receiver-Operating-Characteristics}
+\newacronym{ToF}{ToF}{Time-of-Flight}
+\newacronym{laser}{laser}{light amplification by stimulated emission of radiation}
+\newacronym{LIDAR}{LiDAR}{Light Detection and Ranging}
+\newacronym{ROS}{ROS}{Robotic Operating System}

@@ -62,9 +62,7 @@
 \renewcommand{\baselinestretch}{1.5}
 
 \usepackage{mathtools}
-\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
-\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
-\DeclarePairedDelimiter{\abs}{\lVert}{\rVert} % definiere absoluten betrag
+\input{commands}
 
 \usepackage[acronym,toc]{glossaries}
 \glstoctrue%
@@ -72,6 +70,7 @@
 \newglossary[nlg]{symbols}{nls}{nlo}{Symbol Definition}
 \makeglossaries%
 \loadglsentries{chapter00/acronyms}
+\loadglsentries{chapter00/definitions}
 \loadglsentries{chapter00/symbols}
 
 % tubaf zeugs
@@ -91,6 +90,7 @@
             linkcolor=black,
             urlcolor=black,
             linktoc=all}
+
 
 % start the content
 \begin{document}
@@ -120,6 +120,7 @@
 This section of the thesis introduces the relevant theory and principles building the foundation of the describes approach.
 
 \input{chapter03/sensors}
+\input{chapter03/coordinate_systems}
 \input{chapter03/image_formation}
 \input{chapter03/features}
 \input{chapter03/statistics}

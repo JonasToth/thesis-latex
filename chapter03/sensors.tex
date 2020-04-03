@@ -30,7 +30,7 @@ Technologies like RADAR and Ultrasonic Sensors as well as sensor setups used in 
     \item because the whole scene is captured at once, SL sensor operate at real time frame rates
 \end{itemize}
 
-\subsubsection{Time-of-Flight Cameras}
+\subsubsection{\acrlong{ToF}-Cameras}
 
 \begin{figure}[H]
     \centering
@@ -48,12 +48,31 @@ Technologies like RADAR and Ultrasonic Sensors as well as sensor setups used in 
 \begin{itemize}
     \item range imaging camera system to measure the distance of world point by measuring the time, light needs to travel to the object and back for every pixel of an image
     \item the light source can be a laser or a LED
-    \item the technology is related to LIDAR
-    \item these camera systems operate faster than LIDAR but have lower resolution
+    \item the technology is related to \acrshort{LIDAR}
+    \item these camera systems operate faster than \acrshort{LIDAR} but have lower resolution
     \item especially in robotics the kinect v2 is commonly found as time-of-flight sensor
+    \item phase-shift reduces range of measurement to a few meters, depending on the wavelength of the used light
 \end{itemize}
 
-\subsubsection{LIDAR}
+\subsubsection{\acrlong{LIDAR}}
+
+\acrlong{LIDAR} (\acrshort{LIDAR}) uses the same measurement principle as \acrshort{ToF}-Cameras, it measures the distance of an object using time measurements.
+The difference between \acrshort{LIDAR} and \acrshort{ToF}-Cameras is the usage of a \acrshort{laser} as light source.
+The most common configurations use a horizontally rotating mirror that reflects the beam into the room.
+For vertical coverage measurement head is rotated in total.
+Each complete horizontal measurement is called a scan line.
+This setup allows for different levels of precision and speed.
+
+Some \acrshort{LIDAR}, especially mobile systems with real time requirements, measure in the order of magnitude $10^1$ number of scan lines.
+Such systems achieve a higher framerate, but are not considered in this thesis.
+For the choosen feature-based approach a dense \acrshort{LIDAR} scan is required.
+Such scans can be created with terrestrial lidar stations, common in geodesic applications.
+Additionally an intensitiy value can be measured by the light sensors that corresponds to the level of absoption of the reflecting surface.
+
+Flash \acrshort{LIDAR} is a scannerless type of \acrshort{LIDAR} that does not require a rotating mirror or other mechanical system.
+These sensors can measure an entire scene in one shot.
+A flash \acrshort{LIDAR} is similar to a \acrshort{ToF}-camera and measures a dense range image.
+% TODO cite 10.1109/SSIAI.2010.5483929
 
 \begin{itemize}
     \item light detection and ranging
@@ -67,9 +86,15 @@ Technologies like RADAR and Ultrasonic Sensors as well as sensor setups used in 
 
 \subsubsection{Depth Sensors used in Experiments}
 
-\begin{tabular}
 \begin{table}
-    
+\begin{tabular}{l|l|l}
+    Sensor & Type & Result Properties \\
+    \hline
+    KinectV1 & Structured-Light-Camera & Resolution: $320 \times 240$ px \\
+    KinectV2 & \acrshort{ToF}-Camera & Resolution: $512 \times 424$ px \\
+    Intel Realsense & Structured-Light-Camera & Resolution: $512 \times 424$ px \\
+    % TODO: Welches LIDAR haben die Geodäten?
+    LIDAR Geodäten & terrestrial \acrshort{LIDAR} & Resolution: $512 \times 424$ px \\
     \caption[List of tested depth sensors]{This table lists all depth sensors that are tested during the master thesis. Not all of them give in usable results for the intended feature-based registration.}
-\end{table}
 \end{tabular}
+\end{table}
