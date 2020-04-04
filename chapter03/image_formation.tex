@@ -96,7 +96,7 @@ This definition yields the vertical and horizontal angular resolution of a pixel
     d\theta &= \frac{\theta_{max} - \theta_{min}}{h} \\
 \end{aligned}
 \end{equation}
-The used spherical coordinates $z = (r, \varphi, \theta)$ convention defines the radius $r \in \mathbb{R}$, the azimuthal angle $\varphi \in [-\pi, \pi)$ and the polar angle $\theta \in [0, \pi)$.
+The used spherical coordinates $z = (r, \varphi, \theta)$ convention defines the radius $r \in \mathbb{R}$, the azimuthal angle $\varphi \in [-\pi, \pi)$ and the polar angle $\theta \in [0, \pi]$.
 Measurements with $r = 0$ are filtered out as invalid data points.
 
 \subsubsection*{Forward Projection}
@@ -105,9 +105,9 @@ Let $\vec{P} = \rowvecxxx{X}{Y}{Z}$ be a point in camera coordinates.
 This point is converted to spherical coordinates.
 \begin{equation}
 \begin{aligned}
-    r      &= \sqrt{X^2 + Y^2 + Z^2} \\
-    \theta &= \arccos{\frac{Z}{r}} \\
-    \varphi   &= \arctantwo{\frac{Y}{X}}
+    r       &= \sqrt{X^2 + Y^2 + Z^2} \\
+    \theta  &= \arccos{\frac{Z}{r}} \\
+    \varphi &= \arctantwo{\frac{Y}{X}}
 \end{aligned}
 \end{equation}
 This conversion is ill defined for $r = 0$ which corresponds to a missing range measurement and can be skipped in the computations safely.
