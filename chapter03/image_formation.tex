@@ -1,32 +1,30 @@
 \subsection{Image Formation and Camera Models}
 
 Each depth sensors measurement returns a matrix with depth or range values.
-The underlying projection model of the sensor allows the calculation of the camera coordinates of each measured point.
-To perform these computations the sensor requires a calibration to determine matching parameters for the according model.
+The projection model of the sensor performs the calculation of the camera coordinates for each point.
 Additionally, sensor usually experience some form of imperfection in the imaging process, like lense distortion or misalignment of components.
 These imperfections are corrected with additional models, like the distortion model for pinhole cameras.
 
-Both calibration and error correction are out of the scope of this thesis and sensor input is expected to adhere to these basic models.
+Both calibration and error correction are out of the scope of this thesis and sensor input is expected to adhere to the basic models.
 This might require preprocessing of the raw sensor data.
-On robotic platforms like \acrshort{ROS} this is done automatically when providing a good calibration.
+On robotic platforms like \acrshort{ROS} this is done automatically when providing a matching calibration of the sensor.
 
 \subsubsection{Pinhole Camera Model}
 
-The pinhole camera model is the most common camera model in computer vision.
-Depth cameras are be modelled with it.
+The pinhole camera model is the most common camera model in computer vision modelling both classical and depth cameras.
 
 \begin{figure}[H]
     \includegraphics[width=0.9\textwidth]{chapter03/img/pinhole_camera_model.png}
-    \caption{The pinhole camera model performs the perspective projection of three dimensional points into the plane. Real cameras additionally have a lense system that can result in radial and tangential distortion. These effects must be componsenated with a proper calibration of distortion models. The camera-coordinate-to-pixel-coordinate projection looses information on the depth. Therefore, the back projection results only in the direction of the light ray. The depth sensor gives the additional distance information to recover the point in camera coordinates.}\label{fig:pinhole_model}
+    \caption{The pinhole camera model performs the perspective projection of three dimensional points into the plane. Real cameras additionally have a lense system that can result in radial and tangential distortion. These effects must be componsenated with a proper calibration of distortion models. The camera-coordinate-to-pixel-coordinate projection looses information on the depth. Therefore, the back projection results only in the direction of the light ray. The depth sensor gives the additional distance information to recover the point in camera coordinates. Graphic adopted from\cite{opencv_pinhole}.}\label{fig:pinhole_model}
 \end{figure}
 Figure~\ref{fig:pinhole_model} shows the perspective projection of three-dimensional points onto the plane.
-This coordinate transformation reduces the input dimension by one and is not preserving all information.
+This projection reduces the input dimension by one and is not depth preserving.
 
 The model is parameterized by the focal length $f_x$ and $f_y$ that correspond to the distance of the pinhole to the image plane, the skew $s$ that resembles non-quadratic pixel shape and is most of the time $s = 0$ and the image center $c_x$ and $c_y$.
 
 \subsubsection*{Forward Projection}
 
-Let $\vec{P} = \rowvecxxx{X}{Y}{Z}$ a world point in camera coordinates.
+Let $\vec{P} = \rowvecxxx{X}{Y}{Z}$ be a world point in camera coordinates.
 The perspective projection
 \begin{equation}
     \vec{\hat{p}} = \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z}
@@ -34,9 +32,7 @@ The perspective projection
 \end{equation}
 results in the point $\vec{P}$ in image coordinates $\vec{\hat{p}}$. This step looses the depth information.
 The image coordinates could be distorted and any correction would happen at this stage.
-
-Finally the image coordinates are transformed to pixel coordinates.
-Using homogenous coordinates, this transformation is described by a $3 \times 3$ matrix $K$ that is refered to as camera matrix.
+Multiplication of the $3 \times 3$ camera matrix $K$ and the homogeneous image coordinates results in the final pixel coordinates.
 \begin{equation}
 \begin{aligned}
 K &= \begin{pmatrix}
@@ -62,7 +58,7 @@ The potentially distorted image coordinates $\vec{\hat{p}}$ are obtained with th
     \colvecxx{x}{y} &= \begin{pmatrix}\frac{1}{f_x} & -\frac{s}{f_y} \\ 0 & \frac{1}{f_y}\end{pmatrix} \colvecxx{u - c_x}{v - c_y}
 \end{aligned}
 \end{equation}
-Again, if a distortion model is used the inverse transformation of it needs to be applied to $\vec{\hat{p}}$.
+Again, if a distortion model is used, the inverse transformation needs to be applied to $\vec{\hat{p}}$.
 
 The final step is the projection to the unit sphere that gives the direction vector of the light ray equivalent to norming the vector $\vec{\hat{p}}$.
 \begin{equation}
@@ -73,19 +69,22 @@ The final step is the projection to the unit sphere that gives the direction vec
 \subsubsection{Equirectangular Camera Model}
 
 The equirectangular camera model maps the whole unit sphere to the plane.
-Equirectangular images have constant, but potentially different, angular resolution in $x$- and $y$-direction.
+Equirectangular images have constant, but potentially different angular resolution in $x$- and $y$-direction.
 This mapping stores panoramas that are usually stitched together from multiple cameras.
-\acrshort{LIDAR} sensor output of a dense scan can be stored as equirectangular image as well.
-Supporting this camera model gives flexibility to support all kind of sensors as multiple pinhole sensors can be stitched to one virtual sensor and mapped to the equirectangular model or uncovered sensor models can be mapped to the equirectangular model first and then be processed.
+The \acrshort{LIDAR} sensor output can be stored as an equirectangular image as well.
+Supporting this camera model gives flexibility to support all kind of sensors as multiple pinhole sensors can be stitched to one virtual sensor and mapped to the equirectangular model.
 
 \begin{figure}[H]
+    \scalebox{0.9}{%
     \input{chapter03/img/spherical_model.tex}
-    % \caption{Each cartesian point that is not the origin can be uniquely converted to spherical coordinates. The origin $\rowvecxxx{0}{0}{0}$ is interpreted as an invalid measurement in the context of this thesis and therefore filtered out during processing.}
+    }
+    \caption{Each cartesian point that is not the origin can be uniquely converted to spherical coordinates. The origin $\mathbf{O}$ is interpreted as an invalid measurement in the context of this thesis and therefore filtered out during processing.}\label{fig:spherical}
 \end{figure}
 
 The projections are mostly a conversion from cartesian to spherical coordinates and described here in brief.
-Additionally, to suite the \acrshort{LIDAR} sensor better a slight addition for a vertical field of view is added in the implementation of this thesis.
+Additionally, to suite the \acrshort{LIDAR} sensor better a slight addition for a vertical field of view is added.
 This field of view simply crops the full equirectangular image to the predefined slice and discards other coordinates as invalid.
+Figure~\ref{fig:spherical} shows the relationship between points in spherical coordinates and the equirectangular projection.
 
 The model is parametrized by the width $w$ and height $h$ of the image and the vertical field of view $[\theta_{min}, \theta_{max}]$ which defaults to $\theta_{min} = 0$ and $\theta_{max} = \pi$.
 This definition yields the vertical and horizontal angular resolution of a pixel, which is a constant.
@@ -110,7 +109,7 @@ This point is converted to spherical coordinates.
     \varphi &= \arctantwo{\frac{Y}{X}}
 \end{aligned}
 \end{equation}
-This conversion is ill defined for $r = 0$ which corresponds to a missing range measurement and can be skipped in the computations safely.
+This conversion is ill defined for $r = 0$ which corresponds to a missing range measurement and can be skipped safely.
 Finally, the spherical coordinates are converted to pixel coordinates with
 \begin{equation}
 \begin{aligned} 
@@ -135,27 +134,26 @@ Note, that $r = 1$ as the resulting vector is of unit length.
 
 \begin{figure}[H]
     \input{chapter03/img/depth_range}
-    \caption[Orthographic Depth and Range visualized]{The distance information of a point relative to the center of a sensor at $\vec{C}$ can be either stored as the orthographic depth, mathematically the $Z$ component of the camera coordinates or the range, equivalent to the $L2$ norm of the point $\vec{P}$ in camera coordinates. The orthographic depth is commonly provided by depth cameras and the range by \acrshort{LIDAR} systems.}
+    \caption[Orthographic Depth and Range visualized]{The distance information of a point relative to the center of a sensor at $\vec{C}$ can either be stored as the orthographic depth, mathematically the $Z$ component of the camera coordinates or the range, equivalent to the $L2$ norm of the point $\vec{P}$ in camera coordinates. The orthographic depth is commonly provided by depth cameras and the range by \acrshort{LIDAR} systems.}
     \label{fig:range_depth}
 \end{figure}
 
 There are two possible conventions on how to store depth data, both demonstrated in figure~\ref{fig:range_depth}.
-The orthographic depth $d$ is the distance from coordinate plane and commonly returned by pinhole depth sensors like the Kinectv2.
-Range $r$ on the other hand is the length of the light ray that corresponds to a pixel value and measured by \acrshort{LIDAR} and equivalent to the $L2$ norm of the vector $\vec{P}$ of that point in camera coordinates.
+The orthographic depth $d$ is the distance from the image plane and commonly returned by pinhole depth sensors like the Kinectv2.
+On the other hand, the range $r$ is the $L2$ norm of the vector from the camera origin to $\vec{P}$.
 For consistency and generality, depth data is converted to range data before further processing takes place.
 This simplifies later conversion and mixing of different camera models in a coherent fashion.
+The conversion depends on the camera model and only the pinhole model is subject to analysis here.
 
-The conversion depends on the camera model and this thesis only provides the derivation for the pinhole model as only implemented model requiring this step.
-From the forward projection function~\ref{eq:pinhole_forward} of the pinhole model follows the connection of the range and orthographic depth of the camera coordinates $\vec{P}$ and image coordinates $\vec{\hat{p}}$ of the point $P$.
+From the forward projection function~\ref{eq:pinhole_forward} of the pinhole model follows the connection of the range and orthographic depth of the camera coordinates $\vec{P}$ and image coordinates $\vec{\hat{p}}$ of the point $\mathbf{P}$.
 \begin{equation}
 \begin{aligned}
-    Z \vec{\hat{p}} &= \vec{P} \\
-    Z \colvecxxx{x}{y}{1} &= \colvecxxx{X}{Y}{Z}
-    \implies
-    Z \lnorm{\vec{\hat{p}}} = \lnorm{\vec{P}}
+    &\vec{\hat{p}} = \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z} \\
+    \implies &Z \vec{\hat{p}} = \vec{P} \\
+    \implies &Z \lnorm{\vec{\hat{p}}} = \lnorm{\vec{P}}
 \end{aligned}
 \end{equation}
-The inverse of the $Z_{s}$ component of the backward projection from equation~\ref{eq:pinhole_backward} provides the scaling factor between orthographic depth and range, because of this relation.
+The inverse of the $Z_{s}$ component of the backward projection from equation~\ref{eq:pinhole_backward} provides the scaling factor between orthographic depth and range.
 Consequently, the range $r$ for the depth $d$ at image coordiantes $\rowvecxx{x}{y}$ with corresponding coordinates on the unit sphere $\rowvecxxx{X_s}{Y_s}{Z_s}$ is computed with
 \begin{equation}
     r = \frac{d}{Z_s} = d \sqrt{x^2 + y^2 + 1}

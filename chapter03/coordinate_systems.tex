@@ -1,20 +1,20 @@
 \subsection{Coordinate Systems}
 
-This section introduces the used coordinates systems and naming conventions that model the sensory system.
-These conventions are commonly used in computer vision.
+This section introduces the used coordinates systems and naming conventions that model the sensory system commonly used in computer vision.
 Additionally, homogeneous coordinates allow efficient computation of rotation and translation with one matrix-vector multiplication and knowledge of it is a prerequisite.
 Both~\cite{hartley_2004} and~\cite{corke_2011} provide excellent coverage of these topics.
 
 \subsubsection*{Naming Conventions}
 
 A point in space is referenced by a vector in that space.
-The global is described in \emph{world coordinates} and is arbitrarily defined.
-Within that world coordinate system exists one or more sensors spanning their own coordinate system.
-Referencing the point relative to such a system yields \emph{camera coordinates}.
+The global reference frame is arbitrarily choosen in \emph{world coordinates}.
+Within that world coordinate system exist one or more sensors spanning their own coordinate system.
+Referencing the point relative to such a sensor yields \emph{camera coordinates}.
 The sensor itself performs some form of dimension reducing projection of the three dimensional point to a two dimensional point, an \emph{image coordinate}.
 \emph{Image coordinates} are an intermediate representation before discretizing the point to individual pixels, called \emph{pixel coordinates}.
-Different sensor models describe these conceptual transformations mathematically.
-Note, that the relative transformation between \emph{camera coordiantes} and \emph{world coordinates} can change over time or multiple sensors can exist within the \emph{world coordinate system}.
+Different sensor models describe these projecting transformations mathematically.
+Note, that the relative transformation between \emph{camera coordiantes} and \emph{world coordinates}, the sensors \emph{pose}, can change over time.
+Multiple sensors can exist within the \emph{world coordinate system}.
 
 \subsubsection*{Coordinate Transformations and Pose}
 
@@ -44,4 +44,3 @@ The point $\mathbf{P}$ seen from the camera $\mathbf{C}$ is computed with the ho
 \end{equation}
 
 Coordinate transformations do not loose information.
-The next section introduces \emph{projections}, that map the three dimensional points into the plane.
