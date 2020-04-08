@@ -15,7 +15,7 @@ The pinhole camera model is the most common camera model in computer vision mode
 
 \begin{figure}[H]
     \includegraphics[width=0.6\textwidth]{chapter03/img/pinhole_camera_model.png}
-    \caption{The pinhole camera model performs the perspective projection of three dimensional points into the plane. Real cameras additionally have a lense system that can result in radial and tangential distortion. These effects must be componsenated with a proper calibration of distortion models. The camera-coordinate-to-pixel-coordinate projection looses information on the depth. Therefore, the back projection results only in the direction of the light ray. The depth sensor gives the additional distance information to recover the point in camera coordinates. Graphic adopted from\cite{opencv_pinhole}.}\label{fig:pinhole_model}
+    \caption[Pinhole Camera Model]{The pinhole camera model performs the perspective projection of three dimensional points into the plane. Real cameras additionally have a lense system that can result in radial and tangential distortion. These effects must be componsenated with a proper calibration of distortion models. The camera-coordinate-to-pixel-coordinate projection looses information on the depth. Therefore, the back projection results only in the direction of the light ray. The depth sensor gives the additional distance information to recover the point in camera coordinates. Graphic adopted from\cite{opencv_pinhole}.}\label{fig:pinhole_model}
 \end{figure}
 Figure~\ref{fig:pinhole_model} shows the perspective projection of three-dimensional points onto the plane.
 This projection reduces the input dimension by one and is not depth preserving.
@@ -78,7 +78,7 @@ Supporting this camera model gives flexibility to support all kind of sensors as
     \scalebox{0.9}{%
     \input{chapter03/img/spherical_model.tex}
     }
-    \caption{Each cartesian point that is not the origin can be uniquely converted to spherical coordinates. The origin $\mathbf{O}$ is interpreted as an invalid measurement in the context of this thesis and therefore filtered out during processing.}\label{fig:spherical}
+    \caption[Spherical Camera Model and Equirectangular Images]{Each cartesian point that is not the origin can be uniquely converted to spherical coordinates. The origin $\mathbf{O}$ is interpreted as an invalid measurement in the context of this thesis and therefore filtered out during processing.}\label{fig:spherical}
 \end{figure}
 
 The projections are mostly a conversion from cartesian to spherical coordinates and described here in brief.
