@@ -1,51 +1,61 @@
 \subsection{Keypoint Detection and Feature Description}
 
-Technique from computer vision on color images.
-Salient regions of the image are of interest to extract further information.
-Can be used for triangulation, for example in stereo camera systems.
-Can be used to determine trajectory of single camera.
-Can be used to recognize a place or search for similar images --- document extraction.
+Extracting information from images is a common task in computer vision.
+One approach is the detection of salient regions of special interest --- \emph{features}.
+Such regions can have arbitrary detectable properties, like a sharp brightness gradient or being corner-like.
+Detecting such a region results in a \emph{keypoint} that might have properties like a \emph{size}, \emph{response} and sometimes even a \emph{orientation}.
+Figure~\ref{fig:features_example} demonstrate what information contributes to the feature processing in abstract.
+\begin{figure}[H]
+    \scalebox{0.95}{%
+    \input{chapter03/img/features.tex}
+    }
+    \caption[Feature detection identifies salient parts of an image and allows tracking those over multiple images.]{This figure displays two polygons from different view points. The feature detection algorithm detects the corners of the polygon as keypoints in both images. The order of detection is not stable and establishing the correspondence between the detected keypoints requires further processing. A feature descriptor examines to local neighbourhood of each keypoint, visualized with the red dotted square. This descriptor is then used to find the most similar region around a keypoint of the other image. This process is called \emph{feature matching}.}\label{fig:features_example}
+\end{figure}
+Keypoints on itself are not descriptive enough to be identified in different images.
+A changing view point or even a different camera result in changes to the overall shape and appearance of the scene.
+Reliable keypoint identification requires the analysis of bigger image patches.
+The \emph{keypoint descriptor} analyzes a predefined region around the centered keypoint and extracts a vector for that region.
+Different aspects can be analyzed and section~\ref{sec:feature_algorithms} introduces the most common algorithms for that task.
+The extracted vector has a high dimension with tens to hundreds of elements.
 
-Common features are corners, edges and more complex features that are extracted with the common algorithms described later.
-Each feature has a pixel location in the image and optionally a response and a size.
+Connecting the keypoints between different images uses the extracted descriptors for each keypoint.
+\emph{Similar} descriptors are associated.
+Similarity of the descriptors is calculated with a matching norm depdendent on the structure of the descriptor.
+Dense real descriptors commonly use the $L2$-norm where as binary descriptors use the hamming norm.
+Additional constraints, like geometric consistency, improve the accuracy of the matching result.
+For the provided example this result might be
+\begin{align*}
+    \mathbf{K_{1,2}} &\leftrightarrow \mathbf{K_{2,2}}~\textcolor{darkgreen}{\bullet} &
+    \mathbf{K_{1,4}} &\leftrightarrow \mathbf{K_{2,5}}~\textcolor{darkgreen}{\bullet} &
+    \mathbf{K_{1,5}} &\leftrightarrow \mathbf{K_{2,3}}~\textcolor{darkgreen}{\bullet} \\
+    \mathbf{K_{1,3}} &\leftrightarrow \mathbf{K_{2,4}} &
+    \mathbf{K_{1,1}} &\leftrightarrow \mathbf{K_{2,1}} &
+\end{align*}
+with green bullets indicating a correct match.
+Note, that one descriptor design criteria is the trade-off between computational cost and descriptive power, as especially descriptor matching is computationally expensive.
 
-Recognizing such a salient point in the image from another image that is taken from a different perspective or for example after a change in the scene requires to model the local surroundings of that spot.
-This step is done by feature descriptors, sometimes called keypoint descriptors.
+Features play a key role in multiple computer vision tasks.
+Place or object recognition and document searching rely on the identification of similar descriptors in queried image to already indexed descriptors of known images.
+Typically, storage and computational constrains require preprocessing the descriptors with clustering techniques to reduce the number of descriptors to store and allow hierarchical matching.
 
-Such a descriptor builds a model of the region around that specific keypoint.
-Such a model can be a histogram of brightness values at various distances around that point.
-Optionally either the descriptor or the keypoint can be assigned a rotation.
-This step is not consistently done be one or the other and sometimes saved completly, because not rotation is expected to happen and the computational cost can be saved.
-The model is then stored as a vector.
-This vector can be of type real or contains boolean values, too.
-The length varies from algorithm to algorithm, but 64 elements or more are common dimensions.
-Descriptors that result in booleans can for example sample the environment of a keypoint in a predefined order and just store if the brightness is higher or lower then the previous sample.
+The second major application is visual odometry and \gls{sfm}.
+Corresponding keypoints provide landmarks for triangulation and pose reconstruction.
+The relative pose between the two camera is computed with Nistér's 5-point algorithm\cite{nister_ieee2004}.
+To obtain a stable and consistent result for the pose the \acrshort{RANSAC} (\acrlong{RANSAC})\cite{fischler_ransac_1980} algorithm performs multiple pose computations with random subsets of keypoint correspondences.
+The assumed pose is used to project the keypoints from image into the other.
+A high pixel distance for the projected keypoints to the expected keypoints indicates a wrong pose showing that the used subset of keypoints for the pose calculation had false matches.
+The false matches are rejected iterativly.
+After multiple iterations a consensus pose might be obtained and can be optimized as final pose.
+If no such consensus pose exists the image pair is rejected.
 
-The last and final step is matching descriptors, for simplicity reasons the case of two consecutive images in a video stream is choosen to demonstrate the principle workings.
-The simplest method is to calculate the distance of each descriptor of the first image with each descriptor of the second image.
-Choosing the right norm is crucial for both accuracy and speed of this step.
-Dense real descriptors usually choose the L2 or L1 norm resulting in higher computational cost due to the floating point operations.
-Binary descriptors use the Hamming Norm which is very cheap to compute.
-Both descriptors are XOR'ed together and the number of set bits of the result is the distance of these descriptors.
+Establishing the correspondence between keypoints of multiple images can be supported by using additional heuristics for descriptor matching.
+The first heuristic is \emph{cross checking}.
+Descriptors correspond only if the distance of the descriptors is minimal in both directions.
+The second commonly used heuristic is \emph{Lowe's ratio check}\cite{lowe_ijcv2004} putting the best and second best descriptor match distance into relation and requiring a certain distance ratio to be superceeded.
+The last simple heuristic is the definition of an \emph{upper bound} for the match distance.
+Improvements to \acrshort{RANSAC}\cite{sattler_iccv2009,chum_cvpr2005} use more sophisticated keypoint sampling criteria by exploiting spatial consistency or the descriptor distance.
 
-Conceptually, descriptors with minimal distance correspond to each other.
-
-Further heuristics should be applied to reduce the number of false positives and to improve the results.
-The first heuristic is called cross checking. Descriptors correspond only if the distance of the descriptors is minimal in both directions.
-That means that descriptor 1 has no closer descriptor in image 2, and the matched descriptor from image 2 has no closer descriptor in image 1 then descriptor 1.
-
-The second commonly used heuristic is the lowe ratio check\cite{lowe_ijcv2004} that requires that the second best match for a descriptor must succeed a certain distance ratio.
-
-Another simple heuristic is a maximum accepted descriptor distance.
-This is different for descriptor type, -size and matching norm and requires empirical data for a given use case.
-Therefore, it is not simple to define which value to choose but requires careful consideration of the operational environment and parameters in use.
-
-More complicated preprocessing can be done to reduce the number of descriptors to match.
-Some keypoints can be discarded to achieve a good distribution over the image and avoid clusters of keypoints.
-Keypoints can be discarded on the response or size.
-Filtering by response is commonly done when selecting only e.g. 300 keypoints.
-If apriori information of the approximate motion of the camera is known matches can be ranked based on the expected displacement of the keypoint given the known motion.
-
-In information retrieval scenarios, e.g.~a search engine for similar images, further processing is necessary.
-This includes clustering of descriptors and only storing a representative as well as dimension reduction and hierarchical data structures to store the descriptors in to make the matching of a vast number of descriptor feasable.
-
+More complicated keypoint preprocessing can be done to reduce the number of descriptors to match.
+Keypoints can be discarded to achieve a higher spread over the image and avoid clusters of keypoints that provoke descriptor ambiguity.
+The detector response is another important criteria for sorting keypoints by quality.
+If apriori information of the approximate motion of the camera is known matches can be ranked based on the expected displacement of the keypoint.

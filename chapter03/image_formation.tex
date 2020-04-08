@@ -7,14 +7,14 @@ These imperfections are corrected with additional models, like the distortion mo
 
 Both calibration and error correction are out of the scope of this thesis and sensor input is expected to adhere to the basic models.
 This might require preprocessing of the raw sensor data.
-On robotic platforms like \acrshort{ROS} this is done automatically when providing a matching calibration of the sensor.
+On robotic platforms like \acrlong{ROS} this is done automatically when providing a matching calibration of the sensor.
 
 \subsubsection{Pinhole Camera Model}
 
 The pinhole camera model is the most common camera model in computer vision modelling both classical and depth cameras.
 
 \begin{figure}[H]
-    \includegraphics[width=0.9\textwidth]{chapter03/img/pinhole_camera_model.png}
+    \includegraphics[width=0.6\textwidth]{chapter03/img/pinhole_camera_model.png}
     \caption{The pinhole camera model performs the perspective projection of three dimensional points into the plane. Real cameras additionally have a lense system that can result in radial and tangential distortion. These effects must be componsenated with a proper calibration of distortion models. The camera-coordinate-to-pixel-coordinate projection looses information on the depth. Therefore, the back projection results only in the direction of the light ray. The depth sensor gives the additional distance information to recover the point in camera coordinates. Graphic adopted from\cite{opencv_pinhole}.}\label{fig:pinhole_model}
 \end{figure}
 Figure~\ref{fig:pinhole_model} shows the perspective projection of three-dimensional points onto the plane.
