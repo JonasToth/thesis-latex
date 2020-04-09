@@ -8,7 +8,7 @@ Conversion from integer data does no further processing then simply type convers
 
 \begin{figure}[H]
     \centering
-    \input{images/bearing_angle.tikz}%
+    \input{chapter04/img/bearing_angle.tikz}%
     \caption[Schematic Representation of Bearing-Angles]{This figure shows the relationship of the light rays that form the \gls{bearing-angle}.}
 \end{figure}
 
@@ -20,13 +20,23 @@ Nontheless, the direction must be defined to obtain stable visual features.
 
 The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
 For the horizontal left-to-right calculation the formula is as follows.
-\begin{align}
-    \beta&= \arccos%
+\begin{equation}
+    \beta = \arccos%
             \frac{d_{i,j} - d_{i-1,j} \cos \Delta\varphi}%
                  {\sqrt{d_{i,j}^2 + d_{i-1,j}^2 - 2 d_{i,j} d_{i-1,j} \cos \Delta\varphi}}
-\end{align}
+\end{equation}
 Using a different direction or other neighbourhood relation the indices for the depth values need to be changed and a different angular resolution needs to be calculated.
-The \Gls{bearing-angle} is in the range $(0, \pi)~rad$ and gets scaled accordingly.
+The \Gls{bearing-angle} is in the range $\beta \in (0, \pi)~rad$.
+Linear scaling of the angle to the color depth of the target image results in a grayscale image suitable for feature extraction.
+A general scaling function for an $unsigned~8bit$ image and arbitrary angle range follows here.
+This formulation can be used for different color depths and other potential angle calculations that result in different boundary conditions.
+\begin{equation}
+\begin{aligned}
+    \beta_{min} &= 0 ~& c_{min} &= 0 \\
+    \beta_{max} &= \pi ~& c_{max} &= 255 \\
+    \beta_{scaled} &= \floor*{c_{min} + \beta \frac{c_{max} - c_{min}}{\beta_{max} - \beta_{min}}}
+\end{aligned}
+\end{equation}
 
 \subsubsection{\Glspl{flexion-image}}\label{flexion-image-section}
 
@@ -38,8 +48,12 @@ The normal calculated from the diagonal and vertical neighbouring vertices are d
 Both normal-vectors are drawn with their origin in the central depth value.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{images/scetch_flexion.png}
+    \begin{subfigure}[t]{0.49\linewidth}
+        \includegraphics[width=0.9\textwidth]{chapter04/img/scetch_flexion.png}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\linewidth}
+        \input{chapter04/img/flexion_tikz.tex}
+    \end{subfigure}
     \caption[Schematic Representation of Flexion]{This figure demonstrates how flexed surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}%
     \label{fig:flexion-image-scetched}
 \end{figure}
@@ -56,6 +70,21 @@ features detectable with classical feature detectors and descriptors like
 \Gls{sift} or \Gls{surf}.
 
 \subsubsection{Curvature}
+
+\begin{figure}[H]
+    \begin{subfigure}[t]{0.47\textwidth}
+        \scalebox{0.9}{%
+        \input{chapter04/img/curvature_osculating_circle}
+        }
+        \caption{The curvature of a line at a specific point is defined through its osculating circle.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.47\textwidth}
+        \scalebox{0.9}{%
+        \input{chapter04/img/curvature_3d}
+        }
+        \caption{The curvature of a surface at a given point depends on the direction of measurement. The principal curvatures are the maximum and minimum value of curvatures in all directions.}
+    \end{subfigure}
+\end{figure}
 
 As a different analytical approach to producing feature images the calculation of the \gls{curvature} for each depth value.
 The two common measures of curvature in differential geometry are \gls{gaussian-curvature} and \gls{mean-curvature}\cite{Kuhnel2008}.
@@ -86,7 +115,7 @@ The \gls{max-curve-image} tries generalize the \gls{bearing-angle} to be rotatio
 Additionally to the left-sided \gls{bearing-angle} the right-sided angle is calculated as well and finally added.
 
 \begin{figure}
-    \input{images/max-curve.tikz}
+    \input{chapter04/img/max-curve.tikz}
     \caption[Schematic Representation of the Max-Curve]{The Max-Curve composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and antidiagonal direction. The maximum angle is then selected as pixel value.}
 \end{figure}
 
