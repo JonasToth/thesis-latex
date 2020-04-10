@@ -1,0 +1,71 @@
+\subsubsection{Viability of Conversions}
+
+\begin{itemize}
+    \item effect of noisy input
+    \item soundness and mathematical foundation
+    \item computational complexity
+    \item Discussion of characteristic for Bearing Flexion.
+\end{itemize}
+
+\subsubsection{Implementation Notes}
+
+Formulas pictures and short computational evaluation.
+Each implementation is independent of the camera model.
+Describe the concepts required for implementation.
+Both serial and parallel execution.
+Parallel execution is done row-wise over all cores using CppTaskflow based Task Scheduling.
+No explicit use SIMD, because OpenCV\cite{opencv_library} is used for data storing proper memory alignment is already ensured.
+Specialized optimiziation should allow the use of SIMD with OpenCV's Hardware Abstraction Layer.
+
+Focus on correctness and generality.
+Provided implementation should rather serve as reference implementation that can be used to validate optimized implementations.
+
+\begin{lstlisting}
+template <template <typename> typename Intrinsic,
+          typename Real>
+inline constexpr bool is_intrinsic_v =
+  std::is_floating_point_v<Real>
+  &&
+  std::is_same_v<typename Intrinsic<Real>::real_type, Real>
+  &&
+  std::is_invocable_r_v<
+    int,
+    decltype(&Intrinsic<Real>::w),
+    Intrinsic<Real>
+  >
+  &&
+  std::is_invocable_r_v<
+    int,
+    decltype(&Intrinsic<Real>::h),
+    Intrinsic<Real>
+  >
+  &&
+  std::is_invocable_r_v<
+    math::sphere_coord<Real>,
+    decltype(&Intrinsic<Real>::template pixel_to_sphere<int>),
+    Intrinsic<Real>,
+    math::pixel_coord<int>
+  >
+  &&
+  std::is_invocable_r_v<
+    math::sphere_coord<Real>,
+    decltype(&Intrinsic<Real>::template pixel_to_sphere<Real>),
+    Intrinsic<Real>,
+    math::pixel_coord<Real>
+  >
+  &&
+  std::is_invocable_r_v<
+    math::pixel_coord<Real>,
+    decltype(&Intrinsic<Real>::template camera_to_pixel<Real>),
+    Intrinsic<Real>,
+    math::camera_coord<Real>
+  >
+  &&
+  std::is_invocable_r_v<
+    math::pixel_coord<int>,
+    decltype(&Intrinsic<Real>::template camera_to_pixel<int>),
+    Intrinsic<Real>,
+    math::camera_coord<Real>
+  >;
+\end{lstlisting}
+

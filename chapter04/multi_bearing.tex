@@ -1,0 +1,14 @@
+\subsubsection{Multi-Directional Bearing Angle}
+
+The \gls{max-curve-image} tries generalize the \gls{bearing-angle} to be rotation invariant as it takes the \gls{bearing-angle} in each direction into account.
+Additionally to the left-sided \gls{bearing-angle} the right-sided angle is calculated as well and finally added.
+
+\begin{figure}
+    \input{chapter04/img/max-curve.tikz}
+    \caption[Schematic Representation of the Max-Curve]{The Max-Curve composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and antidiagonal direction. The maximum angle is then selected as pixel value.}
+\end{figure}
+
+This makes the measure more robust to rotation, but does not produce good features.
+\begin{align}
+    B &= \max{\{B_{diagonal}, B_{antidiagonal}, B_{horizontal}, B_{vertical}\}}
+\end{align}

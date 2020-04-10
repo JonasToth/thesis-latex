@@ -1,0 +1,36 @@
+\subsubsection{\Glspl{flexion-image}}\label{flexion-image-section}
+
+Each pixel of a \Gls{flexion-image} is the dot-product of the local normal
+calculated from horizontal and vertical neighbouring pixel with the
+normal calculated with the diagonal neighbours.
+Figure~\ref{fig:flexion-image-scetched} demonstrates the disparity of both normals for an arbitrary surface patch.
+The normal calculated from the diagonal and vertical neighbouring vertices are drawn in blue and the normal calculated with the diagonals red.
+Both normal-vectors are drawn with their origin in the central depth value.
+
+\begin{figure}[H]
+    \begin{subfigure}[t]{0.49\linewidth}
+        \centering
+        \scalebox{1.0}{%
+        \input{chapter04/img/flexion_tikz.tex}
+        }
+        \caption{The normals for a point $\mathbf{P_{i,j}}$ can be estimated its diagonal or horizontal and vertical neighbours.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.49\linewidth}
+        \centering
+        \input{chapter04/img/flexion_perspective.tex}
+        \caption{The estimated normals span an angle depending on the local shape of the surface measured by the depth sensors.}
+    \end{subfigure}
+    \caption[Schematic Representation of Flexion]{This figure demonstrates how flexed surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}%
+    \label{fig:flexion-image-scetched}
+\end{figure}
+
+The flexion $f$ is defined as
+\begin{align}
+    f &= \abs{n_1 \cdotp n_2}
+\end{align}
+Because $n_1$ and $n_2$ are of length $1$ the value of $f$ is in the range $[0, 1]$ and gets scaled accordingly.
+
+The smaller the dot-product gets, the higher is the local flexion of the
+surface. This local property of the geometry then results in visual
+features detectable with classical feature detectors and descriptors like
+\Gls{sift} or \Gls{surf}.

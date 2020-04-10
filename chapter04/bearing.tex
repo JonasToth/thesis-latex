@@ -1,0 +1,33 @@
+\subsubsection{\Glspl{bearing-angle-image}}
+
+\begin{figure}[H]
+    \centering
+    \input{chapter04/img/bearing_angle.tikz}%
+    \caption[Schematic Representation of Bearing-Angles]{This figure shows the relationship of the light rays that form the \gls{bearing-angle}.}
+\end{figure}
+
+Existing literature\cite{Scaramuzza2007,Lin2017} proposes \Glspl{bearing-angle-image} were each pixel is the angle between the current point, the optical center and the previous point.
+The neighbourhood relationship can be choosen arbitrarily resulting in four first-order \Glspl{bearing-angle-image}, horizontal, vertical, diagonal and antidiagonal.
+The second variable is the direction the angle is calculted, e.g.~for horizontal images it can be calculated from left-to-right or right-to-left.
+This does not exhibit new information, because the angle of the other direction is immediatly known from the fact that the sum of the angles is $180\degree$.
+Nontheless, the direction must be defined to obtain stable visual features.
+
+The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
+For the horizontal left-to-right calculation the formula is as follows.
+\begin{equation}
+    \beta = \arccos%
+            \frac{d_{i,j} - d_{i-1,j} \cos \Delta\varphi}%
+                 {\sqrt{d_{i,j}^2 + d_{i-1,j}^2 - 2 d_{i,j} d_{i-1,j} \cos \Delta\varphi}}
+\end{equation}
+Using a different direction or other neighbourhood relation the indices for the depth values need to be changed and a different angular resolution needs to be calculated.
+The \Gls{bearing-angle} is in the range $\beta \in (0, \pi)~rad$.
+Linear scaling of the angle to the color depth of the target image results in a grayscale image suitable for feature extraction.
+A general scaling function for an $unsigned~8bit$ image and arbitrary angle range follows here.
+This formulation can be used for different color depths and other potential angle calculations that result in different boundary conditions.
+\begin{equation}
+\begin{aligned}
+    \beta_{min} &= 0 ~& c_{min} &= 0 \\
+    \beta_{max} &= \pi ~& c_{max} &= 255 \\
+    \beta_{scaled} &= \floor*{c_{min} + \beta \frac{c_{max} - c_{min}}{\beta_{max} - \beta_{min}}}
+\end{aligned}
+\end{equation}

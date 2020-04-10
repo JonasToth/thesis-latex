@@ -1,0 +1,39 @@
+\subsubsection{Curvature}
+
+\begin{figure}[H]
+    \begin{subfigure}[t]{0.47\textwidth}
+        \scalebox{0.9}{%
+        \input{chapter04/img/curvature_osculating_circle}
+        }
+        \caption{The curvature of a line at a specific point is defined through its osculating circle.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.47\textwidth}
+        \scalebox{0.9}{%
+        \input{chapter04/img/curvature_3d}
+        }
+        \caption{The curvature of a surface at a given point depends on the direction of measurement. The principal curvatures are the maximum and minimum value of curvatures in all directions.}
+    \end{subfigure}
+\end{figure}
+
+As a different analytical approach to producing feature images the calculation of the \gls{curvature} for each depth value.
+The two common measures of curvature in differential geometry are \gls{gaussian-curvature} and \gls{mean-curvature}\cite{Kuhnel2008}.
+
+If the function is known as a graph the \Gls{gaussian-curvature} can be estimated using the derivatives of the function.
+For depth data each depth value is a sample of this function graph and numeric approximation of the derivatives allows the calculation of the curvature.
+\begin{align}
+    \mathfrak{K} &= \frac{f_{uu} f_{vv} - f_{uv}^2}{{(1 + f_u^2 + f_v^2)}^2}
+\end{align}
+With
+\begin{align*}
+    f_{x} &= \frac{y_1 - y_0}{\Delta x} \\
+    f_{xx} &= \frac{y_1 + y_{-1} - 2 y_0}{{\Delta x}^2}
+\end{align*}
+as approximation for the derivatives.
+
+Similarly, the \Gls{mean-curvature} can be calculated with a different formula.
+\begin{align}
+    \mathfrak{H} &= \frac{{(1 + f_{v}^2)} f_{uu} - 2 f_u f_v f_{uv} + {(1 + f_u^2)} f_{vv}}{2 \sqrt{1 + f_u^2 + f_v^2}^3}
+\end{align}
+Both measures of curvature are $\mathfrak{K},\mathfrak{H} \in {\rm I\!R}$.
+To convert them into a meaningful grayscale image they need to be clamped to arbitrary bounds, that can be choosen based on visual distinctiveness or other heuristics.
+After clamping the values are scaled and quantized accordingly.
