@@ -1,0 +1,59 @@
+\subsection{Bearing-Angle Formula}
+
+This section provides the exact derivation of the \gls{bearing-angle} formula.
+The literature on \gls{bearing-angle} disagrees on the formula and have mathematical errors.
+The full chain of derivation and graphical presentations goal is to provide a trustworthy and checkable background for the provided formula.
+
+\begin{figure}[H]
+    \include{chapterA/image_bearing}
+    \caption[Derivation of Bearing-Angle with all Support Variables]{Deriving the bearing angle requires additional support variables that are introduced with this figure. Using fundamental trigonometry allows derivation of the formula.}\label{fig:bearing-derivation}
+\end{figure}
+
+The cosine theorem holds true for all triangles and is the central equality for the derivation.
+\begin{equation}
+\begin{aligned}
+    \text{Ansatz:} \\
+    d_{i-1}^2 &= d_i^2 + a^2 - 2 d_i a \cos \beta \qquad \text{(Cosine Theorem)} \\
+\end{aligned}
+\end{equation}
+Introducing supporting variables at the positions given in figure~\ref{fig:bearing-derivation} allows substiting the missing quantity $a$.
+\begin{equation*}
+\begin{aligned}
+    h &= d_i \sin d\varphi \\
+    c &= d_i \cos d\varphi \\
+    b &= d_{i-1} - d_i \cos d\varphi \\
+    a^2 &= h^2 + b^2 \\
+        &= \mathunderline{darkgreen}{(d_i \sin d\varphi)^2} + \mathunderline{plotblue}{(d_{i-1} - d_i \cos d\varphi)^2} \\
+        &= \mathunderline{darkgreen}{\mathunderline{darkred}{d_i^2 \sin^2 d\varphi}} +
+           \mathunderline{plotblue}{%
+             \mathunderline{plotorange}{d_{i-1}^2 - 2 d_{i-1} d_i \cos d\varphi} +
+             \mathunderline{darkred}{d_i^2 \cos^2 d\varphi}
+           } \\
+        &= \mathunderline{darkred}{d_{i-1}^2 \sin^2 d\varphi + d_{i-i}^2 \cos^2 d\varphi} +
+           \mathunderline{plotorange}{d_{i-1}^2 -2 d_{i-1} d_i \cos d\varphi} \\
+    a^2 &= \mathunderline{darkred}{d_i^2} +
+           \mathunderline{plotorange}{d_{i-1}^2 -2 d_{i-1} d_i \cos d\varphi} \\
+\end{aligned}
+\end{equation*}
+The variable $a$ is now substituted in the ansatz.
+Consequent simplification of the equations yields the final formula for the bearing angle.
+\begin{equation*}
+\begin{aligned}
+    d_{i-1}^2 &= d_i^2 + a^2 - 2 d_i a \cos \beta \\
+    \mathunderline{plotblue}{d_{i-1}^2} &= \mathunderline{darkred}{d_i^2} +
+    \mathunderline{darkred}{d_i^2} + \mathunderline{plotblue}{d_{i-1}^2} - 2 d_{i-1} d_i \cos d\varphi
+    - 2 d_i \sqrt{d_i^2 + d_{i-1}^2 -2 d_{i-1} d_i \cos d\varphi} \cos \beta \\
+    \mathunderline{plotblue}{0} &= \mathunderline{darkgreen}{2} \mathunderline{darkred}{d_i^2} +
+                                   \mathunderline{plotblue}{0} -
+                                   \mathunderline{darkgreen}{2} \mathunderline{darkred}{d_{i-1}} d_i \cos d\varphi
+                                   - \mathunderline{darkgreen}{2} \mathunderline{darkred}{d_i} \sqrt{d_i^2 + d_{i-1}^2 -2 d_{i-1} d_i \cos d\varphi} \cos \beta \\
+   0 &= \mathunderline{darkred}{d_i^2} - \mathunderline{darkred}{d_{i}} d_{i-1} \cos d\varphi
+       - \mathunderline{darkred}{d_i} \sqrt{d_i^2 + d_{i-1}^2 -2 d_{i-1} d_i \cos d\varphi} \cos \beta \\
+   0 &= \mathunderline{darkred}{d_i} - \mathunderline{darkred}{1} d_{i-1} \cos d\varphi
+       - \mathunderline{darkred}{1} \sqrt{d_i^2 + d_{i-1}^2 -2 d_{i-1} d_i \cos d\varphi} \cos \beta \\
+   \cos \beta &= \frac{d_i - d_{i-1} \cos d\varphi}{\sqrt{d_i^2 + d_{i-1}^2 -2 d_{i-1} d_i \cos d\varphi}} \\
+   \beta &= \arccos \frac{d_i - d_{i-1} \cos d\varphi}{\sqrt{d_i^2 + d_{i-1}^2 -2 d_{i-1} d_i \cos d\varphi}} \\
+\end{aligned}
+\end{equation*}
+
+% vim: set nocindent nosmartindent
