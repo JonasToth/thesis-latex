@@ -37,3 +37,34 @@ Similarly, the \Gls{mean-curvature} can be calculated with a different formula.
 Both measures of curvature are $\mathfrak{K},\mathfrak{H} \in {\rm I\!R}$.
 To convert them into a meaningful grayscale image they need to be clamped to arbitrary bounds, that can be choosen based on visual distinctiveness or other heuristics.
 After clamping the values are scaled and quantized accordingly.
+
+\begin{figure}[H]
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{chapter04/img/mean-0001.png}
+        \caption{This figure shows a converted \gls{bearing-angle-image} on a synthetic rendered scene.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{chapter04/img/mean-0030.png}
+        \caption{Rotating the camera demonstrates color changes of surfaces.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{chapter04/img/mean-0210.png}
+        \caption{A different camera pose result in different surface shading.}
+    \end{subfigure}
+\end{figure}
+
+
+\begin{figure}[H]
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{chapter04/img/gauss-0001.png}
+        \caption{This figure shows a converted \gls{bearing-angle-image} on a synthetic rendered scene.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{chapter04/img/gauss-0030.png}
+        \caption{Rotating the camera demonstrates color changes of surfaces.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{chapter04/img/gauss-0210.png}
+        \caption{A different camera pose result in different surface shading.}
+    \end{subfigure}
+\end{figure}

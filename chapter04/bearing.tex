@@ -3,11 +3,13 @@
 \begin{figure}[H]
     \centering
     \input{chapter04/img/bearing_angle.tikz}%
-    \caption[Schematic Representation of Bearing-Angles]{This figure shows the relationship of the light rays that form the \gls{bearing-angle}.}
+    \caption[Schematic Representation of Bearing-Angles]{This figure shows the relationship of the light rays that form the \gls{bearing-angle} $\beta$.}\label{fig:bearing_angle}
 \end{figure}
 
-Existing literature\cite{Scaramuzza2007,Lin2017} proposes \Glspl{bearing-angle-image} were each pixel is the angle between the current point, the optical center and the previous point.
-The neighbourhood relationship can be choosen arbitrarily resulting in four first-order \Glspl{bearing-angle-image}, horizontal, vertical, diagonal and antidiagonal.
+Scaramuzza et.al\cite{Scaramuzza2007} proposes \Glspl{bearing-angle-image} were each pixel is the angle between the current point, the optical center and the previous point.
+Lin et.al\cite{Lin2017} use \Glspl{bearing-angle-image} to automatically align pointclouds using keypoints extracted with \acrshort{surf}.
+Figure~\ref{fig:bearing_angle} shows the triangle that these three points form.
+The neighbourhood relationship can be choosen arbitrarily resulting in four \Glspl{bearing-angle-image}, horizontal, vertical, diagonal and antidiagonal.
 The second variable is the direction the angle is calculted, e.g.~for horizontal images it can be calculated from left-to-right or right-to-left.
 This does not exhibit new information, because the angle of the other direction is immediatly known from the fact that the sum of the angles is $180\degree$.
 Nontheless, the direction must be defined to obtain stable visual features.
@@ -19,10 +21,22 @@ For the horizontal left-to-right calculation the formula is as follows.
             \frac{d_{i,j} - d_{i-1,j} \cos \Delta\varphi}%
                  {\sqrt{d_{i,j}^2 + d_{i-1,j}^2 - 2 d_{i,j} d_{i-1,j} \cos \Delta\varphi}}
 \end{equation}
-Using a different direction or other neighbourhood relation the indices for the depth values need to be changed and a different angular resolution needs to be calculated.
+Note that both Scaramuzza\cite{Scaramuzza2007} and Lin\cite{Lin2017} have typos in the formulae they provided.
+A full derivation for the correct equation is provided in Appendix~\ref{sec:bearing_derivation}.
+
+The angular resolution $d\varphi$ between two pixels of the depth image depends on the camera model in use.
+The pinhole models angular resolution changes between pixel pairs, equirectangular image have a constant resolution between pixels.
+In general, the angle $d\varphi$ can be calculated with the spherical coordinates $P_{\mathcal{S},1}, P_{\mathcal{S},2}$ of the pixel pair $p_1, p_2$.
+\begin{equation}
+\begin{aligned}
+    \abs{\vec{P_{\mathcal{S},1}}} &= \abs{\vec{P_{\mathcal{S},2}}} = 1 \implies P_{\mathcal{S},1} \cdot P_{\mathcal{S},2} = \cos d\varphi \\
+    d\varphi &= \arccos P_{\mathcal{S},1} \cdot P_{\mathcal{S},2}
+\end{aligned}
+\end{equation}
+
 The \Gls{bearing-angle} is in the range $\beta \in (0, \pi)~rad$.
 Linear scaling of the angle to the color depth of the target image results in a grayscale image suitable for feature extraction.
-A general scaling function for an $unsigned~8bit$ image and arbitrary angle range follows here.
+A general scaling function for an \emph{unsigned 8bit} image and arbitrary angle range follows here.
 This formulation can be used for different color depths and other potential angle calculations that result in different boundary conditions.
 \begin{equation}
 \begin{aligned}
@@ -31,3 +45,21 @@ This formulation can be used for different color depths and other potential angl
     \beta_{scaled} &= \floor*{c_{min} + \beta \frac{c_{max} - c_{min}}{\beta_{max} - \beta_{min}}}
 \end{aligned}
 \end{equation}
+
+\subsubsection*{Characteristics}
+
+\begin{figure}[H]
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0001.png}
+        \caption{This figure shows a converted \gls{bearing-angle-image} on a synthetic rendered scene.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0030.png}
+        \caption{Rotating the camera demonstrates color changes of surfaces.}
+    \end{subfigure}
+    \begin{subfigure}[t]{0.32\textwidth}
+        \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0210.png}
+        \caption{A different camera pose result in different surface shading.}
+    \end{subfigure}
+    \caption[Bearing Angle Image Characteristics demonstrated]{The \gls{bearing-angle-image} is not invariant to rotation and viewpoint changes. This property limits its applicability for automatic registration of bigger discontinues changes of the camera pose. Each depth image was converted with the diagonal (topleft-to-bottom-right direction) implementation of the \gls{bearing-angle} formula.}
+\end{figure}

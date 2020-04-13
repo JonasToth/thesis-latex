@@ -12,6 +12,7 @@ Within that world coordinate system exist one or more sensors spanning their own
 Referencing the point relative to such a sensor yields \emph{camera coordinates}.
 The sensor itself performs some form of dimension reducing projection of the three dimensional point to a two dimensional point, an \emph{image coordinate}.
 \emph{Image coordinates} are an intermediate representation before discretizing the point to individual pixels, called \emph{pixel coordinates}.
+Inverting this projection results in \emph{spherical coordinates}, camera coordinates with unit length that just encode the direction of a light ray that hits a pixel.
 Different sensor models describe these projecting transformations mathematically.
 Note, that the relative transformation between \emph{camera coordiantes} and \emph{world coordinates}, the sensors \emph{pose}, can change over time.
 Multiple sensors can exist within the \emph{world coordinate system}.

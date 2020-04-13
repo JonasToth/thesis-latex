@@ -1,4 +1,4 @@
-\subsection{Bearing-Angle Formula}
+\subsection{Bearing-Angle Formula}\label{sec:bearing_derivation}
 
 This section provides the exact derivation of the \gls{bearing-angle} formula.
 The literature on \gls{bearing-angle} disagrees on the formula and have mathematical errors.
@@ -23,18 +23,20 @@ Introducing supporting variables at the positions given in figure~\ref{fig:beari
     c &= d_i \cos d\varphi \\
     b &= d_{i-1} - d_i \cos d\varphi \\
     a^2 &= h^2 + b^2 \\
-        &= \mathunderline{darkgreen}{(d_i \sin d\varphi)^2} + \mathunderline{plotblue}{(d_{i-1} - d_i \cos d\varphi)^2} \\
-        &= \mathunderline{darkgreen}{\mathunderline{darkred}{d_i^2 \sin^2 d\varphi}} +
+    a^2 &= \mathunderline{darkgreen}{(d_i \sin d\varphi)^2} + \mathunderline{plotblue}{(d_{i-1} - d_i \cos d\varphi)^2} \\
+    a^2 &= \mathunderline{darkgreen}{\mathunderline{darkred}{d_i^2 \sin^2 d\varphi}} +
            \mathunderline{plotblue}{%
              \mathunderline{plotorange}{d_{i-1}^2 - 2 d_{i-1} d_i \cos d\varphi} +
              \mathunderline{darkred}{d_i^2 \cos^2 d\varphi}
            } \\
-        &= \mathunderline{darkred}{d_{i-1}^2 \sin^2 d\varphi + d_{i-i}^2 \cos^2 d\varphi} +
+    a^2 &= \mathunderline{darkred}{d_{i-1}^2 \sin^2 d\varphi + d_{i-i}^2 \cos^2 d\varphi} +
            \mathunderline{plotorange}{d_{i-1}^2 -2 d_{i-1} d_i \cos d\varphi} \\
     a^2 &= \mathunderline{darkred}{d_i^2} +
-           \mathunderline{plotorange}{d_{i-1}^2 -2 d_{i-1} d_i \cos d\varphi} \\
+           \mathunderline{plotorange}{d_{i-1}^2 - 2 d_{i-1} d_i \cos d\varphi} \\
 \end{aligned}
 \end{equation*}
+For $a$ holds the condition $a > 0$ for all values, because the constraints $d_i > 0$, $d_{i-1} > 0$ and $0 < d\varphi < \pi$ result from the properties of depth sensors.
+
 The variable $a$ is now substituted in the ansatz.
 Consequent simplification of the equations yields the final formula for the bearing angle.
 \begin{equation*}
