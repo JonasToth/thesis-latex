@@ -30,6 +30,7 @@ As Figure~\ref{fig:flexion_space} demonstrates, both normals span an angle.
                 \times \frac{\vec{P_{i-1,j}} - \vec{P_{i+1,j}}}{\lnorm{\vec{P_{i-1,j}} - \vec{P_{i+1,j}}}} \\
     \vec{n_2} &= \frac{\vec{P_{i-1,j-1}} - \vec{P_{i+1,j+1}}}{\lnorm{\vec{P_{i-1,j-1}} - \vec{P_{i+1,j+1}}}}
                 \times \frac{\vec{P_{i-1,j+1}} - \vec{P_{i+1,j-1}}}{\lnorm{\vec{P_{i-1,j+1}} - \vec{P_{i+1,j-1}}}}
+    \label{eq:flexion_normals}
 \end{aligned}
 \end{equation}
 Note, that both normals $\vec{n_1}$ and $\vec{n_2}$ are not unit length, but only the direction vector between the neighbouring points of $\mathbf{P_{i,j}}$.
@@ -63,3 +64,18 @@ The \gls{flexion-image} is rotation invariant.
 Rotation of either an object or the camera does not change the difference between the two normal approximations.
 A flat surface has an almost constant shading, because the normal approximation results in the same vector directions.
 Flat surfaces not perpendicular to the camera plane have non-constant shading with the brightness reduced the further the surface patch is appart from the camera center.
+This effect is caused by the perspective transformation.
+The length of the normal vectors reduces with the distance to the camera, because the diagonals gets smaller, as Figure~\ref{fig:flexion_angle_decrease} demonstrates.
+\begin{figure}[H]
+    \input{chapter04/img/flexion_angle_decrease}
+    \caption{The angle between the diagonals decreases with increasing distance from the camera center. This results in short normals.}\label{fig:flexion_angle_decrease}
+\end{figure}
+The decreases origin is the nature of the cross product.
+\begin{equation*}
+    \lnorm{\vec{v_1} \times \vec{v_2}} = \lnorm{\vec{v_1}} \lnorm{\vec{v_2}} \sin \angle(\vec{v_1}, \vec{v_2})
+\end{equation*}
+The lack of normalization in Equation~\ref{eq:flexion_normals} propagates this effect through to the scalar product.
+\begin{equation*}
+    \vec{v_1} \cdot \vec{v_2} = \lnorm{\vec{v_1}} \lnorm{\vec{v_2}} \cos \angle(\vec{v_1}, \vec{v_2})
+\end{equation*}
+This shading effect gives the \gls{flexion-image} its plastic look and helps to develop the feeling for the geometric constellations.
