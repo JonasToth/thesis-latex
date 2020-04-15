@@ -16,7 +16,7 @@ Nontheless, the direction must be defined to obtain stable visual features.
 
 The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
 For the horizontal left-to-right calculation the formula is as follows.
-\begin{equation}
+\begin{equation}\label{eq:bearing-angle}
     \beta = \arccos%
             \frac{d_{i,j} - d_{i-1,j} \cos \Delta\varphi}%
                  {\sqrt{d_{i,j}^2 + d_{i-1,j}^2 - 2 d_{i,j} d_{i-1,j} \cos \Delta\varphi}}
@@ -40,6 +40,7 @@ A general scaling function for an \emph{unsigned 8bit} image and arbitrary angle
 This formulation can be used for different color depths and other potential angle calculations that result in different boundary conditions.
 \begin{equation}
 \begin{aligned}
+\label{eq:linear_scaling}
     \beta_{min} &= 0 ~& c_{min} &= 0 \\
     \beta_{max} &= \pi ~& c_{max} &= 255 \\
     \beta_{scaled} &= \floor*{c_{min} + \beta \frac{c_{max} - c_{min}}{\beta_{max} - \beta_{min}}}
@@ -61,5 +62,21 @@ This formulation can be used for different color depths and other potential angl
         \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0210.png}
         \caption{A different camera pose result in different surface shading.}
     \end{subfigure}
-    \caption[Bearing Angle Image Characteristics demonstrated]{The \gls{bearing-angle-image} is not invariant to rotation and viewpoint changes. This property limits its applicability for automatic registration of bigger discontinues changes of the camera pose. Each depth image was converted with the diagonal (topleft-to-bottom-right direction) implementation of the \gls{bearing-angle} formula.}
+    \caption[Bearing Angle Image Characteristics demonstrated]{The \gls{bearing-angle-image} is not invariant to rotation and viewpoint changes. This property limits its applicability for automatic registration of bigger discontinues changes of the camera pose. Each depth image was converted with the diagonal (top-left-to-bottom-right direction) implementation of the \gls{bearing-angle} formula.}\label{fig:bearing_characteristics}
 \end{figure}
+A deeper understanding of the \gls{bearing-angle-image} helps to understand advantages and disadvantages for its usage.
+Figure~\ref{fig:bearing_characteristics} demonstrates the visual changes of a synthetic scene under certain camera transformations.
+
+The most notable property is the lack of rotation invariance.
+This follows directly from the definition of the \gls{bearing-angle}.
+A triangle is build by a predefined pixel relationship.
+Calculating the \gls{bearing-angle} from multiple directions could lead to some rotation stability, because rotations of $45\degree$ corresponds to a different direction of pixel neighbourhood.
+\begin{figure}[H]
+    \centering
+    \input{chapter04/img/bearing_understand_shading.tex}%
+    \caption[Two Bearing-Angles for the same ground plane]{Different shadings of plane surfaces depend on the perspective projection and the distance from the camera center $C$ to the surface.}\label{fig:bearing_angle_shading}
+\end{figure}
+The second apparent aspect is the change in shading for example the flat ground, but other surfaces as well.
+This effect is due to the perspective transformation and the distance of a point to the camera, as Figure~\ref{fig:bearing_angle_shading} demonstrates.
+Round objects, like cylinders and spheres, experience no visual change in shading.
+The triangles the lightrays form with the surface are identical for such objects.

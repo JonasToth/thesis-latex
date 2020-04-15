@@ -1,11 +1,17 @@
 \subsection{Conversion from Depth-Image to Feature Image}
 
 For transition from depth-based to feature-based registration a prior conversion from depth values to a derived image is required.
-Every feature-image is calculated on range data in floating point format.
-Conversion from integer data does no further processing then simply type conversion.
+This conversion needs to result in a single scalar value because all keypoint detectors work on a single color channel.
+The converted images are coined feature image alltogether, because they form the starting point for the classical feature based keypoint matching and image alignment.
+Every feature image is calculated on range data in floating point format, requiring the potential preprocessing step presented in Section~\ref{sec:range_depth_conversion}.
+Conversion from integer data does no further processing than simple type conversion.
+
+This section introduces and develops multiple potential feature images that were considered during this thesis.
+Not all of them are sufficient for the intended use case.
+The examplaric conversion show a synthetic scene with different primitive geometric structures but no impurities other then 16bit range data as input.
 
 \input{chapter04/bearing}
 \input{chapter04/multi_bearing}
-\input{chapter04/flexion}
 \input{chapter04/curvature}
+\input{chapter04/flexion}
 \input{chapter04/implementation_notes}
