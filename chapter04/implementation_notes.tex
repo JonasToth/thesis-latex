@@ -1,71 +1,27 @@
-\subsubsection{Viability of Conversions}
+\subsubsection{Implementation Details}
 
-\begin{itemize}
-    \item effect of noisy input
-    \item soundness and mathematical foundation
-    \item computational complexity
-    \item Discussion of characteristic for Bearing Flexion.
-\end{itemize}
+All software developed during the thesis, including the analysis and supplementary code, are developed with rigor software engineering methods.
+The library components have $100\%$ unit- and integrationtest line coverage.
+Each final executable is heavily tested, too.
+The overall line coverage for all project code is above $98\%$.
+The implementation language is C++-17\cite{c++17} and all library depdencies use at least C++-11\cite{c++11}.
+All code obeys to strong typing, design by contract\cite{meyer_ieee1992} and modern idioms of the C++ programming language\cite{stroustrup_cpppl2013}.
+To uncover many runtime problems that C++ allows by its raw memory access the LLVM Address-, Memory-, Thread- and Undefined-Behaviour-Sanitizers\cite{google_sanitizers} are run over all tests.
+Additional static analysis is done by clang's thread-safety analysis\cite{clang_thread_safety}, clang static analyzer\cite{clang_static_analysis} and clang-tidy\cite{babati2017static}.
+All detected issues were immediatly fixed during development.
+The use of continuous integration\cite{fowler_ci2000} for the whole development cycle indicated defects within hours.
 
-\subsubsection{Implementation Notes}
+The implementation goal of the produced code is to serve as a correct reference implementation for the proposed data processing.
+Therefore, no special action has been taken to improve latency or throughput of the computations.
+Simple measures for speedup, namely exploiting the embarrassingly parallel nature of the processing and compiler optimizations are employed.
 
-Formulas pictures and short computational evaluation.
-Each implementation is independent of the camera model.
-Describe the concepts required for implementation.
-Both serial and parallel execution.
-Parallel execution is done row-wise over all cores using CppTaskflow based Task Scheduling.
-No explicit use SIMD, because OpenCV\cite{opencv_library} is used for data storing proper memory alignment is already ensured.
-Specialized optimiziation should allow the use of SIMD with OpenCV's Hardware Abstraction Layer.
+Each of the feature image conversions is implemented as C++ library code working on \emph{OpenCV's} \lstinline[basicstyle=\ttfamily]|cv::Mat| matrix type.
+The conversion is generic in the sense, that any camera model implementing the forward and backward projection for pixel coordinates is suitable for the feature image conversion.
+This genericity is achieved through the use of templates.
+Type requirements are enforced with \lstinline[basicstyle=\ttfamily]|static_assert()| and concept-like\cite{c++concepts} requirement definitions.
 
-Focus on correctness and generality.
-Provided implementation should rather serve as reference implementation that can be used to validate optimized implementations.
-
-\begin{lstlisting}
-template <template <typename> typename Intrinsic,
-          typename Real>
-inline constexpr bool is_intrinsic_v =
-  std::is_floating_point_v<Real>
-  &&
-  std::is_same_v<typename Intrinsic<Real>::real_type, Real>
-  &&
-  std::is_invocable_r_v<
-    int,
-    decltype(&Intrinsic<Real>::w),
-    Intrinsic<Real>
-  >
-  &&
-  std::is_invocable_r_v<
-    int,
-    decltype(&Intrinsic<Real>::h),
-    Intrinsic<Real>
-  >
-  &&
-  std::is_invocable_r_v<
-    math::sphere_coord<Real>,
-    decltype(&Intrinsic<Real>::template pixel_to_sphere<int>),
-    Intrinsic<Real>,
-    math::pixel_coord<int>
-  >
-  &&
-  std::is_invocable_r_v<
-    math::sphere_coord<Real>,
-    decltype(&Intrinsic<Real>::template pixel_to_sphere<Real>),
-    Intrinsic<Real>,
-    math::pixel_coord<Real>
-  >
-  &&
-  std::is_invocable_r_v<
-    math::pixel_coord<Real>,
-    decltype(&Intrinsic<Real>::template camera_to_pixel<Real>),
-    Intrinsic<Real>,
-    math::camera_coord<Real>
-  >
-  &&
-  std::is_invocable_r_v<
-    math::pixel_coord<int>,
-    decltype(&Intrinsic<Real>::template camera_to_pixel<int>),
-    Intrinsic<Real>,
-    math::camera_coord<Real>
-  >;
-\end{lstlisting}
-
+Multiple library dependencies support the functionality of the project and shall be mentioned without a particular order.
+The already mentioned \emph{opencv}\cite{opencv_library} project provides functionality for image handling and processing. 
+Required types and functionality for glue-code, parallelization and general programming utilize \emph{cli11}\cite{cli11}, \emph{rang}\cite{rang}, \emph{cpp-taskflow}\cite{Huang2019CppTaskflowFT}, \emph{fmt-lib}\cite{fmtlib}, \emph{GSL}\cite{gsl}, \emph{Eigen3}\cite{eigenweb} and \emph{Boost}\cite{boost}.
+Functionality and performance testing are done with \emph{doctest}\cite{doctest} and \emph{libnonius}\cite{libnonius}.
+Each used revision is document in the code repository and differs between versions of the thesis code.
