@@ -1,36 +1,41 @@
-\subsection{Noise Filtering}
-
-Commonly used a preprocessing step for other algorithms.
-Measurements are usually noisy. Filtering evens out the signal
-Can be normal like gaussian blur or box filter.
-Can be edge preserving to keep edge features.
-
 \subsection{Edge-Preserving Filtering}
 
-Filtering is an operation to reduce the impact of sensor noise.
-One common filter is gaussian blur or the computationally cheaper box filter.
-Those filters distribute each sensory value over a local neighbourhood with different weights.
-This reduces white noise but blurs edges and shapes as well.
-Therefore, these filters are not edge preserving and undesirable for the use-case of this work.
-As described later, preserving sharp edges is requirement to be able to extract features from the converted depth images.
-Using proven implementations from OpenCV\cite{opencv_library}.
+Filtering is an operation to reduce the impact of sensor noise from limited resolution and other random effects on measured quantities.
+In the context of depth data this noise result in slightly incorrect range values for pixels.
+These deviations amplify through the feature image conversions.
+Applying a filter before further processing reduces the influence of errors and smoothens the measured values.
+The feature images produced from the range data extract information on changes of geometry in different ways.
+Therefore, sharp changes, e.g.~edges and corners, shall be preserved by the filter leading to edge-preserving filters.
+Each applied filter uses OpenCV's\cite{opencv_library} proven and readily available implementations.
 
 \subsubsection{Median Blur}
 
-\begin{itemize}
-    \item kernel of odd size greater then one $ksize \times ksize$
-    \item replacing the center pixel with median over all pixel in that kernel
-    \item computationally cheap, easy to utilize SIMD instructions
-    \item edge preserving and smoothing
-    \item filling single pixel errors with reasonable value of surrounding
-    \item cite a paper/book
-\end{itemize}
+Median Blur, introduced to image processing by Frieden\cite{frieden_new76}, is a well established technique to reduce salt-and-pepper noise and is an effective edge-preserving filter.
+The application happens on each pixel of the image.
+A window of $n \times m$ pixels with $n,m \in \mathbb{N}_{2k + 1}$ is centered at the pixel and the median of all pixel in that window is calculated and stored as the new value.
+The calculation does not require floating point calculations and is implementable in with time complexity of $\mathcal{O}(n)$\cite{huang_ieee79}.
+\emph{OpenCV's} implementation additionally utilizes \acrshort{SIMD} instructions for additional processing speed.
 
 \subsubsection{Bilateral Filter}
 
-\begin{itemize}
-    \item edge preserving filter that considers both spatial proximity as well as proximity of surrounding values
-    \item smooths out smaller fluctuations in local neighbourhood, but maintains sharp edges
-    \item cite proper paper
-\end{itemize}
-
+Bilateral filtering, introduced by Tomasi and Manduchi\cite{tomasi_iccv98}, considers two factors in the filtering process.
+\emph{Spatial closeness}, similar to median filtering, and \emph{similarity} of the values are combined in the \emph{bilateral filter}.
+Its application is convolutional, similar to the median blur and other filters.
+Each neighbouring pixels effect on the central pixel is weighted by a geometric closeness function.
+The similarity of the values is computed by a similarity function.
+Similarity can be based on a classical distance norm or compute a perceived similarity, for example based on human perception.
+The bilateral filter works for the general case with any density function for the similarity and the closeness.
+A common function to use for both measures is a gaussian kernel with the euclidean norm as distance measure as argument to the closeness computation.
+Figure~\ref{fig:bilateral_filter} provides an example application of the bilateral filter on a single channel two-dimensional signal.
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.3\linewidth}
+        \includegraphics[width=\linewidth]{chapter04/img/bilateral1.png}\label{fig:bilateral_1}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\linewidth}
+        \includegraphics[width=\linewidth]{chapter04/img/bilateral2.png}\label{fig:bilateral_2}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.3\linewidth}
+        \includegraphics[width=\linewidth]{chapter04/img/bilateral3.png}\label{fig:bilateral_3}
+    \end{subfigure}
+    \caption{The figures show how the bilateral filter works on a single channel step function. Figure~\ref{fig:bilateral_1} shows the original signal with random noise added. For a pixel in the center of the signal the weighting of its neighbouring pixels is computed. The weights are visualized in Figure~\ref{fig:bilateral_2}. The lower values of the step are neglected due to their lack of similarity regardless of closeness. Figure~\ref{fig:bilateral_3} shows the result of the full convolution of the filter yielding a smoothed signal without blurred edge.}\label{fig:bilateral_filter}
+\end{figure}

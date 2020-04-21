@@ -7,7 +7,7 @@ The overall line coverage for all project code is above $98\%$.
 The implementation language is C++-17\cite{c++17} and all library depdencies use at least C++-11\cite{c++11}.
 All code obeys to strong typing, design by contract\cite{meyer_ieee1992} and modern idioms of the C++ programming language\cite{stroustrup_cpppl2013}.
 To uncover many runtime problems that C++ allows by its raw memory access the LLVM Address-, Memory-, Thread- and Undefined-Behaviour-Sanitizers\cite{google_sanitizers} are run over all tests.
-Additional static analysis is done by clang's thread-safety analysis\cite{clang_thread_safety}, clang static analyzer\cite{clang_static_analysis} and clang-tidy\cite{babati2017static}.
+Additional static analysis is done by clang's thread-safety analysis\cite{clang_thread_safety}, clang static analyzer\cite{clang_static_analyzer} and clang-tidy\cite{babati2017static}.
 All detected issues were immediatly fixed during development.
 The use of continuous integration\cite{fowler_ci2000} for the whole development cycle indicated defects within hours.
 
