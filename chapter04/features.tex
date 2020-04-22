@@ -1,25 +1,11 @@
 \subsection{Feature Detection and Description}
 \label{sec:feature_algorithms}
 
-Introduction to feature detection and matching.
-Goals and basic principles.
-Use cases like RANSAC, Bag-of-Words and stuff.
-
-\subsubsection{Feature Description and Matching}
-
-maybe delete?
-
-\subsubsection{Filtering Keypoints}
-
-Because feature detection algorithms usually produce hundreds of keypoints per HD image it is necessary to reduce the number and only choose the best keypoints.
-Most common way is to filter by response and choose only the best responses.
-
-Segmenting the image in multiple regions and keep a constant number of keypoints per region.
-This increase the coverage of the image.
-If transformation between two images is calculated it reduces the error from one sided focus and helps to keep track of the image when the camera moves in arbitrary direction.
-
-Filtering by keypoint size is an option. The experiments showed showed many very small keypoints that resulted from noisy sections.
-Removing these keypoints improves matching quality and chance for false positives.
+The final processing step of the range data is the feature detection on the converted images.
+This thesis analyzes multiple state-of-the-art algorithms well established in the computer vision community.
+Although each keypoint detector and descriptor is designed with gray-scale images in mind, they are optimized for classical camera images that provide more texture than the converted feature images.
+Key to all algorithms is the search for salient regions in the image that can be consistently detected from different viewpoints and changing environmental conditions.
+Evaluating the performance of each algorithm is the key task in the evaluation of the conversion approach.
 
 \subsubsection{SIFT}
 
@@ -41,4 +27,3 @@ Describe AKAZE and its variants.
 \subsubsection{BRISK}
 
 Describe BRISK and AGAST keypoint detector.
-
