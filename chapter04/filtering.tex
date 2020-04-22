@@ -14,6 +14,7 @@ Median Blur, introduced to image processing by Frieden\cite{frieden_new76}, is a
 The application happens on each pixel of the image.
 A window of $n \times m$ pixels with $n,m \in \mathbb{N}_{2k + 1}$ is centered at the pixel and the median of all pixel in that window is calculated and stored as the new value.
 The calculation does not require floating point calculations and is implementable in with time complexity of $\mathcal{O}(n)$\cite{huang_ieee79}.
+$n$ and $m$ are the controllable parameters.
 \emph{OpenCV's} implementation additionally utilizes \acrshort{SIMD} instructions for additional processing speed.
 
 \subsubsection{Bilateral Filter}
@@ -26,16 +27,49 @@ The similarity of the values is computed by a similarity function.
 Similarity can be based on a classical distance norm or compute a perceived similarity, for example based on human perception.
 The bilateral filter works for the general case with any density function for the similarity and the closeness.
 A common function to use for both measures is a gaussian kernel with the euclidean norm as distance measure as argument to the closeness computation.
-Figure~\ref{fig:bilateral_filter} provides an example application of the bilateral filter on a single channel two-dimensional signal.
+Figure~\ref{fig:bilateral_filter} provides an example application of the bilateral filter on a single channel two-dimensional signal with the gaussian function for \emph{closeness} and \emph{similarity}.
 \begin{figure}[H]
     \begin{subfigure}[b]{0.3\linewidth}
-        \includegraphics[width=\linewidth]{chapter04/img/bilateral1.png}\label{fig:bilateral_1}
+        \includegraphics[width=\linewidth]{chapter04/img/bilateral1.png}
+        \caption{}\label{fig:bilateral_1}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\linewidth}
-        \includegraphics[width=\linewidth]{chapter04/img/bilateral2.png}\label{fig:bilateral_2}
+        \includegraphics[width=\linewidth]{chapter04/img/bilateral2.png}
+        \caption{}\label{fig:bilateral_2}
     \end{subfigure}
     \begin{subfigure}[b]{0.3\linewidth}
-        \includegraphics[width=\linewidth]{chapter04/img/bilateral3.png}\label{fig:bilateral_3}
+        \includegraphics[width=\linewidth]{chapter04/img/bilateral3.png}
+        \caption{}\label{fig:bilateral_3}
     \end{subfigure}
     \caption{The figures show how the bilateral filter works on a single channel step function. Figure~\ref{fig:bilateral_1} shows the original signal with random noise added. For a pixel in the center of the signal the weighting of its neighbouring pixels is computed. The weights are visualized in Figure~\ref{fig:bilateral_2}. The lower values of the step are neglected due to their lack of similarity regardless of closeness. Figure~\ref{fig:bilateral_3} shows the result of the full convolution of the filter yielding a smoothed signal without blurred edge.}\label{fig:bilateral_filter}
 \end{figure}
+The mathematical formulation for the \emph{closeness} $c$ in the gaussian case of the bilateral filter is
+\begin{equation}
+\begin{aligned}
+    c(\xi, \vec{x})&= \exp\left(-\frac{1}{2}{\left(\frac{d(\xi, \vec{x})}{\sigma_d} \right)}^2 \right) \\
+    d(\xi, \vec{x})&= d(\xi - \vec{x}) = \lnorm{\xi - \vec{x}}
+\end{aligned}
+\end{equation}
+This weighs any point's $\xi$ relevance from the input signal to the point $\vec{x}$ based on it's distance.
+Defining the \emph{similarity} $s$ is equivalent.
+\begin{equation}
+\begin{aligned}
+    s(\xi, \vec{x})&= \exp\left(-\frac{1}{2}{\left(\frac{\theta(\mathbf{f}(\xi), \mathbf{f}(\vec{x}))}{\sigma_r}\right)}^2\right) \\
+    \theta(\phi, \mathbf{f})&= \theta(\phi - \mathbf{f}) = \lnorm{\phi - \mathbf{f}}
+\end{aligned}
+\end{equation}
+The function $\mathbf{f}(\vec{x})$ is the value of the signal at the position $\vec{x}$ and $\theta$ weighs these values again based on the euclidean distance of the values.
+To compute the filtered value on any point $\vec{x}$ these functions need to be applied to the whole signal.
+The continuous formulation is given here, but for images the filter is a convolution in practice.
+\begin{equation}
+\begin{aligned}
+    h(\vec{x}) &= \frac{1}{k(\vec{x})} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \mathbf{f}(\xi) c(\xi, \vec{x}) s(\mathbf{f}(\xi), \mathbf{f}(\vec{x})) d\xi \\
+    \text{with the normalization} \\
+    k(\vec{x}) &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} c(\xi, \vec{x}) s(\mathbf{f}(\xi), \mathbf{f}(\vec{x})) d\xi
+\end{aligned}
+\end{equation}
+The filter is dependant on the functions for \emph{similarity} and \emph{closeness} and the available parameters are defined through these functions.
+In the gaussian case the parameters are $\sigma_d$ controlling the deviation of \emph{closeness} and $\sigma_r$ of \emph{similarity}.
+Higher values of these parameters result in higher blurring of the result.
+Again, \emph{OpenCV's} proven and optimized implementation is utilized.
+The bilateral filter is a single pass filter, but compute intensive and in practice slower than the median blur.
