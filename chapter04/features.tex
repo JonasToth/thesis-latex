@@ -79,6 +79,17 @@ Each keypoints descriptor uses a rotated version of \acrshort{brief}.
 Binary descriptors are increasingly popular as their computation and matching is cheaper.
 The distance of binary descriptors can be computed with the Hamming distance that reduces to \emph{XOR} instructions on machine level.
 
-\subsubsection{AKAZE}
+\subsubsection{\acrshort{akaze}}
 
-Describe AKAZE and its variants.
+\acrshort{kaze}'s\cite{alcantarilla_eccv12} (\acrlong{kaze}) and \acrshort{akaze}\cite{alcantarilla_bmva13}'s (\acrlong{akaze}) approaches are similar to \acrshort{sift}'s.
+Again, the diffusion of the brightness is used as starting point applied in scale space.
+\acrshort{kaze} applies non-linear diffusion filtering with a special computational scheme that makes it feasable to solve in real time.
+The difference to the gaussian diffusion is the preservation of edges.
+The Gaussian blurs the whole image reducing the signal quality in the higher scales.
+Contrary, the non-linear diffusion preserves edges over higher scales and produces better keypoints.
+After non-maximum suppression the determinant of the Hessian is computed and the position of the keypoint located through interpolation on different scales.
+The orientation of the keypoint is computed like in \acrshort{surf} as the dominant direction of the derivatives in the local neighbourhood of the keypoint.
+
+The descriptor used is \acrshort{mldb} (\acrlong{mldb}) which is based on \acrshort{ldb}\cite{yang_ismar12} (\acrlong{ldb}).
+It works very similar to \acrshort{brief} but instead of comparing intensities of sampled pixel it compares the average intensities of sampled areas around the keypoint.
+The orientation of the keypoint is taken into account when sampling the areas.
