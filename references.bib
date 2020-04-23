@@ -12,26 +12,6 @@ title = {{Differentialgeometrie}},
 year = {2008}
 }
 
-@inproceedings{Bay2006,
-abstract = {In this paper, we present a novel scale-and rotation-invariant interest point detector and descriptor, coined SURF (Speeded Up Robust Features). It approximates or even outperforms previously proposed schemes with respect to repeatability, distinctiveness, and robustness, yet can be computed and compared much faster. This is achieved by relying on integral images for image convolutions; by building on the strengths of the leading existing detectors and descriptors (in casu, using a Hessian matrix-based measure for the detector, and a distribution-based descriptor); and by simplifying these methods to the essential. This leads to a combination of novel detection, description, and matching steps. The paper presents experimental results on a standard evaluation set, as well as on imagery obtained in the context of a real-life object recognition application. Both show SURF's strong performance.},
-author = {Bay, Herbert and Tuytelaars, Tinne and Gool, Luc Van},
-booktitle = {Conference: Proceedings of the 9th European conference on Computer Vision - Volume Part I},
-doi = {10.1007/11744023_32},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Bay, Tuytelaars, Gool - 2006 - SURF Speeded Up Robust Features.pdf:pdf},
-title = {{SURF: Speeded Up Robust Features}},
-url = {https://www.vision.ee.ethz.ch/{~}surf/eccv06.pdf},
-year = {2006}
-}
-@techreport{Lowe2004,
-abstract = {This paper presents a method for extracting distinctive invariant features from images that can be used to perform reliable matching between different views of an object or scene. The features are invariant to image scale and rotation, and are shown to provide robust matching across a a substantial range of affine distortion , change in 3D viewpoint, addition of noise, and change in illumination. The features are highly distinctive, in the sense that a single feature can be correctly matched with high probability against a large database of features from many images. This paper also describes an approach to using these features for object recognition. The recognition proceeds by matching individual features to a database of features from known objects using a fast nearest-neighbor algorithm, followed by a Hough transform to identify clusters belonging to a single object, and finally performing verification through least-squares solution for consistent pose parameters. This approach to recognition can robustly identify objects among clutter and occlusion while achieving near real-time performance.},
-author = {Lowe, David G},
-booktitle = {International Journal of Computer Vision},
-doi = {10.1023/B:VISI.0000029664.99615.94},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Lowe - 2004 - Distinctive Image Features from Scale-Invariant Keypoints.pdf:pdf},
-title = {{Distinctive Image Features from Scale-Invariant Keypoints}},
-url = {https://people.eecs.berkeley.edu/{~}malik/cs294/lowe-ijcv04.pdf},
-year = {2004}
-}
 @article{Oishi2019,
 abstract = {This paper presents a new approach to view-based localization and navigation in outdoor environments, which are indispensable functions for mobile robots. Several approaches have been proposed for autonomous navigation. GPS-based systems are widely used especially in the case of automobiles, however, they can be unreliable or non-operational near tall buildings. Localization with a precise 3D digital map of the target environment also enables mobile robots equipped with range sensors to estimate accurate poses, but maintaining a large-scale outdoor map is often costly. We have therefore developed a novel view-based localization method SeqSLAM++ by extending the conventional SeqSLAM in order not only to robustly estimate the robot position comparing image sequences but also to cope with changes in a robot's heading and speed as well as view changes using wide-angle images and a Markov localization scheme. According to the direction to move provided by the SeqSLAM++, the local-level path planner navigates the robot by setting subgoals repeatedly considering the structure of the surrounding environment using a 3D LiDAR. The entire navigation system has been implemented in the ROS framework, and the effectiveness and accuracy of the proposed method was evaluated through off-line/on-line navigation experiments.},
 author = {Oishi, Shuji and Inoue, Yohei and Miura, Jun and Tanaka, Shota},
@@ -563,18 +543,6 @@ title = {{AUTOMATIC REGISTRATION OF MULTIPLE LASER SCANS USING PANORAMIC RGB AND
 volume = {XXXVIII-5/},
 year = {2012}
 }
-@inproceedings{Arandjelovic2012,
-abstract = {The objective of this work is object retrieval in large scale image datasets, where the object is speciﬁed by an image query and retrieval should be immediate at run time in the manner of Video Google [28]. We make the following three contributions: (i) a new method to compare SIFT descriptors (RootSIFT) which yields superior performance without increasing processing or storage requirements; (ii) a novel method for query expansion where a richer model for the query is learnt discriminatively in a form suited to immediate retrieval through efﬁcient use of the inverted index; (iii) an improvement of the image augmentation method proposed by Turcot and Lowe [29], where only the augmenting features which are spatially consistent with the augmented image are kept. We evaluate these three methods over a number of standard benchmark datasets (Oxford Buildings 5k and 105k, and Paris 6k) and demonstrate substantial improvements in retrieval performance whilst maintaining immediate retrieval speeds. Combining these complementary methods achieves a new state-of-the-art performance on these datasets.},
-author = {Arandjelovic, Relja and Zisserman, Andrew},
-booktitle = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
-doi = {10.1109/CVPR.2012.6248018},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Arandjelovic, Zisserman - 2012 - Three things everyone should know to improve object retrieval.pdf:pdf},
-isbn = {9781467312264},
-issn = {10636919},
-pages = {2911--2918},
-title = {{Three things everyone should know to improve object retrieval}},
-year = {2012}
-}
 @book{Bellekens,
 abstract = {Geometric alignment of 3D pointclouds, obtained using a depth sensor such as a time-of-flight camera, is a challenging task with important applications in robotics and computer vision. Due to the recent advent of cheap depth sensing devices, many different 3D registration algorithms have been proposed in literature, focussing on different domains such as localization and mapping or image registration. In this survey paper, we review the state-of-the-art registration algorithms and discuss their common mathematical foundation. Starting from simple deterministic methods, such as Principal Component Analysis (PCA) and Singular Value Decomposition (SVD), more recently introduced approaches such as Iterative Closest Point (ICP) and its variants, are analyzed and compared. The main contribution of this paper therefore consists of an overview of registration algorithms that are of interest in the field of computer vision and robotics, for example Simultaneous Localization and Mapping.},
 author = {Bellekens, Ben and Spruyt, Vincent and Berkvens, Rafael and Weyn, Maarten},
@@ -1002,7 +970,16 @@ doi = {10.1109/ISMAR.2011.6092378}
 
 @inproceedings{sattler_iccv2009, author={T. {Sattler} and B. {Leibe} and L. {Kobbelt}}, booktitle={2009 IEEE 12th International Conference on Computer Vision}, title={SCRAMSAC: Improving RANSAC's efficiency with a spatial consistency filter}, year={2009}, volume={}, number={}, pages={2090-2097},} 
 
-@article{lowe_ijcv2004,
+@inproceedings{lowe_iccv99,
+     author={D. G. {Lowe}},
+     booktitle={Proceedings of the Seventh IEEE International Conference on Computer Vision},
+     title={Object recognition from local scale-invariant features},
+     year={1999},
+     volume={2},
+     number={},
+     pages={1150-1157},} 
+}
+@article{lowe_ijcv04,
     author = {David G. Lowe},
     title = {Distinctive Image Features from Scale-Invariant Keypoints},
     year = {2004},
@@ -1010,6 +987,53 @@ doi = {10.1109/ISMAR.2011.6092378}
     volume = {60},
     pages={91-110},
 }
+@article{lindeberg_ijcv98,
+author = {Lindeberg, Tony},
+year = {1998},
+month = {09},
+pages = {77-116},
+title = {Feature Detection with Automatic Scale Selection},
+volume = {30},
+journal = {International Journal of Computer Vision},
+doi = {10.1023/A:1008045108935}
+}
+@article {hellinger_1909,
+  author = {Hellinger, Ernst},
+  title = {Neue Begründung der Theorie quadratischer Formen von unendlichvielen Veränderlichen.},
+  journal = {Journal für die reine und angewandte Mathematik},
+  year = {1909},
+  publisher = {De Gruyter},
+  address = {Berlin, Boston},
+  volume = {1909},
+  number = {136},
+  pages = {210 - 271},
+}
+@inproceedings{arandjelovic_2012,
+    author = {Arandjelovic, Relja and Zisserman, Andrew},
+    booktitle = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
+    doi = {10.1109/CVPR.2012.6248018},
+    isbn = {9781467312264},
+    issn = {10636919},
+    pages = {2911--2918},
+    title = {{Three things everyone should know to improve object retrieval}},
+    year = {2012},
+}
+@inproceedings{bay_eccv06,
+    author = {Bay, Herbert and Tuytelaars, Tinne and Gool, Luc Van},
+    booktitle = {Conference: Proceedings of the 9th European conference on Computer Vision - Volume Part I},
+    title = {{SURF: Speeded Up Robust Features}},
+    url = {https://www.vision.ee.ethz.ch/{~}surf/eccv06.pdf},
+    year = {2006}
+}
+@INPROCEEDINGS{viola_cvpr01,
+    author={P. {Viola} and M. {Jones}},
+    booktitle={Proceedings of the 2001 IEEE Computer Society Conference on Computer Vision and Pattern Recognition. CVPR 2001}, 
+    title={Rapid object detection using a boosted cascade of simple features},
+    year={2001},
+    volume={1},
+    number={},
+    pages={I-I},
+} 
 
 @article{fischler_ransac_1980,
 author = {Fischler, Martin A. and Bolles, Robert C.},

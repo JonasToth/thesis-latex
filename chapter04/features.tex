@@ -6,14 +6,62 @@ This thesis analyzes multiple state-of-the-art algorithms well established in th
 Although each keypoint detector and descriptor is designed with gray-scale images in mind, they are optimized for classical camera images that provide more texture than the converted feature images.
 Key to all algorithms is the search for salient regions in the image that can be consistently detected from different viewpoints and changing environmental conditions.
 Evaluating the performance of each algorithm is the key task in the evaluation of the conversion approach.
+The following sections introduce each algorithm briefly and mention key aspects of their functionality.
+Details and foundational concepts are out of the scope and the original publications are highly recommended for further comprehension.
 
-\subsubsection{SIFT}
+\subsubsection{\acrshort{sift} (\acrlong{sift})}
 
-Describe approach of SIFT keypoints and descriptor.
+Introduced by Lowe\cite{lowe_iccv99,lowe_ijcv04}, \acrshort{sift} is the feature detection algorithm performing very well and newer feature detectors use it as benchmark algorithm to compare to.
+The design goal of the algorithm is to detect keypoints that are invariant with respect to scale and rotation.
+Robustness against noise, change in illumination and affine transformation is additionally considered.
+It highly influenced the computer vision community and the design of other algorithms.
 
-\subsubsection{SURF}
+The input image is processed in a hierarchical pyramid of downscaled versions of the image, called octaves.
+On each octave a gaussian filter is applied consecutivly with increased standard deviation on each run.
+The difference between two consecutive blurred images is computed, the so called \acrlong{DoG} (\acrshort{DoG}).
+The result is downsampled by a factor of 2 and the process is repeated several times.
+This process is used to determine the scale of a feature.
+Lindeberg's\cite{lindeberg_ijcv98} work on scale space and automatic scale selection gives a theoretical introduction why this process gives a good way to select the scale of a feature.
+The underlying principle is that fine structures dissolve at bigger scales.
+This process is related to the diffusion equation and is equivalent to the convolution of Gaussian kernels with different width.
+The derivatives of the gaussian result in a peak response at one specific scale, which can then be defined as the scale of a feature.
+Keypoint candidates are local extrema in these \acrshort{DoG}s.
+Each candidate is filtered by a contrast threshold, its accurate position is determined using a local spline interpolation and its scale is assigned based on the octave and blurring factor.
+Edge-like responses are filtered out based on an estimate of the ratio between the principal curvatures.
+Highly skewed curvatures indicate an edge.
 
-Describe approach of SURF keypoints and descriptor.
+Every keypoint candidate left gets one or more orientations assigned.
+These are computed by storing the gradients of a local neighbourhood to the keypoints in the octave matching the keypoints scale in a orientation histogram.
+Each peak in this histogram reflects a dominant direction of gradients in the local neighbourhood and the corresponding angle is used as the orientation of the keypoint.
+According to Lowe, about $15\%$ of keypoints have multiple peaks and become multiple orientations assigned, equivalent to storing multiple keypoints at this position.
+The orientation is used to rotate the local neighbourhood of the keypoint to compute the descriptor consistently.
+
+The image gradients direction and magnitude are computed for each pixel in a local environment, weighted by a gaussian to magnify the influence of close pixels and then binned into orientation histograms.
+Each histograms reflects a fraction of the grid beeing sampled.
+A $16 \times 16$ grid around the keypoint that is stored to $4 \times 4$ histograms with $8$ bins for the orientations results in a vector of $128$ elements in the descriptor.
+These numbers can be adjusted, but the $128$ element descriptor is used in practice.
+Finally, the histograms are normalized to increase robustness against illumination changes.
+The euclidean distance of the descriptor vectors is the most common similarity measure.
+Arandjelović and Zisserman\cite{arandjelovic_2012} introduced RootSIFT using the Hellinger distance\cite{hellinger_1909} as better similarity measure for similarity of histograms.
+
+\subsubsection{\acrshort{surf} (\acrlong{surf})}
+
+Bay et.al introduced \acrshort{surf}\cite{bay_eccv06} to achieve similar detector and descriptor performance as \acrshort{sift} but at a lower computational cost.
+\acrshort{surf} is computed on integral images\cite{viola_cvpr01}.
+Each pixel's value is the sum of all pixels in the rectangle formed by the origin and the pixel itself.
+This representation reduces computational complexity.
+
+The underlying principal of scale space and extrema detection derive from the same principles as for \acrshort{sift} but undergoes further simplification.
+The gaussian convolution is approximated with a box filter that approximate a second order Gaussian derivative and is related to the Hessian matrix at this point.
+Instead building a pyramid of images at different scales the filter itself is scaled up successivly.
+Maxima undergoe a non-maximum suppression in different scales and a local neighbourhood.
+The maximum of the Hessian's matrix determinant for the a detected pixel is interpolated in image scale and space.
+The determinants value is then used as response and the interpolated scale as scale.
+
+Orientation assignment of \acrshort{surf} can be skipped for scenarios that don't involve camera rotation.
+Rotation is derived from the Haar wavelets response in $x$ and $y$ direction in the local neighbourhood.
+The descriptor itself is built in a $4\times4$ grid structure of sample points around the detected keypoint.
+The Haar wavelets response in $x$ and $y$ direction at these sample points are used to derive the elements of the descriptor.
 
 \subsubsection{ORB}
 
