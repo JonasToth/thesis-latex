@@ -63,15 +63,22 @@ Rotation is derived from the Haar wavelets response in $x$ and $y$ direction in 
 The descriptor itself is built in a $4\times4$ grid structure of sample points around the detected keypoint.
 The Haar wavelets response in $x$ and $y$ direction at these sample points are used to derive the elements of the descriptor.
 
-\subsubsection{ORB}
+\subsubsection{\acrshort{orb} (\acrlong{orb})}
 
-Describe combination of ORB algorithms, Harris Corner, FAST features.
-BRIEF descriptor on multiple levels.
+\acrshort{orb}\cite{rublee_iccv11} combines the \acrshort{fast}\cite{rosten_eccv06} (\acrlong{fast}) feature detector and \acrshort{brief}\cite{calonder_eccv10} (\acrlong{brief}) descriptor with additional improvements to both algorithms.
+The design goal is to achieve similar matching performance to \acrshort{sift} and \acrshort{surf} but to be computationally cheaper to be useable in embedded devices.
+
+The \acrshort{fast} detector evaluates a corner candidate with testing the brightness of $16$ pixels on a circle around the corner.
+If there are enough consecutive pixels brighter or darker than the center with a certain threshold, the candidate is accepted as corner.
+This testing builds a decision tree that is traversed in a learned and optimized fashion for faster testing.
+\acrshort{orb} detects keypoints with \acrshort{fast}, filters edge results with the Harris corner detector\cite{harris_1988} and assigns scale using image pyramids.
+The orientation of the keypoint is computed with the \emph{intensity centroid}\cite{rosin_cviu99}.
+
+Each keypoints descriptor uses a rotated version of \acrshort{brief}.
+\acrshort{brief} is a binary descriptor built from a set of binary intensity tests of consecutive pixels around the keypoint.
+Binary descriptors are increasingly popular as their computation and matching is cheaper.
+The distance of binary descriptors can be computed with the Hamming distance that reduces to \emph{XOR} instructions on machine level.
 
 \subsubsection{AKAZE}
 
 Describe AKAZE and its variants.
-
-\subsubsection{BRISK}
-
-Describe BRISK and AGAST keypoint detector.
