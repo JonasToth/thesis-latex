@@ -1,10 +1,11 @@
 \subsubsection{\Glspl{flexion-image}}\label{flexion-image-section}
 
-The local shape of an objects that is sampled by a depth sensor is characterized by its surface normal.
+The local shape of an object that is sampled by a depth sensor is characterized by its normalized surface normal.
 A surface normal is a vector perpendicular to the surface of the object.
+This characterization builds the foundation of the \Gls{flexion-image} and its inspiration, too.
 
 Each measured pixel is backprojected to camera coordinates, scaling the point in spherical coordinates with its measured range, as first step.
-Approximating the normal for a measured surface point $P_{i,j}$ is possible using the cross product of its neighbours connecting vectors.
+Approximating the normal for a measured surface point $\mathbf{P_{i,j}}$ is possible using the cross product of its neighbours connecting vectors.
 The point relationship is visualized in Figure~\ref{fig:flexion_normals_plane}.
 \begin{figure}[H]
     \begin{subfigure}[t]{0.49\linewidth}
@@ -45,17 +46,17 @@ Figure~\ref{fig:flexion_images} visualizes the \Gls{flexion-image} for the same 
 \begin{figure}[H]
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/flexion-0001.png}
-        \caption{This figure shows a converted \gls{bearing-angle-image} on a synthetic rendered scene.}
+        \caption{}
     \end{subfigure}
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/flexion-0030.png}
-        \caption{Rotating the camera demonstrates color changes of surfaces.}
+        \caption{}
     \end{subfigure}
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/flexion-0210.png}
-        \caption{A different camera pose result in different surface shading.}
+        \caption{}
     \end{subfigure}
-    \caption{The characteristical look of a \Gls{flexion-image}.}\label{fig:flexion_images}
+    \caption{These figures demonstrate the characteristical look of the \Glspl{flexion-image}. Its appearence is very plastic and the shading effects give a good feel for depth. The conversion is rotation invariant.}\label{fig:flexion_images}
 \end{figure}
 
 \subsubsection*{Characteristics}
@@ -70,7 +71,7 @@ The length of the normal vectors reduces with the distance to the camera, becaus
     \input{chapter04/img/flexion_angle_decrease}
     \caption{The angle between the diagonals decreases with increasing distance from the camera center. This results in short normals.}\label{fig:flexion_angle_decrease}
 \end{figure}
-The decreases origin is the nature of the cross product.
+The origin is the nature of the cross product is maximal if both vectors are perpendicular.
 \begin{equation*}
     \lnorm{\vec{v_1} \times \vec{v_2}} = \lnorm{\vec{v_1}} \lnorm{\vec{v_2}} \sin \angle(\vec{v_1}, \vec{v_2})
 \end{equation*}

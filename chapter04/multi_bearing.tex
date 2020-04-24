@@ -1,24 +1,24 @@
 \subsubsection{Multi-Directional Bearing Angle}
 
-The Multi-Directional \gls{bearing-angle-image} attempts to overcome the limitation of missing rotation invariance for the classical \gls{bearing-angle-image}.
-Instead of calculation just one angle in one direction the two adjacent triangle are analyzed together.
+The \emph{Multi-Directional \gls{bearing-angle-image}} attempts to overcome the limitation of missing rotation invariance for the classical \gls{bearing-angle-image}.
+Instead of just one angle in one direction, the two adjacent triangle are analyzed together.
 Figure~\ref{fig:max-curve} shows how the triangles are related.
-Both angles $\beta$ and $\gamma$ are calculated with equation~\ref{eq:bearing-angle}, for $\gamma$ the values of $d_{i}$ and $d_{i-1}$ just need to be swapped.
+Both angles $\beta$ and $\gamma$ are calculated with equation~\ref{eq:bearing-angle}, for $\gamma$ the values of $d_{i,j}$ and $d_{i-1,j}$ just need to be swapped.
 \begin{figure}
     \input{chapter04/img/max-curve.tikz}
-    \caption[Schematic Representation of the Max-Curve]{The Max-Curve composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and antidiagonal direction. The maximum angle is then selected as pixel value.}\label{fig:max-curve}
+    \caption[Schematic Representation of the Multi-Directional \gls{bearing-angle-image}]{The Multi-Directional \gls{bearing-angle-image} composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and antidiagonal direction. The maximum angle is then selected as pixel value.}\label{fig:max-curve}
 \end{figure}
 Both angles are added together, resulting in the angle of an edge at this position.
 \begin{equation}
-    B = \beta + \gamma
+    \mathcal{B} = \beta + \gamma
 \end{equation}
 This calculation is again only in one direction and not rotation invariant but already symmetrical.
 The value $B$ can be defined for diagonal, antidiagonal, horizontal and vertical sampling of the image.
 The final step for rotation invariance is the reduction of these four values to its maximum.
 \begin{align}
-    B &= \max{\{B_{diagonal}, B_{antidiagonal}, B_{horizontal}, B_{vertical}\}}
+    \mathcal{B} &= \max{\{\mathcal{B}_{diagonal}, \mathcal{B}_{antidiagonal}, \mathcal{B}_{horizontal}, \mathcal{B}_{vertical}\}}
 \end{align}
-The conversion results in the images in Figure~\ref{fig:max-curve-images} for the same scene and positions as for the \gls{bearing-angle-image}.
+The converted images in Figure~\ref{fig:max-curve-images} show the same scene and positions as for the \gls{bearing-angle-image}.
 \begin{figure}[H]
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/max-0001.png}

@@ -1,28 +1,18 @@
+
+
 \tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
 
 \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
-%uncomment if require: \path (0,252.25); %set diagram left start at 0, and has height of 252.25
+%uncomment if require: \path (0,252); %set diagram left start at 0, and has height of 252
 
 %Straight Lines [id:da05017383740499093] 
 \draw    (46.83,26.67) -- (149.83,213.67) ;
-
-
 %Straight Lines [id:da6895513561877372] 
 \draw    (155.83,32.67) -- (149.83,213.67) ;
-
-
 %Curve Lines [id:da10253757735662583] 
 \draw [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,draw opacity=1 ]   (116,153) .. controls (128.83,126.67) and (169.83,125.67) .. (181.83,145.67) ;
-
-
 %Straight Lines [id:da3851492122035306] 
 \draw    (46.83,26.67) -- (155.83,32.67) ;
-
-
-%Curve Lines [id:da7052636563383052] 
-\draw [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ]   (118.83,30.67) .. controls (113.83,48.67) and (127.83,77.67) .. (154.83,77.67) ;
-
-
 %Shape: Circle [id:dp08101382020617043] 
 \draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (151.88,32.67) .. controls (151.88,30.49) and (153.65,28.72) .. (155.83,28.72) .. controls (158.01,28.72) and (159.78,30.49) .. (159.78,32.67) .. controls (159.78,34.85) and (158.01,36.62) .. (155.83,36.62) .. controls (153.65,36.62) and (151.88,34.85) .. (151.88,32.67) -- cycle ;
 %Shape: Circle [id:dp7397482298206297] 
@@ -31,39 +21,36 @@
 \draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (241.88,7.67) .. controls (241.88,5.49) and (243.65,3.72) .. (245.83,3.72) .. controls (248.01,3.72) and (249.78,5.49) .. (249.78,7.67) .. controls (249.78,9.85) and (248.01,11.62) .. (245.83,11.62) .. controls (243.65,11.62) and (241.88,9.85) .. (241.88,7.67) -- cycle ;
 %Straight Lines [id:da7225304487809803] 
 \draw    (245.83,7.67) -- (149.83,213.67) ;
-
-
 %Straight Lines [id:da15289701870660388] 
 \draw    (155.83,32.67) -- (245.83,7.67) ;
-
-
-%Curve Lines [id:da9153553751002029] 
-\draw [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ]   (154.83,77.67) .. controls (178.83,81.67) and (200.83,49.67) .. (184.83,24.67) ;
-
-
+%Shape: Arc [id:dp845909277560968] 
+\draw  [draw opacity=0] (154.29,72.43) .. controls (153.16,72.54) and (152.02,72.6) .. (150.87,72.6) .. controls (131.56,72.6) and (115.9,56.94) .. (115.9,37.63) .. controls (115.9,35.08) and (116.17,32.59) .. (116.69,30.19) -- (150.87,37.63) -- cycle ; \draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ] (154.29,72.43) .. controls (153.16,72.54) and (152.02,72.6) .. (150.87,72.6) .. controls (131.56,72.6) and (115.9,56.94) .. (115.9,37.63) .. controls (115.9,35.08) and (116.17,32.59) .. (116.69,30.19) ;
+%Shape: Arc [id:dp15343497156889918] 
+\draw  [draw opacity=0] (193.67,22.29) .. controls (195.16,26.33) and (195.97,30.7) .. (195.97,35.25) .. controls (195.97,55.99) and (179.15,72.8) .. (158.42,72.8) .. controls (157.06,72.8) and (155.72,72.73) .. (154.4,72.59) -- (158.42,35.25) -- cycle ; \draw  [color={rgb, 255:red, 245; green, 166; blue, 35 }  ,draw opacity=1 ] (193.67,22.29) .. controls (195.16,26.33) and (195.97,30.7) .. (195.97,35.25) .. controls (195.97,55.99) and (179.15,72.8) .. (158.42,72.8) .. controls (157.06,72.8) and (155.72,72.73) .. (154.4,72.59) ;
 
 % Text Node
-\draw (136,148) node [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ] [align=left] {$\displaystyle \Delta $$\displaystyle \varphi $};
+\draw (137,154) node  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ] [align=left] {$\displaystyle \Delta $$\displaystyle \varphi $};
 % Text Node
-\draw (142,48) node [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ] [align=left] {$\displaystyle \beta $};
+\draw (138,48) node  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,opacity=1 ] [align=left] {$\displaystyle \beta $};
 % Text Node
-\draw (167,100) node  [align=left] {$\displaystyle d_{i}$};
+\draw (169,100) node   [align=left] {$\displaystyle d_{i,j}$};
 % Text Node
-\draw (75,121) node  [align=left] {$\displaystyle d_{i-1}$};
+\draw (65,100) node   [align=left] {$\displaystyle d_{i-1,j}$};
 % Text Node
-\draw (153,12) node  [align=left] {$\displaystyle P_{i}$};
+\draw (154,12) node   [align=left] {$\displaystyle \mathbf{P}_{i,j}$};
 % Text Node
-\draw (24,25) node  [align=left] {$\displaystyle P_{i-1}$};
+\draw (150,226) node   [align=left] {$\displaystyle \mathbf{C}$};
 % Text Node
-\draw (150,226) node  [align=left] {$\displaystyle C$};
+\draw (232,99) node   [align=left] {$\displaystyle d_{i+1,j}$};
 % Text Node
-\draw (276,7) node  [align=left] {$\displaystyle P_{i+1}$};
+\draw (172,48) node   [align=left] {$\displaystyle \textcolor[rgb]{0.96,0.65,0.14}{\gamma }$};
 % Text Node
-\draw (229,108) node  [align=left] {$\displaystyle d_{i+1}$};
+\draw (165,154) node  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ] [align=left] {$\displaystyle \Delta $$\displaystyle \theta $};
 % Text Node
-\draw (170,47) node  [align=left] {$\displaystyle \textcolor[rgb]{0.96,0.65,0.14}{\gamma }$};
+\draw (273,12) node   [align=left] {$\displaystyle \mathbf{P}_{i+1,j}$};
 % Text Node
-\draw (166,149) node [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ] [align=left] {$\displaystyle \Delta $$\displaystyle \theta $};
+\draw (24,12) node   [align=left] {$\displaystyle \mathbf{P}_{i-1,j}$};
 
 
 \end{tikzpicture}
+

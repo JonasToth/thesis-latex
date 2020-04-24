@@ -6,22 +6,22 @@ Each final executable is heavily tested, too.
 The overall line coverage for all project code is above $98\%$.
 The implementation language is C++-17\cite{c++17} and all library depdencies use at least C++-11\cite{c++11}.
 All code obeys to strong typing, design by contract\cite{meyer_ieee1992} and modern idioms of the C++ programming language\cite{stroustrup_cpppl2013}.
-To uncover many runtime problems that C++ allows by its raw memory access the LLVM Address-, Memory-, Thread- and Undefined-Behaviour-Sanitizers\cite{google_sanitizers} are run over all tests.
+To uncover many runtime problems that C++ allows through its raw memory access, the LLVM Address-, Memory-, Thread- and Undefined-Behaviour-Sanitizers\cite{google_sanitizers} are run over all tests.
 Additional static analysis is done by clang's thread-safety analysis\cite{clang_thread_safety}, clang static analyzer\cite{clang_static_analyzer} and clang-tidy\cite{babati2017static}.
 All detected issues were immediatly fixed during development.
-The use of continuous integration\cite{fowler_ci2000} for the whole development cycle indicated defects within hours.
+The use of continuous integration\cite{fowler_ci2000} for the whole development cycle indicated defects within hours and ensured fast development of code with a low defect rate.
 
-The implementation goal of the produced code is to serve as a correct reference implementation for the proposed data processing.
+The implementation goal of the developed software is to serve as a correct reference implementation for the proposed data processing.
 Therefore, no special action has been taken to improve latency or throughput of the computations.
 Simple measures for speedup, namely exploiting the embarrassingly parallel nature of the processing and compiler optimizations are employed.
 
-Each of the feature image conversions is implemented as C++ library code working on \emph{OpenCV's} \lstinline[basicstyle=\ttfamily]|cv::Mat| matrix type.
+Each of the feature image conversions is implemented as C++ library code working on OpenCV's\cite{opencv_library} \lstinline[basicstyle=\ttfamily]|cv::Mat| matrix type.
 The conversion is generic in the sense, that any camera model implementing the forward and backward projection for pixel coordinates is suitable for the feature image conversion.
 This genericity is achieved through the use of templates.
 Type requirements are enforced with \lstinline[basicstyle=\ttfamily]|static_assert()| and concept-like\cite{c++concepts} requirement definitions.
 
 Multiple library dependencies support the functionality of the project and shall be mentioned without a particular order.
-The already mentioned \emph{opencv}\cite{opencv_library} project provides functionality for image handling and processing. 
+The already mentioned OpenCV\cite{opencv_library} project provides functionality for image handling and processing. 
 Required types and functionality for glue-code, parallelization and general programming utilize \emph{cli11}\cite{cli11}, \emph{rang}\cite{rang}, \emph{cpp-taskflow}\cite{Huang2019CppTaskflowFT}, \emph{fmt-lib}\cite{fmtlib}, \emph{GSL}\cite{gsl}, \emph{Eigen3}\cite{eigenweb} and \emph{Boost}\cite{boost}.
 Functionality and performance testing are done with \emph{doctest}\cite{doctest} and \emph{libnonius}\cite{libnonius}.
-Each used revision is document in the code repository and differs between versions of the thesis code.
+Each used revision is documented in the code repository and differs between versions of the thesis code.

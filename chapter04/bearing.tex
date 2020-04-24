@@ -6,31 +6,30 @@
     \caption[Schematic Representation of Bearing-Angles]{This figure shows the relationship of the light rays that form the \gls{bearing-angle} $\beta$.}\label{fig:bearing_angle}
 \end{figure}
 
-Scaramuzza et.al\cite{Scaramuzza2007} proposes \Glspl{bearing-angle-image} were each pixel is the angle between the current point, the optical center and the previous point.
-Lin et.al\cite{Lin2017} use \Glspl{bearing-angle-image} to automatically align pointclouds using keypoints extracted with \acrshort{surf}.
-Figure~\ref{fig:bearing_angle} shows the triangle that these three points form.
-The neighbourhood relationship can be choosen arbitrarily resulting in four \Glspl{bearing-angle-image}, horizontal, vertical, diagonal and antidiagonal.
+Scaramuzza\cite{Scaramuzza2007} proposes \Glspl{bearing-angle-image} that assigns each pixel the angle $\beta$ as Figure~\ref{fig:bearing_angle} demonstrates.
+This angle is spanned by the two idealized lightrays for pixels of the range image.
+The neighbourhood relationship between pixels can be choosen arbitrarily resulting in four \Glspl{bearing-angle-image}, horizontal, vertical, diagonal and antidiagonal.
 The second variable is the direction the angle is calculted, e.g.~for horizontal images it can be calculated from left-to-right or right-to-left.
 This does not exhibit new information, because the angle of the other direction is immediatly known from the fact that the sum of the angles is $180\degree$.
-Nontheless, the direction must be defined to obtain stable visual features.
+Nontheless, the direction must be defined to obtain stable results.
 
 The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
+Note, that both Scaramuzza\cite{Scaramuzza2007} and Lin\cite{Lin2017} have typos in the formulae they provided.
+A full derivation for the correct equation is provided in Appendix~\ref{sec:bearing_derivation}.
 For the horizontal left-to-right calculation the formula is as follows.
 \begin{equation}\label{eq:bearing-angle}
     \beta = \arccos%
             \frac{d_{i,j} - d_{i-1,j} \cos \Delta\varphi}%
                  {\sqrt{d_{i,j}^2 + d_{i-1,j}^2 - 2 d_{i,j} d_{i-1,j} \cos \Delta\varphi}}
 \end{equation}
-Note that both Scaramuzza\cite{Scaramuzza2007} and Lin\cite{Lin2017} have typos in the formulae they provided.
-A full derivation for the correct equation is provided in Appendix~\ref{sec:bearing_derivation}.
-
-The angular resolution $d\varphi$ between two pixels of the depth image depends on the camera model in use.
-The pinhole models angular resolution changes between pixel pairs, equirectangular image have a constant resolution between pixels.
-In general, the angle $d\varphi$ can be calculated with the spherical coordinates $P_{\mathcal{S},1}, P_{\mathcal{S},2}$ of the pixel pair $p_1, p_2$.
+The angular resolution $\Delta\varphi$ between two pixels of the depth image depends on the camera model in use.
+The pinhole model's angular resolution changes between pixel pairs, equirectangular image have a constant resolution.
+In general, the angle $\Delta\varphi$ can be calculated with the spherical coordinates $\mathbf{P_{\mathcal{S},1}}, \mathbf{P_{\mathcal{S},2}}$ of the pixel pair $\mathbf{p_1}, \mathbf{p_2}$.
+Optimized versions for the specific camera model are possible in real world applications.
 \begin{equation}
 \begin{aligned}
-    \abs{\vec{P_{\mathcal{S},1}}} &= \abs{\vec{P_{\mathcal{S},2}}} = 1 \implies P_{\mathcal{S},1} \cdot P_{\mathcal{S},2} = \cos d\varphi \\
-    d\varphi &= \arccos P_{\mathcal{S},1} \cdot P_{\mathcal{S},2}
+    \abs{\vec{P_{\mathcal{S},1}}} &= \abs{\vec{P_{\mathcal{S},2}}} = 1 \implies \vec{P_{\mathcal{S},1}} \cdot \vec{P_{\mathcal{S},2}} = \cos \Delta\varphi \\
+    \Delta\varphi &= \arccos \vec{P_{\mathcal{S},1}} \cdot \vec{P_{\mathcal{S},2}}
 \end{aligned}
 \end{equation}
 
@@ -52,15 +51,15 @@ This formulation can be used for different color depths and other potential angl
 \begin{figure}[H]
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0001.png}
-        \caption{This figure shows a converted \gls{bearing-angle-image} on a synthetic rendered scene.}
+        \caption{}
     \end{subfigure}
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0030.png}
-        \caption{Rotating the camera demonstrates color changes of surfaces.}
+        \caption{}
     \end{subfigure}
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0210.png}
-        \caption{A different camera pose result in different surface shading.}
+        \caption{}
     \end{subfigure}
     \caption[Bearing Angle Image Characteristics demonstrated]{The \gls{bearing-angle-image} is not invariant to rotation and viewpoint changes. This property limits its applicability for automatic registration of bigger discontinues changes of the camera pose. Each depth image was converted with the diagonal (top-left-to-bottom-right direction) implementation of the \gls{bearing-angle} formula.}\label{fig:bearing_characteristics}
 \end{figure}
@@ -78,5 +77,5 @@ Calculating the \gls{bearing-angle} from multiple directions could lead to some 
 \end{figure}
 The second apparent aspect is the change in shading for example the flat ground, but other surfaces as well.
 This effect is due to the perspective transformation and the distance of a point to the camera, as Figure~\ref{fig:bearing_angle_shading} demonstrates.
-Round objects, like cylinders and spheres, experience no visual change in shading.
-The triangles the lightrays form with the surface are identical for such objects.
+Round objects, like spheres, experience no visual change in shading.
+The triangles of the lightrays are invariant to camera transformation for such objects.

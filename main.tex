@@ -139,16 +139,12 @@ This section introduces the relevant principles used to create and evaluate the 
 
 \section{Depth Image Processing}
 
-As with most sensor data the sensory input requires some preprocessing.
-Error sources for depth sensors are absorption or reflexion of the infrared light, for example by water or glass.
-Additionally each sensors has a range of sensing.
-Every object too near or far can not be measured, sharp edges produce shadows.
-Those conditions lead to missing distance values for such pixels, represented by zeros.
-
-Another source of error are inaccurate measurements by the sensor.
-Some sensors, like the Intel Realsense even have visible waves in the sensor output.
-Additionally, depth images are discretized to integer precision.
-These errors can be partially mitigated by preprocessing and filtering.
+Depth images are disturbed by different error sources and intrinsic noise of the sensory system.
+Common issues are reflections from water or glass, transparent objects and infrared light sources.
+Objects outside the range of the sensor or otherwise incorrect measurements result in a $0$ in the depth image.
+The continuous measurements are stored as depth images in conventional lossless image formats like png.
+This requires to quantize the distance values to integers.
+Effects of these conditions can be partially mitigated by preprocessing and filtering.
 
 \input{chapter04/filtering}
 \input{chapter04/conversions}
