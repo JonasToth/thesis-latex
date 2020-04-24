@@ -5,7 +5,9 @@ Instead of just one angle in one direction, the two adjacent triangle are analyz
 Figure~\ref{fig:max-curve} shows how the triangles are related.
 Both angles $\beta$ and $\gamma$ are calculated with equation~\ref{eq:bearing-angle}, for $\gamma$ the values of $d_{i,j}$ and $d_{i-1,j}$ just need to be swapped.
 \begin{figure}
+    \scalebox{0.9}{%
     \input{chapter04/img/max-curve.tikz}
+    }
     \caption[Schematic Representation of the Multi-Directional \gls{bearing-angle-image}]{The Multi-Directional \gls{bearing-angle-image} composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and antidiagonal direction. The maximum angle is then selected as pixel value.}\label{fig:max-curve}
 \end{figure}
 Both angles are added together, resulting in the angle of an edge at this position.

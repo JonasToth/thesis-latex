@@ -2,7 +2,9 @@
 
 \begin{figure}[H]
     \centering
+    \scalebox{0.9}{%
     \input{chapter04/img/bearing_angle.tikz}%
+    }
     \caption[Schematic Representation of Bearing-Angles]{This figure shows the relationship of the light rays that form the \gls{bearing-angle} $\beta$.}\label{fig:bearing_angle}
 \end{figure}
 
@@ -51,15 +53,12 @@ This formulation can be used for different color depths and other potential angl
 \begin{figure}[H]
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0001.png}
-        \caption{}
     \end{subfigure}
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0030.png}
-        \caption{}
     \end{subfigure}
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0210.png}
-        \caption{}
     \end{subfigure}
     \caption[Bearing Angle Image Characteristics demonstrated]{The \gls{bearing-angle-image} is not invariant to rotation and viewpoint changes. This property limits its applicability for automatic registration of bigger discontinues changes of the camera pose. Each depth image was converted with the diagonal (top-left-to-bottom-right direction) implementation of the \gls{bearing-angle} formula.}\label{fig:bearing_characteristics}
 \end{figure}
