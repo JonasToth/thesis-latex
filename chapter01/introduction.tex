@@ -24,25 +24,4 @@
     \item bad lighting conditions
 \end{itemize}
 
-\subsection{Other Approach}
-
-\begin{itemize}
-    \item Scaramuzza\cite{Scaramuzza2007} presented work on registering a camera to a laserscaner using manually selected features in the laserscan and the image
-    \item prior conversion of the laserscan to an image dubbed \Glspl{bearing-angle-image}
-    \item converted image shows the local geometric structure exposed to the scan
-
-    \item Lin et.al\cite{Lin2017} applied SURF feature detection on \Glspl{bearing-angle-image}
-    \item this allows feature based posed estimation with the classical workflow used in SLAM algorithms
-\end{itemize}
-
-\subsection{Improvements}
-
-\begin{itemize}
-    \item \Glspl{bearing-angle} is calculated in only one direction and can therefore not be rotation invariant
-    \item this work proposes \Glspl{flexion-image} that encodes the local geometry in all directions and is rotation invariant
-    \item multiple state-of-the-art keypoint detectors and feature descriptors are compared between \Glspl{flexion-image} and \Glspl{bearing-angle-image} on various datasets taken with Kinect v2 and a full Laserscan
-    \item evaluation shows better performance of \Glspl{flexion-image} with regard to keypoint quality and feature description
-\end{itemize}
-
 \subsection{Structure of this Thesis}
-
