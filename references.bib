@@ -12,357 +12,6 @@ title = {{Differentialgeometrie}},
 year = {2008}
 }
 
-@article{Oishi2019,
-abstract = {This paper presents a new approach to view-based localization and navigation in outdoor environments, which are indispensable functions for mobile robots. Several approaches have been proposed for autonomous navigation. GPS-based systems are widely used especially in the case of automobiles, however, they can be unreliable or non-operational near tall buildings. Localization with a precise 3D digital map of the target environment also enables mobile robots equipped with range sensors to estimate accurate poses, but maintaining a large-scale outdoor map is often costly. We have therefore developed a novel view-based localization method SeqSLAM++ by extending the conventional SeqSLAM in order not only to robustly estimate the robot position comparing image sequences but also to cope with changes in a robot's heading and speed as well as view changes using wide-angle images and a Markov localization scheme. According to the direction to move provided by the SeqSLAM++, the local-level path planner navigates the robot by setting subgoals repeatedly considering the structure of the surrounding environment using a 3D LiDAR. The entire navigation system has been implemented in the ROS framework, and the effectiveness and accuracy of the proposed method was evaluated through off-line/on-line navigation experiments.},
-author = {Oishi, Shuji and Inoue, Yohei and Miura, Jun and Tanaka, Shota},
-doi = {10.1016/j.robot.2018.10.014},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Oishi et al. - 2019 - SeqSLAM View-based robot localization and navigation.pdf:pdf},
-issn = {09218890},
-journal = {Robotics and Autonomous Systems},
-keywords = {Mobile robot,Navigation,SeqSLAM,View-based localization},
-month = {feb},
-pages = {13--21},
-publisher = {Elsevier B.V.},
-title = {{SeqSLAM++: View-based robot localization and navigation}},
-volume = {112},
-year = {2019}
-}
-@inproceedings{Yang2017,
-abstract = {3D mapping is a difficult problem due to real-world places whose appearance and scale can be various. Owing to the rapid development of computer and robot system, remarkable improvements of performance are achieved in 3D map technology, which in turn contribute to the significant advances in SLAM. This paper presents the state-of-the-art 3D map technology and system, which is classified into topological maps, metric maps and semantic maps. Additionally, the advantages and disadvantages of various 3D map technologies are analyzed in different aspects, including navigation performance, localization performance, visual perception, scalability, computation cost and mapping difficulty. In order to better understand them, the key performance parameters of the 3D map technologies are compared in a table. Finally, the paper ends with a discussion on the open problems and future of 3D map technology. {\&}copy; Springer Nature Singapore Pte Ltd. 2017.},
-author = {Yang, Aolei and Luo, Yu and Chen, Ling and Xu, Yulin},
-booktitle = {Communications in Computer and Information Science},
-doi = {10.1007/978-981-10-6370-1_41},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Yang et al. - 2017 - Survey of 3D map in SLAM Localization and navigation.pdf:pdf},
-isbn = {9789811063695},
-issn = {18650929},
-keywords = {3D map,Localization,Navigation,SLAM},
-pages = {410--420},
-publisher = {Springer Verlag},
-title = {{Survey of 3D map in SLAM: Localization and navigation}},
-volume = {761},
-year = {2017}
-}
-@incollection{Tsintotas2019,
-abstract = {Off-the-shelf electronic market is large, diverse and easily accessible by many. Credit card size computers (example: Raspberry Pi) or micro-controller boards (example: Arduino) can be used for learning how to code and how to control embedded systems. Nevertheless, there is a lack of off-the-shelf, open source devices that would enable us to learn about and make use of human signal processing. An example of such a device is an electromyograph (EMG). In this paper we investigated, if an EMG device could fulfill the aforementioned gap. EMG device we used for conducting our experiment was a five channel open source EMG Arduino shield. The performance of the device was evaluated on three healthy male subjects. They were instructed to perform basic finger movements which we classified and executed on the robotic hand. The EMG signal classification was performed using a Support Vector Machine (SVM) algorithm. In our experimental setup the average EMG signal classification accuracy was 78.29{\{}{\%}{\}}. This we believe demonstrates there are EMG devices on the market today that provide access to cost effective prototyping and learning about EMG signals.},
-author = {Tsintotas, Konstantinos A. and Bampis, Loukas and Rallis, Stelios and Gasteratos, Antonios},
-booktitle = {Mechanisms and Machine Science},
-doi = {10.1007/978-3-030-00232-9_61},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Tsintotas et al. - 2019 - SeqSLAM with bag of visual words for appearance based loop closure detection.pdf:pdf},
-issn = {22110992},
-keywords = {Bags of words,Loop closure detection,Mobile robotics,SLAM,SeqSLAM},
-pages = {580--587},
-publisher = {Springer Netherlands},
-title = {{SeqSLAM with bag of visual words for appearance based loop closure detection}},
-volume = {67},
-year = {2019}
-}
-@techreport{Sunderhauf2013,
-abstract = {When operating over extended periods of time, an autonomous system will inevitably be faced with severe changes in the appearance of its environment. Coping with such changes is more and more in the focus of current robotics research. In this paper, we foster the development of robust place recognition algorithms in changing environments by describing a new dataset that was recorded during a 728 km long journey in spring, summer, fall, and winter. Approximately 40 hours of full-HD video cover extreme seasonal changes over almost 3000 km in both natural and man-made environments. Furthermore, accurate ground truth information are provided. To our knowledge, this is by far the largest SLAM dataset available at the moment. In addition, we introduce an open source Matlab implementation of the recently published SeqSLAM algorithm and make it available to the community. We benchmark SeqSLAM using the novel dataset and analyse the influence of important parameters and algorithmic steps.},
-author = {S{\"{u}}nderhauf, Niko and Protzel, Peter},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/S{\"{u}}nderhauf, Protzel - 2013 - Are we there yet challenging SeqSLAM on a 3000 km journey across all four seasons.pdf:pdf},
-title = {{Are we there yet? challenging SeqSLAM on a 3000 km journey across all four seasons}},
-url = {http://www.tu-chemnitz.de/etit/proaut},
-year = {2013}
-}
-@article{Taketomi2017,
-abstract = {SLAM is an abbreviation for simultaneous localization and mapping, which is a technique for estimating sensor motion and reconstructing structure in an unknown environment. Especially, Simultaneous Localization and Mapping (SLAM) using cameras is referred to as visual SLAM (vSLAM) because it is based on visual information only. vSLAM can be used as a fundamental technology for various types of applications and has been discussed in the field of computer vision, augmented reality, and robotics in the literature. This paper aims to categorize and summarize recent vSLAM algorithms proposed in different research communities from both technical and historical points of views. Especially, we focus on vSLAM algorithms proposed mainly from 2010 to 2016 because major advance occurred in that period. The technical categories are summarized as follows: feature-based, direct, and RGB-D camera-based approaches.},
-author = {Taketomi, Takafumi and Uchiyama, Hideaki and Ikeda, Sei},
-doi = {10.1186/s41074-017-0027-2},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Taketomi, Uchiyama, Ikeda - 2017 - Visual SLAM algorithms a survey from 2010 to 2016.pdf:pdf},
-journal = {IPSJ Transactions on Computer Vision and Applications},
-month = {dec},
-number = {1},
-publisher = {Springer Nature},
-title = {{Visual SLAM algorithms: a survey from 2010 to 2016}},
-volume = {9},
-year = {2017}
-}
-@techreport{Sattlera,
-abstract = {Recently developed Structure from Motion (SfM) reconstruction approaches enable the creation of large scale 3D models of urban scenes. These compact scene representations can then be used for accurate image-based localiza-tion, creating the need for localization approaches that are able to efficiently handle such large amounts of data. An important bottleneck is the computation of 2D-to-3D correspondences required for pose estimation. Current state-of-the-art approaches use indirect matching techniques to accelerate this search. In this paper we demonstrate that direct 2D-to-3D matching methods have a considerable potential for improving registration performance. We derive a direct matching framework based on visual vocabulary quantization and a prioritized correspondence search. Through extensive experiments, we show that our framework efficiently handles large datasets and outperforms current state-of-the-art methods.},
-author = {Sattler, Torsten and Leibe, Bastian and Kobbelt, Leif},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Sattler, Leibe, Kobbelt - Unknown - Fast Image-Based Localization using Direct 2D-to-3D Matching.pdf:pdf},
-title = {{Fast Image-Based Localization using Direct 2D-to-3D Matching}},
-url = {http://www.graphics.rwth-aachen.de/localization}
-}
-@inproceedings{Sattler2017,
-abstract = {Accurate visual localization is a key technology for autonomous navigation. 3D structure-based methods employ 3D models of the scene to estimate the full 6DOF pose of a camera very accurately. However, constructing (and extending) large-scale 3D models is still a significant challenge. In contrast, 2D image retrieval-based methods only require a database of geo-tagged images, which is trivial to construct and to maintain. They are often considered inaccurate since they only approximate the positions of the cameras. Yet, the exact camera pose can theoretically be recovered when enough relevant database images are retrieved. In this paper, we demonstrate experimentally that large-scale 3D models are not strictly necessary for accurate visual localization. We create reference poses for a large and challenging urban dataset. Using these poses, we show that combining image-based methods with local reconstructions results in a pose accuracy similar to the state-of-the-art structure-based methods. Our results suggest that we might want to reconsider the current approach for accurate large-scale localization.},
-author = {Sattler, Torsten and Torii, Akihiko and Sivic, Josef and Pollefeys, Marc and Taira, Hajime and Okutomi, Masatoshi and Pajdla, Tomas},
-booktitle = {Proceedings - 30th IEEE Conference on Computer Vision and Pattern Recognition, CVPR 2017},
-doi = {10.1109/CVPR.2017.654},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Sattler et al. - 2017 - Are large-scale 3D models really necessary for accurate visual localization.pdf:pdf},
-isbn = {9781538604571},
-month = {nov},
-pages = {6175--6184},
-publisher = {Institute of Electrical and Electronics Engineers Inc.},
-title = {{Are large-scale 3D models really necessary for accurate visual localization?}},
-volume = {2017-Janua},
-year = {2017}
-}
-@techreport{Sattler,
-abstract = {We propose a powerful pipeline for determining the pose of a query image relative to a point cloud reconstruction of a large scene consisting of more than one million 3D points. The key component of our approach is an efficient and effective search method to establish matches between image features and scene points needed for pose estimation. Our main contribution is a framework for actively searching for additional matches, based on both 2D-to-3D and 3D-to-2D search. A unified formulation of search in both directions allows us to exploit the distinct advantages of both strategies, while avoiding their weaknesses. Due to active search, the resulting pipeline is able to close the gap in registration performance observed between efficient search methods and approaches that are allowed to run for multiple seconds, without sacrificing run-time efficiency. Our method achieves the best registration performance published so far on three standard benchmark datasets, with run-times comparable or superior to the fastest state-of-the-art methods.},
-author = {Sattler, Torsten and Leibe, Bastian and Kobbelt, Leif},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Sattler, Leibe, Kobbelt - Unknown - Improving Image-Based Localization by Active Correspondence Search.pdf:pdf},
-title = {{Improving Image-Based Localization by Active Correspondence Search}},
-url = {www.springerlink.com.}
-}
-@inproceedings{Sattler2018,
-abstract = {Visual localization enables autonomous vehicles to navigate in their surroundings and augmented reality applications to link virtual to real worlds. Practical visual localization approaches need to be robust to a wide variety of viewing condition, including day-night changes, as well as weather and seasonal variations, while providing highly accurate 6 degree-of-freedom (6DOF) camera pose estimates. In this paper, we introduce the first benchmark datasets specifically designed for analyzing the impact of such factors on visual localization. Using carefully created ground truth poses for query images taken under a wide variety of conditions, we evaluate the impact of various factors on 6DOF camera pose estimation accuracy through extensive experiments with state-of-the-art localization approaches. Based on our results, we draw conclusions about the difficulty of different conditions, showing that long-term localization is far from solved, and propose promising avenues for future work, including sequence-based localization approaches and the need for better local features. Our benchmark is available at visuallocalization.net.},
-author = {Sattler, Torsten and Maddern, Will and Toft, Carl and Torii, Akihiko and Hammarstrand, Lars and Stenborg, Erik and Safari, Daniel and Okutomi, Masatoshi and Pollefeys, Marc and Sivic, Josef and Kahl, Fredrik and Pajdla, Tomas},
-booktitle = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
-doi = {10.1109/CVPR.2018.00897},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Sattler et al. - 2018 - Benchmarking 6DOF Outdoor Visual Localization in Changing Conditions.pdf:pdf},
-isbn = {9781538664209},
-issn = {10636919},
-month = {dec},
-pages = {8601--8610},
-publisher = {IEEE Computer Society},
-title = {{Benchmarking 6DOF Outdoor Visual Localization in Changing Conditions}},
-year = {2018}
-}
-@inproceedings{Sattler2009,
-abstract = {Geometric verification with RANSAC has become a crucial step for many local feature based matching applications. Therefore, the details of its implementation are directly relevant for an application's run-time and the quality of the estimated results. In this paper, we propose a RANSAC extension that is several orders of magnitude faster than standard RANSAC and as fast as and more robust to degenerate configurations than PROSAC, the currently fastest RANSAC extension from the literature. In addition, our proposed method is simple to implement and does not require parameter tuning. Its main component is a spatial consistency check that results in a reduced correspondence set with a significantly increased inlier ratio, leading to faster convergence of the remaining estimation steps. In addition, we experimentally demonstrate that RANSAC can operate entirely on the reduced set not only for sampling, but also for its consensus step, leading to additional speed-ups. The resulting approach is widely applicable and can be readily combined with other extensions from the literature. We quantitatively evaluate our approach's robustness on a variety of challenging datasets and compare its performance to the state-of-the-art.},
-author = {Sattler, Torsten and Leibe, Bastian and Kobbelt, Leif},
-booktitle = {Proceedings of the IEEE International Conference on Computer Vision},
-doi = {10.1109/ICCV.2009.5459459},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Sattler, Leibe, Kobbelt - 2009 - SCRAMSAC Improving RANSAC's efficiency with a spatial consistency filter.pdf:pdf},
-isbn = {9781424444205},
-pages = {2090--2097},
-title = {{SCRAMSAC: Improving RANSAC's efficiency with a spatial consistency filter}},
-year = {2009}
-}
-@inproceedings{Middelberg2014,
-abstract = {Recent improvements in image-based localization have produced powerful methods that scale up to the massive 3D models emerging from modern Structure-from-Motion techniques. However, these approaches are too resource intensive to run in real-time, let alone to be implemented on mobile devices. In this paper, we propose to combine the scalability of such a global localization system running on a server with the speed and precision of a local pose tracker on a mobile device. Our approach is both scalable and drift-free by design and eliminates the need for loop closure. We propose two strategies to combine the information provided by local tracking and global localization. We evaluate our system on a large-scale dataset of the historic inner city of Aachen where it achieves interactive framerates at a localization error of less than 50cm while using less than 5MB of memory on the mobile device.},
-author = {Middelberg, Sven and Sattler, Torsten and Untzelmann, Ole and Kobbelt, Leif},
-booktitle = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
-doi = {10.1007/978-3-319-10605-2_18},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Middelberg et al. - 2014 - Scalable 6-DOF localization on mobile devices.pdf:pdf},
-isbn = {9783319106045},
-issn = {16113349},
-number = {PART 2},
-pages = {268--283},
-publisher = {Springer Verlag},
-title = {{Scalable 6-DOF localization on mobile devices}},
-volume = {8690 LNCS},
-year = {2014}
-}
-@techreport{Lynen,
-abstract = {Accurately estimating a robot's pose relative to a global scene model and precisely tracking the pose in real-time is a fundamental problem for navigation and obstacle avoidance tasks. Due to the computational complexity of localization against a large map and the memory consumed by the model, state-of-the-art approaches are either limited to small workspaces or rely on a server-side system to query the global model while tracking the pose locally. The latter approaches face the problem of smoothly integrating the server's pose estimates into the trajectory computed locally to avoid temporal discontinuities. In this paper, we demonstrate that large-scale, real-time pose estimation and tracking can be performed on mobile platforms with limited resources without the use of an external server. This is achieved by employing map and descriptor compression schemes as well as efficient search algorithms from computer vision. We derive a formulation for integrating the global pose information into a local state estimator that produces much smoother trajectories than current approaches. Through detailed experiments, we evaluate each of our design choices individually and document its impact on the overall system performance, demonstrating that our approach outperforms state-of-the-art algorithms for localization at scale.},
-author = {Lynen, Simon and Sattler, Torsten and Bosse, Michael and Hesch, Joel and Pollefeys, Marc and Siegwart, Roland},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Lynen et al. - Unknown - Get Out of My Lab Large-scale, Real-Time Visual-Inertial Localization.pdf:pdf},
-title = {{Get Out of My Lab: Large-scale, Real-Time Visual-Inertial Localization}}
-}
-@inproceedings{Sattler2012a,
-abstract = {To reliably determine the camera pose of an image relative to a 3D point cloud of a scene, correspondences between 2D features and 3D points are needed. Recent work has demonstrated that directly matching the features against the points outperforms methods that take an intermediate image retrieval step in terms of the number of images that can be localized successfully. Yet, direct matching is inherently less scalable than retrieval-based approaches. In this paper, we therefore analyze the algorithmic factors that cause the performance gap and identify false positive votes as the main source of the gap. Based on a detailed experimental evaluation, we show that retrieval methods using a selective voting scheme are able to outperform state-of-the-art direct matching methods. We ex-plore how both selective voting and correspondence computation can be accelerated by using a Hamming embedding of feature descriptors. Furthermore, we introduce a new dataset with challenging query images for the evaluation of image-based localization.},
-author = {Sattler, Torsten and Weyand, Tobias and Leibe, Bastian and Kobbelt, Leif},
-doi = {10.5244/c.26.76},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Sattler et al. - 2012 - Image Retrieval for Image-Based Localization Revisited.pdf:pdf},
-month = {sep},
-pages = {76.1--76.12},
-publisher = {British Machine Vision Association and Society for Pattern Recognition},
-title = {{Image Retrieval for Image-Based Localization Revisited}},
-year = {2012}
-}
-@inproceedings{Sattler2012,
-abstract = {Abstract Recent developments in Structure-from-Motion approaches allow the reconstructions of large parts of urban scenes. The available models can in turn be used for accurate image - based localization via pose estimation from 2D-to-3D correspondences. ...},
-author = {Sattler, Torsten and Leibe, Bastian and Kobbelt, Leif},
-booktitle = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
-doi = {10.1007/978-3-642-34091-8_9},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Sattler, Leibe, Kobbelt - 2012 - Towards fast image-based localization on a city-scale.pdf:pdf},
-isbn = {9783642340901},
-issn = {03029743},
-keywords = {camera pose estimation,image localization,image retrieval},
-pages = {191--211},
-title = {{Towards fast image-based localization on a city-scale}},
-volume = {7474 LNCS},
-year = {2012}
-}
-@incollection{Rangarajan1997,
-abstract = {The problem of matching shapes parameterized as a set of points is frequently encountered in medical imaging tasks. When the point-sets are derived from landmarks, there is usually no problem of determining the correspondences or homologies between the two sets of landmarks. However, when the point sets are automatically derived from images, the difficult problem of establishing correspondence and rejecting non-homologies as outliers remains. The Procrustes method is a well-known method of shape comparison and can always be pressed into service when homologies between point-sets are known in advance. This paper presents a powerful extension of the Procrustes method to pointsets of differing point counts with correspondences unknown. The result is the softassign Procrustes matching algorithm which iteratively establishes correspondence, rejects non-homologies as outliers, determines the Procrustes rescaling and the spatial mapping between the point-sets.},
-author = {Rangarajan, Anand and Chui, Haili and Bookstein, Fred L.},
-doi = {10.1007/3-540-63046-5_3},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Rangarajan, Chui, Bookstein - 1997 - The softassign Procrustes matching algorithm.pdf:pdf},
-pages = {29--42},
-title = {{The softassign Procrustes matching algorithm}},
-year = {1997}
-}
-@misc{Pluim2003,
-abstract = {An overview is presented of the medical image processing literature on mutual-information-based registration. The aim of the survey is threefold: an introduction for those new to the field, an overview for those working in the field, and a reference for those searching for literature on a specific application. Methods are classified according to the different aspects of mutual-information-based registration. The main division is in aspects of the methodology and of the application. The part on methodology describes choices made on facets such as preprocessing of images, gray value interpolation, optimization, adaptations to the mutual information measure, and different types of geometrical transformations. The part on applications is a reference of the literature available on different modalities, on interpatient registration and on different anatomical objects. Comparison studies including mutual information are also considered. The paper starts with a description of entropy and mutual information and it closes with a discussion on past achievements and some future challenges.},
-author = {Pluim, Josien P.W. and Maintz, J. B.A.Antoine and Viergever, Max A.},
-booktitle = {IEEE Transactions on Medical Imaging},
-doi = {10.1109/TMI.2003.815867},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Pluim, Maintz, Viergever - 2003 - Mutual-information-based registration of medical images A survey.pdf:pdf},
-issn = {02780062},
-keywords = {Image registration,Literature survey,Matching,Mutual information},
-month = {aug},
-number = {8},
-pages = {986--1004},
-title = {{Mutual-information-based registration of medical images: A survey}},
-volume = {22},
-year = {2003}
-}
-@inproceedings{Pless2003,
-abstract = {We illustrate how to consider a network of cameras as a single generalized camera in a framework proposed by Nayar (2001). We derive the discrete structure from motion equations for generalized cameras, and illustrate the corollaries to epipolar geometry. This formal mechanism allows one to use a network of cameras as if they were a single imaging device, even when they do not share a common center of projection. Furthermore, an analysis of structure from motion algorithms for this imaging model gives constraints on the optimal design of panoramic imaging systems constructed from multiple cameras.},
-author = {Pless, R.},
-doi = {10.1109/cvpr.2003.1211520},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Pless - 2003 - Using many cameras as one.pdf:pdf},
-month = {dec},
-pages = {II--587--93},
-publisher = {Institute of Electrical and Electronics Engineers (IEEE)},
-title = {{Using many cameras as one}},
-year = {2003}
-}
-@inproceedings{Pascoe2015,
-abstract = {— This paper is concerned with large-scale locali-sation at city scales with monocular cameras. Our primary motivation lies with the development of autonomous road vehicles — an application domain in which low-cost sensing is particularly important. Here we present a method for localising against a textured 3-dimensional prior mesh using a monocular camera. We first present a system for generating and texturing the prior using a LIDAR scanner and camera. We then describe how we can localise against that prior with a single camera, using an information-theoretic measure of image similarity. This process requires dealing with the distortions induced by a wide-angle camera. We present and justify an interesting approach to this issue in which we distort the prior map into the image rather than vice-versa. Finally we explain how the general purpose computation functionality of a modern GPU is particularly apt for our task, allowing us to run the system in real time. We present results showing centimetre-level localisation accuracy through a city over six kilometres.},
-author = {Pascoe, Geoffrey and Maddern, Will and Stewart, Alexander D. and Newman, Paul},
-booktitle = {Proceedings - IEEE International Conference on Robotics and Automation},
-doi = {10.1109/ICRA.2015.7140093},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Pascoe et al. - 2015 - FARLAP Fast robust localisation using appearance priors.pdf:pdf},
-issn = {10504729},
-month = {jun},
-number = {June},
-pages = {6366--6373},
-publisher = {Institute of Electrical and Electronics Engineers Inc.},
-title = {{FARLAP: Fast robust localisation using appearance priors}},
-volume = {2015-June},
-year = {2015}
-}
-@article{Geppert2018,
-abstract = {Visual localization, i.e., determining the position and orientation of a vehicle with respect to a map, is a key problem in autonomous driving. We present a multicamera visual inertial localization algorithm for large scale environments. To efficiently and effectively match features against a pre-built global 3D map, we propose a prioritized feature matching scheme for multi-camera systems. In contrast to existing works, designed for monocular cameras, we (1) tailor the prioritization function to the multi-camera setup and (2) run feature matching and pose estimation in parallel. This significantly accelerates the matching and pose estimation stages and allows us to dynamically adapt the matching efforts based on the surrounding environment. In addition, we show how pose priors can be integrated into the localization system to increase efficiency and robustness. Finally, we extend our algorithm by fusing the absolute pose estimates with motion estimates from a multi-camera visual inertial odometry pipeline (VIO). This results in a system that provides reliable and drift-less pose estimation. Extensive experiments show that our localization runs fast and robust under varying conditions, and that our extended algorithm enables reliable real-time pose estimation.},
-archivePrefix = {arXiv},
-arxivId = {1809.06445},
-author = {Geppert, Marcel and Liu, Peidong and Cui, Zhaopeng and Pollefeys, Marc and Sattler, Torsten},
-eprint = {1809.06445},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Geppert et al. - 2018 - Efficient 2D-3D Matching for Multi-Camera Visual Localization.pdf:pdf},
-month = {sep},
-title = {{Efficient 2D-3D Matching for Multi-Camera Visual Localization}},
-url = {http://arxiv.org/abs/1809.06445},
-year = {2018}
-}
-@techreport{Li,
-abstract = {We address the problem of determining where a photo was taken by estimating a full 6-DOF-plus-intrincs camera pose with respect to a large geo-registered 3D point cloud, bringing together research on image localization, landmark recognition, and 3D pose estimation. Our method scales to datasets with hundreds of thousands of images and tens of millions of 3D points through the use of two new techniques: a co-occurrence prior for RANSAC and bidirectional matching of image features with 3D points. We evaluate our method on several large data sets, and show state-of-the-art results on landmark recognition as well as the ability to locate cameras to within meters, requiring only seconds per query.},
-author = {Li, Yunpeng and Snavely, Noah and Huttenlocher, Dan and Fua, Pascal},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Li et al. - Unknown - Worldwide Pose Estimation using 3D Point Clouds.pdf:pdf},
-title = {{Worldwide Pose Estimation using 3D Point Clouds}}
-}
-@techreport{Liu,
-abstract = {The photorealistic modeling of large-scale objects, such as urban scenes, requires the combination of range sensing technology and digital photography. In this paper, we attack the key problem of camera pose estimation, in an automatic and efficient way. First, the camera orientation is recovered by matching vanishing points (extracted from 2D images) with 3D directions (derived from a 3D range model). Then, a hypothesis-and-test algorithm computes the camera positions with respect to the 3D range model by matching corresponding 2D and 3D linear features. The camera positions are further optimized by minimizing a line-to-line distance. The advantage of our method over earlier work has to do with the fact we do not need to rely on extracted planar facades , or other higher-order features; we are utilizing low-level linear features. That makes this method more general, robust, and efficient. Our method can also be enhanced by the incorporation of traditional structure-from-motion algorithms. We have also developed a user-interface for allowing users to accurately texture-map 2D images onto 3D range models at interactive rates. We have tested our system in a large variety of urban scenes.},
-author = {Liu, Lingyun and Stamos, Ioannis},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Liu, Stamos - Unknown - A systematic approach for 2D-image to 3D-range registration in urban environments.pdf:pdf},
-title = {{A systematic approach for 2D-image to 3D-range registration in urban environments *}}
-}
-@article{Hel-Or2014,
-abstract = {A fast pattern matching scheme termed matching by tone mapping (MTM) is introduced which allows matching under nonlinear tone mappings. We show that, when tone mapping is approximated by a piecewise constant/linear function, a fast computational scheme is possible requiring computational time similar to the fast implementation of normalized cross correlation (NCC). In fact, the MTM measure can be viewed as a generalization of the NCC for nonlinear mappings and actually reduces to NCC when mappings are restricted to be linear. We empirically show that the MTM is highly discriminative and robust to noise with comparable performance capability to that of the well performing mutual information, but on par with NCC in terms of computation time.},
-author = {Hel-Or, Yacov and Hel-Or, Hagit and David, Eyal},
-doi = {10.1109/TPAMI.2013.138},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Hel-Or, Hel-Or, David - 2014 - Matching by tone mapping Photometric invariant template matching.pdf:pdf},
-issn = {01628828},
-journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
-keywords = {MTM,Pattern matching,matching by tone mapping,nonlinear tone mapping,photometric invariance,structural similarity,template matching},
-month = {feb},
-number = {2},
-pages = {317--330},
-title = {{Matching by tone mapping: Photometric invariant template matching}},
-volume = {36},
-year = {2014}
-}
-@article{Gesto-Diaz2017,
-abstract = {This paper proposes a study and evaluation of approaches aimed at image matching under different modalities, together with a survey of methodologies used for performance comparison in this specific context, and, finally, a novel algorithm for image matching. First, a new dataset is introduced to overcome the limitations of existing datasets, which includes modalities such as visible, thermal, intensity and depth images. This dataset is used to compare the state of the art of feature detectors and descriptors. Template matching techniques commonly used to carry out multimodal correspondence are also adapted and compared therein. In total, 28 different combinations of detectors and descriptors are evaluated. In addition, the detectors' repeatability and the assessment of matching results based on Receiving Operating Characteristic (ROC) curve associated to all tested detector-descriptor combinations are presented, highlighting the best performing pairs. Finally, a novel Adaptive Pairwise Matching (APM) algorithm created to improve the robustness of matching towards outliers is also proposed and tested within our evaluation framework.},
-author = {Gesto-Diaz, M. and Tombari, F. and Gonzalez-Aguilera, D. and Lopez-Fernandez, L. and Rodriguez-Gonzalvez, P.},
-doi = {10.1016/j.isprsjprs.2017.05.007},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Gesto-Diaz et al. - 2017 - Feature matching evaluation for multimodal correspondence.pdf:pdf},
-issn = {09242716},
-journal = {ISPRS Journal of Photogrammetry and Remote Sensing},
-keywords = {Descriptor,Detector,Features,Image matching,Keypoints,Multimodal,Registration},
-month = {jul},
-pages = {179--188},
-publisher = {Elsevier B.V.},
-title = {{Feature matching evaluation for multimodal correspondence}},
-volume = {129},
-year = {2017}
-}
-@article{Grisetti2010,
-abstract = {—Being able to build a map of the environment and to simultaneously localize within this map is an essential skill for mobile robots navigating in unknown environments in absence of external referencing systems such as GPS. This so-called simultaneous localization and mapping (SLAM) problem has been one of the most popular research topics in mobile robotics for the last two decades and efficient approaches for solving this task have been proposed. One intuitive way of formulating SLAM is to use a graph whose nodes correspond to the poses of the robot at different points in time and whose edges represent constraints between the poses. The latter are obtained from observations of the environment or from movement actions carried out by the robot. Once such a graph is constructed, the map can be computed by finding the spatial configuration of the nodes that is mostly consistent with the measurements modeled by the edges. In this paper, we provide an introductory description to the graph-based SLAM problem. Furthermore, we discuss a state-of-the-art solution that is based on least-squares error minimization and exploits the structure of the SLAM problems during optimization. The goal of this tutorial is to enable the reader to implement the proposed methods from scratch.},
-author = {Grisetti, Giorgio and Kummerle, Rainer and Stachniss, Cyrill and Burgard, Wolfram},
-doi = {10.1109/MITS.2010.939925},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Grisetti et al. - 2010 - A tutorial on graph-based SLAM.pdf:pdf},
-journal = {IEEE Intelligent Transportation Systems Magazine},
-month = {dec},
-number = {4},
-pages = {31--43},
-title = {{A tutorial on graph-based SLAM}},
-volume = {2},
-year = {2010}
-}
-@inproceedings{Grossberg2002,
-abstract = {Linear perspective projection has served as the dominant imaging$\backslash$nmodel in computer vision. Recent developments in image sensing make the$\backslash$nperspective model highly restrictive. This paper presents a general$\backslash$nimaging model that can be used to represent an arbitrary imaging system.$\backslash$nIt is observed that all imaging systems perform a mapping from incoming$\backslash$nscene rays to photo-sensitive elements on the image detector. This$\backslash$nmapping can be conveniently described using a set of virtual sensing$\backslash$nelements called raxels. Raxels include geometric, radiometric and$\backslash$noptical properties. We present a novel calibration method that uses$\backslash$nstructured light patterns to extract the raxel parameters of an$\backslash$narbitrary imaging system. Experimental results for perspective as well$\backslash$nas ion-perspective imaging systems are included},
-author = {Grossberg, M.D. and Nayar, S.K.},
-doi = {10.1109/iccv.2001.937611},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Grossberg, Nayar - 2002 - A general imaging model and a method for finding its parameters.pdf:pdf},
-month = {nov},
-pages = {108--115},
-publisher = {Institute of Electrical and Electronics Engineers (IEEE)},
-title = {{A general imaging model and a method for finding its parameters}},
-year = {2002}
-}
-@article{Cadena2016,
-abstract = {Simultaneous Localization and Mapping (SLAM)consists in the concurrent construction of a model of the environment (the map), and the estimation of the state of the robot moving within it. The SLAM community has made astonishing progress over the last 30 years, enabling large-scale real-world applications, and witnessing a steady transition of this technology to industry. We survey the current state of SLAM. We start by presenting what is now the de-facto standard formulation for SLAM. We then review related work, covering a broad set of topics including robustness and scalability in long-term mapping, metric and semantic representations for mapping, theoretical performance guarantees, active SLAM and exploration, and other new frontiers. This paper simultaneously serves as a position paper and tutorial to those who are users of SLAM. By looking at the published research with a critical eye, we delineate open challenges and new research issues, that still deserve careful scientific investigation. The paper also contains the authors' take on two questions that often animate discussions during robotics conferences: Do robots need SLAM? and Is SLAM solved?},
-author = {Cadena, Cesar and Carlone, Luca and Carrillo, Henry and Latif, Yasir and Scaramuzza, Davide and Neira, Jose and Reid, Ian and Leonard, John J.},
-doi = {10.1109/TRO.2016.2624754},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Cadena et al. - 2016 - Past, present, and future of simultaneous localization and mapping Toward the robust-perception age.pdf:pdf},
-issn = {15523098},
-journal = {IEEE Transactions on Robotics},
-keywords = {Factor graphs,localization,mapping,maximum a posteriori estimation,perception,robots,sensing,simultaneous localization and mapping (SLAM)},
-month = {dec},
-number = {6},
-pages = {1309--1332},
-publisher = {Institute of Electrical and Electronics Engineers Inc.},
-title = {{Past, present, and future of simultaneous localization and mapping: Toward the robust-perception age}},
-volume = {32},
-year = {2016}
-}
-@techreport{Dold,
-abstract = {The fully automatic registration of terrestrial scan data is still a major topic for many research groups. Existent methods used in commercial software often use artificial markers which are placed in the scene and measured from each scan position. This is a reliable method to get the transformation parameters, but it is not very efficient. These manual or semi-automated registration techniques should be substituted by new methods in order to make terrestrial laser scanning also profitable for larger projects. In this paper we present a registration method based on the extraction of planar patches from 3D laser scanning data. A search technique is used to find corresponding patches in two overlapping scan positions. Since laser scanning instruments are nowadays often equipped with an additional image sensor, we also use the image information to improve the registration process. Assuming that the calibration parameters of a hybrid sensor system are known, the extracted planar patches can be textured automatically. The correlation between corresponding textured patches can be calculated and the registration method is improved by shifting the patches until they fit best.},
-author = {Dold, Christoph and Brenner, Claus},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Dold, Brenner - Unknown - REGISTRATION OF TERRESTRIAL LASER SCANNING DATA USING PLANAR PATCHES AND IMAGE DATA.pdf:pdf},
-keywords = {Fusion,LIDAR,Laser scanning,Matching,Registration,Terrestrial},
-title = {{REGISTRATION OF TERRESTRIAL LASER SCANNING DATA USING PLANAR PATCHES AND IMAGE DATA}},
-url = {http://www.ikg.uni-hannover.de/3d-citymodels.html}
-}
-@techreport{Elmenreich2002,
-abstract = {This paper gives an overview over the basic concepts of sensor fusion. First we investigate on definitions and terminology and then discuss motivations and limitations of sensor fusion. The next sections present a survey on architectures for sensor fusion and describe algorithms and methods like the Kalman Filter, inference methods, and the application of sensor fusion in robotic vision. Sensor fusion offers a great opportunity to overcome physical limitations of sensing systems. An important point will be the reduction of software complexity, in order to hide the properties of the physical sensors behind a sensor fusion layer.},
-author = {Elmenreich, Wilfried},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Elmenreich - 2002 - An Introduction to Sensor Fusion CPSwarm View project Flexible Real-Time Control and Diagnostic System for Applicati.pdf:pdf},
-keywords = {Kalman Filter,fusion model,inference,information fusion,occupancy grids,sensor fusion,terminology},
-title = {{An Introduction to Sensor Fusion CPSwarm View project Flexible Real-Time Control and Diagnostic System for Application Related Stress Testing View project An Introduction to Sensor Fusion}},
-url = {https://www.researchgate.net/publication/267771481},
-year = {2002}
-}
-@techreport{Durrant-Whyte,
-abstract = {This tutorial provides an introduction to Simultaneous Localisation and Mapping (SLAM) and the extensive research on SLAM that has been undertaken over the past decade. SLAM is the process by which a mobile robot can build a map of an environment and at the same time use this map to compute it's own location. The past decade has seen rapid and exciting progress in solving the SLAM problem together with many compelling implementations of SLAM methods. Part I of this tutorial (this paper), describes the probabilistic form of the SLAM problem, essential solution methods and significant implementations. Part II of this tutorial will be concerned with recent advances in computational methods and new formulations of the SLAM problem for large scale and complex environments.},
-author = {Durrant-Whyte, Hugh and Bailey, Tim},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Durrant-Whyte, Bailey - Unknown - Simultaneous Localisation and Mapping (SLAM) Part I The Essential Algorithms.pdf:pdf},
-title = {{Simultaneous Localisation and Mapping (SLAM): Part I The Essential Algorithms}}
-}
-@article{Cummins2008,
-abstract = {This paper describes a probabilistic approach to the problem of recognizing places based on their appearance. The system we present is not limited to localization, but can determine that a new observation comes from a previously unseen place, and so augment its map. Effectively this is a SLAM system in the space of appearance. Our probabilistic approach allows us to explicitly account for perceptual aliasing in the environment--identical but indistinctive observations receive a low probability of having come from the same place. We achieve this by learning a generative model of place appearance. By partitioning the learning problem into two parts, new place models can be learned online from only a single observation of a place. The algorithm complexity is linear in the number of places in the map, and is particularly suitable for online loop closure detection in mobile robotics.},
-author = {Cummins, Mark and Newman, Paul},
-doi = {10.1177/0278364908090961},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Cummins, Newman - 2008 - FAB-MAP Probabilistic localization and mapping in the space of appearance.pdf:pdf},
-issn = {02783649},
-journal = {International Journal of Robotics Research},
-keywords = {Appearance based navigation,Place recognition,Topological SLAM},
-month = {jun},
-number = {6},
-pages = {647--665},
-title = {{FAB-MAP: Probabilistic localization and mapping in the space of appearance}},
-volume = {27},
-year = {2008}
-}
-@techreport{Leibe,
-author = {Leibe, B},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Leibe - Unknown - Recap Fitting a Homography • Estimating the transformation • Solution  Null-space vector of A  Corresponds t.pdf:pdf},
-title = {{Recap: Fitting a Homography • Estimating the transformation • Solution:  Null-space vector of A  Corresponds to smallest eigenvector 10}}
-}
 @inproceedings{Crombez2018,
 author = {Crombez, Nathan and Seulin, Ralph and Morel, Olivier and Fofi, David and Demonceaux, Cedric},
 booktitle = {Proceedings - IEEE International Conference on Robotics and Automation},
@@ -375,20 +24,6 @@ pages = {6316--6322},
 publisher = {Institute of Electrical and Electronics Engineers Inc.},
 title = {{Multimodal 2D Image to 3D model registration via a mutual alignment of sparse and dense visual features}},
 year = {2018}
-}
-@article{Crowley1993,
-abstract = {This paper concerns a problem which is basic to perception: the integration of perceptual information into a coherent description of the world. In this paper we present perception as a process of dynamically maintaining a model of the local external environment. Fusion of perceptual information is at the heart of this process. After a brief introduction, we review the background of the problem of fusion in machine vision. We then present fusion as part of the process of dynamic world modelling, and postulate a set of principles for the 'fusion' of independent observations. These principles lead to techniques which permit perceptual fusion with qualitatively different forms of data, treating each source of information as constraints. For numerical information, these principles lead to specific well known tools such as various forms of Kalman filter and Mahalanobis distance. For symbolic information, these principles suggest representing objects and their relations as a conjunction of properties encoded as schema. Dynamic world modelling is a cyclic process composed of the phases: predict, match and update. These phases provide a framework with which we can organize and design perceptual systems. We show that in the case of numerical measurements, this framework leads to the use of a form of Kalman filter for the prediction and update phases, while a Mahalanobis distance is used for matching. In the case of symbolic information, elements of the framework can be constructed with schema and production rules. The framework for perceptual information is illustrated with the architectures of several systems. {\textcopyright} 1993.},
-author = {Crowley, James L. and Demazeau, Yves},
-doi = {10.1016/0165-1684(93)90034-8},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Crowley, Demazeau - 1993 - Principles and techniques for sensor data fusion.pdf:pdf},
-issn = {01651684},
-journal = {Signal Processing},
-keywords = {Kalman filters,Sensor fusion,scene understanding,world modellingl incremental modelling},
-number = {1-2},
-pages = {5--27},
-title = {{Principles and techniques for sensor data fusion}},
-volume = {32},
-year = {1993}
 }
 @article{besl_pami1992,
 author = {Besl, Paul and McKay, Neil D.},
@@ -410,18 +45,18 @@ volume = {XXXVIII-5/},
 year = {2012}
 }
 @book{bellekens_ambient2014,
-  author       = {Bellekens, Ben and Spruyt, Vincent and Maarten Weyn, Rafael Berkvens},
-  booktitle    = {Fourth International Conference on Ambient Computing, Applications, Services and Technologies, Proceedings},
-  isbn         = {9781612083568},
-  issn         = {2326-9324},
-  keywords     = {survey paper,rigid transformation,3D registration,PCL,3D pointcloud},
-  language     = {eng},
-  location     = {Rome, Italy},
-  pages        = {8--13},
-  publisher    = {IARA},
-  title        = {A survey of rigid 3D pointcloud registration algorithms},
-  url          = {http://www.thinkmind.org/download.php?articleid=ambient_2014_1_20_40015},
-  year         = {2014},
+author       = {Bellekens, Ben and Spruyt, Vincent and Maarten Weyn, Rafael Berkvens},
+booktitle    = {Fourth International Conference on Ambient Computing, Applications, Services and Technologies, Proceedings},
+isbn         = {9781612083568},
+issn         = {2326-9324},
+keywords     = {survey paper,rigid transformation,3D registration,PCL,3D pointcloud},
+language     = {eng},
+location     = {Rome, Italy},
+pages        = {8--13},
+publisher    = {IARA},
+title        = {A survey of rigid 3D pointcloud registration algorithms},
+url          = {http://www.thinkmind.org/download.php?articleid=ambient_2014_1_20_40015},
+year         = {2014},
 }
 @inproceedings{biber_iros2003,
 author = {Biber, Peter and Straßer, Wolfgang},
@@ -466,304 +101,6 @@ publisher = {Scitepress},
 title = {{Color Supported Generalized-ICP}},
 year = {2014}
 }
-
-@inproceedings{Aulinas2008,
-abstract = {This paper surveys the most recent published techniques in the field of Simultaneous Localization and Mapping (SLAM). In particular it is focused on the existing techniques available to speed up the process, with the purpose to handel large scale scenarios. The main research field we plan to investigate is the filtering algorithms as a way of reducing the amount of data. It seems that almost all the current approaches can not perform consistent maps for large areas, mainly due to the increase of the computational cost and due to the uncertainties that become prohibitive when the scenario becomes larger. {\textcopyright} 2008 The authors and IOS Press. All rights reserved.},
-author = {Aulinas, Josep and Petillot, Yvan and Salvi, Joaquim and Llad{\'{o}}, Xavier},
-booktitle = {Frontiers in Artificial Intelligence and Applications},
-doi = {10.3233/978-1-58603-925-7-363},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Aulinas et al. - 2008 - The SLAM problem A survey.pdf:pdf},
-isbn = {9781586039257},
-issn = {09226389},
-keywords = {Expectation Maximization,Kalman filter,Particle Filter,SLAM},
-number = {1},
-pages = {363--371},
-publisher = {IOS Press},
-title = {{The SLAM problem: A survey}},
-volume = {184},
-year = {2008}
-}
-@article{Menze2015,
-abstract = {This paper proposes a novel model and dataset for 3D scene flow estimation with an application to autonomous driving. Taking advantage of the fact that outdoor scenes often decompose into a small number of independently mov- ing objects, we represent each element in the scene by its rigid motion parameters and each superpixel by a 3D plane as well as an index to the corresponding object. This minimal representation increases robustness and leads to a discrete-continuous CRF where the data term decomposes into pairwise potentials between superpixels and objects. Moreover, our model intrinsically segments the scene into its constituting dynamic components. We demonstrate the performance of our model on existing benchmarks as well as a novel realistic dataset with scene flow ground truth. We obtain this dataset by annotating 400 dynamic scenes from the KITTI raw data collection using detailed 3D CAD models for all vehicles in motion. Our experiments also re- veal novel challenges which cannot be handled by existing methods. 1.},
-author = {Menze, Moritz and Geiger, Andreas},
-doi = {10.1109/CVPR.2015.7298925},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Menze, Geiger - 2015 - Object scene flow for autonomous vehicles.pdf:pdf},
-isbn = {9781467369640},
-issn = {10636919},
-journal = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
-pages = {3061--3070},
-title = {{Object scene flow for autonomous vehicles}},
-volume = {07-12-June},
-year = {2015}
-}
-@article{Davis2005,
-abstract = {Depth from triangulation has traditionally been investigated in a number of independent threads of research, with methods such as stereo, laser scanning, and coded structured light considered separately. In this paper, we propose a common framework called spacetime stereo that unifies and generalizes many of these previous methods. To show the practical utility of the framework, we develop two new algorithms for depth estimation: depth from unstructured illumination change and depth estimation in dynamic scenes. Based on our analysis, we show that methods derived from the spacetime stereo framework can be used to recover depth in situations in which existing methods perform poorly.},
-author = {Davis, James and Nehab, Diego and Ramamoorthi, Ravi and Rusinkiewicz, Szymon},
-doi = {10.1109/TPAMI.2005.37},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Davis et al. - 2005 - Spacetime stereo A unifying framework for depth from triangulation.pdf:pdf},
-isbn = {0-7695-1900-8},
-issn = {01628828},
-journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
-keywords = {Depth from triangulation,Spacetime stereo,Stereo},
-number = {2},
-pages = {296--302},
-pmid = {15688568},
-title = {{Spacetime stereo: A unifying framework for depth from triangulation}},
-volume = {27},
-year = {2005}
-}
-@article{Courbon2007,
-abstract = {Omnidirectional cameras have a wide field of view and are thus used in many robotic vision tasks. An omnidi- rectional view may be acquired by a fisheye camera which provides a full image compared to catadioptric visual sensors and do not increase the size and the weakness of the imaging system with respect to perspective cameras. We prove that the unified model for catadioptric systems can model fisheye cameras with distortions directly included in its parameters. This unified projection model consists on a projection onto a virtual unitary sphere, followed by a perspective projection onto an image plane. The validity of this assumption is discussed and compared with other existing models. Calibration and partial Euclidean reconstruction results help to confirm the validity of our approach. Finally, an application to the visual servoing of a mobile robot is presented and experimented.},
-author = {Courbon, Jonathan and Mezouar, Youcef and Eck, Laurent and Martinet, Philippe},
-doi = {10.1109/IROS.2007.4399233},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Courbon et al. - 2007 - A generic fisheye camera model for robotic applications.pdf:pdf},
-isbn = {1424409128},
-journal = {IEEE International Conference on Intelligent Robots and Systems},
-number = {c},
-pages = {1683--1688},
-title = {{A generic fisheye camera model for robotic applications}},
-volume = {1},
-year = {2007}
-}
-@inproceedings{Milford2012,
-abstract = {Learning and then recognizing a route, whether travelled during the day or at night, in clear or inclement weather, and in summer or winter is a challenging task for state of the art algorithms in computer vision and robotics. In this paper, we present a new approach to visual navigation under changing conditions dubbed SeqSLAM. Instead of calculating the single location most likely given a current image, our approach calculates the best candidate matching location within every local navigation sequence. Localization is then achieved by recognizing coherent sequences of these “local best matches”. This approach removes the need for global matching performance by the vision front-end - instead it must only pick the best match within any short sequence of images. The approach is applicable over environment changes that render traditional feature-based techniques ineffective. Using two car-mounted camera datasets we demonstrate the effectiveness of the algorithm and compare it to one of the most successful feature-based SLAM algorithms, FAB-MAP. The perceptual change in the datasets is extreme; repeated traverses through environments during the day and then in the middle of the night, at times separated by months or years and in opposite seasons, and in clear weather and extremely heavy rain. While the feature-based method fails, the sequence-based algorithm is able to match trajectory segments at 100{\%} precision with recall rates of up to 60{\%}.},
-author = {Milford, Michael and Wyeth, Gordon},
-booktitle = {Conference: Robotics and Automation (ICRA), 2012 IEEE International Conference on Robotics and Automation},
-doi = {10.1109/ICRA.2012.6224623},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Milford, Wyeth - 2012 - SeqSLAM Visual route-based navigation for sunny summer days and stormy winter nights.pdf:pdf},
-title = {{SeqSLAM: Visual route-based navigation for sunny summer days and stormy winter nights}},
-url = {https://www.researchgate.net/publication/261416457{\_}SeqSLAM{\_}Visual{\_}route-based{\_}navigation{\_}for{\_}sunny{\_}summer{\_}days{\_}and{\_}stormy{\_}winter{\_}nights},
-year = {2012}
-}
-@article{Mei2007,
-abstract = {This paper presents a flexible approach for calibrating omnidirectional single viewpoint sensors from planar grids. These sensors are increasingly used in robotics where accurate calibration is often a prerequisite. Current approaches in the field are either based on theoretical properties and do not take into account important factors such as misalignment or camera-lens distortion or over-parametrised which leads to minimisation problems that are difficult to solve. Recent techniques based on polynomial approximations lead to impractical calibration methods. Our model is based on an exact theoretical projection function to which we add well identified parameters to model real-world errors. This leads to a full methodology from the initialisation of the intrinsic parameters to the general calibration. We also discuss the validity of the approach for fish-eye and spherical models. An implementation of the method is available as OpenSource software on the author's Web page. We validate the approach with the calibration of parabolic, hyperbolic, folded mirror, wide-angle and spherical sensors.},
-author = {Mei, Christopher and Rives, Patrick},
-doi = {10.1109/ROBOT.2007.364084},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Mei, Rives - 2007 - Single View Point Omnidirectional Camera Calibration from Planar Grids.pdf:pdf},
-isbn = {1-4244-0602-1},
-issn = {1050-4729},
-journal = {Proceedings 2007 IEEE International Conference on Robotics and Automation},
-pages = {3945--3950},
-title = {{Single View Point Omnidirectional Camera Calibration from Planar Grids}},
-url = {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=4209702},
-year = {2007}
-}
-@article{Li2013,
-abstract = {This paper presents a novel feature descriptor-based calibration pattern and a Matlab toolbox which uses the specially designed pattern to easily calibrate both the intrin-sics and extrinsics of a multiple-camera system. In contrast to existing calibration patterns, in particular, the ubiquitous chessboard, the proposed pattern contains many more features of varying scales; such features can be easily and automatically detected. The proposed toolbox supports the calibration of a camera system which can comprise either normal pinhole cameras or catadioptric cameras. The calibration only requires that neighboring cameras observe parts of the calibration pattern at the same time; the observed parts may not overlap at all. No overlapping fields of view are assumed for the camera system. We show that the toolbox can easily be used to automatically calibrate camera systems.},
-author = {Li, Bo and Heng, Lionel and Koser, Kevin and Pollefeys, Marc},
-doi = {10.1109/IROS.2013.6696517},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Li et al. - 2013 - A multiple-camera system calibration toolbox using a feature descriptor-based calibration pattern.pdf:pdf},
-isbn = {9781467363587},
-issn = {21530858},
-journal = {IEEE International Conference on Intelligent Robots and Systems},
-pages = {1301--1307},
-title = {{A multiple-camera system calibration toolbox using a feature descriptor-based calibration pattern}},
-year = {2013}
-}
-@article{Kannala2006,
-abstract = {Fish-eye lenses are convenient in such applications where a very wide angle of view is needed, but their use for measurement purposes has been limited by the lack of an accurate, generic, and easy-to-use calibration procedure. We hence propose a generic camera model, which is suitable for fish-eye lens cameras as well as for conventional and wide-angle lens cameras, and a calibration method for estimating the parameters of the model. The achieved level of calibration accuracy is comparable to the previously reported state-of-the-art.},
-author = {Kannala, Juho and Brandt, Sami S.},
-doi = {10.1109/TPAMI.2006.153},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Kannala, Brandt - 2006 - A generic camera model and calibration method for conventional, wide-angle, and fish-eye lenses.pdf:pdf},
-isbn = {0162-8828 (Print)$\backslash$n0098-5589 (Linking)},
-issn = {01628828},
-journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
-keywords = {Camera calibration,Camera model,Fish-eye lens,Lens distortion,Wide-angle lens},
-number = {8},
-pages = {1335--1340},
-pmid = {16886867},
-title = {{A generic camera model and calibration method for conventional, wide-angle, and fish-eye lenses}},
-volume = {28},
-year = {2006}
-}
-@article{Strecha2008,
-abstract = {In this paper we want to start the discussion on whether image based 3D modelling techniques can possibly be used to replace LIDAR systems for outdoor 3D data acquisition. Two main issues have to be addressed in this context: (i) camera calibration (internal and external) and (ii) dense multi-view stereo. To investigate both, we have acquired test data from outdoor scenes both with LIDAR and cameras. Using the LIDAR data as reference we estimated the ground-truth for several scenes. Evaluation sets are prepared to evaluate different aspects of 3D model building. These are: (i) pose estimation and multi-view stereo with known internal camera parameters; (ii) camera calibration and multi-view stereo with the raw images as the only input and (iii) multi-view stereo.},
-author = {Strecha, C. and von Hansen, W. and {Van Gool}, L. and Fua, P. and Thoennessen, U.},
-doi = {10.1109/CVPR.2008.4587706},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Strecha et al. - 2008 - On benchmarking camera calibration and multi-view stereo for high resolution imagery.pdf:pdf},
-isbn = {978-1-4244-2242-5},
-issn = {1063-6919},
-journal = {2008 IEEE Conference on Computer Vision and Pattern Recognition},
-keywords = {3D modelling,Calibration,Cameras,Clouds,Data acquisition,Image resolution,LIDAR,Laser radar,Layout,Rendering (computer graphics),Shape measurement,Three dimensional displays,calibration,camera calibration,camera parameter,cameras,high resolution imagery,image resolution,multiview stereo,pose estimation,solid modelling,stereo image processing},
-pages = {1--8},
-title = {{On benchmarking camera calibration and multi-view stereo for high resolution imagery}},
-url = {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=4587706},
-year = {2008}
-}
-@misc{,
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Unknown - Unknown - Calibration - Weng.pdf.pdf:pdf},
-title = {{Calibration - Weng.pdf}}
-}
-@book{Corke,
-author = {Corke, Peter},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Corke - Unknown - Vision and Control.pdf:pdf},
-isbn = {9783642201431},
-title = {{Vision and Control}}
-}
-@article{Zhang2015,
-author = {Zhang, Fan and Liu, Feng},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Zhang, Liu - 2015 - Casual Stereoscopic Panorama Stitching.pdf:pdf},
-isbn = {9781467369640},
-pages = {2002--2010},
-title = {{Casual Stereoscopic Panorama Stitching}},
-volume = {1},
-year = {2015}
-}
-@article{Dementhon,
-author = {Dementhon, Daniel},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Dementhon - Unknown - Reconstruction from Multiple Views 3D Reconstruction from Image Pairs.pdf:pdf},
-journal = {Image (Rochester, N.Y.)},
-pages = {1--29},
-title = {{Reconstruction from Multiple Views 3D Reconstruction from Image Pairs}}
-}
-@article{Eisert1999,
-author = {Eisert, Peter and Steinbach, Eckehard and Girod, Bernd},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Eisert, Steinbach, Girod - 1999 - Multi-Hypothesis, Volumetric Reconstruction of 3-D Objects from Multiple Camera Views.pdf:pdf},
-journal = {Acoustics, Speech, and Signal Processing, 1999. Proceedings., 1999 IEEE International Conference on},
-number = {1},
-pages = {3509--3512},
-title = {{Multi-Hypothesis, Volumetric Reconstruction of 3-D Objects from Multiple Camera Views}},
-volume = {6},
-year = {1999}
-}
-@article{Brown2007,
-abstract = {This paper concerns the problem of fully automated panoramic image stitching. Though the 1D problem (single axis of rotation) is well studied, 2D or multi-row stitching is more difficult. Previous approaches have used human input or restrictions on the image sequence in order to establish matching images. In this work, we formulate stitching as a multi-image matching problem, and use invariant local features to find matches between all of the images. Because of this our method is insensitive to the ordering, orientation, scale and illumination of the input images. It is also insensitive to noise images that are not part of a panorama, and can recognise multiple panoramas in an unordered image dataset. In addition to providing more detail, this paper extends our previous work in the area (Brown and Lowe, 2003) by introducing gain compensation and automatic straightening steps.},
-annote = {- homografie aus kalibrierung berechenbar
-- fundamentalmatrix mit translation},
-author = {Brown, Matthew and Lowe, David G.},
-doi = {10.1007/s11263-006-0002-3},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Brown, Lowe - 2007 - Automatic panoramic image stitching using invariant features.pdf:pdf},
-isbn = {0920-5691},
-issn = {09205691},
-journal = {International Journal of Computer Vision},
-keywords = {Multi-image matching,Recognition,Stitching},
-number = {1},
-pages = {59--73},
-pmid = {19493622},
-title = {{Automatic panoramic image stitching using invariant features}},
-volume = {74},
-year = {2007}
-}
-@article{Lia,
-author = {Li, Zhouyuan and View, Mountain and Yu, Jiafan},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Li, View, Yu - Unknown - VR HMD Compatible Spherical Stereo Panorama by Single Camera with Regular Lens.pdf:pdf},
-title = {{VR HMD Compatible Spherical Stereo Panorama by Single Camera with Regular Lens}}
-}
-@article{Abdellatif2008,
-author = {Abdellatif, Mohamed and Cao, Zuoliang and Meng, Xianqiu and Liu, Shiyu},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Abdellatif et al. - 2008 - Computer Vision.pdf:pdf},
-issn = {1475-1313},
-number = {15},
-pages = {2008},
-title = {{Computer Vision}},
-year = {2008}
-}
-@article{Hirschmuller2007,
-abstract = {Stereo correspondence methods rely on matching costs for computing the similarity of image locations. In this pa- per we evaluate the insensitivity of different matching costs with respect to radiometric variations of the input images. We consider both pixel-based and window-based variants and measure their performance in the presence of global intensity changes (e.g., due to gain and exposure differ- ences), local intensity changes (e.g., due to vignetting, non- Lambertian surfaces, and varying lighting), and noise. Us- ing existing stereo datasets with ground-truth disparities as well as six new datasets taken under controlled changes of exposure and lighting, we evaluate the different costs with a local, a semi-global, and a global stereo method. 1.},
-author = {Hirschmuller, H and Scharstein, Daniel},
-doi = {10.1109/CVPR.2007.383248},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Hirschmuller, Scharstein - 2007 - Evaluation of Cost Functions for Stereo Matching.pdf:pdf},
-isbn = {1424411793},
-issn = {1063-6919},
-journal = {Proc. of CVPR},
-pages = {1--8},
-title = {{Evaluation of Cost Functions for Stereo Matching}},
-year = {2007}
-}
-@article{Zaragoza2013,
-author = {Zaragoza, Julio and Chin, Tat-Jun and Brown, Michael S. and Suter, David},
-doi = {10.1109/CVPR.2013.303},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Zaragoza et al. - 2013 - As-Projective-As-Possible Image Stitching with Moving DLT.pdf:pdf},
-isbn = {978-0-7695-4989-7},
-journal = {2013 IEEE Conference on Computer Vision and Pattern Recognition},
-pages = {2339--2346},
-title = {{As-Projective-As-Possible Image Stitching with Moving DLT}},
-url = {http://ieeexplore.ieee.org/lpdocs/epic03/wrapper.htm?arnumber=6619147},
-year = {2013}
-}
-@article{Zhang1998,
-abstract = {Two images of a single scene/object are related by the epipolar geometry, which can be described by a 3×3 singular matrix called the essential matrix if images' internal parameters are known, or the fundamental matrix otherwise. It captures all geometric information contained in two images, and its determination is very important in many applications such as scene modeling and vehicle navigation. This paper gives an introduction to the epipolar geometry, and provides a complete review of the current techniques for estimating the fundamental matrix and its uncertainty. A well-founded measure is proposed to compare these techniques. Projective reconstruction is also reviewed. The software which we have developed for this review is available on the Internet.},
-annote = {Epipolar Geometry, important to understand first},
-author = {Zhang, Zhengyou},
-doi = {10.1023/a:1007941100561},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Zhang - 1998 - Determining the Epipolar Geometry and its Uncertainty A Review.pdf:pdf},
-issn = {0920-5691},
-journal = {International Journal of Computer Vision},
-keywords = {calibration,epipolar geometry,fundamental matrix,parameter estimation,performance evaluation,reconstruction,robust techniques,software,uncertainty characterization},
-number = {2},
-pages = {161--195},
-pmid = {164},
-title = {{Determining the Epipolar Geometry and its Uncertainty: A Review}},
-url = {http://dx.doi.org/10.1023/a:1007941100561},
-volume = {27},
-year = {1998}
-}
-@article{Ying2004,
-abstract = {There are two kinds of omnidirectional cameras often used in computer vision: central catadioptric cameras and fisheye cameras. Previous literatures use different imaging models to describe them separately. A unified imaging model is however presented in this paper. The unified model in this paper can be considered as an extension of the unified imaging model for central catadioptric cameras proposed by Geyer and Daniilidis. We show that our unified model can cover some existing models for fisheye cameras and fit well for many actual fisheye cameras used in previous literatures. Under our unified model, central catadioptric cameras and fisheye cameras can be classified by the model's characteristic parameter, and a fisheye image can be transformed into a central catadioptric one, vice versa. An important merit of our new unified model is that existing calibration methods for central catadioptric cameras can be directly applied to fisheye cameras. Furthermore, the metric calibration from single fisheye image only using projections of lines becomes possible via our unified model but the existing methods for fisheye cameras in the literatures till now are all non-metric under the same conditions. Experimental results of calibration from some central catadioptric and fisheye images confirm the validity and usefulness of our new unified model.},
-author = {Ying, Xianghua and Hu, Zhanyi},
-doi = {10.1007/978-3-540-24670-1_34},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Ying, Hu - 2004 - Can We Consider Central Catadioptric Cameras and Fisheye Cameras within a Unified Imaging Model.pdf:pdf},
-isbn = {9783540246701},
-issn = {03029743},
-journal = {Proceedings of European Conference on Computer Vision (ECCV)},
-number = {2002},
-pages = {442--455},
-title = {{Can We Consider Central Catadioptric Cameras and Fisheye Cameras within a Unified Imaging Model}},
-url = {http://www.springerlink.com/content/ugq9rd0vuk53q3nh},
-year = {2004}
-}
-@article{Theriault2014,
-abstract = {Stereo videography is a powerful technique for quantifying the kinematics and behavior of animals, but it can be challenging to use in an outdoor field setting. We here present a workflow and associated software for performing calibration of cameras placed in a field setting and estimating the accuracy of the resulting stereoscopic reconstructions. We demonstrate the workflow through example stereoscopic reconstructions of bat and bird flight. We provide software tools for planning experiments and processing the resulting calibrations that other researchers may use to calibrate their own cameras. Our field protocol can be deployed in a single afternoon, requiring only short video clips of light, portable calibration objects.},
-archivePrefix = {arXiv},
-arxivId = {arXiv:1011.1669v3},
-author = {Theriault, Diane H and Fuller, Nathan W and Jackson, Brandon E and Bluhm, Evan and Evangelista, Dennis and Wu, Zheng and Betke, Margrit and Hedrick, Tyson L},
-doi = {10.1242/jeb.100529},
-eprint = {arXiv:1011.1669v3},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Theriault et al. - 2014 - A protocol and calibration method for accurate multi-camera field videography.pdf:pdf},
-isbn = {9781593273897},
-issn = {1477-9145},
-journal = {The Journal of Experimental Biology},
-keywords = {bundle adjustment,direct linear transformation,ics,kinemat-,photogrammetry,stereography,three-dimensional,tracking,videography},
-number = {11},
-pages = {1843--1848},
-pmid = {24577444},
-title = {{A protocol and calibration method for accurate multi-camera field videography}},
-url = {http://jeb.biologists.org/content/217/11/1843.abstract},
-volume = {217},
-year = {2014}
-}
-@article{Seitz2006,
-abstract = {This paper presents a quantitative comparison of several multi-view stereo reconstruction algorithms. Until now, the lack of suitable calibrated multi-view image datasets with known ground truth (3D shape models) has prevented such direct comparisons. In this paper, we first survey multi-view stereo algorithms and compare them qualitatively using a taxonomy that differentiates their key properties. We then describe our process for acquiring and calibrating multiview image datasets with high-accuracy ground truth and introduce our evaluation methodology. Finally, we present the results of our quantitative comparison of state-of-the-art multi-view stereo reconstruction algorithms on six benchmark datasets. The datasets, evaluation details, and instructions for submitting new models are available online at http://vision.middlebury.edu/mview.},
-archivePrefix = {arXiv},
-arxivId = {10.1.1.62.1019},
-author = {Seitz, Steven M. and Curless, Brian and Diebel, James and Scharstein, Daniel and Szeliski, Richard},
-doi = {10.1109/CVPR.2006.19},
-eprint = {10.1.1.62.1019},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Seitz et al. - 2006 - A comparison and evaluation of multi-view stereo reconstruction algorithms.pdf:pdf},
-isbn = {0-7695-2597-0},
-issn = {10636919},
-journal = {Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-pages = {519--528},
-title = {{A comparison and evaluation of multi-view stereo reconstruction algorithms}},
-url = {http://ieeexplore.ieee.org/xpls/abs{\_}all.jsp?arnumber=1640800},
-volume = {1},
-year = {2006}
-}
-@article{Kang1997,
-abstract = {A traditional approach to extracting geometric information from a large scene is to compute multiple 3-D depth maps from stereo pairs or direct range finders, and then to merge the 3-D data. However, the resulting merged depth maps may be subject to merging errors if the relative poses between depth maps are not known exactly. In addition, the 3-D data may also have to be resampled before merging, which adds additional complexity and potential sources of errors.},
-author = {Kang, Sing Bing and Szeliski, Richard},
-doi = {10.1023/A:1007971901577},
-file = {:home/jonas/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Kang, Szeliski - 1997 - 3-D Scene Data Recovery Using Omnidirectional Multibaseline Stereo.pdf:pdf},
-isbn = {0-8186-7258-7},
-issn = {1573-1405},
-journal = {International Journal of Computer Vision},
-pages = {167--183},
-title = {{3-D Scene Data Recovery Using Omnidirectional Multibaseline Stereo}},
-url = {http://dx.doi.org/10.1023/A:1007971901577{\%}5Cnhttp://www.springerlink.com/content/jh14646rw3484h54/},
-volume = {25},
-year = {1997}
-}
-
 @inproceedings{newcombe_ismar2011,
 author = {Newcombe, Richard and Izadi, Shahram and Hilliges, Otmar and Molyneaux, David and Kim, David and Davison, Andrew and Kohli, Pushmeet and Shotton, Jamie and Hodges, Steve and Fitzgibbon, Andrew},
 year = {2011},
@@ -775,133 +112,140 @@ doi = {10.1109/ISMAR.2011.6092378}
 }
 
 @article{opencv_library,
-  author = {Bradski, G.},
-  citeulike-article-id = {2236121},
-  journal = {Dr. Dobb's Journal of Software Tools},
-  keywords = {bibtex-import},
-  posted-at = {2008-01-15 19:21:54},
-  priority = {4},
-  title = {{The OpenCV Library}},
-  year = {2000}
+author = {Bradski, G.},
+citeulike-article-id = {2236121},
+journal = {Dr. Dobb's Journal of Software Tools},
+keywords = {bibtex-import},
+posted-at = {2008-01-15 19:21:54},
+priority = {4},
+title = {{The OpenCV Library}},
+year = {2000}
 }
 
 @article{sl_depthsensor_calibration,
-    author = {Zhou, Yu and Zhao, Dongwei and Yu, Yao and Yuan, Jie and Du, Sidan},
-    journal = {Sensors 12, no. 8},
-    volume = {12(8)},
-    pages = {10947-10963},
-    year = {2012},
-    title = {Adaptive Color Calibration Based One-Shot Structured Light System.}
+author = {Zhou, Yu and Zhao, Dongwei and Yu, Yao and Yuan, Jie and Du, Sidan},
+journal = {Sensors 12, no. 8},
+volume = {12(8)},
+pages = {10947-10963},
+year = {2012},
+title = {Adaptive Color Calibration Based One-Shot Structured Light System.}
 }
 
 @misc{tof_cameras,
-    author = {Frydlewicz, Paul},
-    title = {LiDAR and ToF Cameras – Technologies explained},
-    year = {2018},
-    month = {November},
-    howpublished = {\url{https://tof-insights.com/time-of-flight-lidar-and-scanners-technologies-explained/}}
-    note = {Accessed: 2019-03-27}
+author = {Frydlewicz, Paul},
+title = {LiDAR and ToF Cameras – Technologies explained},
+year = {2018},
+month = {November},
+howpublished = {\url{https://tof-insights.com/time-of-flight-lidar-and-scanners-technologies-explained/}}
+note = {Accessed: 2019-03-27}
 }
 
 @book{hartley_2004,
-    author = {Hartley, R.~I. and Zisserman, A.},
-    title = {Multiple View Geometry in Computer Vision},
-    edition = {Second},
-    year = {2004},
-    publisher = {Cambridge University Press, ISBN: 0521540518}
+author = {Hartley, R.~I. and Zisserman, A.},
+title = {Multiple View Geometry in Computer Vision},
+edition = {Second},
+year = {2004},
+publisher = {Cambridge University Press, ISBN: 0521540518}
 }
 
 @book{corke_2011,
-    author = {Peter I. Corke},
-    isbn = {978-3-642-20143-1},
-    publisher = {Springer},
-    title = {Robotics, Vision \& Control: Fundamental Algorithms in Matlab},
-    year = {2011}
+author = {Peter I. Corke},
+isbn = {978-3-642-20143-1},
+publisher = {Springer},
+title = {Robotics, Vision \& Control: Fundamental Algorithms in Matlab},
+year = {2011}
 }
 
 @book{agresti_2007,
-    author = {Agresti, Alan},
-    title = {Introduction to Categorical Data Analysis},
-    year = {2007},
-    publisher = {Wiley},
-    address = {Hoboken},
-    note = {Available from: ProQuest Ebook Central. [3. April 2020]}
+author = {Agresti, Alan},
+title = {Introduction to Categorical Data Analysis},
+year = {2007},
+publisher = {Wiley},
+address = {Hoboken},
+note = {Available from: ProQuest Ebook Central. [3. April 2020]}
 }
 
 @article{youden_cancer1950,
-    author = {Youden, Willian J.},
-    title = {Index for rating diagnostic tests},
-    journal = {Cancer},
-    volume = {3},
-    pages = {32-35},
-    year = {1950},
+author = {Youden, Willian J.},
+title = {Index for rating diagnostic tests},
+journal = {Cancer},
+volume = {3},
+pages = {32-35},
+year = {1950},
 }
 
 @article{fawcett_2006,
-    author = {Tom Fawcett},
-    title = {An introduction to ROC analysis},
-    journal = {Pattern Recognition Letters},
-    volume = {27},
-    pages = {861-874},
-    year = {2006}
+author = {Tom Fawcett},
+title = {An introduction to ROC analysis},
+journal = {Pattern Recognition Letters},
+volume = {27},
+pages = {861-874},
+year = {2006}
 }
 @inproceedings{blais_2003,
-    author = {Francois Blais},
-    title = {{Review of 20 years of range sensor development}},
-    volume = {5013},
-    booktitle = {Videometrics VII},
-    editor = {Sabry F. El-Hakim and Armin Gruen and James S. Walton},
-    organization = {International Society for Optics and Photonics},
-    publisher = {SPIE},
-    pages = {62 -- 76},
-    keywords = {Range Sensors, Triangulation, Laser Scanners, Ranging, 3D},
-    year = {2003},
-    doi = {10.1117/12.473116},
-    URL = {https://doi.org/10.1117/12.473116}
+author = {Francois Blais},
+title = {{Review of 20 years of range sensor development}},
+volume = {5013},
+booktitle = {Videometrics VII},
+editor = {Sabry F. El-Hakim and Armin Gruen and James S. Walton},
+organization = {International Society for Optics and Photonics},
+publisher = {SPIE},
+pages = {62 -- 76},
+keywords = {Range Sensors, Triangulation, Laser Scanners, Ranging, 3D},
+year = {2003},
+doi = {10.1117/12.473116},
+URL = {https://doi.org/10.1117/12.473116}
 }
 
 @misc{intel_realsense,
-    author = {Intel},
-    title = {Intel RealSense},
-    howpublished = {\url{https://intelrealsense.com}},
-    note = {Accessed: 2020-04-05}
+author = {Intel},
+title = {Intel RealSense},
+howpublished = {\url{https://intelrealsense.com}},
+note = {Accessed: 2020-04-05}
 }
 
 @misc{opencv_pinhole,
-    author = {OpenCV Calibration Toolbox},
-    title = {Pinhole Camera Model},
-    howpublished = {\url{https://docs.opencv.org/4.3.0/pinhole_camera_model.png}},
-    note = {Accessed: 2020-04-07}
+author = {OpenCV Calibration Toolbox},
+title = {Pinhole Camera Model},
+howpublished = {\url{https://docs.opencv.org/4.3.0/pinhole_camera_model.png}},
+note = {Accessed: 2020-04-07}
 }
 
 @article{nister_ieee2004,
-    author={David Nister},
-    journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
-    title={An efficient solution to the five-point relative pose problem},
-    year={2004},
-    volume={26},
-    number={6},
-    pages={756-770},
+author={David Nister},
+journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+title={An efficient solution to the five-point relative pose problem},
+year={2004},
+volume={26},
+number={6},
+pages={756-770},
 } 
 
-@inproceedings{sattler_iccv2009, author={T. {Sattler} and B. {Leibe} and L. {Kobbelt}}, booktitle={2009 IEEE 12th International Conference on Computer Vision}, title={SCRAMSAC: Improving RANSAC's efficiency with a spatial consistency filter}, year={2009}, volume={}, number={}, pages={2090-2097},} 
+@inproceedings{sattler_iccv2009,
+author={T. {Sattler} and B. {Leibe} and L. {Kobbelt}},
+booktitle={2009 IEEE 12th International Conference on Computer Vision},
+title={SCRAMSAC: Improving RANSAC's efficiency with a spatial consistency filter},
+year={2009},
+volume={},
+number={},
+pages={2090-2097},} 
 
 @inproceedings{lowe_iccv99,
-     author={D. G. {Lowe}},
-     booktitle={Proceedings of the Seventh IEEE International Conference on Computer Vision},
-     title={Object recognition from local scale-invariant features},
-     year={1999},
-     volume={2},
-     number={},
-     pages={1150-1157},} 
+author={D. G. {Lowe}},
+booktitle={Proceedings of the Seventh IEEE International Conference on Computer Vision},
+title={Object recognition from local scale-invariant features},
+year={1999},
+volume={2},
+number={},
+pages={1150-1157},} 
 }
 @article{lowe_ijcv04,
-    author = {David G. Lowe},
-    title = {Distinctive Image Features from Scale-Invariant Keypoints},
-    year = {2004},
-    journal = {International Journal of Computer Vision},
-    volume = {60},
-    pages={91-110},
+author = {David G. Lowe},
+title = {Distinctive Image Features from Scale-Invariant Keypoints},
+year = {2004},
+journal = {International Journal of Computer Vision},
+volume = {60},
+pages={91-110},
 }
 @article{lindeberg_ijcv98,
 author = {Lindeberg, Tony},
@@ -914,50 +258,50 @@ journal = {International Journal of Computer Vision},
 doi = {10.1023/A:1008045108935}
 }
 @article {hellinger_1909,
-  author = {Hellinger, Ernst},
-  title = {Neue Begründung der Theorie quadratischer Formen von unendlichvielen Veränderlichen.},
-  journal = {Journal für die reine und angewandte Mathematik},
-  year = {1909},
-  publisher = {De Gruyter},
-  address = {Berlin, Boston},
-  volume = {1909},
-  number = {136},
-  pages = {210 - 271},
+author = {Hellinger, Ernst},
+title = {Neue Begründung der Theorie quadratischer Formen von unendlichvielen Veränderlichen.},
+journal = {Journal für die reine und angewandte Mathematik},
+year = {1909},
+publisher = {De Gruyter},
+address = {Berlin, Boston},
+volume = {1909},
+number = {136},
+pages = {210 - 271},
 }
 @inproceedings{arandjelovic_2012,
-    author = {Arandjelovic, Relja and Zisserman, Andrew},
-    booktitle = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
-    doi = {10.1109/CVPR.2012.6248018},
-    isbn = {9781467312264},
-    issn = {10636919},
-    pages = {2911--2918},
-    title = {{Three things everyone should know to improve object retrieval}},
-    year = {2012},
+author = {Arandjelovic, Relja and Zisserman, Andrew},
+booktitle = {Proceedings of the IEEE Computer Society Conference on Computer Vision and Pattern Recognition},
+doi = {10.1109/CVPR.2012.6248018},
+isbn = {9781467312264},
+issn = {10636919},
+pages = {2911--2918},
+title = {{Three things everyone should know to improve object retrieval}},
+year = {2012},
 }
 @inproceedings{bay_eccv06,
-    author = {Bay, Herbert and Tuytelaars, Tinne and Gool, Luc Van},
-    booktitle = {Conference: Proceedings of the 9th European conference on Computer Vision - Volume Part I},
-    title = {{SURF: Speeded Up Robust Features}},
-    url = {https://www.vision.ee.ethz.ch/{~}surf/eccv06.pdf},
-    year = {2006}
+author = {Bay, Herbert and Tuytelaars, Tinne and Gool, Luc Van},
+booktitle = {Conference: Proceedings of the 9th European conference on Computer Vision - Volume Part I},
+title = {{SURF: Speeded Up Robust Features}},
+url = {https://www.vision.ee.ethz.ch/{~}surf/eccv06.pdf},
+year = {2006}
 }
 @INPROCEEDINGS{viola_cvpr01,
-    author={P. {Viola} and M. {Jones}},
-    booktitle={Proceedings of the 2001 IEEE Computer Society Conference on Computer Vision and Pattern Recognition. CVPR 2001}, 
-    title={Rapid object detection using a boosted cascade of simple features},
-    year={2001},
-    volume={1},
-    number={},
-    pages={I-I},
+author={P. {Viola} and M. {Jones}},
+booktitle={Proceedings of the 2001 IEEE Computer Society Conference on Computer Vision and Pattern Recognition. CVPR 2001}, 
+title={Rapid object detection using a boosted cascade of simple features},
+year={2001},
+volume={1},
+number={},
+pages={I-I},
 } 
 @INPROCEEDINGS{rublee_iccv11,
-    author={E. {Rublee} and V. {Rabaud} and K. {Konolige} and G. {Bradski}},
-    booktitle={2011 International Conference on Computer Vision},
-    title={ORB: An efficient alternative to SIFT or SURF},
-    year={2011},
-    volume={},
-    number={},
-    pages={2564-2571},
+author={E. {Rublee} and V. {Rabaud} and K. {Konolige} and G. {Bradski}},
+booktitle={2011 International Conference on Computer Vision},
+title={ORB: An efficient alternative to SIFT or SURF},
+year={2011},
+volume={},
+number={},
+pages={2564-2571},
 }
 @InProceedings{rosten_eccv06,
 author="Rosten, Edward and Drummond, Tom",
@@ -980,14 +324,14 @@ pages="778--792",
 isbn="978-3-642-15561-1"
 }
 @inproceedings{harris_1988,
-  title={A combined corner and edge detector.},
-  author={Harris, Christopher G and Stephens, Mike and others},
-  booktitle={Alvey vision conference},
-  volume={15},
-  number={50},
-  pages={10--5244},
-  year={1988},
-  organization={Citeseer}
+title={A combined corner and edge detector.},
+author={Harris, Christopher G and Stephens, Mike and others},
+booktitle={Alvey vision conference},
+volume={15},
+number={50},
+pages={10--5244},
+year={1988},
+organization={Citeseer}
 }
 @article{rosin_cviu99,
 title = "Measuring Corner Properties",
@@ -1048,13 +392,13 @@ keywords = {camera calibration, location determination, automated cartography, i
 }
 
 @INPROCEEDINGS{chum_cvpr2005,
-    author={O. {Chum} and J. {Matas}},
-    booktitle={2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR'05)},
-    title={Matching with PROSAC - progressive sample consensus},
-    year={2005},
-    volume={1},
-    number={},
-    pages={220-226 vol. 1},} 
+author={O. {Chum} and J. {Matas}},
+booktitle={2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR'05)},
+title={Matching with PROSAC - progressive sample consensus},
+year={2005},
+volume={1},
+number={},
+pages={220-226 vol. 1},} 
 
 @inproceedings{kerl_icra2013,
 author = {Kerl, Christian and Sturm, Jurgen and Cremers, Daniel},
@@ -1068,13 +412,13 @@ doi = {10.1109/ICRA.2013.6631104}
 }
 
 @INPROCEEDINGS{corte_icra2018,
-    author={B. {Della Corte} and I. {Bogoslavskyi} and C. {Stachniss} and G. {Grisetti}},
-    booktitle={2018 IEEE International Conference on Robotics and Automation (ICRA)},
-    title={A General Framework for Flexible Multi-Cue Photometric Point Cloud Registration},
-    year={2018},
-    volume={},
-    number={},
-    pages={4969-4976},} 
+author={B. {Della Corte} and I. {Bogoslavskyi} and C. {Stachniss} and G. {Grisetti}},
+booktitle={2018 IEEE International Conference on Robotics and Automation (ICRA)},
+title={A General Framework for Flexible Multi-Cue Photometric Point Cloud Registration},
+year={2018},
+volume={},
+number={},
+pages={4969-4976},} 
 
 @techreport{c++11,
 type = {Standard},
@@ -1107,21 +451,21 @@ institution = {International Organization for Standardization}
 }
 
 @ARTICLE{meyer_ieee1992,
-    author={Meyer, Bertrand},
-    journal={Computer},
-    title={Applying 'design by contract'},
-    year={1992},
-    volume={25},
-    number={10},
-    pages={40-51},
+author={Meyer, Bertrand},
+journal={Computer},
+title={Applying 'design by contract'},
+year={1992},
+volume={25},
+number={10},
+pages={40-51},
 } 
 
 @BOOK{stroustrup_cpppl2013,
-  TITLE = {The C++ Programming Language},
-  AUTHOR = {Stroustrup, Bjarne},
-  MONTH = {May},
-  YEAR = {2013},
-  PUBLISHER = {Addison-Wesley},
+TITLE = {The C++ Programming Language},
+AUTHOR = {Stroustrup, Bjarne},
+MONTH = {May},
+YEAR = {2013},
+PUBLISHER = {Addison-Wesley},
 }
 
 @inproceedings{google_sanitizers,
@@ -1133,96 +477,96 @@ booktitle	= {USENIX ATC 2012}
 }
 
 @article{clang_static_analyzer,
-  title={Finding software bugs with the clang static analyzer},
-  author={Kremenek, Ted},
-  journal={Apple Inc},
-  year={2008}
+title={Finding software bugs with the clang static analyzer},
+author={Kremenek, Ted},
+journal={Apple Inc},
+year={2008}
 }
 
 @inproceedings{babati2017static,
-  title={Static Analysis Toolset with Clang},
-  author={Babati, Bence and Horv{\'a}th, G{\'a}bor and M{\'a}jer, Viktor and Pataki, Norbert},
-  booktitle={Proceedings of the 10th International Conference on Applied Informatics (ICAI 2017)},
-  pages={23--29},
-  year={2017}
+title={Static Analysis Toolset with Clang},
+author={Babati, Bence and Horv{\'a}th, G{\'a}bor and M{\'a}jer, Viktor and Pataki, Norbert},
+booktitle={Proceedings of the 10th International Conference on Applied Informatics (ICAI 2017)},
+pages={23--29},
+year={2017}
 }
 
 @INPROCEEDINGS{clang_thread_safety,
-    author={D. {Hutchins} and A. {Ballman} and D. {Sutherland}},
-    booktitle={2014 IEEE 14th International Working Conference on Source Code Analysis and Manipulation},
-    title={C/C++ Thread Safety Analysis},
-    year={2014},
-    volume={},
-    number={},
-    pages={41-46},} 
+author={D. {Hutchins} and A. {Ballman} and D. {Sutherland}},
+booktitle={2014 IEEE 14th International Working Conference on Source Code Analysis and Manipulation},
+title={C/C++ Thread Safety Analysis},
+year={2014},
+volume={},
+number={},
+pages={41-46},} 
 
 @misc{fowler_ci2000,
-    author = {Martin Fowler and Matthew Foemmel},
-    title = {Continuous Integration},
-    howpublished = {\url{https://martinfowler.com/articles/originalContinuousIntegration.html}},
-    year = {2000},
-    month = sep,
+author = {Martin Fowler and Matthew Foemmel},
+title = {Continuous Integration},
+howpublished = {\url{https://martinfowler.com/articles/originalContinuousIntegration.html}},
+year = {2000},
+month = sep,
 }
 
 @software{cli11,
-  author       = {Henry Schreiner and Philip Top and Marcus Brinkmann and Christoph Bachhuber},
-  title        = {{CLIUtils/CLI11}},
-  month        = jan,
-  year         = 2020,
-  publisher    = {Zenodo},
-  version      = {v1.9.0},
-  doi          = {10.5281/zenodo.3612735},
-  url          = {https://github.com/CLIUtils/CLI11}
+author       = {Henry Schreiner and Philip Top and Marcus Brinkmann and Christoph Bachhuber},
+title        = {{CLIUtils/CLI11}},
+month        = jan,
+year         = 2020,
+publisher    = {Zenodo},
+version      = {v1.9.0},
+doi          = {10.5281/zenodo.3612735},
+url          = {https://github.com/CLIUtils/CLI11}
 }
 @software{rang,
-  title = {{Rang - A Minimal, Header only Modern C++ library for terminal goodies}},
-  author = {Abhinav Gauniyal},
-  URL = {https://github.com/agauniyal/rang},
-  year = {2018}
+title = {{Rang - A Minimal, Header only Modern C++ library for terminal goodies}},
+author = {Abhinav Gauniyal},
+URL = {https://github.com/agauniyal/rang},
+year = {2018}
 }
 @software{fmtlib,
-  title = {{fmt - A modern formatting library}},
-  author = {Victor Zverovich and Jonathan Müller},
-  URL = {https://github.com/fmtlib/fmt},
-  year = {2020}
+title = {{fmt - A modern formatting library}},
+author = {Victor Zverovich and Jonathan Müller},
+URL = {https://github.com/fmtlib/fmt},
+year = {2020}
 }
 @software{gsl,
-  title = {{GSL - Guidelines Support Library}},
-  author = {Microsoft},
-  URL = {https://github.com/microsoft/GSL},
-  year = {2019}
+title = {{GSL - Guidelines Support Library}},
+author = {Microsoft},
+URL = {https://github.com/microsoft/GSL},
+year = {2019}
 }
 @software{boost,
-  title = {{The Boost Libraries}},
-  author = {Boost Organization},
-  URL = {https://www.boost.org/},
-  year = {2020}
+title = {{The Boost Libraries}},
+author = {Boost Organization},
+URL = {https://www.boost.org/},
+year = {2020}
 }
 @software{doctest,
-  title = {{doctest - The fastest feature-rich C++11/14/17/20 single-header testing framework for unit tests and TDD}},
-  author = {Viktor Kirilov},
-  URL = {https://github.com/onqtam/doctest},
-  year = {2020}
+title = {{doctest - The fastest feature-rich C++11/14/17/20 single-header testing framework for unit tests and TDD}},
+author = {Viktor Kirilov},
+URL = {https://github.com/onqtam/doctest},
+year = {2020}
 }
 @software{libnonius,
-  title = {{nonius - A C++ micro-benchmarking framework}},
-  author = {R. Martinho Fernandes},
-  URL = {https://github.com/libnonius/nonius},
-  year = {2019}
+title = {{nonius - A C++ micro-benchmarking framework}},
+author = {R. Martinho Fernandes},
+URL = {https://github.com/libnonius/nonius},
+year = {2019}
 }
 @article{Huang2019CppTaskflowFT,
-  title={Cpp-Taskflow: Fast Task-Based Parallel Programming Using Modern C++},
-  author={Tsung-Wei Huang and Chun-Xun Lin and Guannan Guo and Martin S. Wong},
-  journal={2019 IEEE International Parallel and Distributed Processing Symposium (IPDPS)},
-  year={2019},
-  pages={974-983}
+title={Cpp-Taskflow: Fast Task-Based Parallel Programming Using Modern C++},
+author={Tsung-Wei Huang and Chun-Xun Lin and Guannan Guo and Martin S. Wong},
+journal={2019 IEEE International Parallel and Distributed Processing Symposium (IPDPS)},
+year={2019},
+pages={974-983}
 }
 @MISC{eigenweb,
-  author = {Ga\"{e}l Guennebaud and Beno\^{i}t Jacob and others},
-  title = {Eigen v3},
-  howpublished = {http://eigen.tuxfamily.org},
-  year = {2010}
- }
+author = {Ga\"{e}l Guennebaud and Beno\^{i}t Jacob and others},
+title = {Eigen v3},
+howpublished = {http://eigen.tuxfamily.org},
+year = {2010}
+}
 
 @INPROCEEDINGS{tomasi_iccv98,
 author={C. {Tomasi} and R. {Manduchi}},
@@ -1243,14 +587,14 @@ number={1},
 pages={13-18},} 
 
 @article{frieden_new76,
-	title={A new restoring algorithm for the preferential enhancement of edge gradients},
-	author={Frieden, B Roy},
-	journal={JOSA},
-	volume={66},
-	number={3},
-	pages={280--283},
-	year={1976},
-	publisher={Optical Society of America}
+title={A new restoring algorithm for the preferential enhancement of edge gradients},
+author={Frieden, B Roy},
+journal={JOSA},
+volume={66},
+number={3},
+pages={280--283},
+year={1976},
+publisher={Optical Society of America}
 }
 @article{lin_easp2017,
 author = {Lin, Chien Chou and Tai, Yen Chou and Lee, Jhong Jin and Chen, Yong Sheng},
@@ -1337,3 +681,25 @@ year={2016},
 volume={},
 number={},
 pages={1866-1872},} 
+@article{gesto-diaz_2017,
+author = {Gesto-Diaz, M. and Tombari, F. and Gonzalez-Aguilera, D. and Lopez-Fernandez, L. and Rodriguez-Gonzalvez, P.},
+doi = {10.1016/j.isprsjprs.2017.05.007},
+issn = {09242716},
+journal = {ISPRS Journal of Photogrammetry and Remote Sensing},
+keywords = {Descriptor,Detector,Features,Image matching,Keypoints,Multimodal,Registration},
+month = {jul},
+pages = {179--188},
+publisher = {Elsevier B.V.},
+title = {{Feature matching evaluation for multimodal correspondence}},
+volume = {129},
+year = {2017}
+}
+@article{dold_iaprs2006,
+author = {Dold, Christoph and Brenner, Claus},
+year = {2006},
+month = {01},
+pages = {},
+title = {Registration of Terrestrial Laser Scanning Data Using Planar Patches and Image Data},
+volume = {36},
+journal = {International Archives of Photogrammetry, Remote Sensing and Spatial Information Sciences}
+}
