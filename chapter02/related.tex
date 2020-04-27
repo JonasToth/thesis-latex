@@ -1,12 +1,12 @@
 \subsection{Bearing-Angle and SURF}
 
 \begin{itemize}
-    \item scaramuzza calibration of laser scan to camera
+    \item scaramuzza calibration of laser scan to camera\cite{scaramuzza_iros2007}
     \item conversion of laser-scan to bearing angle image
     \item manual selection of corresponding corner features in bearing angle image and color image
     \item rigid transformation calculation with error minimization
 
-    \item Lin et.al use automatic feature extraction on bearing angle image with SURF
+    \item Lin et.al use automatic feature extraction on bearing angle image with SURF\cite{lin_easp2017}
     \item use for pose estimation, inital pose for ICP
 
     \item both formulations of the bearing angle calculation incorrect
@@ -18,6 +18,7 @@ Erratum for Scaramuzza and Lin
 \subsection{Rigid and Non-Rigid Pointcloud Registration}
 
 \begin{itemize}
+    \item survey of rigid transformation point cloud registrations\cite{bellekens_ambient2014}\cite{pomerleau_2015}
     \item goal is to find a transformation between two point sets that to map one pointset to the other
     \item process is called registration and used in robotics, medicine and field
     \item 6-DoF transformation is a rigid registration and is equivalent to find the common frame of reference of both point clouds
@@ -26,26 +27,35 @@ Erratum for Scaramuzza and Lin
 \end{itemize}
 
 \subsubsection{Correspondence Based Approaches}
+
 \begin{itemize}
-    \item ICP with different formulations
+    \item ICP with different formulations original\cite{besl_pami1992}
+    \item pointcloud feature from auto-encoder for salient regions of the pointcloud, that is matched\cite{elbaz_cvpr2017}
+    \item color supported generalized ICP\cite{korn_2014}
     \item point-to-plane ICP
     \item plane-to-plane ICP
-    \item generalized ICP
+    \item generalized ICP\cite{segal_2009}
+    \item point features in range data\cite{steder_robot2010}
 \end{itemize}
 
 \subsubsection{Otha}
 \begin{itemize}
-    \item normal distribution transformation
-    \item coherent point drift
+    \item normal distribution transformation\cite{biber_iros2003}
+    \item coherent point drift\cite{myronenko_ieee2010}
 \end{itemize}
 
 \subsection{Multi-Modal Sensor Registration}
 
 \begin{itemize}
-    \item Kinect Fusion\cite{newcombe_ismar2011}
-    \item dense visual odometrie\cite{kerl_icra2013}
+    \item Kinect Fusion uses ICP\cite{newcombe_ismar2011}
+    \item dense visual odometry uses photometric error of all image information, instead of sparse features like SIFT\cite{kerl_icra2013}, photo consistency assumption -> the brightness of a point stays constant between two camera poses.
     \item multi-cue photometric registration\cite{corte_icra2018}
+    \item image-to-geometry mapping based on correlation\cite{corsini_cgf2009}
+    \item laser scan registration based on panorama pictures from coregistered camera or intensity images\cite{alba_isprs2012}
+    \item SIFT realistic rendering to match images with pointclouds\cite{sibbing_3dv2013}
+    \item Synthetic views from dense pointcloud intensity images, matched with camera maximizing normalized mutual information\cite{wolcott_iros2014,zhao_icra2016}
     \item all are focussed on RGB-D data and do not consider dense laser scans
     \item alignment using normalized mutual information
 \end{itemize}
 
+\subsection{Feature Algorithm Comparison}
