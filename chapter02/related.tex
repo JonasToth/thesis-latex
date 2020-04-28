@@ -1,66 +1,71 @@
-\subsection{Bearing-Angle and SURF}
+Scaramuzza's\cite{scaramuzza_iros2007} work on register a \acrshort{LIDAR} scanner and a camera is the source of the \gls{bearing-angle-image}.
+The conversion of the range data to the image format allowed manual selection of corners, edges and other salient regions in both the color image and the \gls{bearing-angle-image}.
+Minimizing the reprojection error for the selected points allows to compute a relative rotation and translation between both modalities.
+Lin et al.\cite{lin_easp2017} apply the \acrshort{surf}\cite{bay_eccv06} feature detector on the \glspl{bearing-angle-image}.
+The keypoints detected in multiple range images allow to reconstruct the relative pose between dense pointclouds.
+They additionally compare the performance of this registration to state-of-the-art \acrshort{icp} (\acrlong{icp}) algorithms.
+They conclude, that the \acrshort{icp} has higher precision but execution speed is drastically improved when using the \gls{bearing-angle} based pose as initial state for the \acrshort{icp}.
+To the best of the author's knowledge, no other work includes the use of \glspl{bearing-angle-image}.
 
-\begin{itemize}
-    \item scaramuzza calibration of laser scan to camera\cite{scaramuzza_iros2007}
-    \item conversion of laser-scan to bearing angle image
-    \item manual selection of corresponding corner features in bearing angle image and color image
-    \item rigid transformation calculation with error minimization
+\subsection{Pointcloud Registration}
 
-    \item Lin et.al use automatic feature extraction on bearing angle image with SURF\cite{lin_easp2017}
-    \item use for pose estimation, inital pose for ICP
+The application of a feature based pointcloud registration is a novel approach to a well researched and developed area --- pointcloud registration.
+Range sensors produce a set of points and one natural task is to determine the relative transformation between two such sets.
+This task has many applications in photogrammetry, robotics and engineering.
 
-    \item both formulations of the bearing angle calculation incorrect
-    \item scaramuzzas formulation produces sqrt of negative number
-    \item lin seem to forget the sqrt of denominator, proper derivation is done in attachement
-\end{itemize}
-Erratum for Scaramuzza and Lin
+\acrshort{icp}, originally formulated by Besl\cite{besl_pami1992} is a robust and easy to implement algorithm to achieve this registration.
+At its core is the assignment of point correspondences between both sets, calculating a relative pose and evaluating the disparity of both pointclouds.
+The mismatch the relative pose is iteratively reduced by finding better correspondences and minimizing the distance between the points of the pointclouds.
+This basic approach received multiple improvements with the generalized \acrshort{icp}\cite{segal_2009,korn_2014} providing a fully probabilistic formulation.
+\acrshort{icp} provides a 6 \acrlong{DoF} (\acrshort{DoF}) registration consisting of a rotation and translation.
+Convergence or an upper bound of the error is not guaranteed and in general relies on a good initial estimate of the relative pose of both pointclouds rendering it useless for global registration problems without prior knowledge.
 
-\subsection{Rigid and Non-Rigid Pointcloud Registration}
+A different approach to pointcloud registration is provided by \acrlong{NDT} (\acrshort{NDT})\cite{biber_iros2003} that does not require to establish correspondences between both pointclouds.
+This methods subdivides the laserscan into a grid cells and estimates the normal distribution of measuring a point in this cell on each of these cells.
+Registering a second pointcloud is a matter of maximizing the likelihood that the pointcloud is measured in the reference pointcloud.
+The normal distributions are differentiable and classical numerical algorithms can be used for the maximization.
 
-\begin{itemize}
-    \item survey of rigid transformation point cloud registrations\cite{bellekens_ambient2014}\cite{pomerleau_2015}
-    \item goal is to find a transformation between two point sets that to map one pointset to the other
-    \item process is called registration and used in robotics, medicine and field
-    \item 6-DoF transformation is a rigid registration and is equivalent to find the common frame of reference of both point clouds
-    \item non-rigid registration includes shearing and scaling but can also imply non-linear transformations
-    \item non-rigid is not considered in this thesis, because the goal is to find a pose with the precondition of rigid transformation
-\end{itemize}
+Myronenko and Song proposed the \acrlong{CPD}{Coherent Point Drift} algorithm (\acrshort{CPD})\cite{myronenko_ieee2010}.
+Similar to \acrshort{NDT} the algorithm utilizes probabilistic methods to achieve the registration.
+A pointcloud is modelled with \acrlong{GMM} (\acrshort{GMM}) with a set of centeroids.
+Alignment of two pointclouds means the maximal probability of the data points under the \acrshort{GMM}.
+The centeroids of the \acrshort{GMM} are enforced to move in topological consistent fashion, hence coherent point drift.
+The review articles~\cite{bellekens_ambient2014,pomerleau_2015} introduce state-of-the-art pointcloud registration algorithms both in general and for robotic applications.
 
-\subsubsection{Correspondence Based Approaches}
+Feature-like algorithms are not commonly used but some approaches have been proposed.
+Elbaz et al.\cite{elbaz_cvpr2017} extract subsets of a pointcloud, analyze its main directional components using a \acrlong{PCA} and synthesize a depth map for these patches.
+Those patches are encoded as a low-dimensional descriptor computed by a deep neural network based auto-encoder.
+Registration of pointclouds is achieved by matching these descriptors followed by a fine-tuning step.
 
-\begin{itemize}
-    \item ICP with different formulations original\cite{besl_pami1992}
-    \item pointcloud feature from auto-encoder for salient regions of the pointcloud, that is matched\cite{elbaz_cvpr2017}
-    \item color supported generalized ICP\cite{korn_2014}
-    \item point-to-plane ICP
-    \item plane-to-plane ICP
-    \item generalized ICP\cite{segal_2009}
-    \item point features in range data\cite{steder_robot2010}
-\end{itemize}
+Steder et al.~proposed\cite{steder_robot2010} an interest point detector for range images.
+The range images curvature are analyzed by computing the second derivatives after a Gaussian smoothing operation.
+Salient points have a high curvature but special points like points on a line and regions of occlusion are filtered out first.
+These interest points are used to calculate transformations between different range images and each potential transformation is scored by the reprojection error.
 
-\subsubsection{Otha}
-\begin{itemize}
-    \item normal distribution transformation\cite{biber_iros2003}
-    \item coherent point drift\cite{myronenko_ieee2010}
-\end{itemize}
+% \subsection{Multi-Modal Sensor Registration}
 
-\subsection{Multi-Modal Sensor Registration}
-
-\begin{itemize}
-    \item Kinect Fusion uses ICP\cite{newcombe_ismar2011}
-    \item dense visual odometry uses photometric error of all image information, instead of sparse features like SIFT\cite{kerl_icra2013}, photo consistency assumption -> the brightness of a point stays constant between two camera poses.
-    \item multi-cue photometric registration\cite{corte_icra2018}
-    \item image-to-geometry mapping based on correlation\cite{corsini_cgf2009}
-    \item laser scan registration based on panorama pictures from coregistered camera or intensity images\cite{alba_isprs2012}
-    \item SIFT realistic rendering to match images with pointclouds\cite{sibbing_3dv2013}
-    \item Synthetic views from dense pointcloud intensity images, matched with camera maximizing normalized mutual information\cite{wolcott_iros2014,zhao_icra2016}
-    \item laser scan registration using planar patches and image data\cite{dold_iaprs2006}
-    \item all are focussed on RGB-D data and do not consider dense laser scans
-    \item alignment using normalized mutual information
-\end{itemize}
+% \begin{itemize}
+    % \item Kinect Fusion uses ICP\cite{newcombe_ismar2011}
+    % \item dense visual odometry uses photometric error of all image information, instead of sparse features like SIFT\cite{kerl_icra2013}, photo consistency assumption -> the brightness of a point stays constant between two camera poses.
+    % \item multi-cue photometric registration\cite{corte_icra2018}
+    % \item image-to-geometry mapping based on correlation\cite{corsini_cgf2009}
+    % \item laser scan registration based on panorama pictures from coregistered camera or intensity images\cite{alba_isprs2012}
+    % \item SIFT realistic rendering to match images with pointclouds\cite{sibbing_3dv2013}
+    % \item Synthetic views from dense pointcloud intensity images, matched with camera maximizing normalized mutual information\cite{wolcott_iros2014,zhao_icra2016}
+    % \item laser scan registration using planar patches and image data\cite{dold_iaprs2006}
+% \end{itemize}
 
 \subsection{Feature Algorithm Comparison}
 
-\begin{itemize}
-    \item matching image with different modalities using common feature algorithms\cite{gesto-diaz_2017}
-\end{itemize}
+Keypoint detectors and feature descriptors are a well established technique in the computer vision community.
+They provide a way to detect salient regions of a gray-scale image that can be consistently detected between different views of a scene.
+The breakthrough development is Lowe's SIFT\cite{lowe_ijcv04} algorithm.
+Early comparisons\cite{mikolajczyk_pami2005} of the SIFT to other classical detectors like the Harris corner detector\cite{harris_1988} demonstrated the strong performance of SIFT.
+Since the early 2000s more work on improving upon SIFT in terms of performance, compute requirements and diverse applications lead to more detectors and descriptors, like SURF\cite{bay_eccv06}, ORB\cite{rublee_iccv11} and AKAZE\cite{alcantarilla_bmva13}.
+A recent comparison between those modern, well established algorithms by Andersson and Reyna Marquez\cite{andersson_2016} still puts SIFT as a top-performer, with AKAZE\cite{alcantarilla_bmva13} yielding similar but slightly less accurate results.
+ORB\cite{rublee_iccv11} on the other hand is less accurate but due to its lower computational cost still a viable option especially for mobile applications.
+The use of classical feature descriptors and template based matching for different modalities, like thermal imaging, is evaluated by Gesto-Diaz et al.\cite{gesto-diaz_2017} concluding that their use within one modality results in many correct matches.
+Intermodal matching is harder and depends on the modalities matched.
+They note, that thermal and range images yield the worst performance regardless of the used registration technique.
+The result is encouraging that algorithms like SIFT\cite{lowe_ijcv04} are not bound to color images but can be used for in scenarios with vastly different appearance.
+It also motivates to search for better ways to process range data with feature based matching.
