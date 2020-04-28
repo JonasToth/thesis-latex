@@ -1,27 +1,38 @@
 \subsection{Motivation}
 
 \begin{itemize}
-    \item multiple sensors per robot resulting in multimodal sensor fusion requirements
     \item depth sensors increasingly used in the field and quality of sensors improve dramatically
     \item performance/compute costs of ICP high
-    \item other approaches require many compuations as well, parallelization is major concern for improving performance
+    \item other methodologies on pointcloud registration are computationally expensive and not suitable for real time/global positioning
     \item due to ICP limitations, combining laserscan and depth sensor hard
-    \item ICP requires correspondent in the pointclouds and inital pose
-    \item global positioning not easily done, because of local maxima and computational cost of for example particle based approaches
+    \item ICP requires correspondance assignment in the pointclouds and inital pose
+    \item global positioning not possible with ICP
+    \item feature based matching well established in computer vision community
+    \item many tasks, like Place-Recognition and Loop Closure, Bag-of-Words and SLAM are implemented with these algorithms
+    \item special mining environment result in bad lighting conditions for normal cameras, additional sensing with depth sensors increases accuracy
+    \item potential utilization of high resolution terestrial laser scans made for mine surveying allows global positioning
 \end{itemize}
 
 \subsection{Problem Definition}
 
 \begin{itemize}
-    \item rigid and non-rigid registration
-    \item registering depth and range data
-    \item Kinect fusion
-    \item dependent on initial pose
-    \item some algorithms for laserscan matching work on 2D laser scans, but not dense 3D scans
-    \item other multi-modal registrations
-    \item mining environment
-    \item prior high resolution laser scans exist
-    \item bad lighting conditions
+    \item utilization of the classical feature-based computer vision algorithms depends on the ability to use these feature-detectors/descriptors on range data or a derived format
+    \item the keypoint detectors need to produce stable and identifiable keypoints
+    \item descriptors need to produce reliable results for matching performance
+    \item secondary goal is fast range data processing for potential real-time applications
+    \item this thesis proposes novel ways to transform range data in gray-scale images that provide benfitial appearance for feature algorithms.
+    \item it implements the already proposed \gls{bearing-angle-image} and compares it to the novel \gls{flexion-image} it develops.
+    \item both derived feature images performances under feature-detectors are compared and discussed
+    \item additionally it provides high quality reference implementations for the proposed conversions in the form of library code and command line tools for batch converting existing images.
+    \item both \gls{LIDAR} scans and depth image footage are analyzed
 \end{itemize}
 
 \subsection{Structure of this Thesis}
+
+Section 2 introduces the related work on state-of-the-art algorithms for pointcloud registration and feature performance comparisons.
+Section 3 builds the necessary foundational knowledge on range data sensors and the math on modeling their data.
+It gives a high level introduction on keypoint detectors and descriptors and how their performance can be evaluated.
+Section 4 describes the novel pipeline of range data processing starting a edge-preserving filtering to conversion to feature-images and finally feature detection.
+Section 5 explains the experiments conducted and defines the evaluation metrics.
+These experimental results are presented and discussed in section 6.
+Finally, section 7 concludes the work and proposes further research areas to develop this new approach further.
