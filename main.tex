@@ -14,7 +14,8 @@
 \usepackage{floatrow} % rows of table and pictures
 \usepackage{graphicx}
 \usepackage{gensymb}
-\usepackage[utf8]{inputenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{newunicodechar}
 \usepackage{makeidx}
 \usepackage[fleqn]{mathtools} % mathtools und links buendig machen
 \usepackage{subcaption}
@@ -23,6 +24,7 @@
 \usepackage{spreadtab}
 \usepackage{pgfplots}
 \usepackage{xcolor}
+\usepackage{pifont}
 
 \definecolor{darkgreen}{RGB}{65,117,5}
 \definecolor{darkred}{RGB}{208,2,27}
@@ -162,10 +164,9 @@ Effects of these conditions can be partially mitigated by preprocessing and filt
 \section{Experiments}
 
 \input{chapter05/intro}
-\input{chapter05/datasets}
 \input{chapter05/metrics}
 \input{chapter05/parameters}
-\input{chapter05/odometry}
+\input{chapter05/datasets}
 \newpage
 
 \section{Results and Discussion}\label{sec:results}
