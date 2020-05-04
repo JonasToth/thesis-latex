@@ -15,3 +15,10 @@
 
 % https://tex.stackexchange.com/questions/9466/color-underline-a-formula
 \def\mathunderline#1#2{\color{#1}\underline{{\color{black}#2}}\color{black}}
+
+% https://tex.stackexchange.com/questions/6850/table-and-figure-side-by-side-with-independent-captions
+% Table float box with bottom caption, box width adjusted to content
+% \newfloatcommand{capbtabbox}{table}[][\FBwidth]
+% https://tex.stackexchange.com/questions/101980/table-and-figure-side-by-side-with-table-caption-above-figure-caption-below
+% \newfloatcommand{capbtabbox}{table}[\captop][\FBwidth]
+\newfloatcommand{btabbox}{table}[][\FBwidth]

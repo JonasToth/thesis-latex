@@ -6,6 +6,7 @@
 \usepackage[ngerman]{babel}
 \usepackage{blindtext}
 \usepackage{caption}
+\usepackage{capt-of}
 \usepackage{calc}
 \usepackage{cite}
 \usepackage{enumitem}
@@ -18,6 +19,7 @@
 \usepackage[fleqn]{mathtools} % mathtools und links buendig machen
 \usepackage{subcaption}
 \usepackage{listings}
+\usepackage{tabu}
 \usepackage{spreadtab}
 \usepackage{pgfplots}
 \usepackage{xcolor}
@@ -159,19 +161,14 @@ Effects of these conditions can be partially mitigated by preprocessing and filt
 
 \section{Experiments}
 
-Experiments show the feature performance of the converted feature images with various state-of-the-art algorithms.
-The provided data ranges from a synthetic scene, images taken by the kinectv2 and one high resolution LIDAR dataset.
-
-Each dataset is processed with different filters and detection algorithm configurations.
-Both the pinhole camera model and equirectangular model are used.
-
+\input{chapter05/intro}
 \input{chapter05/datasets}
 \input{chapter05/metrics}
 \input{chapter05/parameters}
 \input{chapter05/odometry}
 \newpage
 
-\section{Results and Discussion}
+\section{Results and Discussion}\label{sec:results}
 
 Show the results for ROC curves.
 Present histograms for size, response, distribution and descriptor distances.
