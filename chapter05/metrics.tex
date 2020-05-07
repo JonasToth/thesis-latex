@@ -32,81 +32,85 @@ Too many points create ambiguity with respect to the backprojection tolerance th
 \end{figure}
 The analysis of the descriptor performance requires the matching step first, that establishes the correspondences of the matcher.
 To classify the result of the descriptor matching, each keypoint needs to be analyzed further.
-The result are four sets: \emph{true-positive}, \emph{false-positive}, \emph{true-negative} and \emph{false-negative} as introduced in Section~\ref{sec:staticstics_classifier}.
+The result are four sets: \emph{true-positive}, \emph{false-positive}, \emph{true-negative} and \emph{false-negative} as introduced in Section~\ref{sec:statistic_classifier}.
 The union of these sets are all detected keypoints.
 
-Partitioning the keypoints is done with the following steps.
-First the matches are analyzed for true and false positives and true correspondences removed from further analysis. 
-\begin{algorithm}
+Partitioning the keypoints is done with the following algorithms.
+First the matches are analyzed for true and false positives and true correspondences are removed from further analysis. 
+Let $proj$ be the keypoints from $I_1$, backprojected to $I_2$ with the relative pose and the appropriate camera model.
+$kps$ are the keypoints from $I_2$, $matches$ are pairs of keypoints the matching algorithm considers as correspondences and $threshold$ is the maximum allowed backprojection error for keypoints to still be considered a true correspondence.
+\begin{algorithm}[H]
+\setstretch{1.35}
 \begin{algorithmic}[0]
-    \Comment{\emph{proj} are the backprojected keypoints from $I_1$ and \emph{kps} the keypoints from $I_2$}
+\Require{$\forall m \in matches \Rightarrow m.first \in proj \land m.second \in kps$}
+\Require{$threshold > 0.0$}
+\Ensure{$\vert true \vert + \vert false \vert = \vert matches \vert$}
     \Function{ClassifyPositives}{proj, kps, matches, threshold}
-    \ForAll{m in matches}
-    \If{distance(proj[m.first], kps[m.second]) < threshold}
-        \State $true \gets true \cup m$
-        \Comment{Ensure no double usage of a keypoint in image2}
-        \State $kps \gets kps \setminus m.second$
+    \ForAll{$m \in matches$}
+    \If{$\Call{distance}{proj[m.first], kps[m.second]} < threshold$}
+        \State$true \gets true \cup m$
+        \State$proj \gets proj \setminus m.first$
+        \Comment{Prevent double usage}
     \Else%
-        \State $false \gets false \cup m$
+        \State$false \gets false \cup m$
     \EndIf%
+    \State$kps \gets kps \setminus m.second$
     \EndFor%
-    \Ensures{\vert true \vert + \vert false \vert = \vert matches \vert}
     \EndFunction%
 \end{algorithmic}
-\caption{This listing describes the essence of distinguishing between a true and a false positive match.}
+\caption{This algorithm distinguishes between a true and a false positive match.}
 \end{algorithm}
 After this process some keypoints detected in $I_2$ might be left to analyze for a correspondence that was not assigned during matching, the false negatives.
+\begin{algorithm}[H]
+\setstretch{1.35}
 \begin{algorithmic}
-    \Comment{\emph{proj} are the backprojected keypoints from $I_1$ and \emph{kps} the keypoints from $I_2$ left after removing the true positives}
-    \Function{DetectFalseNegatives}{proj, kps, threshold}
-    \ForAll{k in kps}
-        
+\Require{$threshold > 0.0$}
+\Require{$kps_{pre-call}$ does not contain matched keypoints}
+\Ensure{$\vert false\_negatives \vert + \vert true\_negatives \vert = \vert kps_{pre-call} \vert$}
+    \Function{ClassifyNegatives}{proj, kps, threshold}
+    \ForAll{$k \in kps$}
+        \State$closest \gets \Call{FindClosestFrom}{proj, k}$
+        \If{$\Call{distance}{closest, k} < threshold$}
+            \State$false\_negatives \gets false\_negatives \cup (k, closest)$
+            \State$proj \gets proj \setminus closest$
+        \EndIf
     \EndFor%
+    \State{$true\_negatives \gets kps \setminus false\_negatives$}
     \EndFunction%
-    \caption{This listing describes the essence of distinguishing between a true and a false positive match.}
 \end{algorithmic}
-
-\begin{enumerate}
-    \item false negatives are searched in the remaining query-indices, using the same distance threshold
-    \item every unhandled keypoint is a \emph{true-negative} as there are no corresponding keypoints left
-\end{enumerate}
+\caption{After the explicit found matches are classified, the remaining keypoints need analysis to assign them as true or false positive.}
+\end{algorithm}
+To classify the negatives each keypoint's distance from $I_2$ to the backprojected keypoints from $I_1$ is tested to be within the defined threshold.
+If this is the case, both keypoints are defined as corresponding and result in a false negative. The remaining points are true negatives.
+The final partitioning of the keypoints allows to analyze more aspects of keypoints, e.g.~the descriptor distances for true and false positives.
 
 \subsubsection{Histograms and Summary Statistics}
 
-To understand the characteristics of a quantity a common approach is to create a histogram.
-The histograms counts frequencies for a specific range of data.
-
-Summary statistics are used to reduce a statistical distribution to a few representative values.
-Different measures are used, such as the measure of location, distribution and shape.
-Those values help to understand and compare different setups and configurations.
+To visualize and understand the analyze the distribution of properties of keypoints and matches, the partitioned keypoint's are tracked in histograms.
+Summary statistics reduce the statistical distributions to a few representative values.
+Combining different measures, such as the measure of location, distribution and shape gives key insights.
 
 Both histograms and its summary statistics are created for the keypoint size, keypoint response, descriptor distance between all keypoints and both descriptor distance for \emph{true-positives} and \emph{false-positives}.
-
-The used measures are
+The quantitive measures for each property are
 \begin{itemize}
-    \item $\min$ and $\max$
-    \item median and arithmetic mean
-    \item variance and standard deviation
-    \item skeweness
+    \item the \emph{minimum} and \emph{maximum} value,
+    \item \emph{median} and \emph{arithmetic mean},
+    \item \emph{variance} and \emph{standard deviation}
+    \item and \emph{skeweness} of the distribution.
 \end{itemize}
 
 \subsubsection{Classification Evaluation}
 
-The analysis of the keypoint and descriptor characteristics give already some insight into the algorithm performance but are not suitable for a comparison between different algorithms and do not give insight into potential trade-offs.
+The analysis of the keypoint and descriptor characteristics give already some insight into the algorithm performance but are not suitable for a comparison between different algorithms and help not to find potential trade-offs.
 For this task the quality of the decisions the keypoint matching algorithm is required.
-This is a common task in different scientific disciplines when using the classification formualation from above.
-For a broad picture this evaluation uses multiple performance numbers.
-
+The evaluation builds on the analysis of binary classifiers as introduced in Section~\ref{sec:statistic_classifier}.
+For each obtained confusion matrix, the ratios
 \begin{itemize}
-    \item precision
-    \item recall or sensitivity
-    \item fallout or false alarm rate
-    \item accuracy or rand-index, as measure of correct decisions of the system
-    \item youden-index as measure of informedness of the classifier
+    \item \emph{precision},
+    \item \emph{recall} or \emph{sensitivity},
+    \item \emph{fallout} or \emph{false alarm rate},
+    \item \emph{accuracy} or \emph{rand-index},
+    \item \emph{youden-index}
 \end{itemize}
-
-Each of these single measures gives insight into one aspect of decision making performance.
-They do not give a systematic way to judge tradeoffs and no easy way to compare different configurations visually.
-
-For this task, each configuration of an algorithm is plotted in \gls{ROC}-Space as a single point.
-These plots make all provided configurations comparable and provide a simple way to judge the performance of a configuration.
+are computed at first.
+For a comparison between algorithms and configurations the results are plotted in \gls{ROC}-space.
