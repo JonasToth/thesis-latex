@@ -1,0 +1,10 @@
+# Sensitivity		Fallout		Youden		Rand
+0.8401000000000001		0.3437		0.4964		0.7011000000000001	#raw/size_filter_slight/extracted/recognition.yml
+0.923		0.35800000000000004		0.5650000000000001		0.7216	#raw/contrast_filter_slight/extracted/recognition.yml
+0.9560000000000001		0.3603		0.5957		0.7388	#raw/contrast_filter_heavy/extracted/recognition.yml
+0.9886		0.3734		0.6152000000000001		0.7743	#raw/response_size_filter/extracted/recognition.yml
+0.9734		0.4163		0.557		0.7357	#raw/best_only/extracted/recognition.yml
+0.9734		0.4163		0.557		0.7357	#raw/size_filter_hard/extracted/recognition.yml
+0.9734		0.4163		0.557		0.7357	#raw/default/extracted/recognition.yml
+0.9958		0.44220000000000004		0.5537000000000001		0.7718	#raw/response_filter_slight/extracted/recognition.yml
+0.4793		0.4554		0.0239		0.527	#raw/sigma_reduced/extracted/recognition.yml

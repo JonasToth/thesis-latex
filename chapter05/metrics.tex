@@ -104,6 +104,11 @@ The quantitive measures for each property are
 The analysis of the keypoint and descriptor characteristics give already some insight into the algorithm performance but are not suitable for a comparison between different algorithms and help not to find potential trade-offs.
 For this task the quality of the decisions the keypoint matching algorithm is required.
 The evaluation builds on the analysis of binary classifiers as introduced in Section~\ref{sec:statistic_classifier}.
+
+The matching of descriptors is done in a simple but consistent way.
+A match is defined as the closest descriptor in the other image, that also matches in the other direction.
+No other criteria like a maximum matching distance is taken into account.
+The matching is assessed with the computed groundtruth data.
 For each obtained confusion matrix, the ratios
 \begin{itemize}
     \item \emph{precision},

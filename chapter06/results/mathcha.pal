@@ -1,0 +1,18 @@
+# mathcha colors
+set style line  1 lt 1 lc rgb '#D0021B' # red
+set style line  2 lt 1 lc rgb '#F5A623' # orange == office
+set style line  3 lt 1 lc rgb '#8B572A' # brown
+set style line  4 lt 1 lc rgb '#417505' # dark green == lehrpfad
+set style line  5 lt 1 lc rgb '#4A90E2' # blue == synthetic
+set style line  6 lt 1 lc rgb '#9013FE' # purple == laserscan
+set style line  7 lt 1 lc rgb '#4A4A4A' # dark gray
+set style line  8 lt 1 lc rgb '#9B9B9B' # light gray
+
+set palette defined ( 0 '#D0021B',\
+                      1 '#F5A623',\
+                      2 '#8B572A',\
+                      3 '#417505',\
+                      4 '#4A90E2',\
+                      5 '#9013FE',\
+                      6 '#4A4A4A',\
+                      7 '#9B9B9B' )
