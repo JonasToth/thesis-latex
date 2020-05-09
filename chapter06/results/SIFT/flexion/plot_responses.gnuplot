@@ -34,10 +34,10 @@ set ytics 0.08
 set mytics 4
 
 set style fill transparent solid 0.5 noborder
-count_lehrpfad = 321526.
-count_office = 30616.
-count_synthetic = 15861.
-count_laserscan = 18000.
+count_lehrpfad = 243226.
+count_office = 21093.
+count_synthetic = 7810.
+count_laserscan = 14599.
 unset colorbox
 
 load "../../mathcha.pal"
@@ -47,9 +47,3 @@ splot \
       "lehrpfad_response.dat" using (0.1):1:($2/count_lehrpfad):(0):($2/count_lehrpfad) with zerrorfill ls 4 title "Lehrpfad",\
       "office_response.dat" using (0.2):1:($2/count_office):(0):($2/count_office) with zerrorfill ls 2 title "Office",\
       "synthetic_response.dat" using (0.3):1:($2/count_synthetic):(0):($2/count_synthetic) with zerrorfill ls 5 title "Synthetic"
-
-# splot \
-      # "lehrpfad_response.dat" using (0):1:(0):(0):($2/count_lehrpfad) with filledcurves title "Lehrpfad",\
-      # "office_response.dat" using (1):1:(0):(0):($2/count_office) with filledcurves title "Office",\
-      # "synthetic_response.dat" using (2):1:(0):(0):($2/count_synthetic) with filledcurves title "Synthetic",\
-      # "laserscan_response.dat" using (3):1:(0):(0):($2/count_laserscan) with filledcurves title "Laserscan"

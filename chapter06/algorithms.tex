@@ -8,12 +8,12 @@
     \begin{tabular}{ccccccc}
     \toprule
     \null &
-            \textbf{Synthetic$_{\mathbf{\mathcal{F}}}$} &
-            \textbf{Lehrpfad$_{\mathbf{\mathcal{F}}}$} &
-            \textbf{Office$_{\mathbf{\mathcal{F}}}$} &
-            \textbf{Synthetic$_{\mathbf{\mathcal{\beta}}}$} &
-            \textbf{Lehrpfad$_{\mathbf{\mathcal{\beta}}}$} &
-            \textbf{Office$_{\mathbf{\mathcal{\beta}}}$} \\
+        \textbf{Synthetic$_{\mathbf{\mathcal{F}}}$} &
+        \textbf{Lehrpfad$_{\mathbf{\mathcal{F}}}$} &
+        \textbf{Office$_{\mathbf{\mathcal{F}}}$} &
+        \textbf{Synthetic$_{\mathbf{\mathcal{\beta}}}$} &
+        \textbf{Lehrpfad$_{\mathbf{\mathcal{\beta}}}$} &
+        \textbf{Office$_{\mathbf{\mathcal{\beta}}}$} \\
     \midrule
     \rowcolor{lightgray}
     \textbf{Keypoint Count} &
@@ -48,16 +48,24 @@
     }
     \caption{Performance indicators for the default configuration of the SIFT algorithm on the different datasets.}
 \end{table}
-
+Raw numbers and absolute numbers for the recognition performance of SIFT features.
+The ratios and relative performance numbers are similar between both conversions.
+In absolute numbers, the \glspl{flexion-image} result in more detected features.
+This higher number results in potentially better RANSAC results, because there are more correspondences to pick from.
 \begin{figure}[H]
-    \includegraphics[width=0.48\linewidth]{chapter06/results/SIFT/flexion/roc.pdf}%
-    \includegraphics[width=0.48\linewidth]{chapter06/results/SIFT/bearing/roc.pdf}
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/roc.pdf}%
+    \caption{Flexion Image ROC}
+\end{subfigure}\quad
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/roc.pdf}
+    \caption{Bearing-Angle Image ROC}
+\end{subfigure}
     \caption{The ROC plot for SIFT shows a high variability for the true positive rate, but an almost constant false positive rate regardless of conversion image type.}
 \end{figure}
 The overall performance differences are shown here.
 False positive rate does not change significantly with different algorithm parameters.
 True positive rate has a wide variety.
-
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/distribution.pdf}\\
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/distribution.pdf}%
@@ -66,7 +74,6 @@ True positive rate has a wide variety.
 The keypoints stick to salient regions and are not randomly distributed, as can be seen in the Synthetic dataset.
 For the bigger datasets with real world geometry the keypoints are distributed all over the images, indicating not clear disfunctionality in the detection.
 Flexion images create more keypoints.
-
 \begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/response.pdf}%
@@ -80,14 +87,67 @@ Flexion images create more keypoints.
 The responses show the difference between flexion images and bearing angle images.
 Flexion images have a wider range of responses and on average an higher response to the keypoint detector.
 The underlying distribution is similar, but bearing performs worse.
+\begin{figure}[H]
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/size.pdf}%
+    \caption{\gls{flexion-image} Keypoint Sizes with logarithmic scale}
+\end{subfigure}\quad
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/size.pdf}%
+    \caption{\gls{bearing-angle-image} Keypoint Sizes with logarithmic scale}
+\end{subfigure}
+\end{figure}
+Both conversion types have a very high skew towards small features.
+
+\begin{figure}[H]
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/descriptor_distances.pdf}%
+    \caption{\gls{flexion-image} Descriptor Distances}
+\end{subfigure}\quad
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/descriptor_distances.pdf}%
+    \caption{\gls{bearing-angle-image} Descriptors Distances}
+\end{subfigure}
+\end{figure}
+The analyzing the descriptor distances for true positives and false positives show skewed distributions that indicate a partial separapibility for the real world datasets.
+
+On all datasets the only factor improving the result further was applying a threshold on the keypoint response.
+Either by taking only the best $N$ points or enforcing a lower bound on the response.
+This change improved the true positive rate by $~0.03$, which is only a slight improvement.
 
 \subsubsection{SURF}
 \subsubsection{ORB}
 \subsubsection{AKAZE}
-\subsubsection{BRISK}
 \subsubsection{Odometry}
 
 \begin{figure}[H]
-    \includegraphics[width=0.5\linewidth]{chapter06/odo/jonas_flexion_AKAZE.png}
-    \caption{Flexion image with AKAZE as basis for odometry}
+\begin{subfigure}[c]{0.31\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_SIFT.png}%
+    \caption{Flexion SIFT}
+\end{subfigure}%
+\begin{subfigure}[c]{0.31\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/odo/jonas_bearing_SIFT.png}%
+    \caption{Bearing SIFT}
+\end{subfigure}%
+\begin{subfigure}[c]{0.31\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/odo/zhang_pinhole_SIFT.png}%
+    \caption{Color Images SIFT}
+\end{subfigure}
+\caption{Comparing Odometry Results using AKAZE as feature detector}
+\end{figure}
+
+\begin{figure}[H]
+\begin{subfigure}[c]{0.31\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_AKAZE.png}%
+    \caption{Flexion AKAZE}
+\end{subfigure}%
+\begin{subfigure}[c]{0.31\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/odo/jonas_bearing_AKAZE.png}%
+    \caption{Bearing AKAZE}
+\end{subfigure}%
+\begin{subfigure}[c]{0.31\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/odo/zhang_pinhole_AKAZE.png}%
+    \caption{Color Images AKAZE}
+\end{subfigure}
+\caption{Comparing Odometry Results using AKAZE as feature detector}
 \end{figure}
