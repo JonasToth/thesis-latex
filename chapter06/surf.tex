@@ -1,0 +1,45 @@
+Default configuration of SURF lead to massive amounts of keypoints for both flexion and bearing angle images.
+They are clearly not distinguished do not stick to salient regions.
+The cause of this issues seems to be, that on every octave the detector just adds all findings.
+This could be a regression in the implementation, especially given the vastly different finding in prior work on \glspl{bearing-angle-image}.
+
+To still get a climpse of the performance only one octave is used for detection and these keypoints are analyzed.
+\begin{figure}[H]
+\begin{subfigure}[t]{0.25\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SURF/flexion/default_kp0005.png}%
+\end{subfigure}%
+\begin{subfigure}[t]{0.25\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SURF/flexion/oneoctave_kp0005.png}%
+\end{subfigure}%
+\begin{subfigure}[t]{0.25\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SURF/bearing/default_kp0005.png}%
+\end{subfigure}%
+\begin{subfigure}[t]{0.25\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SURF/bearing/oneoctave_kp0005.png}%
+\end{subfigure}%
+\caption{SURF configurations}
+\end{figure}
+
+\begin{figure}[H]
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SURF/flexion/descriptor_distances.pdf}%
+    \caption{\gls{flexion-image} Descriptor Distances}
+\end{subfigure}\quad
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SURF/bearing/descriptor_distances.pdf}%
+    \caption{\gls{bearing-angle-image} Descriptors Distances}
+\end{subfigure}
+\end{figure}
+
+\begin{figure}[H]
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SURF/flexion/roc.pdf}%
+    \caption{Flexion Image ROC}
+\end{subfigure}\quad
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SURF/bearing/roc.pdf}
+    \caption{Bearing-Angle Image ROC}
+\end{subfigure}
+    \caption{Different Levels of Quality for SURF in the ROC plot.}
+\end{figure}
+
