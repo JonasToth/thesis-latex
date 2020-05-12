@@ -1,6 +1,9 @@
 #!/bin/sh
 
 cp -r ~/Freiberg/Masterarbeit/analysis/final_eval/* chapter06/results/
+cd chapter06/results/ || exit 1
+./produce_plots.sh || exit 1
+cd ../../ || exit 1
 
 docker run --rm \
            --volume "$(pwd):/project" \

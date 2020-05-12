@@ -8,6 +8,10 @@ for d in AKAZE ORB SIFT SURF ; do
         pwd
         echo "Plotting for ${d}/${conv}"
         gnuplot plot_descriptor_distances.gnuplot
+        gnuplot plot_distribution.gnuplot
+        gnuplot plot_responses.gnuplot
+        gnuplot plot_size.gnuplot
+        gnuplot plot_rocs.gnuplot
         cd ..
     done
 
