@@ -7,7 +7,7 @@ else
     echo "Gather information from results!"
 fi
 
-if [ $# -lt 3 ] ; then
+if [ $# -lt 2 ] ; then
     echo "Usage: $0 ALGORITHM <data_dir> [<data_dir> ...]"
     echo "Example: $0 SURF raw/default raw/one-octave-best"
     exit 1
