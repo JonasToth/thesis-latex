@@ -1,0 +1,7 @@
+# Sensitivity		Fallout		Youden		Rand
+0.4878		0.3403		0.1474		0.6447	#mb/default_harris/extracted/recognition.yml
+0.4878		0.3403		0.1474		0.6447	#mb/default/extracted/recognition.yml
+0.4782		0.34600000000000003		0.1322		0.6414000000000001	#mb/default_fast/extracted/recognition.yml
+0.4943		0.37360000000000004		0.1206		0.6169	#raw/default_harris/extracted/recognition.yml
+0.4943		0.37360000000000004		0.1206		0.6169	#raw/default/extracted/recognition.yml
+0.46740000000000004		0.37370000000000003		0.09380000000000001		0.6186	#raw/default_fast/extracted/recognition.yml

@@ -1,0 +1,8 @@
+# Sensitivity		Fallout		Youden		Rand
+0.795		0.49050000000000005		0.3044		0.6365000000000001	#raw/default_mldb/extracted/recognition.yml
+0.8621000000000001		0.5117		0.3504		0.7111000000000001	#raw/default_response_filter/extracted/recognition.yml
+0.8301000000000001		0.5191		0.311		0.6362	#raw/kaze_diff_pm_g1/extracted/recognition.yml
+0.8301000000000001		0.5191		0.311		0.6361	#raw/kaze_diff_pm_weickert/extracted/recognition.yml
+0.8302		0.5193		0.3108		0.6361	#raw/default_kaze/extracted/recognition.yml
+0.8302		0.5197		0.3105		0.6359	#raw/kaze_diff_pm_charbonnier/extracted/recognition.yml
+0.8612000000000001		0.5284		0.33280000000000004		0.6986	#raw/best_only/extracted/recognition.yml
