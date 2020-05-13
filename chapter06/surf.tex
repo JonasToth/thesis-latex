@@ -1,38 +1,7 @@
 \begin{table}[H]
-    {\renewcommand{\arraystretch}{1.3}%
+    {\renewcommand{\arraystretch}{1.2}%
     \setlength{\tabcolsep}{0.3em}%
-    \begin{tabular}{bababab}
-    \toprule
-\rowcolor{white} \null &
-\textbf{Synthetic$_{\mathbf{\mathcal{F}}}$} & \textbf{Synthetic$_{\mathbf{\mathcal{\beta}}}$} &
-\textbf{Lehrpfad$_{\mathbf{\mathcal{F}}}$} & \textbf{Lehrpfad$_{\mathbf{\mathcal{\beta}}}$} &
-\textbf{Office$_{\mathbf{\mathcal{F}}}$} & \textbf{Office$_{\mathbf{\mathcal{\beta}}}$}
-\\
-\midrule
-\rowcolor{lightgray}
-\textbf{Keypoint Count} &
-    \num{105761} & \num{23252} &
-    \num{440400} & \num{440400} &
-    \num{34200} & \num{34200}
-    \\
-\textbf{Correspondences} &
-    \num{28829} & \num{5213} &
-    \num{23137} & \num{13907} &
-    \num{4173} & \num{2862}
-    \\
-\rowcolor{lightgray}
-\textbf{True Positives} &
-    \num{14038} & \num{3190} &
-    \num{7687} & \num{2000} &
-    \num{2133} & \num{1221}
-    \\
-\textbf{False Positives} &
-    \num{27872} & \num{6139} &
-    \num{144517} & \num{138084} &
-    \num{10728} & \num{10565}
-    \\
-    \bottomrule
-    \end{tabular}
+\input{chapter06/results/SURF/absolute_numbers}
     }
     \caption{Performance indicators for the default configuration of the SIFT algorithm on the different datasets.}
 \end{table}
