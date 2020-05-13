@@ -1,47 +1,37 @@
-\begin{table}
+\begin{table}[H]
     {\renewcommand{\arraystretch}{1.3}%
     \setlength{\tabcolsep}{0.3em}%
     \begin{tabular}{bababab}
     \toprule
-    \rowcolor{white}
-    \null &
-        \textbf{Synthetic$_{\mathbf{\mathcal{F}}}$} &
-        \textbf{Lehrpfad$_{\mathbf{\mathcal{F}}}$} &
-        \textbf{Office$_{\mathbf{\mathcal{F}}}$} &
-        \textbf{Synthetic$_{\mathbf{\mathcal{\beta}}}$} &
-        \textbf{Lehrpfad$_{\mathbf{\mathcal{\beta}}}$} &
-        \textbf{Office$_{\mathbf{\mathcal{\beta}}}$} \\
-    \midrule
-    \rowcolor{lightgray}
-    \textbf{Keypoint Count} &
-        \num{15861} & \num{321526} & \num{30616} &
-        \num{7810} & \num{243226} & \num{21093} \\
-    \textbf{Correspondences} &
-        \num{6158} & \num{23030} & \num{5289} &
-        \num{3604} & \num{11405} & \num{2443} \\
-    \rowcolor{lightgray}
-    \textbf{True Positives} &
-        \num{5994} & \num{18483} & \num{4525} &
-        \num{3554} & \num{8353} & \num{2124} \\
-    \textbf{False Positives} &
-        \num{4010} & \num{108457} & \num{9349} &
-        \num{1730} & \num{85116} & \num{7085} \\
-    \rowcolor{lightgray}
-    \textbf{Precision} &
-        \num{0.599} & \num{0.146} & \num{0.326} &
-        \num{0.673} & \num{0.089} & \num{0.231} \\
-    \textbf{Recall} &
-        \num{0.973} & \num{0.803} & \num{0.856} &
-        \num{0.986} & \num{0.732} & \num{0.869} \\
-    \rowcolor{lightgray}
-    \textbf{Accuracy} &
-        \num{0.736} & \num{0.648} & \num{0.665} &
-        \num{0.771} & \num{0.637} & \num{0.644} \\
-    \textbf{Youden-Index} &
-        \num{0.557} & \num{0.439} & \num{0.480} &
-        \num{0.572} & \num{0.364} & \num{0.483} \\
-    \bottomrule
-    \end{tabular}
+\rowcolor{white} \null &
+\textbf{Synthetic$_{\mathbf{\mathcal{F}}}$} & \textbf{Synthetic$_{\mathbf{\mathcal{\beta}}}$} &
+\textbf{Lehrpfad$_{\mathbf{\mathcal{F}}}$} & \textbf{Lehrpfad$_{\mathbf{\mathcal{\beta}}}$} &
+\textbf{Office$_{\mathbf{\mathcal{F}}}$} & \textbf{Office$_{\mathbf{\mathcal{\beta}}}$}
+\\
+\midrule
+\rowcolor{lightgray}
+\textbf{Keypoint Count} &
+    \num{15861} & \num{7810} &
+    \num{321526} & \num{243226} &
+    \num{30616} & \num{21093}
+    \\
+\textbf{Correspondences} &
+    \num{6158} & \num{3604} &
+    \num{23030} & \num{11405} &
+    \num{5289} & \num{2443}
+    \\
+\rowcolor{lightgray}
+\textbf{True Positives} &
+    \num{5994} & \num{3554} &
+    \num{18483} & \num{8353} &
+    \num{4525} & \num{2124}
+    \\
+\textbf{False Positives} &
+    \num{4010} & \num{1730} &
+    \num{108457} & \num{85116} &
+    \num{9349} & \num{7085}
+    \\
+    \bottomrule \end{tabular}
     }
     \caption{Performance indicators for the default configuration of the SIFT algorithm on the different datasets.}
 \end{table}
