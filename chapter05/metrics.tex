@@ -91,12 +91,7 @@ Summary statistics reduce the statistical distributions to a few representative 
 Combining different measures, such as the measure of location, distribution and shape gives key insights.
 
 Both histograms and its summary statistics are created for the keypoint size, keypoint response, descriptor distance between all keypoints and both descriptor distance for \emph{true-positives} and \emph{false-positives}.
-The quantitive measures for each property are
-\begin{itemize}
-    \item the \emph{minimum} and \emph{maximum} value,
-    \item \emph{median} and \emph{arithmetic mean},
-    \item \emph{variance} and \emph{standard deviation}
-    \item and \emph{skeweness} of the distribution.
+The quantitive measures for each property are the \emph{minimum} and \emph{maximum} value, \emph{median} and \emph{arithmetic mean}, \emph{variance} and \emph{standard deviation} and \emph{skeweness} of the distribution.
 \end{itemize}
 
 \subsubsection{Classification Evaluation}
@@ -109,13 +104,5 @@ The matching of descriptors is done in a simple but consistent way.
 A match is defined as the closest descriptor in the other image, that also matches in the other direction.
 No other criteria like a maximum matching distance is taken into account.
 The matching is assessed with the computed groundtruth data.
-For each obtained confusion matrix, the ratios
-\begin{itemize}
-    \item \emph{precision},
-    \item \emph{recall} or \emph{sensitivity},
-    \item \emph{fallout} or \emph{false alarm rate},
-    \item \emph{accuracy} or \emph{rand-index},
-    \item \emph{youden-index}
-\end{itemize}
-are computed at first.
+For each obtained confusion matrix, the ratios \emph{precision}, \emph{recall} or \emph{sensitivity}, \emph{fallout} or \emph{false alarm rate}, \emph{accuracy} or the \emph{rand-index} and the \emph{youden-index} are computed at first.
 For a comparison between algorithms and configurations the results are plotted in \gls{ROC}-space.
