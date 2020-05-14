@@ -2,17 +2,112 @@
 
 As first step the unfiltered depth images are used for the conversions.
 The keypoint count, distribution, response and size are analyzed as baseline.
-Filtering keypoints by response and size as test to improve the performance as second step that is compared.
-Third steps is to experiment with the same settings but different kinds of filtering to see if there is performance improvement from smoother surfaces.
+Given this baseline different algorithm configurations and data filtering are analyzed and compared to this baseline.
+Notable differences receive further attention and analysis in this thesis.
 
-Inspecting and comparing the results already showed some spread in the performance metrics.
-Some more variations in algorithm parameters were conducted and included in the evaluation, to check what changes might have further impact and if there are substantial changes to the results.
-This iterative process is not directly visible in the graphs and will not be mentioned further, but algorithm configurations with multiple parameters changed are an outcome of additional experimentation with the system.
+The effect of different filters for the depth image is tested by running the median blur and bilateral filter on the raw range data creating a new data source.
+Each of those data sources is analyzed with the same different settings for each algorithm.
+The total number of configurations is the cartesian product of the data sources with each algorithm configuration.
+Only the Synthetic dataset is not filtered as its range values have no measurement error.
+\begin{table}[H]
+    {\renewcommand{\arraystretch}{1.3}%
+    \setlength{\tabcolsep}{0.3em}%
+    \begin{tabular}{ccccc}
+    \toprule
+    \null & \textbf{Median Blur} & \textbf{Bilateral Filter} \\
+    \midrule
+    \textbf{Parameters}
+        & $w = 5 \times 5px$
+        & $\sigma_{color} = 25$ \\
+    \null & \null & $\sigma_{space} = 7$ \\
+    \bottomrule
+    \end{tabular}
+    }
+\caption{The parameters for the filters applied to the sensor data.}
+\end{table}
+\begin{figure}[H]
+\begin{floatrow}
+\TopFloatBoxes
+    \btabbox{%
+    \renewcommand{\arraystretch}{1.2}%
+    \setlength{\tabcolsep}{0.5em}%
+    \small
+    \begin{tabular}{cc}
+    \toprule
+    \textbf{Name} & \textbf{\acrshort{sift} Parameters} \\
+    \midrule
+    Default & keypoint size > 5px \\
+    \null   & contrast threshold = 0.04 \\
+    \null   & $\sigma$ = 1.6 \\
+    best only & best 400 keypoints \\
+    contrast reduced & contrast threshold = 0.02 \\
+    contrast increased & contrast threshold = 0.08 \\
+    sigma reduced & $\sigma$ = 1.0 \\
+    sigma increased & $\sigma$ = 2.2 \\
+    \bottomrule
+    \end{tabular}
+    }
+    {\caption{All Algorithm Variations for \acrshort{sift}. \emph{Default} is used as basis for all configurations and only differences are presented.}}
 
-\subsubsection{Depth Image Filtering}
+    \btabbox{%
+    \renewcommand{\arraystretch}{1.2}%
+    \setlength{\tabcolsep}{0.5em}%
+    \small
+    \begin{tabular}{cc}
+    \toprule
+    \textbf{Name} & \textbf{\acrshort{akaze} Parameters} \\
+    \midrule
+    Default MLDB & descriptor MLDB \\
+    \null        & diffusity PM\_G2 \\
+    Best Only    & best 400 keypoints \\
+    Default Kaze & descriptor KAZE \\
+    PM G1        & diffusity \\
+    \null        & PM\_G1 \\
+    WEICKERT     & diffusity \\
+    \null        & WEICKERT \\
+    CHARBONNIER  & diffusity \\
+    \null        & CHARBONNIER \\
+    \bottomrule
+    \end{tabular}
+    }
+    {\caption{\acrshort{akaze} has many options that are explored in mostly default configuration.}}
 
-table for median blur, bilateral and median blur + bilateral
+\end{floatrow}
+\end{figure}
+\begin{figure}[H]
+\begin{floatrow}
+\TopFloatBoxes
+    \btabbox{%
+    \renewcommand{\arraystretch}{1.2}%
+    \setlength{\tabcolsep}{0.5em}%
+    \small
+    \begin{tabular}{cc}
+    \toprule
+    \textbf{Name} & \textbf{\acrshort{surf} Parameters} \\
+    \midrule
+    Default & octaves = 4 \\
+    \null & layers per octave = 1 \\
+    Best Only & octaves = 1 \\
+    \null & layers per octave = 1 \\
+    \null & best 400 keypoints \\
+    \bottomrule
+    \end{tabular}
+    }
+    {\caption{\acrshort{surf} is only analyzed for two configurations, as the algorithm shows to not work on converted images. The analysis for this conclusion is in the results section.}}
 
-\subsubsection{Algorithm Variations}
-
-multiple tables for each algorithms analyzed configurations
+    \btabbox{%
+    \renewcommand{\arraystretch}{1.2}%
+    \setlength{\tabcolsep}{0.5em}%
+    \small
+    \begin{tabular}{cc}
+    \toprule
+    \textbf{Name} & \textbf{\acrshort{orb} Parameters} \\
+    \midrule
+    Default Harris & Score Metric: Harris \\
+    Default FAST & Score Metric: FAST \\
+    \bottomrule
+    \end{tabular}
+    }
+    {\caption{\acrshort{orb} is analyzed with both possible keypoint detectors. Their performance showed no real potential and further experiments were not conducted.}}
+\end{floatrow}
+\end{figure}
