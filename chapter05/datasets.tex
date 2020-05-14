@@ -59,7 +59,7 @@ Both rotation and translation are done in isolation as well combined.
 The scene consists of a sphere, a cylinder, a cube-like object with additional edges of different smootheness and a complex monkey head in a room (Figure~\ref{fig:blender_scene}).
 The camera movement is rendered in an animation and the depth buffer of each frame is extracted as image.
 From the rendering settings the camera matrix is calculated and its parameters provided in Table~\ref{tab:blender_intrinsic}.
-The total animation consists of 211 images and no noise is applied to the depth image.
+The total animation consists of 211 images and no noise is applied to the depth image (example images in Appendix~\ref{sec:synthetic_conversions}).
 \begin{figure}[H]
 \CenterFloatBoxes%
 \begin{floatrow}
@@ -91,7 +91,7 @@ One real-world dataset is obtained with a mobile robot using a Kinectv2 in an un
 The route has been previously reconstructed with classical SLAM.
 Due to the global optimization in the \gls{sfm} pipeline not preserving the proper scale for the depth images that translations do not match the measured distances of the depth sensor.
 The preexisting poses are used as initial pose for ICP refinement.
-\emph{Lehrpfad} is the biggest tested dataset with 734 frames and the biggest variation in the visible structures.
+\emph{Lehrpfad} is the biggest tested dataset with 734 frames and the biggest variation in the visible structures (example images in Appendix~\ref{sec:lehrpfad_conversions}).
 \begin{figure}[H]
 \CenterFloatBoxes%
 \begin{floatrow}
@@ -122,7 +122,7 @@ The preexisting poses are used as initial pose for ICP refinement.
 \subsubsection{Office}
 
 The second Kinectv2 dataset is taken in an office with many smaller elements, wires and other manmade objects.
-It contains 57 images composed of translation and rotation of the depth sensor.
+It contains 57 images composed of translation and rotation of the depth sensor (example images in Appendix~\ref{sec:office_conversions}).
 No prior trajectory reconstruction other than the ICP is used for the relative poses.
 \begin{figure}[H]
 \CenterFloatBoxes%
@@ -159,7 +159,7 @@ These scans are examined for the conversions, too.
 Because they were done with classical artificial marker based registration in mind, the overlap between those scans is minimal.
 This unfortunatly means, that a direct matching between scans can not show potential registration performance.
 The distribution and characteristics of the extracted features is analyzed, though.
-From the raw dataset only 6 scans are selected, because each scan had a slightly different resolution and aspect ratio.
+From the raw dataset only 6 scans are selected, because each scan had a slightly different resolution and aspect ratio (example scans in Appendix~\ref{sec:laserscan_conversions}).
 The selected scans are processed to a common resolution and aspect ratio.
 \begin{figure}[H]
 \CenterFloatBoxes%
