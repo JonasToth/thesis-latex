@@ -1,12 +1,12 @@
 %YAML:1.0
 ---
 classification:
-   relevant_elements: 5289
-   irrelevant_elements: 24911
-   total_elements: 30200
-   selected_elements: 13874
-   true_positives: 4525
-   false_positives: 9349
+   relevant_elements: 5288
+   irrelevant_elements: 24910
+   total_elements: 30198
+   selected_elements: 13872
+   true_positives: 4524
+   false_positives: 9348
    true_negatives: 15562
    false_negatives: 764
    precision: 3.2610000000000000e-01

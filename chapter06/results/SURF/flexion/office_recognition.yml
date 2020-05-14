@@ -1,19 +1,19 @@
 %YAML:1.0
 ---
 classification:
-   relevant_elements: 4173
-   irrelevant_elements: 29427
+   relevant_elements: 4172
+   irrelevant_elements: 29428
    total_elements: 33600
-   selected_elements: 12861
-   true_positives: 2133
-   false_positives: 10728
-   true_negatives: 18699
-   false_negatives: 2040
-   precision: 1.6590000000000002e-01
-   recall: 5.1110000000000000e-01
-   fallout: 3.6460000000000004e-01
-   sensitivity: 5.1110000000000000e-01
-   specificity: 6.3540000000000008e-01
-   rand_index: 6.2000000000000000e-01
-   youden_index: 1.4660000000000001e-01
+   selected_elements: 12865
+   true_positives: 2131
+   false_positives: 10734
+   true_negatives: 18694
+   false_negatives: 2041
+   precision: 1.6560000000000000e-01
+   recall: 5.1080000000000003e-01
+   fallout: 3.6480000000000001e-01
+   sensitivity: 5.1080000000000003e-01
+   specificity: 6.3519999999999999e-01
+   rand_index: 6.1980000000000002e-01
+   youden_index: 1.4600000000000002e-01
 masked_points: 1939

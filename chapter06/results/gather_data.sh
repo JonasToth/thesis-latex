@@ -28,13 +28,11 @@ while [[ $# -gt 0 ]] ; do
 
             echo "Extracting from: $(tput bold)${extract_dir}$(tput sgr0)"
             echo "Putting into: $(tput bold)${target_dir}$(tput sgr0)"
-            echo "Sleep for 2 seconds..., Abort with <CTRL-C>"
-            sleep 2
 
-            cp "../${dataset}/${algo}/${conv}/roc.dat" "${target_dir}/${dataset}_roc.dat"
+            [ ! "${dataset}" = "laserscan" ] && cp "../${dataset}/${algo}/${conv}/roc.dat" "${target_dir}/${dataset}_roc.dat"
 
-            cp "${extract_dir}/false_positive_distance.dat" "${target_dir}/${dataset}_fp_distance.dat"
-            cp "${extract_dir}/true_positive_distance.dat" "${target_dir}/${dataset}_tp_distance.dat"
+            [ ! "${dataset}" = "laserscan" ] && cp "${extract_dir}/false_positive_distance.dat" "${target_dir}/${dataset}_fp_distance.dat"
+            [ ! "${dataset}" = "laserscan" ] && cp "${extract_dir}/true_positive_distance.dat" "${target_dir}/${dataset}_tp_distance.dat"
             cp "${extract_dir}/kp_distribution.dat" "${target_dir}/${dataset}_distribution.dat"
             cp "${extract_dir}/kp_response.dat" "${target_dir}/${dataset}_response.dat"
             cp "${extract_dir}/kp_size.dat" "${target_dir}/${dataset}_size.dat"
@@ -43,7 +41,7 @@ while [[ $# -gt 0 ]] ; do
             # relevant_elements.dat
             # true_positive.dat
             cp "${extract_dir}/keypoint_stat.yml" "${target_dir}/${dataset}_keypoint_stat.yml"
-            cp "${extract_dir}/recognition.yml" "${target_dir}/${dataset}_recognition.yml"
+            [ ! "${dataset}" = "laserscan" ] && cp "${extract_dir}/recognition.yml" "${target_dir}/${dataset}_recognition.yml"
         done
     done
 
