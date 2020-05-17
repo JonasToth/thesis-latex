@@ -8,7 +8,7 @@ if [ $# -ne 2 ] ; then
 fi
 
 echo "Gathering Lehrpfad..."
-for idx in 90 180 360 630 ; do
+for idx in 90 180 360 631 ; do
     cp "../lehrpfad/${1}/flexion/raw/${2}/extracted/backprojected-$(printf "%04d" ${idx}).png" \
        "${1}/backprojections/lehrpfad/" || exit 1
 done
