@@ -1,4 +1,4 @@
-\documentclass[doktyp=marbeit,fontsize=12pt,sprache=english,hausschrift=true]{TUBAFarbeiten}
+\documentclass[doktyp=marbeit,fontsize=12pt,sprache=english,hausschrift=true,draft=false]{TUBAFarbeiten}
 
 % packages
 \usepackage{abstract}
@@ -11,6 +11,11 @@
 \usepackage{calc}
 % \usepackage[backend=biber,sortlocale=de_DE_phonebook,sorting=none,natbib=true,doi=false,isbn=false,url=false]{biblatex}
 \usepackage{cite}
+\usepackage{draftwatermark}
+\SetWatermarkText{Confidential}
+\SetWatermarkScale{1}
+\SetWatermarkColor[gray]{0.9}
+
 \usepackage{enumitem}
 \usepackage[T1]{fontenc}
 \usepackage{floatrow} % rows of table and pictures
@@ -204,6 +209,12 @@ Approach to transform depth image first before processing further works and give
     \section{Keypoints for Datasets}
     \input{chapterC/sift}
     \input{chapterC/akaze}
+
+    \section{In-Depth Statistics for Datasets}
+    \input{chapterD/sift}
+    \input{chapterD/surf}
+    \input{chapterD/orb}
+    \input{chapterD/akaze}
 
     \newpage
     \addcontentsline{toc}{section}{References}

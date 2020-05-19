@@ -16,7 +16,7 @@ set grid ytics mytics
 
 unset xlabel
 unset xtics
-set ylabel "Response" rotate parallel
+set ylabel "Response" rotate parallel offset -1.8,-0.8,0
 
 set xrange [-0.05:0.35]
 set zrange [0:]

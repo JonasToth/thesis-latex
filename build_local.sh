@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cp -r ~/Freiberg/Masterarbeit/analysis/final_eval/* chapter06/results/
+./copy_results.sh || exit 1
 cd chapter06/results/ || exit 1
 ./produce_plots.sh || exit 1
 ./produce_tables.sh || exit 1

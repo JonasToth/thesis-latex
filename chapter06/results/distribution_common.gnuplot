@@ -8,9 +8,9 @@ set output "distribution.pdf"
 set yrange [200:0]
 set xrange [0:]
 set size ratio 1
-set border 0 front lc rgb '#808080' lt 1 lw 0.5
+set border 15 front lc rgb '#808080' lt 1 lw 0.5
 set tmargin at screen 1.0
-set bmargin at screen 0.0
+set bmargin at screen 0.005
 unset colorbox
 unset xtics
 unset ytics

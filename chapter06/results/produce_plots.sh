@@ -4,6 +4,8 @@ for d in AKAZE ORB SIFT SURF ; do
     cd "${d}" || (echo "FAILURE!!"; exit 1)
     
     for conv in */ ; do
+        [ "${conv}" = "backprojections/" ] && continue
+
         cd "${conv}" || (echo "FAILURE 2!!"; exit 1)
         pwd
         echo "Plotting for ${d}/${conv}"
