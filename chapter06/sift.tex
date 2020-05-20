@@ -3,60 +3,23 @@
     \setlength{\tabcolsep}{0.3em}%
 \input{chapter06/results/SIFT/absolute_numbers}
     }
-    \caption{Performance indicators for the default configuration of the SIFT algorithm on the different datasets.}
+    \caption{Performance indicators for the default configuration of the \acrshort{sift} algorithm on the different datasets.}
 \end{table}
-Raw numbers and absolute numbers for the recognition performance of SIFT features.
-The ratios and relative performance numbers are similar between both conversions.
-In absolute numbers, the \glspl{flexion-image} result in more detected features.
-This higher number results in potentially better RANSAC results, because there are more correspondences to pick from.
-\begin{figure}[H]
-\begin{subfigure}[t]{0.45\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/roc.pdf}%
-    \caption{Flexion Image ROC}
-\end{subfigure}\quad
-\begin{subfigure}[t]{0.45\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/roc.pdf}
-    \caption{Bearing-Angle Image ROC}
-\end{subfigure}
-    \caption{The ROC plot for SIFT shows a high variability for the true positive rate, but an almost constant false positive rate regardless of conversion image type.}
-\end{figure}
-The overall performance differences are shown here.
-False positive rate does not change significantly with different algorithm parameters.
-True positive rate has a wide variety.
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/distribution.pdf}\\
-    \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/distribution.pdf}%
-    \caption{The keypoint distribution for the different datasets show both good spread and that the information in the image is clearly tracked in the Synthetic dataset. The first row is the \gls{flexion-image} and the second row the \gls{bearing-angle-image} conversion.}
-\end{figure}
-The keypoints stick to salient regions and are not randomly distributed, as can be seen in the Synthetic dataset.
-For the bigger datasets with real world geometry the keypoints are distributed all over the images, indicating not clear disfunctionality in the detection.
-Flexion images create more keypoints.
-\begin{figure}[H]
-\begin{subfigure}[t]{0.45\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/response.pdf}%
-    \caption{\gls{flexion-image} Keypoint Responses}
-\end{subfigure}\quad
-\begin{subfigure}[t]{0.45\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/response.pdf}%
-    \caption{\gls{bearing-angle-image} Keypoint Responses}
-\end{subfigure}
-\end{figure}
-The responses show the difference between flexion images and bearing angle images.
-Flexion images have a wider range of responses and on average an higher response to the keypoint detector.
-The underlying distribution is similar, but bearing performs worse.
-\begin{figure}[H]
-\begin{subfigure}[t]{0.45\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/size.pdf}%
-    \caption{\gls{flexion-image} Keypoint Sizes with logarithmic scale}
-\end{subfigure}\quad
-\begin{subfigure}[t]{0.45\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/size.pdf}%
-    \caption{\gls{bearing-angle-image} Keypoint Sizes with logarithmic scale}
-\end{subfigure}
-\end{figure}
-Both conversion types have a very high skew towards small features.
+\acrshort{sift} is the most established tested algorithm and therefore evaluated first.
+In each dataset the number of detected keypoints and is significantly higher for the \glspl{flexion-image} compared to the \glspl{bearing-angle-image}.
+The number of correspondences between keypoints is even approximatly double for \glspl{flexion-image}.
+The distribution of the keypoints in each dataset shows no obvious problem in any regard in Figure~\ref{fig:sift_kp_distribution}.
+In \emph{Lehrpfad} the keypoints are not as common in the ground area but denser on the walls which is reasonable, as these are the location with most geometry structure.
+Similar in \emph{Synthetic}, the rotation of the camera shows a clear trace in the keypoint distribution demonstrating that they stick to geometrically salient regions.
+Neither the keypoint sizes, responses or location distribution show surprising characteristics and their distributions are plotted in Appendix~\ref{sec:sift_stats}.
 
-\begin{figure}[H]
+The matching performances most relevant criterion is the descriptors capability to differentiate between salient regions.
+For each dataset, except \emph{Synthethic}, the distribution of the descriptor distance of matches shows that true positives and false positives result in a different distribution (Figure~\ref{fig:sift_descriptor_distance}).
+Each curve is normalized with the total number of true and false positives per dataset for comparison.
+Defining a maximum matching distance threshold will result in less false positives for both conversion types.
+The overlapping curves for \emph{Synthethic} are an artifact of the inherent similarity of different regions and can not be avoided.
+Appendix~\ref{sec:backprojection_sift} contains plots visualizing the matching performance in each dataset in the actual images.
+\begin{figure}[htp]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/descriptor_distances.pdf}%
     \caption{\gls{flexion-image} Descriptor Distances}
@@ -65,15 +28,26 @@ Both conversion types have a very high skew towards small features.
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/descriptor_distances.pdf}%
     \caption{\gls{bearing-angle-image} Descriptors Distances}
 \end{subfigure}
+\caption{The distributions of descriptor distances show a clear relationship between the distance and the likelihood of a true or false positive.}\label{fig:sift_descriptor_distance}
 \end{figure}
-The analyzing the descriptor distances for true positives and false positives show skewed distributions that indicate a partial separapibility for the real world datasets.
-
-On all datasets the only factor improving the result further was applying a threshold on the keypoint response.
-Either by taking only the best $N$ points or enforcing a lower bound on the response.
-This change improved the true positive rate by $~0.03$, which is only a slight improvement.
-
-
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/backprojected-0010.png}%
-    \caption{Backprojection, note the blue point bottom right}
+In terms of the ROC analysis (Figure~\ref{fig:roc_sift}) the \gls{flexion-image} shows a slightly better performance, but no clear winner can be established.
+Additional parameter variation in the \acrshort{sift} algorithm and filtering setup varies the true positive rate by only $5\%$ and the false positive rate by even less.
+The differences between the datasets are inherent to their quality and setup.
+Most notably, \acrshort{sift} has a very high true positive rate (recall) showing its descriptive power and potential for object recognition tasks.
+The very similar false positive rate in all datasets points inherent similarities in the geometries of the scenes that might be explained by the lack of textures as differentiating factor.
+\begin{figure}[htp]
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/roc.pdf}%
+    \caption{\gls{flexion-image} ROC}
+\end{subfigure}\quad
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/roc.pdf}
+    \caption{\gls{bearing-angle-image} Image ROC}
+\end{subfigure}
+    \caption{The ROC plot for \acrshort{sift} is tightly clustered for both conversions. No clear }\label{fig:roc_sift}
 \end{figure}
+Both feature image conversions demonstrate that the salient geometric regions can be recognized with \acrshort{sift}.
+The \gls{flexion-image} produces more keypoints and correspondences compared to the \gls{bearing-angle-image}.
+Additionally, the true positive rate in \emph{Lehrpfad} is slightly higher in this challenging dataset.
+From this the author concludes that the \gls{flexion-image} is better suited.
+The theoretical aspects, like rotation invariance and the inclusion of more information per pixel, are additional arguments to prefer the \gls{flexion-image}.

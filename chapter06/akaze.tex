@@ -5,22 +5,16 @@
     }
     \caption{Performance indicators for the default configuration of the SIFT algorithm on the different datasets.}
 \end{table}
+The final feature detection algorithm evaluate is \acrshort{akaze}, that is again closer to \acrshort{sift} for the keypoint detector design compared to \acrshort{orb}.
+\acrshort{akaze} results approximatly one order of magnitude more detected keypoints and correspondences compared to \acrshort{sift}.
+Its keypoints characteristics show expected results (Appendix~\ref{sec:akaze_stats}).
+Compared to \acrshort{sift} the detection does not result in as similar diverse keypoint sizes and the response is narrower with a stronger skew towards small responses.
 
-Foo bar
-
-\begin{figure}[H]
-\begin{subfigure}[t]{0.45\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/results/AKAZE/flexion/roc.pdf}%
-    \caption{Flexion Image ROC}
-\end{subfigure}\quad
-\begin{subfigure}[t]{0.45\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/results/AKAZE/bearing/roc.pdf}
-    \caption{Bearing-Angle Image ROC}
-\end{subfigure}
-    \caption{AKAZE}
-\end{figure}
-
-\begin{figure}[H]
+The \acrshort{mldb} descriptor shows separation between true positive and false positives across the datasets and feature images.
+This indicates good performance of the binary descriptor.
+Additionally it reaffirms the finding of \acrshort{orb}'s \acrshort{brief} descriptor showing separation potential.
+The enhancement in \acrshort{mldb} solidifies the tendency though.
+\begin{figure}[htp]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/flexion/descriptor_distances.pdf}%
     \caption{\gls{flexion-image} Descriptor Distances}
@@ -29,4 +23,22 @@ Foo bar
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/bearing/descriptor_distances.pdf}%
     \caption{\gls{bearing-angle-image} Descriptors Distances}
 \end{subfigure}
+\end{figure}
+The ROC graph in Figure~\ref{fig:roc_akaze} shows, that \acrshort{akaze} can perform quiet reasonable across all datasets.
+For the \glspl{flexion-image} there exists a configuration for each dataset with significantly higher true positive rate than false positive rate.
+The top performers for each dataset are the configurations using only the best 400 keypoints for matching, regardless of filtering.
+Applying additional heuristics in matching, like a maximum matching distance, will certainly improve the ratio of true positives to false positives further.
+The backprojections in Appendix~\ref{sec:backprojections_akaze} show the higher amount of keypoints compared to \acrshort{sift}.
+But bad scale coverage leads to unsatisfying keypoint for the \emph{Laserscan} dataset.
+There, \acrshort{sift} has clear qualitative advantages over \acrshort{akaze}, because its keypoints cover the whole scan.
+\begin{figure}[htp]
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/AKAZE/flexion/roc.pdf}%
+    \caption{Flexion Image ROC}
+\end{subfigure}\quad
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/AKAZE/bearing/roc.pdf}
+    \caption{Bearing-Angle Image ROC}
+\end{subfigure}
+    \caption{ROC graph for \acrshort{akaze}.}\label{fig:roc_akaze}
 \end{figure}

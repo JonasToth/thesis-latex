@@ -191,10 +191,10 @@ Approach to transform depth image first before processing further works and give
     % \input{anhang/content}
     \newpage
 
-    \section{Derivation of Formulae}
+    \section{Mathematical Derivation}
     \input{chapterA/derivation_bearing}
-
     \newpage
+
     \section{Converted Images for Datasets}
     {\setlength{\abovecaptionskip}{-20pt}%
      \setlength{\belowcaptionskip}{-30pt}%
@@ -206,17 +206,24 @@ Approach to transform depth image first before processing further works and give
     \input{chapterB/laserscan}
     \input{chapterB/lehrpfad}
     }
-    \section{Keypoints for Datasets}
+    \newpage
+
+    \section{Keypoints and Backprojections for \acrshort{sift} and \acrshort{akaze}}
+    The plots in this section show the keypoint and matching properties of different algorithms.
+    Green points are a identified true positive and blue point and false negative.
+    The orange lines connect the keypoints that are false positives.
+    In the Laserscan images each keypoint size and rotation is symbolized through the size of the circle and radial line.
     \input{chapterC/sift}
     \input{chapterC/akaze}
+    \newpage
 
     \section{In-Depth Statistics for Datasets}
     \input{chapterD/sift}
     \input{chapterD/surf}
     \input{chapterD/orb}
     \input{chapterD/akaze}
-
     \newpage
+
     \addcontentsline{toc}{section}{References}
     \bibliographystyle{IEEEtran}
     \bibliography{references}

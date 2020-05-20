@@ -1,63 +1,14 @@
 \subsection{Datasets}
 
-% \subsubsection{T-Less 17}
-
-% The T-Less dataset was created by Hoda{\v{n}} et al.\cite{hodan_wacv2017} and serves as a benchmark for object detection and 6 \acrshort{DoF} pose estimation.
-% It provides range data for the Kinectv2 and PrimeSense Carmine 1.09 depth sensors.
-% Each sensor is modelled as pinhole camera and the calibration is provided by the dataset (see Table~\ref{tab:intrinsic_tless}).
-% {\renewcommand{\arraystretch}{1.2}%
-% \setlength{\tabcolsep}{1em}%
-% \begin{table}
-    % \begin{tabular}[H]{rrr}
-    % \toprule
-    % \textbf{Parameter} & \textbf{Kinectv2} & \textbf{PrimeSense} \\
-    % \midrule
-    % Principle & \acrshort{ToF} & structured light \\
-    % Resolution & \multicolumn{2}{c}{$400 \times 400px$} \\
-    % $(f_x, f_y)$ & $(1076.74, 1075.18)$ & $(1075.65, 1073.90)$ \\
-    % $(c_x, c_y)$ & $(213.98, 148.59)$ & $(225.07, 167.72)$ \\
-    % \bottomrule
-    % \end{tabular}
-    % \caption{Intrinsic parameters for the Kinectv2 and PrimeSense sensor, provided by the T-Less dataset.}\label{tab:intrinsic_tless}
-% \end{table}}
-
-% \begin{figure}[H]
-    %\includegraphics[width=0.5\linewidth]{chapter05/img/tless/color_0300.png}%
-    % \includegraphics[width=0.25\linewidth]{chapter05/img/tless/kinect_bearing_0300.png}%
-    % \includegraphics[width=0.25\linewidth]{chapter05/img/tless/kinect_flexion_0300.png}%
-    % \includegraphics[width=0.25\linewidth]{chapter05/img/tless/primesense_bearing_0300.png}%
-    % \includegraphics[width=0.25\linewidth]{chapter05/img/tless/primesense_flexion_0300.png}\\
-% \end{figure}
-
-% \subsubsection{Intel Realsense Static Scene}
-
-% {\renewcommand{\arraystretch}{1.2}%
-% \setlength{\tabcolsep}{1em}%
-% \begin{table}
-    % \begin{tabular}[H]{rc}
-    % \toprule
-    % \textbf{Parameter} & \textbf{Intel RealSense} \\
-    % \midrule
-    % Principle  & structured light \\
-    % Resolution & 400 $\times$ 400px \\
-    % $f_x$ & 1076.7406 \\
-    % $f_y$ & 1075.1783 \\
-    % $c_x$ &  213.9826 \\
-    % $c_y$ &  148.5918 \\
-    % \bottomrule
-    % \end{tabular}
-    % \caption{Intrinsic parameters used for the Intel RealSense depth sensor.}
-% \end{table}}
-
 % Depth Resolution not good enough.
 % Intel Realsense Sensor
 
-\subsubsection{Synthetic Blender Scene}
+\subsubsection{Synthetic}
 
-The first synthetic dataset is a manually created scene in Blender\cite{blender}.
+The first dataset is a manually created scene in Blender\cite{blender} demonstrating the principle effects of rotation and translation on the conversion results.
 Both rotation and translation are done in isolation as well combined.
 The scene consists of a sphere, a cylinder, a cube-like object with additional edges of different smootheness and a complex monkey head in a room (Figure~\ref{fig:blender_scene}).
-The camera movement is rendered in an animation and the depth buffer of each frame is extracted as image.
+The camera movement is rendered as an animation and the depth buffer of each frame is extracted and used as depth image.
 From the rendering settings the camera matrix is calculated and its parameters provided in Table~\ref{tab:blender_intrinsic}.
 The total animation consists of 211 images and no noise is applied to the depth image (example images in Appendix~\ref{sec:synthetic_conversions}).
 \begin{figure}[H]
@@ -88,10 +39,11 @@ The total animation consists of 211 images and no noise is applied to the depth 
 \subsubsection{Lehrpfad}
 
 One real-world dataset is obtained with a mobile robot using a Kinectv2 in an underground mining environment.
-The route has been previously reconstructed with classical SLAM.
-Due to the global optimization in the \gls{sfm} pipeline not preserving the proper scale for the depth images that translations do not match the measured distances of the depth sensor.
+The route has been previously reconstructed with classical SLAM using color images.
+Due to the global optimization in the \gls{sfm} pipeline not preserving the proper scale for the depth images, the translations do not match the measured distances of the depth sensor.
 The preexisting poses are used as initial pose for ICP refinement.
 \emph{Lehrpfad} is the biggest tested dataset with 734 frames and the biggest variation in the visible structures (example images in Appendix~\ref{sec:lehrpfad_conversions}).
+It is a challenging dataset with high noise values, many missing depth values and differing data quality over the whole set of images.
 \begin{figure}[H]
 \CenterFloatBoxes%
 \begin{floatrow}
@@ -124,6 +76,7 @@ The preexisting poses are used as initial pose for ICP refinement.
 The second Kinectv2 dataset is taken in an office with many smaller elements, wires and other manmade objects.
 It contains 57 images composed of translation and rotation of the depth sensor (example images in Appendix~\ref{sec:office_conversions}).
 No prior trajectory reconstruction other than the ICP is used for the relative poses.
+It contains similar measurement errors as the Lehrpfad dataset, but has more distinctive shapes and better overall conditions for the depth sensor.
 \begin{figure}[H]
 \CenterFloatBoxes%
 \begin{floatrow}
@@ -151,7 +104,7 @@ No prior trajectory reconstruction other than the ICP is used for the relative p
 \end{floatrow}
 \end{figure}
 
-\subsubsection{\acrshort{LIDAR} scans of Wilhelm-Stehender-Süd}
+\subsubsection{Laserscan}
 
 Full \acrshort{LIDAR} scans are taken as part of classical mine surveying in the Reiche Zeche, the education and research mine of the TU Bergakademie Freiberg.
 The scans were done in the section \emph{Wilhelm-Stehender-Süd} of the mine.
@@ -186,20 +139,12 @@ The selected scans are processed to a common resolution and aspect ratio.
 \end{floatrow}
 \end{figure}
 
-% \subsubsection{LIDAR and pinhole Camera matching}
-
-% One advantage of the feature based approach is mixing highly different depth sensors with ease.
-% Examplaric scene with data from Kinectv2 sensor and the LIDAR that demonstrates, that matching between those two sensors is possible.
-% Demonstrate, that prior conversion from equirectangular to pinhole reduces the distortion and therefore change in appearance between different camera models.
-
-% Lehrpfad Ziege ist auch im Wilhelm-Sued-Kinect Datensatz. Damit ist da Equi, +Laserscan pinhole + Kinect vorhanden
-
 \begin{table}[H]
     {\renewcommand{\arraystretch}{1.3}%
     \setlength{\tabcolsep}{0.3em}%
     \begin{tabular}{ccccc}
     \toprule
-    \null & \textbf{Synthetic} & \textbf{Lehrpfad} & \textbf{Office} & \textbf{Wilhelm-Stehender-Süd} \\
+    \null & \textbf{Synthetic} & \textbf{Lehrpfad} & \textbf{Office} & \textbf{Laserscan} \\
     \midrule
     \textbf{Camera Model} & pinhole & pinhole & pinhole & equirectangular \\
     \textbf{Number Images} & 211 & 734 & 57 & 6 \\

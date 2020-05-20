@@ -5,22 +5,16 @@
     }
     \caption{Performance indicators for the default configuration of the SIFT algorithm on the different datasets.}
 \end{table}
+\acrshort{orb}'s detector finds less keypoints than \acrshort{sift} for both \glspl{flexion-image} and \glspl{bearing-angle-image}.
+But their size, response and location distribution (Appendix~\ref{sec:orb_stats}) indicate severe problems.
+Keypoints are not detected over multiple scales and the response shows a very inconsistent pattern over the different datasets.
+For \emph{Lehrpfad} the keypoints cluster in the middle and the borders of the field-of-view of the depth sensors.
+Those regions contains sharp edges from feature image to black because of missing range data.
+The \acrshort{fast} keypoint detector characteristics of comparing brightness values at different sampling points is to blame for the keypoints bad performance.
+Similar to \acrshort{surf}'s shortcoming, it does not deal well with the smoother gray changes but requires sharp edges.
+As \acrshort{orb} employs blurring and scale space, too, the effect of missing contrast between sampling points worsens in higher levels of the pyramid, yielding no keypoints there.
 
-Foo Bar
-
-\begin{figure}[H]
-\begin{subfigure}[t]{0.45\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/results/ORB/flexion/roc.pdf}%
-    \caption{Flexion Image ROC}
-\end{subfigure}\quad
-\begin{subfigure}[t]{0.45\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/results/ORB/bearing/roc.pdf}
-    \caption{Bearing-Angle Image ROC}
-\end{subfigure}
-    \caption{ORB}
-\end{figure}
-
-\begin{figure}[H]
+\begin{figure}[htp]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/ORB/flexion/descriptor_distances.pdf}%
     \caption{\gls{flexion-image} Descriptor Distances}
@@ -29,4 +23,19 @@ Foo Bar
     \includegraphics[width=\linewidth]{chapter06/results/ORB/bearing/descriptor_distances.pdf}%
     \caption{\gls{bearing-angle-image} Descriptors Distances}
 \end{subfigure}
+    \caption{Descriptor Distances for \acrshort{orb}}\label{fig:orb_descriptor_distances}
 \end{figure}
+\begin{figure}[htp]
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/ORB/flexion/roc.pdf}%
+    \caption{Flexion Image ROC}
+\end{subfigure}\quad
+\begin{subfigure}[t]{0.45\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/results/ORB/bearing/roc.pdf}
+    \caption{Bearing-Angle Image ROC}
+\end{subfigure}
+    \caption{\acrshort{orb}'s performance in ROC space}\label{fig:orb_roc}
+\end{figure}
+The descriptor distance in Figure~\ref{fig:orb_descriptor_distances} show some separation between true positives and false positives better than \acrshort{surf} but worse than \acrshort{sift}.
+In ROC space (Figure~\ref{fig:orb_roc}) these mixed result show in random performance for \emph{Lehrpfad} and OK performance for \emph{Synthetic} and \emph{Office}.
+Everything considered, \acrshort{orb} is not suitable for the proposed feature images.
