@@ -1,6 +1,19 @@
-\subsection{Keypoint-Detector discussion}
+\subsection{Keypoint-Detector Discussion}
 
-\begin{itemize}
-    \item Stable Keypoints are important
-    \item good Keypoint distribution
-\end{itemize}
+The presented results for the different state-of-the-art keypoint detectors imply that good performance on classical camera footage does not automatically yield good performance in the proposed feature images.
+Detectors that solely work on cornerdetection, as \acrshort{orb} does with \acrshort{fast} or the Harris-Corner-Detector, have a hard time on the feature images.
+The experiments on real sensor data show, that they strongly respond to missing measurements, creating a sharp black to gray edge.
+Solely relying on such areas is unstable and undesireable.
+Flat out banning such keypoints on the other hand might not be the right choice either.
+Shadow effects and reflective properties of surfaces can produce missing range values, too.
+Areas with such consistent black patches can and should be exploited as feature.
+
+\acrshort{surf}'s results are the most surprising, especially in comparison to \acrshort{sift}.
+\acrshort{surf} is designed as a faster \acrshort{sift}, using the same principles and underlying theory.
+One reason for the bad results might be too many simplifications and approximations.
+The use of a box-filter compared to a Gaussian in combination with the other assumptions are justified with empirical analysis on colored images.
+In these cases \acrshort{surf} performs good enough, but the bigger deviation from the theoretical background and human perception compared to \acrshort{sift} seem to hurt effectivness in the novel feature images.
+Afterall, \acrshort{surf} does find true correspondences in some instances.
+
+\acrshort{sift} and \acrshort{akaze} provide the most effective keypoint detectors tested.
+\acrshort{akaze}'s keypoint sizes are not as diverse as \acrshort{sift}'s, but the absolute number of keypoints is a clear advantage for example visual odometry tasks.
