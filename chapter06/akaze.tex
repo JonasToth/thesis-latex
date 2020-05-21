@@ -28,10 +28,10 @@ The ROC graph in Figure~\ref{fig:roc_akaze} shows, that \acrshort{akaze} can per
 For the \glspl{flexion-image} there exists a configuration for each dataset with significantly higher true positive rate than false positive rate.
 The top performers for each dataset are the configurations using only the best 400 keypoints for matching, regardless of filtering.
 Applying additional heuristics in matching, like a maximum matching distance, will certainly improve the ratio of true positives to false positives further.
-The backprojections in Appendix~\ref{sec:backprojections_akaze} show the higher amount of keypoints compared to \acrshort{sift}.
+The backprojections in Appendix~\ref{sec:backprojection_akaze} show the higher amount of keypoints compared to \acrshort{sift}.
 But bad scale coverage leads to unsatisfying keypoint for the \emph{Laserscan} dataset.
 There, \acrshort{sift} has clear qualitative advantages over \acrshort{akaze}, because its keypoints cover the whole scan.
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/flexion/roc.pdf}%
     \caption{Flexion Image ROC}

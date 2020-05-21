@@ -1,31 +1,44 @@
-\begin{figure}[H]
-\begin{subfigure}[c]{0.31\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_SIFT.png}%
-    \caption{Flexion SIFT}
-\end{subfigure}%
-\begin{subfigure}[c]{0.31\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/odo/jonas_bearing_SIFT.png}%
-    \caption{Bearing SIFT}
-\end{subfigure}%
-\begin{subfigure}[c]{0.31\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/odo/zhang_pinhole_SIFT.png}%
-    \caption{Color Images SIFT}
-\end{subfigure}
-\caption{Comparing Odometry Results using AKAZE as feature detector}
-\end{figure}
+The final application of the feature detection and matching algorithms is the application to compute a visual odometry. 
+Only the promising candidates \acrshort{sift} and \acrshort{akaze} are compared.
+Both feature images and the color images are used separatly to determine the visual odometry for a given trajectory, the groundtruth.
 
-\begin{figure}[H]
+\acrshort{sift} neither results in a good odometry for color images, \glspl{flexion-image} nor \glspl{bearing-angle-image}.
+Figure~\ref{fig:sift_odometry} shows random turns and barely straight trajectories for any conversion.
+\begin{figure}[htp]
 \begin{subfigure}[c]{0.31\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_AKAZE.png}%
-    \caption{Flexion AKAZE}
+    \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_SIFT_nice.png}%
+    \caption{\glspl{flexion-image}}
 \end{subfigure}%
 \begin{subfigure}[c]{0.31\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/odo/jonas_bearing_AKAZE.png}%
-    \caption{Bearing AKAZE}
+    \includegraphics[width=\linewidth]{chapter06/odo/jonas_bearing_SIFT_nice.png}%
+    \caption{\glspl{bearing-angle-image}}
 \end{subfigure}%
 \begin{subfigure}[c]{0.31\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/odo/zhang_pinhole_AKAZE.png}%
-    \caption{Color Images AKAZE}
+    \includegraphics[width=\linewidth]{chapter06/odo/zhang_pinhole_SIFT_nice.png}%
+    \caption{Color Images}
 \end{subfigure}
-\caption{Comparing Odometry Results using AKAZE as feature detector}
+\caption{Odometry trajectory for Zhang et al.\cite{zhang_icra2016} benchmark dataset using \acrshort{sift}.}\label{fig:sift_odometry}
 \end{figure}
+\acrshort{akaze} on the other hand performs much better in all cases, as can be seen in Figure~\ref{fig:akaze_odometry}.
+The prinicpal shape of the trajectory is reconstructed well.
+The \glspl{bearing-angle-image} have higher drift compared to the \glspl{flexion-image} or colored images, but only in certain areas where all images suffer from similar issues.
+\begin{figure}[htp]
+\begin{subfigure}[c]{0.31\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_AKAZE_nice.png}%
+    \caption{\glspl{flexion-image}}
+\end{subfigure}%
+\begin{subfigure}[c]{0.31\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/odo/jonas_bearing_AKAZE_nice.png}%
+    \caption{\glspl{bearing-angle-image}}
+\end{subfigure}%
+\begin{subfigure}[c]{0.31\linewidth}
+    \includegraphics[width=\linewidth]{chapter06/odo/zhang_pinhole_AKAZE_nice.png}%
+    \caption{Color Images}
+\end{subfigure}
+\caption{Odometry trajectories for Zhang et al.\cite{zhang_icra2016} benchmark dataset using \acrshort{akaze}.}\label{fig:akaze_odometry}
+\end{figure}
+The findings show that the higher number of keypoints created result in better localization performance.
+Because the benchmark dataset is a synthetic, the colored image do not contain the same level of object texture as in real life.
+This explains the bad performance of \acrshort{sift} for the colored images.
+The range data conversions on the other hand are representative for real world cases.
+A higher number of keypoints, combined with false positive rejection through \acrshort{RANSAC} are enough to produce similar odometry performance than colored images yield.
