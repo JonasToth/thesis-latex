@@ -1,8 +1,12 @@
 \subsection{Future Work}
 
-\begin{itemize}
-    \item BoW
-    \item Laserscan with Kinect
-    \item Other form of Ransac, that considers the depth information
-    \item Performance Optimization, conversion is embarassingly parallel and computed on GPU
-\end{itemize}
+The proposed \gls{flexion-image} bridges the gap between pointcloud processing and classical computer vision algorithms.
+Common processes, as visual odometry, global localisation with a bag-of-words approach and maybe even optical flow algorithms should be evaluated.
+The foundational insights on the descriptor performance of \acrshort{sift} and \acrshort{akaze} help to finetune heuristics, such as the maximum matching distance, for these tasks.
+
+New formulations for visual odometry and relative pose calculation become possible, because both the range value for each pixel is available.
+This additional information for each image coordinate reduces the required number of true correspondences to solve the equation to determine the relative pose.
+Investigating the viability of a new formulation for this problem and potential speed and efficiency gains seems the highest value research target.
+The classical \acrshort{icp} formulation relies on establishing explicit correspondences between points, too.
+Using the \gls{flexion-image} and classical feature descriptors might result in a new variation of this algorithm.
+Both problems are related and need further research.
