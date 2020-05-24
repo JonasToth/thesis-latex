@@ -8,3 +8,10 @@ Surprisingly, the evaluation showed that \acrshort{surf} lacks descriptive power
 \acrshort{orb}'s corner-based keypoint detector failed to produce stable keypoints.
 \acrshort{sift} and \acrshort{akaze} were the only algorithms achieving acceptable detection and recognition performance.
 The findings of this thesis --- the novel \gls{flexion-image} and its performance for \acrshort{sift} and \acrshort{akaze} --- may be the foundation for a descriptor for dense, structured pointcloud data, a problem not solved satisfactory yet.
+
+The proposed conversion has been tested with a Kinectv2 depth sensor and the Riegl Z300 \acrshort{LIDAR} scanner.
+Preprocessing the range data with edge-preserving filtering was part of the evaluation and has proven to be useful for the Riegl Z300, but unnecessary for the Kinectv2 sensor.
+Applying a median blur is enough for consistent smooth results and a more advanced bilateral filtering was not beneficial.
+
+The implementation of the evaluation software and conversion code was done with state-of-the-art software engineering principles and is of high quality.
+It can be used for follow up research and various binary artifacts are produced that run on any Linux system and can be compiled from source if required.
