@@ -37,7 +37,7 @@ Each histograms reflects a fraction of the grid beeing sampled.
 A $16 \times 16$ grid around the keypoint that is stored to $4 \times 4$ histograms with $8$ bins for the orientations results in a vector of $128$ elements in the descriptor.
 These numbers can be adjusted, but the $128$ element descriptor is used in practice.
 Finally, the histograms are normalized to increase robustness against illumination changes.
-The euclidean distance of the descriptor vectors is the most common similarity measure.
+The Euclidean distance of the descriptor vectors is the most common similarity measure.
 Arandjelović and Zisserman\cite{arandjelovic_2012} introduced RootSIFT using the Hellinger distance\cite{hellinger_1909} as better measure for similarity of histograms.
 
 \subsubsection{\acrshort{surf} (\acrlong{surf})}

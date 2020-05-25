@@ -140,23 +140,24 @@ Note, that $r = 1$ as the resulting vector is of unit length.
     \label{fig:range_depth}
 \end{figure}
 
-There are two possible conventions on how to store depth data, both demonstrated in figure~\ref{fig:range_depth}.
-The orthographic depth $d$ is the distance from the image plane and commonly returned by pinhole depth sensors like the Kinectv2.
-On the other hand, the range $r$ is the $L2$ norm of the vector from the camera origin to $\vec{P}$.
+There are two possible conventions on how to store depth data, both demonstrated in Figure~\ref{fig:range_depth}.
+The orthographic depth~$d$ is the distance from the image plane and commonly returned by pinhole depth sensors like the Kinectv2.
+On the other hand, the range~$r$ is the $L2$ norm of the vector from the camera origin to $\vec{P}$.
 For consistency and generality, depth data is converted to range data before further processing takes place.
 This simplifies later conversion and mixing of different camera models in a coherent fashion.
 The conversion depends on the camera model and only the pinhole model is subject to analysis here.
 
-From the forward projection function~\ref{eq:pinhole_forward} of the pinhole model follows the connection of the range and orthographic depth of the camera coordinates $\vec{P}$ and image coordinates $\vec{\hat{p}}$ of the point $\mathbf{P}$.
+From the forward projection function in Equation~\ref{eq:pinhole_forward} of the pinhole model follows the connection of the range and orthographic depth of the camera coordinates $\vec{P}$ and image coordinates $\vec{\hat{p}}$ of the point $\mathbf{P}$.
 \begin{equation}
 \begin{aligned}
-    &\vec{\hat{p}} = \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z} \\
-    \implies &Z \vec{\hat{p}} = \vec{P} \\
-    \implies &Z \lnorm{\vec{\hat{p}}} = \lnorm{\vec{P}}
+    \vec{\hat{p}} &= \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z} \\
+    \implies Z \vec{\hat{p}} &= \vec{P} \\
+    \implies Z \lnorm{\vec{\hat{p}}} &= \lnorm{\vec{P}} \\
+    \iff Z r &= d
 \end{aligned}
 \end{equation}
-The inverse of the $Z_{s}$ component of the backward projection from equation~\ref{eq:pinhole_backward} provides the scaling factor between orthographic depth and range.
-Consequently, the range $r$ for the depth $d$ at image coordiantes $\rowvecxx{x}{y}$ with corresponding coordinates on the unit sphere $\rowvecxxx{X_s}{Y_s}{Z_s}$ is computed with
+The inverse of the $Z_{s}$ component of the backward projection from Equation~\ref{eq:pinhole_backward} provides the scaling factor between orthographic depth and range.
+Consequently, the range~$r$ for the depth~$d$ at image coordiantes $\rowvecxx{x}{y}$ with corresponding coordinates on the unit sphere $\rowvecxxx{X_s}{Y_s}{Z_s}$ is computed with
 \begin{equation}
     r = \frac{d}{Z_s} = d \sqrt{x^2 + y^2 + 1}\text{.}
 \end{equation}

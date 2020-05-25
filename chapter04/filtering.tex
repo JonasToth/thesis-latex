@@ -25,7 +25,7 @@ Its application is convolutional, similar to the median blur and other filters.
 Each neighbouring pixels effect on the central pixel is weighted by a geometric closeness and similarity function.
 Similarity can be based on a classical distance norm of photometric values or be more sophisticated like a perceived similarity.
 The bilateral filter works for the general case with any function for the similarity and the closeness.
-A common function for both factors is a Gaussian kernel with the euclidean norm as distance measure.
+A common function for both factors is a Gaussian kernel with the Euclidean norm as distance measure.
 Figure~\ref{fig:bilateral_filter} provides an example application of the bilateral filter on a single channel two-dimensional signal with the gaussian function for \emph{closeness} and \emph{similarity}.
 \begin{figure}[H]
     \begin{subfigure}[b]{0.3\linewidth}
@@ -59,7 +59,7 @@ Defining the \emph{similarity} $s$ is equivalent.
     \theta(\phi, \mathbf{f})&= \theta(\phi - \mathbf{f}) = \lnorm{\phi - \mathbf{f}}
 \end{aligned}
 \end{equation}
-The function $\mathbf{f}(\vec{x})$ is the value of the signal at the position $\vec{x}$ and $\theta$ weighs these values again based on the euclidean distance of the values.
+The function $\mathbf{f}(\vec{x})$ is the value of the signal at the position $\vec{x}$ and $\theta$ weighs these values again based on the Euclidean distance of the values.
 To compute the filtered value on any point $\vec{x}$ these functions need to be applied to the whole signal.
 The continuous formulation is given here, but for images the filter is a discrete convolution.
 \begin{equation}
