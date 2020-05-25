@@ -1,38 +1,41 @@
 \subsection{Motivation}
 
-\begin{itemize}
-    \item depth sensors increasingly used in the field and quality of sensors improve dramatically
-    \item performance/compute costs of ICP high
-    \item other methodologies on pointcloud registration are computationally expensive and not suitable for real time/global positioning
-    \item due to ICP limitations, combining laserscan and depth sensor hard
-    \item ICP requires correspondance assignment in the pointclouds and inital pose
-    \item global positioning not possible with ICP
-    \item feature based matching well established in computer vision community
-    \item many tasks, like Place-Recognition and Loop Closure, Bag-of-Words and SLAM are implemented with these algorithms
-    \item special mining environment result in bad lighting conditions for normal cameras, additional sensing with depth sensors increases accuracy
-    \item potential utilization of high resolution terestrial laser scans made for mine surveying allows global positioning
-\end{itemize}
+Global and local pose estimation is a common problem solved in robotics.
+Visual odometry and feature based localization are well established solutions and a lot of research went into these various aspects of this field.
+Additionally, the use of depth sensors increased with their availability and fast integration into robotic systems.
+This naturally leads to the task of exploiting the depth information for problems like localization and mapping, which at their core require a way to align multiple pointclouds to each other.
 
-\subsection{Problem Definition}
+One dominant algorithm to solve this problem is \acrshort{icp} (\acrlong{icp}).
+It has various characteristics and limitations that require an initial estimate for the relative pose between pointclouds.
+Loop closure in \acrshort{slam} (\acrlong{slam}), global localization or place recognition can not rely on such an initial estimate.
+Those problems are commonly solved with a feature based approach to detect salient points in color images that are recognized in optical sensor data.
+Detecting salient point in an image and describing the local neighbourhood in a recognizable manner is at the core of many solutions of computer vision related problems and a well researched topic.
 
-\begin{itemize}
-    \item utilization of the classical feature-based computer vision algorithms depends on the ability to use these feature-detectors/descriptors on range data or a derived format
-    \item the keypoint detectors need to produce stable and identifiable keypoints
-    \item descriptors need to produce reliable results for matching performance
-    \item secondary goal is fast range data processing for potential real-time applications
-    \item this thesis proposes novel ways to transform range data in gray-scale images that provide benfitial appearance for feature algorithms.
-    \item it implements the already proposed \gls{bearing-angle-image} and compares it to the novel \gls{flexion-image} it develops.
-    \item both derived feature images performances under feature-detectors are compared and discussed
-    \item additionally it provides high quality reference implementations for the proposed conversions in the form of library code and command line tools for batch converting existing images.
-    \item both \gls{LIDAR} scans and depth image footage are analyzed
-\end{itemize}
+The context of this thesis is research of robotic systems in underground mining environments.
+It is common to have detailed \acrshort{LIDAR} scans of the whole mine, which is a part of mine surveying.
+Bad lighting conditions challenge the classical optical systems and algorithms to achieve global localization.
+
+
+\subsection{Problem Definition and Objective}
+
+The goal of this thesis is to develop the foundation to process depth sensor data and \acrshort{LIDAR} scan such that well developed computer vision algorithms become applicable to depth and range data.
+Instead of working on the three dimensional data directly, each depth image is first converted into a derived feature image.
+The feature detectors and descriptors are then run on the feature image.
+
+The feature images have different characteristics than classical color images.
+For successfull usage of feature based the detected keypoints need to be stable between multiple views and the descriptors for each keypoint must allow discrimination between each other.
+Researching the properties of both the keypoint and the descriptors for common state-of-the-art algorithms is therefore mandatory work before solving the more complex tasks such as global localization that use features at their core.
+The findings shall be used in a simple visual odometry experiment to demonstrate principal applicability of the final result.
+
+The main contribution of this thesis is a novel way to convert range data into a derived feature image and the analysis of the performance of state-of-the-art keypoint detector and descriptors on this derived image.
+All developed tools can be reused as both library code and executable binary to create such images and run the feature algorithms on them.
+Both the qualitative and quantitative findings will build an empirical foundation on developing this approach further for more complex tasks such as place recognition, global localization in a known environment and visual odometry with the novel feature images as input.
 
 \subsection{Structure of this Thesis}
 
 Section 2 introduces the related work on state-of-the-art algorithms for pointcloud registration and feature performance comparisons.
-Section 3 builds the necessary foundational knowledge on range data sensors and the math on modeling their data.
-It gives a high level introduction on keypoint detectors and descriptors and how their performance can be evaluated.
-Section 4 describes the novel pipeline of range data processing starting a edge-preserving filtering to conversion to feature-images and finally feature detection.
-Section 5 explains the experiments conducted and defines the evaluation metrics.
-These experimental results are presented and discussed in section 6.
+Necessary foundational knowledge on range sensors and the math of modeling their data is presented in Section 3.
+It additionally gives a high level introduction on keypoint detectors and descriptors and how their performance can be evaluated.
+Section 4 describes the novel range data processing, starting with edge-preserving filtering followed by followed by conversion to feature-images and finally explaining the evaluated feature detection and description algorithms.
+The proposed pipeline is evaluated in section 5, describing the approach and metrics, and 6 that presents and discusses the results.
 Finally, section 7 concludes the work and proposes further research areas to develop this new approach further.
