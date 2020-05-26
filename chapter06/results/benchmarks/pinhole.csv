@@ -1,0 +1,3 @@
+# label          ,  time(f), std-dev , time(ba), std-dev
+ Pinhole         , 69.1743 , 1.0209  , 34.6758 , 0.6248
+ Pinhole Parallel, 19.2808 , 0.7699  , 6.56894 , 0.6914

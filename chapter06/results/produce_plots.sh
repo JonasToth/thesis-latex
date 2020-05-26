@@ -19,3 +19,9 @@ for d in AKAZE ORB SIFT SURF ; do
 
     cd ..
 done
+
+cd benchmarks || exit 1
+echo "Plotting benchmarks"
+gnuplot -e "data_name=\"pinhole\"" plot_benchmarks.gnuplot || exit 1
+gnuplot -e "data_name=\"laserscan\"" plot_benchmarks.gnuplot || exit 1
+cd .. || exit 1

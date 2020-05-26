@@ -1,0 +1,3 @@
+# label           ,  time(f) , std-dev , time(ba) , std-dev
+Laserscan         , 262.2970 , 10.9295 , 270.5770 ,  7.3756
+Laserscan Parallel,  84.1498 ,  1.4970 ,  56.7907 ,  1.4593
