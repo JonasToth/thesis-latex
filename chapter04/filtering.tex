@@ -40,7 +40,7 @@ Figure~\ref{fig:bilateral_filter} provides an example application of the bilater
         \includegraphics[width=\linewidth]{chapter04/img/bilateral3.png}
         \caption{}\label{fig:bilateral_3}
     \end{subfigure}
-    \caption{The figures show how the bilateral filter works on a single channel step function. Figure~\ref{fig:bilateral_1} shows the original signal with random noise added. For a pixel in the center of the signal the weighting of its neighbouring pixels is computed. The weights are visualized in Figure~\ref{fig:bilateral_2}. The lower values of the step are neglected due to their lack of similarity regardless of closeness. Figure~\ref{fig:bilateral_3} shows the result of the full convolution of the filter yielding a smoothed signal without blurred edge.}\label{fig:bilateral_filter}
+    \caption[Bilateral filtering visualized]{\emph{Bilateral filtering visualized.} The figures show how the bilateral filter works on a single channel step function. Figure~\ref{fig:bilateral_1} shows the original signal with random noise added. For a pixel in the center of the signal the weighting of its neighbouring pixels is computed. The weights are visualized in Figure~\ref{fig:bilateral_2}. The lower values of the step are neglected due to their lack of similarity regardless of closeness. Figure~\ref{fig:bilateral_3} shows the result of the full convolution of the filter yielding a smoothed signal without blurred edge.}\label{fig:bilateral_filter}
 \end{figure}
 The mathematical formulation --- based on the original publication --- for the \emph{closeness} $c$ in the gaussian case of the bilateral filter is
 % Referenz

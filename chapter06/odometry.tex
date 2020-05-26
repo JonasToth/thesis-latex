@@ -17,25 +17,25 @@ Figure~\ref{fig:sift_odometry} shows random turns and barely straight trajectori
     \includegraphics[width=\linewidth]{chapter06/odo/zhang_pinhole_SIFT_nice.png}%
     \caption{Color Images}
 \end{subfigure}
-\caption{Odometry trajectory for Zhang et al.\cite{zhang_icra2016} benchmark dataset using \acrshort{sift}.}\label{fig:sift_odometry}
+\caption[\acrshort{sift} odometry trajectories compared]{\emph{\acrshort{sift} odometry trajectories compared.} The presented odometry trajectories for the benchmark dataset from Zhang et al.\cite{zhang_icra2016} are calculated with an in-house implementation of a basic visual odometry system using \acrshort{sift}.}\label{fig:sift_odometry}
 \end{figure}
 \acrshort{akaze} on the other hand performs much better in all cases, as can be seen in Figure~\ref{fig:akaze_odometry}.
 The prinicpal shape of the trajectory is reconstructed well.
 The \glspl{bearing-angle-image} have higher drift compared to the \glspl{flexion-image} or colored images, but only in certain areas where all images suffer from similar issues.
 \begin{figure}[htp]
-\begin{subfigure}[c]{0.31\linewidth}
+\begin{subfigure}[b]{0.31\linewidth}
     \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_AKAZE_nice.png}%
     \caption{\glspl{flexion-image}}
 \end{subfigure}%
-\begin{subfigure}[c]{0.31\linewidth}
+\begin{subfigure}[b]{0.31\linewidth}
     \includegraphics[width=\linewidth]{chapter06/odo/jonas_bearing_AKAZE_nice.png}%
     \caption{\glspl{bearing-angle-image}}
 \end{subfigure}%
-\begin{subfigure}[c]{0.31\linewidth}
+\begin{subfigure}[b]{0.31\linewidth}
     \includegraphics[width=\linewidth]{chapter06/odo/zhang_pinhole_AKAZE_nice.png}%
     \caption{Color Images}
 \end{subfigure}
-\caption{Odometry trajectories for Zhang et al.\cite{zhang_icra2016} benchmark dataset using \acrshort{akaze}.}\label{fig:akaze_odometry}
+\caption[\acrshort{akaze} odometry trajectories compared]{\emph{\acrshort{akaze} odometry trajectories compared.} The presented odometry trajectories for the benchmark dataset from Zhang et al.\cite{zhang_icra2016} are calculated with an in-house implementation of a basic visual odometry system using \acrshort{akaze}.}\label{fig:akaze_odometry}
 \end{figure}
 The findings show that the higher number of keypoints created result in better localization performance.
 Because the benchmark dataset is a synthetic, the colored image do not contain the same level of object texture as in real life.

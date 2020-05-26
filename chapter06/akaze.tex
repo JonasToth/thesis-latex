@@ -3,7 +3,7 @@
     \setlength{\tabcolsep}{0.3em}%
 \input{chapter06/results/AKAZE/absolute_numbers}
     }
-    \caption{Performance indicators for the default configuration of the SIFT algorithm on the different datasets.}
+    \caption{Absolute keypoint and matching numbers for \texttt{\acrshort{akaze}/raw/default}.}
 \end{table}
 The final feature detection algorithm evaluate is \acrshort{akaze}, that is again closer to \acrshort{sift} for the keypoint detector design compared to \acrshort{orb}.
 \acrshort{akaze} results approximatly one order of magnitude more detected keypoints and correspondences compared to \acrshort{sift}.
@@ -17,14 +17,15 @@ The enhancement in \acrshort{mldb} solidifies the tendency though.
 \begin{figure}[htp]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/flexion/descriptor_distances.pdf}%
-    \caption{\gls{flexion-image} Descriptor Distances}
+    \caption{\glspl{flexion-image}}
 \end{subfigure}\quad
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/bearing/descriptor_distances.pdf}%
-    \caption{\gls{bearing-angle-image} Descriptors Distances}
+    \caption{\glspl{bearing-angle-image}}
 \end{subfigure}
+    \caption{\acrshort{akaze} descriptors distances.}
 \end{figure}
-The ROC graph in Figure~\ref{fig:roc_akaze} shows, that \acrshort{akaze} can perform quiet reasonable across all datasets.
+The \acrshort{ROC} graph in Figure~\ref{fig:roc_akaze} shows, that \acrshort{akaze} can perform quiet reasonable across all datasets.
 For the \glspl{flexion-image} there exists a configuration for each dataset with significantly higher true positive rate than false positive rate.
 The top performers for each dataset are the configurations using only the best 400 keypoints for matching, regardless of filtering.
 Applying additional heuristics in matching, like a maximum matching distance, will certainly improve the ratio of true positives to false positives further.
@@ -34,11 +35,11 @@ There, \acrshort{sift} has clear qualitative advantages over \acrshort{akaze}, b
 \begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/flexion/roc.pdf}%
-    \caption{Flexion Image ROC}
+    \caption{\gls{flexion-image}}
 \end{subfigure}\quad
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/bearing/roc.pdf}
-    \caption{Bearing-Angle Image ROC}
+    \caption{\gls{bearing-angle-image}}
 \end{subfigure}
-    \caption{ROC graph for \acrshort{akaze}.}\label{fig:roc_akaze}
+    \caption{\acrshort{ROC} graphs for \acrshort{akaze}.}\label{fig:roc_akaze}
 \end{figure}

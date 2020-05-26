@@ -3,7 +3,7 @@
     \setlength{\tabcolsep}{0.3em}%
 \input{chapter06/results/SIFT/absolute_numbers}
     }
-    \caption{Performance indicators for the default configuration of the \acrshort{sift} algorithm on the different datasets.}
+    \caption{Absolute keypoint and matching numbers for \texttt{\acrshort{sift}/raw/default}.}
 \end{table}
 \acrshort{sift} is the most established tested algorithm and therefore evaluated first.
 In each dataset the number of detected keypoints and is significantly higher for the \glspl{flexion-image} compared to the \glspl{bearing-angle-image}.
@@ -19,23 +19,29 @@ Each curve is normalized with the total number of true and false positives per d
 Defining a maximum matching distance threshold will result in less false positives for both conversion types.
 The overlapping curves for \emph{Synthethic} are an artifact of the inherent similarity of different regions and can not be avoided.
 Appendix~\ref{sec:backprojection_sift} contains plots visualizing the matching performance in each dataset in the actual images.
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/descriptor_distances.pdf}%
-    \caption{\gls{flexion-image} Descriptor Distances}
+    \caption{\gls{flexion-image}}
 \end{subfigure}\quad
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/descriptor_distances.pdf}%
-    \caption{\gls{bearing-angle-image} Descriptors Distances}
+    \caption{\gls{bearing-angle-image}}
 \end{subfigure}
-\caption{The distributions of descriptor distances show a clear relationship between the distance and the likelihood of a true or false positive.}\label{fig:sift_descriptor_distance}
+\caption[\acrshort{sift} descriptors distances]{\emph{\acrshort{sift} descriptors distances.} The distributions of descriptor distances show a clear relationship between the distance and the likelihood of a true or false positive.}\label{fig:sift_descriptor_distance}
 \end{figure}
 In terms of the ROC analysis (Figure~\ref{fig:roc_sift}) the \gls{flexion-image} shows a slightly better performance, but no clear winner can be established.
 Additional parameter variation in the \acrshort{sift} algorithm and filtering setup varies the true positive rate by only $5\%$ and the false positive rate by even less.
 The differences between the datasets are inherent to their quality and setup.
 Most notably, \acrshort{sift} has a very high true positive rate (recall) showing its descriptive power and potential for object recognition tasks.
 The very similar false positive rate in all datasets points inherent similarities in the geometries of the scenes that might be explained by the lack of textures as differentiating factor.
-\begin{figure}[htp]
+
+Both feature image conversions demonstrate that the salient geometric regions can be recognized with \acrshort{sift}.
+The \gls{flexion-image} produces more keypoints and correspondences compared to the \gls{bearing-angle-image}.
+Additionally, the true positive rate in \emph{Lehrpfad} is slightly higher in this challenging dataset.
+From this the author concludes that the \gls{flexion-image} is better suited.
+The theoretical aspects, like rotation invariance and the inclusion of more information per pixel, are additional arguments to prefer the \gls{flexion-image}.
+\begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/roc.pdf}%
     \caption{\gls{flexion-image} ROC}
@@ -44,10 +50,5 @@ The very similar false positive rate in all datasets points inherent similaritie
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/roc.pdf}
     \caption{\gls{bearing-angle-image} Image ROC}
 \end{subfigure}
-    \caption{The ROC plot for \acrshort{sift} is tightly clustered for both conversions. No clear }\label{fig:roc_sift}
+    \caption[\acrshort{ROC} graphs for \acrshort{sift}]{\emph{\acrshort{ROC} graphs for \acrshort{sift}.} The ROC plot for \acrshort{sift} is tightly clustered for both conversions. No distinguished improvements are observable by parameter variations.}\label{fig:roc_sift}
 \end{figure}
-Both feature image conversions demonstrate that the salient geometric regions can be recognized with \acrshort{sift}.
-The \gls{flexion-image} produces more keypoints and correspondences compared to the \gls{bearing-angle-image}.
-Additionally, the true positive rate in \emph{Lehrpfad} is slightly higher in this challenging dataset.
-From this the author concludes that the \gls{flexion-image} is better suited.
-The theoretical aspects, like rotation invariance and the inclusion of more information per pixel, are additional arguments to prefer the \gls{flexion-image}.

@@ -22,7 +22,7 @@ The point relationship is visualized in Figure~\ref{fig:flexion_normals_plane}.
         }
         \caption{The estimated normals span an angle depending on the local shape of the surface measured by the depth sensors.}\label{fig:flexion_space}
     \end{subfigure}
-    \caption[Schematic Representation of Flexion]{This figure demonstrates how flexed surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}%
+    \caption[Schematic representation of the \gls{flexion-image} calculation]{\emph{Schematic representation of the \gls{flexion-image} calculation.} This figure demonstrates how flexed surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}%
     \label{fig:flexion-image-scetched}
 \end{figure}
 Using the diagonal and vertical neighbouring points (blue) results a different normal than the diagonal neighbours (orange).
@@ -55,7 +55,7 @@ Figure~\ref{fig:flexion_images} visualizes the \Gls{flexion-image} for the same 
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/flexion-0210.png}
     \end{subfigure}
-    \caption{These figures demonstrate the characteristical look of the \Glspl{flexion-image}. Its appearence is very plastic and the shading effects give a good feel for depth. The conversion is rotation invariant.}\label{fig:flexion_images}
+    \caption[Characterstic look of a \gls{flexion-image}]{\emph{Characterstic look of a \gls{flexion-image}.} These figures demonstrate the characteristical look of the \Glspl{flexion-image}. Its appearence is very plastic and the shading effects give a good feel for depth. The conversion is rotation invariant.}\label{fig:flexion_images}
 \end{figure}
 
 \subsubsection*{Characteristics}
@@ -68,7 +68,7 @@ This effect is caused by the perspective transformation.
 The length of the normal vectors reduces with the distance to the camera, because the diagonals gets smaller, as Figure~\ref{fig:flexion_angle_decrease} demonstrates.
 \begin{figure}[H]
     \input{chapter04/img/flexion_angle_decrease}
-    \caption{The angle between the diagonals decreases with increasing distance from the camera center. This results in short normals.}\label{fig:flexion_angle_decrease}
+    \caption[Explanation of shading effect in \glspl{flexion-image}]{\emph{Explanation of shading effect in \glspl{flexion-image}.} The angle between the diagonals decreases with increasing distance from the camera center. This results in shorter normals.}\label{fig:flexion_angle_decrease}
 \end{figure}
 The origin is the nature of the cross product is maximal if both vectors are perpendicular.
 \begin{equation*}

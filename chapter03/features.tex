@@ -9,7 +9,7 @@ Figure~\ref{fig:features_example} demonstrate what information contributes to th
     \scalebox{0.95}{%
     \input{chapter03/img/features.tex}
     }
-    \caption[Feature detection identifies salient parts of an image and allows tracking those over multiple images.]{This figure displays two polygons from different view points. The feature detection algorithm detects the corners of the polygon as keypoints in both images. The order of detection is not stable and establishing the correspondence between the detected keypoints requires further processing. A feature descriptor examines to local neighbourhood of each keypoint, visualized with the red dotted square. This descriptor is then used to find the most similar region around a keypoint of the other image. This process is called \emph{feature matching}.}\label{fig:features_example}
+    \caption[Schematic feature detection and matching]{\emph{Schematic feature detection and matching.} This figure displays two polygons from different view points. The feature detection algorithm detects the corners of the polygon as keypoints in both images. The order of detection is not stable and establishing the correspondence between the detected keypoints requires further processing. A feature descriptor examines to local neighbourhood of each keypoint, visualized with the red dotted square. This descriptor is then used to find the most similar region around a keypoint of the other image. This process is called \emph{feature matching}.}\label{fig:features_example}
 \end{figure}
 Keypoints on itself are not descriptive enough to be identified in different images.
 A changing view point or even a different camera result in changes to the overall shape and appearance of the scene.

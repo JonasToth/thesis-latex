@@ -34,7 +34,7 @@ The provided values can be either an absolute count of elements or a relative sh
     \multicolumn{1}{c}{Total \emph{Positives} ($\#P$)} &
     \multicolumn{1}{c}{Total \emph{Negatives} ($\#N$)}
 \end{tabular}
-\caption[Definition of the Confusion Matrix]{A confusion matrix summarizes the decision quality of a binary classifier. The elements to be classified can be in either category; \emph{positive} ($P$) or \emph{negative} ($N$). Correct classifications of elements are either \emph{true positives} ($TP$) or \emph{true negatives} ($TN$). Missclassification results in \emph{false positives} ($FP$) or \emph{false negatives} ($FN$).}\label{tab:def_confusion_matrix}
+\caption[Definition of the confusion matrix]{\emph{Definition of the confusion matrix.} A confusion matrix summarizes the decision quality of a binary classifier. The elements to be classified can be in either category; \emph{positive} ($P$) or \emph{negative} ($N$). Correct classifications of elements are either \emph{true positives} ($TP$) or \emph{true negatives} ($TN$). Missclassification results in \emph{false positives} ($FP$) or \emph{false negatives} ($FN$).}\label{tab:def_confusion_matrix}
 \end{table}}
 
 All \emph{positive} elements are \emph{relevant elements} in the sense, that the keypoint pair points to the same world coordinate.
@@ -91,7 +91,7 @@ They plot the false positive rate and true positive rate, the \emph{ROC space}, 
   \node[label={315:{$\mathbf{E}$}},circle,fill,inner sep=2pt] at (axis cs:0.4,0.3) {};
 \end{axis}
 \end{tikzpicture}
-\caption[The elements of a ROC graph]{A ROC graph plots the true positive rate versus the false positive rate of a binary classifier. Each point is one classification system. The diagonal $f(x) = x$ is equivalent to a 50\% chance of correct classification and a system on this line has no predictive power, as in this case $\mathbf{B}$. Points above this line ($\mathbf{C}$, $\mathbf{D}$) indicate better-than-random performance and the bigger the distance to this diagonal the higher the informedness, also called Youden-Index, of this system. The optimal classifier ($\mathbf{A}$) is in the topleft corner and has no false decisions. Points below the diagonal ($\mathbf{E}$) might still have predictive power but indicate a wrong labeling of the outcomes.}\label{fig:roc_graph}
+\caption[The elements of a ROC graph]{\emph{The elements of a ROC graph.} A ROC graph plots the true positive rate versus the false positive rate of a binary classifier. Each point is one classification system. The diagonal $f(x) = x$ is equivalent to a 50\% chance of correct classification and a system on this line has no predictive power, as in this case $\mathbf{B}$. Points above this line ($\mathbf{C}$, $\mathbf{D}$) indicate better-than-random performance and the bigger the distance to this diagonal the higher the informedness, also called Youden-Index, of this system. The optimal classifier ($\mathbf{A}$) is in the topleft corner and has no false decisions. Points below the diagonal ($\mathbf{E}$) might still have predictive power but indicate a wrong labeling of the outcomes.}\label{fig:roc_graph}
 \end{figure}
 
 Points above the diagonal have predictive power proportional to the distance to the diagonal.

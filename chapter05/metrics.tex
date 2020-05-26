@@ -28,7 +28,7 @@ When the pose difference is big it can happen that keypoints to covered geometry
 Too many points create ambiguity with respect to the backprojection tolerance that is required due to imperfect projections of real world sensors.
 \begin{figure}[H]
     \input{chapter05/img/backprojection}
-    \caption{The choosen approach of projection keypoints between frames is demonstrated in this figure. Keypoints of image $I_1$ are blue dots in both images and the oranges ones are only detected in image $I_2$. Actual correspondences result in very close points in $I_2$, indicated as blue dot with orange border, whereas unrelated points show no proximity. This assumption holds for small changes in pose and relativly sparse distribution of detected keypoints.}
+    \caption[Backprojection of keypoints visualized]{\emph{Backprojection of keypoints visualized.} The choosen approach of projection keypoints between frames is demonstrated in this figure. Keypoints of image $I_1$ are blue dots in both images and the oranges ones are only detected in image $I_2$. Actual correspondences result in very close points in $I_2$, indicated as blue dot with orange border, whereas unrelated points show no proximity. This assumption holds for small changes in pose and relativly sparse distribution of detected keypoints.}
 \end{figure}
 The analysis of the descriptor performance requires the matching step first, that establishes the correspondences of the matcher.
 To classify the result of the descriptor matching, each keypoint needs to be analyzed further.

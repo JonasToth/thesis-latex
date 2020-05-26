@@ -8,7 +8,7 @@ Both angles $\beta$ and $\gamma$ are calculated with equation~\ref{eq:bearing-an
     \scalebox{0.9}{%
     \input{chapter04/img/max-curve.tikz}
     }
-    \caption[Schematic Representation of the Multi-Directional \gls{bearing-angle-image}]{The Multi-Directional \gls{bearing-angle-image} composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and antidiagonal direction. The maximum angle is then selected as pixel value.}\label{fig:max-curve}
+    \caption[Schematic representation of the Multi-Directional \gls{bearing-angle-image}]{\emph{Schematic representation of the Multi-Directional \gls{bearing-angle-image}.} The Multi-Directional \gls{bearing-angle-image} composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and antidiagonal direction. The maximum angle is then selected as pixel value.}\label{fig:max-curve}
 \end{figure}
 Both angles are added together, resulting in the angle of an edge at this position.
 \begin{equation}
@@ -31,7 +31,7 @@ The converted images in Figure~\ref{fig:max-curve-images} show the same scene an
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/max-0210.png}
     \end{subfigure}
-    \caption{The subfigures show the same camera positions as the \gls{bearing-angle} and demonstrates the rotation invariance. Each edge in the geometry forms a visible white line. No other textures exist.}\label{fig:max-curve-images}
+    \caption[Rotation invariance of Multi-Directional \gls{bearing-angle-image}]{\emph{Rotation invariance of Multi-Directional \gls{bearing-angle-image}.} The images show the same camera positions as the \gls{bearing-angle} and demonstrates the rotation invariance. Each edge in the geometry forms a visible white line. No other textures exist.}\label{fig:max-curve-images}
 \end{figure}
 The goal of rotational invariance is achieved, unfortunatly the image lacks texture and contrast.
 Qualitative tests with common feature detectors yielded weak keypoint responses.

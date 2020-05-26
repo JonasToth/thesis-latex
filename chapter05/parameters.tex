@@ -24,91 +24,44 @@ Only the Synthetic dataset is not filtered as its range values have no measureme
     \bottomrule
     \end{tabular}
     }
-\caption{The parameters for the filters applied to the sensor data.}
+    \caption{The parameters for the filters applied to the sensor data.}
 \end{table}
-\begin{figure}[H]
-\begin{floatrow}
-\TopFloatBoxes
-    \btabbox{%
-    \renewcommand{\arraystretch}{1.2}%
+\begin{table}[H]
+    {\renewcommand{\arraystretch}{1.2}%
     \setlength{\tabcolsep}{0.5em}%
     \footnotesize
-    \begin{tabular}{cc}
+    \begin{tabular}{rcc}
     \toprule
-    \textbf{Name} & \textbf{\acrshort{sift} Parameters} \\
+    \textbf{Name}   & \textbf{\acrshort{sift} Parameters} & \textbf{\acrshort{akaze} Parameters} \\
     \midrule
-    Default & keypoint size > 5px \\
-    \null   & contrast threshold = 0.04 \\
-    \null   & $\sigma$ = 1.6 \\
-    best only & best 400 keypoints \\
-    contrast reduced & contrast threshold = 0.02 \\
-    contrast increased & contrast threshold = 0.08 \\
-    sigma reduced & $\sigma$ = 1.0 \\
-    sigma increased & $\sigma$ = 2.2 \\
+        Default     & \texttt{keypoint size > 5px}        & \texttt{descriptor \acrshort{mldb}} \\
+        \null       & \texttt{contrast threshold = 0.04}  & \texttt{diffusity PM\_G2} \\
+        \null       & \texttt{$\sigma$ = 1.6}             & \null \\
+        Best only   & \texttt{best 400 keypoints}         & \texttt{best 400 keypoints} \\
+        Variation 1 & \texttt{contrast threshold = 0.02}  & \texttt{descriptor KAZE} \\
+        Variation 2 & \texttt{contrast threshold = 0.08}  & \texttt{diffusity PM\_G1} \\
+        Variation 3 & \texttt{$\sigma$ = 1.0}             & \texttt{diffusity WEICKERT} \\
+        Variation 4 & \texttt{$\sigma$ = 2.2}             & \texttt{diffusity CHARBONNIER} \\
     \bottomrule
     \end{tabular}
     }
-    {\caption{All Algorithm Variations for \acrshort{sift}. \emph{Default} is used as basis for all configurations and only differences are presented.}}
-
-    \btabbox{%
-    \renewcommand{\arraystretch}{1.2}%
+    \caption[Parameters evaluated for \acrshort{sift} and \acrshort{akaze}]{\emph{Parameters evaluated for \acrshort{sift} and \acrshort{akaze}.} \emph{Default} is used as basis for all configurations and only differences are presented.}
+\end{table}
+\begin{table}[H]
+    {\renewcommand{\arraystretch}{1.2}%
     \setlength{\tabcolsep}{0.5em}%
     \footnotesize
-    \begin{tabular}{cc}
+    \begin{tabular}{rcrc}
     \toprule
-    \textbf{Name} & \textbf{\acrshort{akaze} Parameters} \\
+    \textbf{Name} & \textbf{\acrshort{surf} Parameters} & \textbf{Name}  & \textbf{\acrshort{orb} Parameters} \\
     \midrule
-    Default MLDB & descriptor MLDB \\
-    \null        & diffusity PM\_G2 \\
-    Best Only    & best 400 keypoints \\
-    Default Kaze & descriptor KAZE \\
-    PM G1        & diffusity \\
-    \null        & PM\_G1 \\
-    WEICKERT     & diffusity \\
-    \null        & WEICKERT \\
-    CHARBONNIER  & diffusity \\
-    \null        & CHARBONNIER \\
+        Default   & \texttt{octaves = 4}                & Default        & \texttt{Score Metric: FAST} \\
+        \null     & \texttt{layers per octave = 1}      & \null          & \null \\
+        Best Only & \texttt{octaves = 1}                & Default Harris & \texttt{Score Metric: Harris} \\
+        \null     & \texttt{layers per octave = 1}      & \null          & \null \\
+        \null     & \texttt{best 400 keypoints}         & \null          & \null \\
     \bottomrule
     \end{tabular}
     }
-    {\caption{\acrshort{akaze} has many options that are explored in mostly default configuration.}}
-
-\end{floatrow}
-\end{figure}
-\begin{figure}[H]
-\begin{floatrow}
-\TopFloatBoxes
-    \btabbox{%
-    \renewcommand{\arraystretch}{1.2}%
-    \setlength{\tabcolsep}{0.5em}%
-    \footnotesize
-    \begin{tabular}{cc}
-    \toprule
-    \textbf{Name} & \textbf{\acrshort{surf} Parameters} \\
-    \midrule
-    Default & octaves = 4 \\
-    \null & layers per octave = 1 \\
-    Best Only & octaves = 1 \\
-    \null & layers per octave = 1 \\
-    \null & best 400 keypoints \\
-    \bottomrule
-    \end{tabular}
-    }
-    {\caption{\acrshort{surf} is only analyzed for two configurations, as the algorithm shows to not work on converted images. The analysis for this conclusion is in the results section.}}
-
-    \btabbox{%
-    \renewcommand{\arraystretch}{1.2}%
-    \setlength{\tabcolsep}{0.5em}%
-    \footnotesize
-    \begin{tabular}{cc}
-    \toprule
-    \textbf{Name} & \textbf{\acrshort{orb} Parameters} \\
-    \midrule
-    Default Harris & Score Metric: Harris \\
-    Default FAST & Score Metric: FAST \\
-    \bottomrule
-    \end{tabular}
-    }
-    {\caption{\acrshort{orb} is analyzed with both possible keypoint detectors. Their performance showed no real potential and further experiments were not conducted.}}
-\end{floatrow}
-\end{figure}
+    \caption[Parameters evaluated for \acrshort{orb} and \acrshort{surf}]{\emph{Parameters evaluated for \acrshort{orb} and \acrshort{surf}.} Both \acrshort{orb} and \acrshort{surf} are only analyzed with two configurations. The algorithms showed systematic issues when applied to the novel feature images, that are discussed later.}
+\end{table}

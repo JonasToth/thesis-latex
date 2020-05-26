@@ -15,7 +15,7 @@ The pinhole camera model is the most common camera model in computer vision mode
 
 \begin{figure}[H]
     \includegraphics[width=0.6\textwidth]{chapter03/img/pinhole_camera_model.png}
-    \caption[Pinhole Camera Model]{The pinhole camera model performs the perspective projection of three dimensional points into the plane. Real cameras additionally have a lense system that can result in radial and tangential distortion. These effects must be componsenated with a proper calibration of distortion models. The camera-coordinate-to-pixel-coordinate projection looses information on the depth. Therefore, the back projection results only in the direction of the light ray. The depth sensor gives the additional distance information to recover the point in camera coordinates. Graphic adopted from\cite{opencv_pinhole}.}\label{fig:pinhole_model}
+    \caption[Pinhole camera model]{\emph{Pinhole camera model.} The pinhole camera model performs the perspective projection of three dimensional points into the plane. Real cameras additionally have a lense system that can result in radial and tangential distortion. These effects must be componsenated with a proper calibration of distortion models. The camera-coordinate-to-pixel-coordinate projection looses information on the depth. Therefore, the back projection results only in the direction of the light ray. The depth sensor gives the additional distance information to recover the point in camera coordinates. Graphic adopted from\cite{opencv_pinhole}.}\label{fig:pinhole_model}
 \end{figure}
 Figure~\ref{fig:pinhole_model} shows the perspective projection of three-dimensional points onto the plane.
 This projection reduces the input dimension by one and is not depth preserving.
@@ -78,7 +78,7 @@ Supporting this camera model gives flexibility to support all kind of sensors as
     \scalebox{0.9}{%
     \input{chapter03/img/spherical_model.tex}
     }
-    \caption[Spherical Camera Model and Equirectangular Images]{Each cartesian point that is not the origin can be uniquely converted to spherical coordinates. The origin $\mathbf{O}$ is interpreted as an invalid measurement in the context of this thesis and therefore filtered out during processing.}\label{fig:spherical}
+    \caption[Spherical camera model and equirectangular images]{\emph{Spherical camera model and equirectangular images.} Each cartesian point that is not the origin can be uniquely converted to spherical coordinates. The origin $\mathbf{O}$ is interpreted as an invalid measurement in the context of this thesis and therefore filtered out during processing.}\label{fig:spherical}
 \end{figure}
 
 The projections are mostly a conversion from cartesian to spherical coordinates and described here in brief.
@@ -136,7 +136,7 @@ Note, that $r = 1$ as the resulting vector is of unit length.
     \scalebox{0.8}{%
     \input{chapter03/img/depth_range}
     }
-    \caption[Orthographic Depth and Range visualized]{The distance information of a point relative to the center of a sensor at $\vec{C}$ can either be stored as the orthographic depth, mathematically the $Z$ component of the camera coordinates or the range, equivalent to the $L2$ norm of the point $\vec{P}$ in camera coordinates. The orthographic depth is commonly provided by depth cameras and the range by \acrshort{LIDAR} systems.}
+    \caption[Orthographic depth and range visualized]{\emph{Orthographic depth and range visualized.} The distance information of a point relative to the center of a sensor at $\vec{C}$ can either be stored as the orthographic depth, mathematically the $Z$ component of the camera coordinates or the range, equivalent to the $L2$ norm of the point $\vec{P}$ in camera coordinates. The orthographic depth is commonly provided by depth cameras and the range by \acrshort{LIDAR} systems.}
     \label{fig:range_depth}
 \end{figure}
 
@@ -151,8 +151,7 @@ From the forward projection function in Equation~\ref{eq:pinhole_forward} of the
 \begin{equation}
 \begin{aligned}
     \vec{\hat{p}} &= \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z} \\
-    \implies Z \vec{\hat{p}} &= \vec{P} \\
-    \implies Z \lnorm{\vec{\hat{p}}} &= \lnorm{\vec{P}} \\
+    \implies Z \vec{\hat{p}} &= \vec{P} \implies Z \lnorm{\vec{\hat{p}}} &= \lnorm{\vec{P}} \\
     \iff Z r &= d
 \end{aligned}
 \end{equation}

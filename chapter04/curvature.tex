@@ -15,9 +15,9 @@ This conecept can be generalized to higher dimensions and two common curvatures 
         \scalebox{0.85}{%
         \input{chapter04/img/curvature_3d}
         }
-        \caption[Visualization of curvature for curves and surfaces]{The principal curvatures are the maximum and minimum curvatures in all directions.}\label{fig:curvature_surface}
+        \caption{The principal curvatures are the maximum and minimum curvatures in all directions.}\label{fig:curvature_surface}
     \end{subfigure}
-    \caption[Curvature of Curves and Surfaces]{The curvature of a curve is defined through its osculating circle. This simple definition is not possible for surfaces in three dimensions. Analyzing all directions, each point on the surface does have a minimum and maximum curvature --- the \emph{principal curvatures}.}
+    \caption[Curvature of curves and surfaces]{\emph{Curvature of curves and surfaces.} The curvature of a curve is defined through its osculating circle. This simple definition is not possible for surfaces in three dimensions. Analyzing all directions, each point on the surface does have a minimum and maximum curvature --- the \emph{principal curvatures}.}
 \end{figure}
 A straight line has no curvature, hence $\kappa = 0$.
 The curvature of a circle is defined is the inverse of its radius.
@@ -63,7 +63,7 @@ The central differential quotients approximate the first and second derivatives 
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/mean-0210.png}
     \end{subfigure}
-    \caption[\Gls{mean-curvature} in the synthetic scene]{The \Gls{mean-curvature} feature image for the same synthetic scene are similar to Multi-Directional \Glspl{bearing-angle-image}, making them a second non-promising option.}\label{fig:mean-curvature}
+    \caption[\Gls{mean-curvature} in the \emph{Synthetic} scene]{\emph{\Gls{mean-curvature} in the Synthetic scene.} The \Gls{mean-curvature} feature image for the same synthetic scene are similar to Multi-Directional \Glspl{bearing-angle-image}, making them a second non-promising option.}\label{fig:mean-curvature}
 \end{figure}
 The result of the \Gls{mean-curvature} conversion in Figure~\ref{fig:mean-curvature} is similar to the Multi-Directional \gls{bearing-angle-image}.
 The \gls{mean-curvature} is rotation invariant but the result is already very unstable to the noise induced by floating point truncation.
@@ -83,7 +83,7 @@ It is even more prone to noise in the input and suffers from the same range issu
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/gauss-0210.png}
     \end{subfigure}
-    \caption[\Gls{gaussian-curvature} in the synthetic scene]{The \Gls{gaussian-curvature} feature images for the synthetic scene. The results are not promising either.}\label{fig:gaussian-curvature}
+    \caption[\Gls{gaussian-curvature} in the \emph{Synthetic} scene]{\emph{\Gls{gaussian-curvature} in the Synthetic scene.} The \Gls{gaussian-curvature} feature images for the synthetic scene. The results are not promising either.}\label{fig:gaussian-curvature}
 \end{figure}
 Computing the curvature for the whole image has the theoretical weakness for discontinuities at object boundaries.
 For perfect depth sensing the derivatives do not exist at these points.

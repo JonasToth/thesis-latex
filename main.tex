@@ -120,15 +120,15 @@
 \pagenumbering{arabic}
 \newpage
 
-\section{Introduction}
+\section{Introduction}\label{sec:introduction}
 \input{chapter01/introduction}
 \newpage
 
-\section{Related Work}
+\section{Related Work}\label{sec:related_work}
 \input{chapter02/related}
 \newpage
 
-\section{Fundamentals}
+\section{Fundamentals}\label{sec:fundamentals}
 
 This section introduces the relevant principles used to create and evaluate the novel approach on depth data processing.
 
@@ -139,7 +139,7 @@ This section introduces the relevant principles used to create and evaluate the 
 \input{chapter03/statistics}
 \newpage
 
-\section{Depth Image Processing}
+\section{Depth Image Processing}\label{sec:image_processing}
 
 Depth images are disturbed by different error sources and intrinsic noise of the sensory system.
 Common issues are reflections from water or glass, transparent objects and infrared light sources.
@@ -153,7 +153,7 @@ Effects of these conditions can be partially mitigated by preprocessing and filt
 \input{chapter04/features}
 \newpage
 
-\section{Experiments}
+\section{Experiments}\label{sec:experiments}
 
 \input{chapter05/intro}
 \input{chapter05/metrics}
@@ -170,7 +170,7 @@ Effects of these conditions can be partially mitigated by preprocessing and filt
 \input{chapter06/error_discussion}
 \newpage
 
-\section{Conclusion}
+\section{Conclusion}\label{sec:conclusion}
 
 \input{chapter07/conclusion}
 \input{chapter07/future_work}
@@ -203,10 +203,9 @@ Effects of these conditions can be partially mitigated by preprocessing and filt
     \newpage
 
     \section{Keypoints and Backprojections for \acrshort{sift} and \acrshort{akaze}}
-    The plots in this section show the keypoint and matching properties of different algorithms.
-    Green points are a identified true positive and blue point and false negative.
-    The orange lines connect the keypoints that are false positives.
-    In the Laserscan images each keypoint size and rotation is symbolized through the size of the circle and radial line.
+    The plots in this section show the combined keypoint and matching performance.
+    Green points are a identified true positives and purple points false negative, making up the total correspondences.
+    Orange lines connect false positives.
     \input{chapterC/sift}
     \input{chapterC/akaze}
     \newpage

@@ -5,7 +5,7 @@
     \scalebox{0.9}{%
     \input{chapter04/img/bearing_angle.tikz}%
     }
-    \caption[Schematic Representation of Bearing-Angles]{This figure shows the relationship of the light rays that form the \gls{bearing-angle} $\beta$.}\label{fig:bearing_angle}
+    \caption[Schematic representation of \glspl{bearing-angle}]{\emph{Schematic representation of \glspl{bearing-angle}.} This figure shows the relationship of the light rays that form the \gls{bearing-angle} $\beta$.}\label{fig:bearing_angle}
 \end{figure}
 
 Scaramuzza\cite{scaramuzza_iros2007} proposes \Glspl{bearing-angle-image} that assigns each pixel the angle $\beta$ as Figure~\ref{fig:bearing_angle} demonstrates.
@@ -60,7 +60,7 @@ This formulation can be used for different color depths and other potential angl
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0210.png}
     \end{subfigure}
-    \caption[Bearing Angle Image Characteristics demonstrated]{The \gls{bearing-angle-image} is not invariant to rotation and viewpoint changes. This property limits its applicability for automatic registration of bigger discontinues changes of the camera pose. Each depth image was converted with the diagonal (top-left-to-bottom-right direction) implementation of the \gls{bearing-angle} formula.}\label{fig:bearing_characteristics}
+    \caption[\gls{bearing-angle-image} characteristics]{\emph{\gls{bearing-angle-image} characteristics.} The \gls{bearing-angle-image} is not invariant to rotation and viewpoint changes. This property limits its applicability for automatic registration of bigger discontinues changes of the camera pose. Each depth image was converted with the diagonal (top-left-to-bottom-right direction) implementation of the \gls{bearing-angle} formula.}\label{fig:bearing_characteristics}
 \end{figure}
 A deeper understanding of the \gls{bearing-angle-image} helps to understand advantages and disadvantages for its usage.
 Figure~\ref{fig:bearing_characteristics} demonstrates the visual changes of a synthetic scene under certain camera transformations.
@@ -72,7 +72,7 @@ Calculating the \gls{bearing-angle} from multiple directions could lead to some 
 \begin{figure}[H]
     \centering
     \input{chapter04/img/bearing_understand_shading.tex}%
-    \caption[Two Bearing-Angles for the same ground plane]{Different shadings of plane surfaces depend on the perspective projection and the distance from the camera center $C$ to the surface.}\label{fig:bearing_angle_shading}
+    \caption[Two \glspl{bearing-angle} for the same ground plane]{\emph{Two \glspl{bearing-angle} for the same ground plane.} Different shadings of plane surfaces depend on the perspective projection and the distance from the camera center $C$ to the surface.}\label{fig:bearing_angle_shading}
 \end{figure}
 The second apparent aspect is the change in shading for example the flat ground, but other surfaces as well.
 This effect is due to the perspective transformation and the distance of a point to the camera, as Figure~\ref{fig:bearing_angle_shading} demonstrates.
