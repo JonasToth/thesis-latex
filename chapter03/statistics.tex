@@ -77,9 +77,9 @@ The proposed metric share the pitfall, that a low number of total elements or hi
 \subsubsection{Receiver Operating Statistics Analysis}
 
 Choosing a suitable configuration or algorithm combination requires trade-offs between different aspects of the final system.
-Receiver Operating Statistics (ROC) analysis\cite{fawcett_2006} provides a tool to visualize the trade-offs between different systems.
-The central component of this analysis are the \emph{ROC graphs}.
-They plot the false positive rate and true positive rate, the \emph{ROC space}, of multiple classifiers in one graph, with figure~\ref{fig:roc_graph} containing all qualitatively different cases.
+\acrlong{ROC} (\acrshort{ROC}) analysis\cite{fawcett_2006} provides a tool to visualize the trade-offs between different systems.
+The central component of this analysis are the \emph{\acrshort{ROC} graphs}.
+They plot the false positive rate and true positive rate, the \emph{\acrshort{ROC} space}, of multiple classifiers in one graph, with figure~\ref{fig:roc_graph} containing all qualitatively different cases.
 \begin{figure}[H]
 \begin{tikzpicture}
 \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,samples=50,xlabel={false positive rate}, ylabel={true positive rate},grid=major]
@@ -91,7 +91,7 @@ They plot the false positive rate and true positive rate, the \emph{ROC space}, 
   \node[label={315:{$\mathbf{E}$}},circle,fill,inner sep=2pt] at (axis cs:0.4,0.3) {};
 \end{axis}
 \end{tikzpicture}
-\caption[The elements of a ROC graph]{\emph{The elements of a ROC graph.} A ROC graph plots the true positive rate versus the false positive rate of a binary classifier. Each point is one classification system. The diagonal $f(x) = x$ is equivalent to a 50\% chance of correct classification and a system on this line has no predictive power, as in this case $\mathbf{B}$. Points above this line ($\mathbf{C}$, $\mathbf{D}$) indicate better-than-random performance and the bigger the distance to this diagonal the higher the informedness, also called Youden-Index, of this system. The optimal classifier ($\mathbf{A}$) is in the topleft corner and has no false decisions. Points below the diagonal ($\mathbf{E}$) might still have predictive power but indicate a wrong labeling of the outcomes.}\label{fig:roc_graph}
+\caption[The elements of a \acrshort{ROC} graph]{\emph{The elements of a \acrshort{ROC} graph.} A \acrshort{ROC} graph plots the true positive rate versus the false positive rate of a binary classifier. Each point is one classification system. The diagonal $f(x) = x$ is equivalent to a 50\% chance of correct classification and a system on this line has no predictive power, as in this case $\mathbf{B}$. Points above this line ($\mathbf{C}$, $\mathbf{D}$) indicate better-than-random performance and the bigger the distance to this diagonal the higher the informedness, also called Youden-Index, of this system. The optimal classifier ($\mathbf{A}$) is in the topleft corner and has no false decisions. Points below the diagonal ($\mathbf{E}$) might still have predictive power but indicate a wrong labeling of the outcomes.}\label{fig:roc_graph}
 \end{figure}
 
 Points above the diagonal have predictive power proportional to the distance to the diagonal.
@@ -105,6 +105,6 @@ This distance is also called the \textbf{Youden-Index} $\mathbf{J}$\cite{youden_
 \end{equation}
 Unless there are no samples tested, the Youden-Index is $\mathbf{J} \in [0, 1]$.
 The higher $\mathbf{J}$ the better the two groups are separated by the classifier.
-ROC analysis gives a valueable instrument to compare the relative performance of classifiers.
+\acrshort{ROC} analysis gives a valueable instrument to compare the relative performance of classifiers.
 A final judgement requires to take additional measures like absolute number of classified elements into account.
-Fawcett's\cite{fawcett_2006} work provides a more detailed introduction to ROC analysis in machine learning.
+Fawcett's\cite{fawcett_2006} work provides a more detailed introduction to \acrshort{ROC} analysis in machine learning.

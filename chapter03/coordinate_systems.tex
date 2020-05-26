@@ -26,13 +26,13 @@ Multiple sensors can exist within the \emph{world coordinate system}.
     \caption[Coordinate transformation]{\emph{Coordinate transformation.} Relationship between different representation of the same point in different coordinate systems. The relationship displayed here and the corresponding linear algebra holds true for cartesian coordinate systems of any dimension.}
 \end{figure}
 
-Let $\mathbf{O}$ be the origin of the \emph{world coordinate system}.
-A three dimensional vector $\vec{P} = \rowvecxxx{U}{V}{W}$ represents a point in this room relative to the origin $\mathbf{O}$.
-Seeing this point $\mathbf{P}$ from a camera $\mathbf{C}$ within the same room is equivalent to changing the coordinate system from \emph{world coordinates} to \emph{camera coordinates} of that sensor.
-The relative rotation and translation of the camera $\mathbf{C}$ to the room is also called its \emph{pose}.
+Let $\mathbf{O_\mathcal{W}}$ be the origin of the \emph{world coordinate system}.
+A three dimensional vector $\vec{P_\mathcal{W}} = \rowvecxxx{U}{V}{W}$ represents a point in this room relative to the origin $\mathbf{O_\mathcal{W}}$.
+Seeing this point $\mathbf{P_\mathcal{W}}$ from a camera $\mathbf{C_\mathcal{W}}$ within the same room is equivalent to changing the coordinate system from \emph{world coordinates} to \emph{camera coordinates} of that sensor.
+The relative rotation and translation of the camera $\mathbf{C_\mathcal{W}}$ to the room is also called its \emph{pose}.
 It is parametrized by a rotation matrix $R$ and a translation vector $\vec{t}$.
 Homogeneous coordinates provide a computational more efficient way to apply the transformation to vectors by $4 \times 4$ matrix-vector multiplication instead of $3 \times 3$ matrix-vector multiplication and an additional $3 \times 1$ vector addition.
-The point $\mathbf{P}$ seen from the camera $\mathbf{C}$ is computed with the homogeneous transformation matrix $H = \begin{bmatrix} R & \vec{t} \\ 
+The point $\mathbf{P_\mathcal{W}}$ seen from the camera $\mathbf{C_\mathcal{W}}$ is computed with the homogeneous transformation matrix $H = \begin{bmatrix} R & \vec{t} \\
     \begin{matrix}0 & 0 & 0\end{matrix} & 1 \end{bmatrix}$.
 \begin{equation}
 \begin{aligned}
@@ -42,7 +42,7 @@ The point $\mathbf{P}$ seen from the camera $\mathbf{C}$ is computed with the ho
         r_{31} & r_{32} & r_{33} & t_z \\
         0      & 0      & 0      & 1 \\
     \end{pmatrix} \colvech{U}{V}{W} \\
-    \vec{P}' &= H \vec{P}
+    \vec{P_\mathcal{C}} &= H \vec{P_\mathcal{W}}
 \end{aligned}
 \end{equation}
 Coordinate transformations do not loose information.

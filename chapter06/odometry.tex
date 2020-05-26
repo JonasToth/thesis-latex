@@ -5,16 +5,16 @@ Both feature images and the color images are used separatly to determine the vis
 \acrshort{sift} neither results in a good odometry for color images, \glspl{flexion-image} nor \glspl{bearing-angle-image}.
 Figure~\ref{fig:sift_odometry} shows random turns and barely straight trajectories for any conversion.
 \begin{figure}[htp]
-\begin{subfigure}[c]{0.31\linewidth}
+\begin{subfigure}[b]{0.31\linewidth}
     \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_SIFT_nice.png}%
     \caption{\glspl{flexion-image}}
 \end{subfigure}%
-\begin{subfigure}[c]{0.31\linewidth}
+\begin{subfigure}[b]{0.31\linewidth}
     \includegraphics[width=\linewidth]{chapter06/odo/jonas_bearing_SIFT_nice.png}%
     \caption{\glspl{bearing-angle-image}}
 \end{subfigure}%
-\begin{subfigure}[c]{0.31\linewidth}
-    \includegraphics[width=\linewidth]{chapter06/odo/zhang_pinhole_SIFT_nice.png}%
+\begin{subfigure}[b]{0.31\linewidth}
+    \includegraphics[width=0.8\linewidth]{chapter06/odo/zhang_pinhole_SIFT_nice.png}%
     \caption{Color Images}
 \end{subfigure}
 \caption[\acrshort{sift} odometry trajectories compared]{\emph{\acrshort{sift} odometry trajectories compared.} The presented odometry trajectories for the benchmark dataset from Zhang et al.\cite{zhang_icra2016} are calculated with an in-house implementation of a basic visual odometry system using \acrshort{sift}.}\label{fig:sift_odometry}
@@ -23,15 +23,15 @@ Figure~\ref{fig:sift_odometry} shows random turns and barely straight trajectori
 The prinicpal shape of the trajectory is reconstructed well.
 The \glspl{bearing-angle-image} have higher drift compared to the \glspl{flexion-image} or colored images, but only in certain areas where all images suffer from similar issues.
 \begin{figure}[htp]
-\begin{subfigure}[b]{0.31\linewidth}
+\begin{subfigure}[t]{0.31\linewidth}
     \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_AKAZE_nice.png}%
     \caption{\glspl{flexion-image}}
 \end{subfigure}%
-\begin{subfigure}[b]{0.31\linewidth}
+\begin{subfigure}[t]{0.31\linewidth}
     \includegraphics[width=\linewidth]{chapter06/odo/jonas_bearing_AKAZE_nice.png}%
     \caption{\glspl{bearing-angle-image}}
 \end{subfigure}%
-\begin{subfigure}[b]{0.31\linewidth}
+\begin{subfigure}[t]{0.31\linewidth}
     \includegraphics[width=\linewidth]{chapter06/odo/zhang_pinhole_AKAZE_nice.png}%
     \caption{Color Images}
 \end{subfigure}

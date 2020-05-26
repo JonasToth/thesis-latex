@@ -7,7 +7,7 @@ These imperfections are corrected with additional models, like the distortion mo
 
 Both calibration and error correction are out of the scope of this thesis and sensor input is expected to adhere to the basic models.
 This might require preprocessing of the raw sensor data.
-On robotic platforms like \acrlong{ROS} this is done automatically when providing a matching calibration of the sensor.
+On some robotic platforms like \acrshort{ROS} (\acrshort{ROS}) this is done automatically when providing a matching calibration of the sensor.
 
 \subsubsection{Pinhole Camera Model}
 
@@ -24,13 +24,13 @@ The model is parameterized by the focal length $f_x$ and $f_y$ that correspond t
 
 \subsubsection*{Forward Projection}
 
-Let $\vec{P} = \rowvecxxx{X}{Y}{Z}$ be a world point in camera coordinates.
+Let $\vec{P_\mathcal{W}} = \rowvecxxx{X}{Y}{Z}$ be a world point in camera coordinates.
 The perspective projection
 \begin{equation}
-    \vec{\hat{p}} = \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z}
+    \vec{P_\mathcal{I}} = \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z}
     \label{eq:pinhole_forward}
 \end{equation}
-results in the point $\vec{P}$ in image coordinates $\vec{\hat{p}}$. This step looses the depth information.
+results in the point $\vec{P_\mathcal{W}}$ in image coordinates $\vec{P_\mathcal{I}}$. This step looses the depth information.
 The image coordinates could be distorted and any correction would happen at this stage.
 Multiplication of the $3 \times 3$ camera matrix $K$ and the homogeneous image coordinates results in the final pixel coordinates.
 \begin{equation}
@@ -44,25 +44,25 @@ K \vec{\hat{p}} &= \begin{pmatrix}
         f_x & f_x s & c_x \\
         0   & f_y   & c_y \\
         0   & 0     & 1
-     \end{pmatrix}\colvecxxx{x}{y}{1} = \colvecxxx{u}{v}{1} = \vec{p}
+    \end{pmatrix}\colvecxxx{x}{y}{1} = \colvecxxx{u}{v}{1} = \vec{P_\mathcal{P}}
 \end{aligned}
 \end{equation}
 
 \subsubsection*{Backward Projection}
 
-Applying the inverse transformations allows to recover the direction of the light matching a pixel $\vec{p}$.
-The potentially distorted image coordinates $\vec{\hat{p}}$ are obtained with the following formula.
+Applying the inverse transformations allows to recover the direction of the light matching a pixel $\vec{P_\mathcal{P}}$.
+The potentially distorted image coordinates $\vec{P_\mathcal{I}}$ are obtained with the following formula.
 \begin{equation}
 \begin{aligned}
-    \vec{\hat{p}} = \colvecxxx{x}{y}{1} &= K^{-1} \vec{p} \\
+    \vec{P_\mathcal{I}} = \colvecxxx{x}{y}{1} &= K^{-1} \vec{P_\mathcal{P}} \\
     \colvecxx{x}{y} &= \begin{pmatrix}\frac{1}{f_x} & -\frac{s}{f_y} \\ 0 & \frac{1}{f_y}\end{pmatrix} \colvecxx{u - c_x}{v - c_y}
 \end{aligned}
 \end{equation}
-Again, if a distortion model is used, the inverse transformation needs to be applied to $\vec{\hat{p}}$.
+Again, if a distortion model is used, the inverse transformation needs to be applied to $\vec{P_\mathcal{I}}$.
 
-The final step is the projection to the unit sphere that gives the direction vector of the light ray equivalent to norming the vector $\vec{\hat{p}}$.
+The final step is the projection to the unit sphere that gives the direction vector of the light ray equivalent to norming the vector $\vec{P_\mathcal{I}}$.
 \begin{equation}
-    \colvecxxx{Xs}{Ys}{Zs} = \frac{1}{\sqrt{x^2 + y^2 + 1}} \colvecxxx{x}{y}{1}
+    P_\mathcal{S} = \colvecxxx{Xs}{Ys}{Zs} = \frac{1}{\sqrt{x^2 + y^2 + 1}} \colvecxxx{x}{y}{1}
     \label{eq:pinhole_backward}
 \end{equation}
 
@@ -78,7 +78,7 @@ Supporting this camera model gives flexibility to support all kind of sensors as
     \scalebox{0.9}{%
     \input{chapter03/img/spherical_model.tex}
     }
-    \caption[Spherical camera model and equirectangular images]{\emph{Spherical camera model and equirectangular images.} Each cartesian point that is not the origin can be uniquely converted to spherical coordinates. The origin $\mathbf{O}$ is interpreted as an invalid measurement in the context of this thesis and therefore filtered out during processing.}\label{fig:spherical}
+    \caption[Spherical camera model and equirectangular images]{\emph{Spherical camera model and equirectangular images.} Each cartesian point that is not the origin can be uniquely converted to spherical coordinates. The origin $\mathbf{O_\mathcal{C}}$ is interpreted as an invalid measurement in the context of this thesis and therefore filtered out during processing.}\label{fig:spherical}
 \end{figure}
 
 The projections are mostly a conversion from cartesian to spherical coordinates and described here in brief.
@@ -100,7 +100,7 @@ Measurements with $r = 0$ are filtered out as invalid data points.
 
 \subsubsection*{Forward Projection}
 
-Let $\vec{P} = \rowvecxxx{X}{Y}{Z}$ be a point in camera coordinates.
+Let $\vec{P_\mathcal{C}} = \rowvecxxx{X}{Y}{Z}$ be a point in camera coordinates.
 This point is converted to spherical coordinates.
 \begin{equation}
 \begin{aligned}
@@ -136,22 +136,22 @@ Note, that $r = 1$ as the resulting vector is of unit length.
     \scalebox{0.8}{%
     \input{chapter03/img/depth_range}
     }
-    \caption[Orthographic depth and range visualized]{\emph{Orthographic depth and range visualized.} The distance information of a point relative to the center of a sensor at $\vec{C}$ can either be stored as the orthographic depth, mathematically the $Z$ component of the camera coordinates or the range, equivalent to the $L2$ norm of the point $\vec{P}$ in camera coordinates. The orthographic depth is commonly provided by depth cameras and the range by \acrshort{LIDAR} systems.}
+    \caption[Orthographic depth and range visualized]{\emph{Orthographic depth and range visualized.} The distance information of a point relative to the center of a sensor at $\vec{C_\mathcal{C}}$ can either be stored as the orthographic depth, mathematically the $Z$ component of the camera coordinates or the range, equivalent to the $L2$ norm of the point $\vec{P_\mathcal{C}}$ in camera coordinates. The orthographic depth is commonly provided by depth cameras and the range by \acrshort{LIDAR} systems.}
     \label{fig:range_depth}
 \end{figure}
 
 There are two possible conventions on how to store depth data, both demonstrated in Figure~\ref{fig:range_depth}.
 The orthographic depth~$d$ is the distance from the image plane and commonly returned by pinhole depth sensors like the Kinectv2.
-On the other hand, the range~$r$ is the $L2$ norm of the vector from the camera origin to $\vec{P}$.
+On the other hand, the range~$r$ is the $L2$ norm of the vector from the camera origin to $\vec{P_\mathcal{C}}$.
 For consistency and generality, depth data is converted to range data before further processing takes place.
 This simplifies later conversion and mixing of different camera models in a coherent fashion.
 The conversion depends on the camera model and only the pinhole model is subject to analysis here.
 
-From the forward projection function in Equation~\ref{eq:pinhole_forward} of the pinhole model follows the connection of the range and orthographic depth of the camera coordinates $\vec{P}$ and image coordinates $\vec{\hat{p}}$ of the point $\mathbf{P}$.
+From the forward projection function in Equation~\ref{eq:pinhole_forward} of the pinhole model follows the connection of the range and orthographic depth of the camera coordinates $\vec{P_\mathcal{C}}$ and image coordinates $\vec{P_\mathcal{I}}$ of the point $\mathbf{P}$.
 \begin{equation}
 \begin{aligned}
-    \vec{\hat{p}} &= \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z} \\
-    \implies Z \vec{\hat{p}} &= \vec{P} \implies Z \lnorm{\vec{\hat{p}}} &= \lnorm{\vec{P}} \\
+    \vec{P_\mathcal{I}} &= \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z} \\
+    \implies Z \vec{P_\mathcal{I}} &= \vec{P_\mathcal{C}} \implies Z \lnorm{\vec{P_\mathcal{I}}} &= \lnorm{\vec{P_\mathcal{C}}} \\
     \iff Z r &= d
 \end{aligned}
 \end{equation}

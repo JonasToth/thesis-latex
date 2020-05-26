@@ -30,7 +30,7 @@ Appendix~\ref{sec:backprojection_sift} contains plots visualizing the matching p
 \end{subfigure}
 \caption[\acrshort{sift} descriptors distances]{\emph{\acrshort{sift} descriptors distances.} The distributions of descriptor distances show a clear relationship between the distance and the likelihood of a true or false positive.}\label{fig:sift_descriptor_distance}
 \end{figure}
-In terms of the ROC analysis (Figure~\ref{fig:roc_sift}) the \gls{flexion-image} shows a slightly better performance, but no clear winner can be established.
+In terms of the \acrshort{ROC} analysis (Figure~\ref{fig:roc_sift}) the \gls{flexion-image} shows a slightly better performance, but no clear winner can be established.
 Additional parameter variation in the \acrshort{sift} algorithm and filtering setup varies the true positive rate by only $5\%$ and the false positive rate by even less.
 The differences between the datasets are inherent to their quality and setup.
 Most notably, \acrshort{sift} has a very high true positive rate (recall) showing its descriptive power and potential for object recognition tasks.
@@ -44,11 +44,11 @@ The theoretical aspects, like rotation invariance and the inclusion of more info
 \begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/roc.pdf}%
-    \caption{\gls{flexion-image} ROC}
+    \caption{\gls{flexion-image} \acrshort{ROC}}
 \end{subfigure}\quad
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/roc.pdf}
-    \caption{\gls{bearing-angle-image} Image ROC}
+    \caption{\gls{bearing-angle-image} \acrshort{ROC}}
 \end{subfigure}
-    \caption[\acrshort{ROC} graphs for \acrshort{sift}]{\emph{\acrshort{ROC} graphs for \acrshort{sift}.} The ROC plot for \acrshort{sift} is tightly clustered for both conversions. No distinguished improvements are observable by parameter variations.}\label{fig:roc_sift}
+\caption[\acrshort{ROC} graphs for \acrshort{sift}]{\emph{\acrshort{ROC} graphs for \acrshort{sift}.} The \acrshort{ROC} plot for \acrshort{sift} is tightly clustered for both conversions. No distinguished improvements are observable by parameter variations.}\label{fig:roc_sift}
 \end{figure}
