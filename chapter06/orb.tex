@@ -13,7 +13,6 @@ Those regions contains sharp edges from feature image to black because of missin
 The \acrshort{fast} keypoint detector characteristics of comparing brightness values at different sampling points is to blame for the keypoints bad performance.
 Similar to \acrshort{surf}'s shortcoming, it does not deal well with the smoother gray changes but requires sharp edges.
 As \acrshort{orb} employs blurring and scale space, too, the effect of missing contrast between sampling points worsens in higher levels of the pyramid, yielding no keypoints there.
-
 \begin{figure}[htp]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/ORB/flexion/descriptor_distances.pdf}%
