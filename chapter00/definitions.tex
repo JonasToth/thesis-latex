@@ -1,37 +1,37 @@
 \newglossaryentry{bearing-angle}{%
     name={Bearing-Angle},
-    description={The Bearing-Angle represents the angle betwen the lightray from the sensor to the depth value and the connection to a neighbouring depth value. The Bearing-Angle can be calculated with arbitrary neighbouring depth values. Both laserscans and depth images can be converted using a proper intrinsic calibration of the sensors.}}
+    description={The Bearing-Angle represents the angle between the lightray from the sensor to the depth value and the connection to a neighbouring depth value. The Bearing-Angle can be calculated with arbitrary neighbouring depth values. Both laserscans and depth images can be converted using a proper intrinsic calibration of the sensors}}
 
 \newglossaryentry{bearing-angle-image}{%
     name={Bearing-Angle image},
     plural={Bearing-Angle images},
-    description={The Bearing-Angle Image is a derived image type where each pixel encodes the Bearing-Angle for the lightray of this pixel. The angle is discretized from the range $(0, \pi)$ to the color depth of the target image. The resulting images are grayscale.}}
+    description={The Bearing-Angle Image is a derived image type where each pixel encodes the Bearing-Angle for the lightray of this pixel. The angle is discretized from the range $(0, \pi)$ to the color depth of the target image. The resulting images are grayscale}}
 
 \newglossaryentry{flexion-image}{%
     name={Flexion image},
-    description={The Flexion Image is a way to convert range data.
+    description={The Flexion Image is a method to convert range data.
     A scalar value is computed for each pixel of the range image, that measures the angle between different estimations of the surface normal.
-    This measure is useful for obtaining high-level image features from low-level geometry information.}}
+    This measure is useful for obtaining high-level image features from low-level geometry information}}
 
 \newglossaryentry{curvature}{%
     name={Curvature},
-    description={Curvature is a concept from differential geometry that applies to manifolds. The principal curvatures $k_1$ and $k_2$ measure how surfaces bend at that point. Different specific types of curvature do exist.}}
+    description={Curvature is a concept from differential geometry that applies to manifolds. The principal curvatures $k_1$ and $k_2$ measure how surfaces bend at that point. Different specific types of curvature do exist}}
 
 \newglossaryentry{mean-curvature}{%
     name={Mean curvature},
-    description={Mean curvature is the sum of $k_1$ and $k_2$ and one of the main curvature types.}}
+    description={Mean curvature is the sum of $k_1$ and $k_2$ and one of the main curvature types}}
 
 \newglossaryentry{gaussian-curvature}{%
     name={Gaussian curvature},
-    description={Gaussian curvature is the product of $k_1$ and $k_2$ and is used in many fields. It gives the tool to classify points on a surface based onf sign and magnitude. For negative values of the Gaussian Curvature the point is said to be hyperbolic, for positive values the point is said to be an elliptic point. Points with Gaussian Curvature being zero are parabolic points}}
+    description={Gaussian curvature is the product of $k_1$ and $k_2$ and is used in many fields. The Gaussian curvature characterizes points on a surface by its sign and magnitude. For negative values of the Gaussian curvature, the point is said to be hyperbolic, for positive values the point is an elliptic point. Points with Gaussian curvature being zero are parabolic points}}
 
 \newglossaryentry{multi-directional-bearing-angle-image}{%
     name={Multi-Directional-Bearing-Angle image},
-    description={This image is a feature image, similar to \Glspl{bearing-angle-image}. For each pixel the sum of each \Gls{bearing-angle} in forward and backward direction is calculated. This angle is calculated in both diagonals, horizontal and vertical direction. Finally the maximum value is used as pixel value after scaling.}}
+    description={This image is a feature image, similar to \Glspl{bearing-angle-image}. For each pixel, the sum of each \Gls{bearing-angle} in forward and backward direction is calculated. This angle is calculated in both diagonals, horizontal and vertical direction. Finally, the maximum value is used as pixel value after scaling}}
 
 \newglossaryentry{sfm}{
     name={Structure-from-Motion},
-    description={A processing pipeline that reconstructs world geometry from processing camera footage, extracting distance information in multiple processing steps. A final global optimization of backprojection errors can be done to improve the overall quality of the resulting model.}}
+    description={A processing pipeline that reconstructs world geometry from processing camera footage, extracting distance information in multiple processing steps. A final global optimization of backprojection errors can be done to improve the overall quality of the resulting model}}
 
 % \newglossaryentry{ROC}{
 %    name={Receiver-Operating-Characteristics},

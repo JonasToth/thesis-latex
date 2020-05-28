@@ -1,13 +1,9 @@
-\documentclass[doktyp=marbeit,fontsize=12pt,sprache=english,hausschrift=true,draft=false]{TUBAFarbeiten}
+\documentclass[doktyp=marbeit,fontsize=12pt,sprache=english,hausschrift=true,draft=false,numbers=noenddot,pointlessnumbers]{TUBAFarbeiten}
 
 % packages
 \usepackage{abstract}
 \usepackage{amsmath}
-\usepackage[ngerman]{babel}
-\usepackage{bashful}
-\usepackage{blindtext}
 \usepackage{caption}
-\usepackage{capt-of}
 \usepackage{calc}
 % \usepackage[backend=biber,sortlocale=de_DE_phonebook,sorting=none,natbib=true,doi=false,isbn=false,url=false]{biblatex}
 % \usepackage[backend=biber,sorting=none,natbib=true,doi=false,isbn=false,url=false]{biblatex}
@@ -38,6 +34,7 @@
 \usepackage{algpseudocode}
 \usepackage{listings}
 
+
 \definecolor{lightgray}{HTML}{CBCBCB}
 \definecolor{lightergray}{gray}{0.9}
 \newcolumntype{a}{>{\columncolor{lightergray}}c}
@@ -50,6 +47,7 @@
 \definecolor{plotorange}{HTML}{F5A623}
 \definecolor{plotdarkblue}{HTML}{000FFF}
 \definecolor{plotdarkorange}{HTML}{FF5200}
+
 
 % Images with mathcha.io 
 \usepackage{tikz}
@@ -101,6 +99,7 @@
             urlcolor=black,
             linktoc=all}
 
+% \titlelabel{\thetitle~}
 
 % start the content
 \begin{document}
@@ -204,7 +203,7 @@ Effects of these conditions can be partially mitigated by preprocessing and filt
     }
     \newpage
 
-    \section{Keypoints and Backprojections for \acrshort{sift} and \acrshort{akaze}}
+    \section{Keypoints and Matchings for \acrshort{sift} and \acrshort{akaze}}
     The plots in this section show the combined keypoint and matching performance.
     Green points are a identified true positives and purple points false negative, making up the total correspondences.
     Orange lines connect false positives.

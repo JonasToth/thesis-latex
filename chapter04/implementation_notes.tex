@@ -28,7 +28,7 @@ Each of the feature image conversions is implemented as C++ library code working
 The conversion is generic in the sense, that any camera model implementing the forward and backward projection for pixel coordinates is suitable for the feature image conversion.
 This genericity is achieved through the use of templates.
 Type requirements are enforced with \lstinline[basicstyle=\ttfamily]|static_assert()| and concept-like\cite{c++concepts} requirement definitions.
-One important type requirement ensures consistent use of the reference coordinate systems with a special type that prohibits the code \texttt{\lstinline[language=C++,basicstyle=\footnotesize\tt]|coordinate<float, frame::pixel> px = coordinate<float, frame::image>(0.5F, 0.25F);|} to compile.
+One important type requirement ensures consistent use of the reference coordinate systems with a special type that prohibits the code \texttt{\lstinline[language=C++,basicstyle=\footnotesize\ttfamily]|coordinate<float, frame::pixel> px = coordinate<float, frame::image>(0.5F, 0.25F);|} to compile.
 All image access operations must adhere to the reference frame annotation and special transformations are the only way to switch between coordinate systems.
 
 Multiple library dependencies support the functionality of the project and shall be mentioned without a particular order.

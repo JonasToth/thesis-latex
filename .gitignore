@@ -2,3 +2,24 @@ main.pdf
 _minted-main/
 
 *.pdf
+chapterA/image_bearing.aux
+main.acn
+main.acr
+main.alg
+main.aux
+main.bbl
+main.blg
+main.fdb_latexmk
+main.fls
+main.glg
+main.glo
+main.gls
+main.ist
+main.lof
+main.log
+main.lot
+main.nlg
+main.nlo
+main.nls
+main.out
+main.toc
