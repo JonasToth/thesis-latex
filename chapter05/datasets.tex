@@ -162,7 +162,7 @@ The selected scans are processed to a common resolution and aspect ratio.
 The datasets evaluating the feature algorithms show the potential and performance of the common algorithms.
 To demonstrate, that this performance translates into applicability the promising algorithms are used in a visual odometry scenario.
 A synthetic dataset for city scenario, developed by Zhang et al.\cite{zhang_icra2016}, that provides a groundthruth trajectory is used for this purpose.
-The in-house implementation of the visual odometry is very basic with the four following steps applied only on consecutive image.
+The in-house implementation, based on Singh's\cite{singh_report2015} work, of the visual odometry is very basic with the four following steps applied only on consecutive image.
 First the feature are detected and their descriptors extracted, the descriptors are matched with OpenCV's RANSAC.
 The essential matrix is computed in each RANSAC step and the consensus pose is used as relative pose.
 Each feature algorithm is used with default configuration.
