@@ -40,7 +40,8 @@ First the matches are analyzed for true and false positives and true corresponde
 Let $proj$ be the keypoints from $I_1$, backprojected to $I_2$ with the relative pose and the appropriate camera model.
 $kps$ are the keypoints from $I_2$, $matches$ are pairs of keypoints the matching algorithm considers as correspondences and $threshold$ is the maximum allowed backprojection error for keypoints to still be considered a true correspondence.
 \begin{algorithm}[H]
-\setstretch{1.35}
+\setstretch{1.2}
+\footnotesize
 \begin{algorithmic}[0]
 \Require{$\forall m \in matches \Rightarrow m.first \in proj \land m.second \in kps$}
 \Require{$threshold > 0.0$}
@@ -62,7 +63,8 @@ $kps$ are the keypoints from $I_2$, $matches$ are pairs of keypoints the matchin
 \end{algorithm}
 After this process some keypoints detected in $I_2$ might be left to analyze for a correspondence that was not assigned during matching, the false negatives.
 \begin{algorithm}[H]
-\setstretch{1.35}
+\setstretch{1.2}
+\footnotesize
 \begin{algorithmic}
 \Require{$threshold > 0.0$}
 \Require{$kps_{pre-call}$ does not contain matched keypoints}
