@@ -3,7 +3,7 @@
     \setlength{\tabcolsep}{0.3em}%
 \input{chapter06/results/SIFT/absolute_numbers}
     }
-    \caption{Absolute keypoint and matching numbers for \texttt{\acrshort{sift}/raw/default}.}
+    \caption[Keypoint and matching results for \texttt{\acrshort{sift}/raw/default}]{\emph{Keypoint and matching results for \texttt{\acrshort{sift}/raw/default}.} The \gls{flexion-image} results in more detected keypoints for all datasets and hence more correspondences. The recall of \acrshort{sift} is outstanding and above 80\% for even the demanding \emph{Lehrpfad} dataset.}
 \end{table}
 \acrshort{sift} is the most established tested algorithm and therefore evaluated first.
 In each dataset the number of detected keypoints and is significantly higher for the \glspl{flexion-image} compared to the \glspl{bearing-angle-image}.
@@ -28,7 +28,7 @@ Appendix~\ref{sec:backprojection_sift} contains plots visualizing the matching p
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/descriptor_distances.pdf}%
     \caption{\gls{bearing-angle-image}}
 \end{subfigure}
-\caption[\acrshort{sift} descriptors distances]{\emph{\acrshort{sift} descriptors distances.} The distributions of descriptor distances show a clear relationship between the distance and the likelihood of a true or false positive.}\label{fig:sift_descriptor_distance}
+\caption[\acrshort{sift} descriptors distances]{\emph{\acrshort{sift} descriptors distances.} The distributions of descriptor distances show a clear relationship between the distance and the likelihood of a true or false positive. This insight justifies a maximum matching distance to separate false positives better from true positives.}\label{fig:sift_descriptor_distance}
 \end{figure}
 In terms of the \acrshort{ROC} analysis (Figure~\ref{fig:roc_sift}) the \gls{flexion-image} shows a slightly better performance, but no clear winner can be established.
 Additional parameter variation in the \acrshort{sift} algorithm and filtering setup varies the true positive rate by only $5\%$ and the false positive rate by even less.
@@ -44,11 +44,11 @@ The theoretical aspects, like rotation invariance and the inclusion of more info
 \begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/roc.pdf}%
-    \caption{\gls{flexion-image} \acrshort{ROC}}
+    \caption{\gls{flexion-image}}
 \end{subfigure}\quad
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/roc.pdf}
-    \caption{\gls{bearing-angle-image} \acrshort{ROC}}
+    \caption{\gls{bearing-angle-image}}
 \end{subfigure}
 \caption[\acrshort{ROC} graphs for \acrshort{sift}]{\emph{\acrshort{ROC} graphs for \acrshort{sift}.} The \acrshort{ROC} plot for \acrshort{sift} is tightly clustered for both conversions. No distinguished improvements are observable by parameter variations.}\label{fig:roc_sift}
 \end{figure}

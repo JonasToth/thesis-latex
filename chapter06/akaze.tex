@@ -3,7 +3,7 @@
     \setlength{\tabcolsep}{0.3em}%
 \input{chapter06/results/AKAZE/absolute_numbers}
     }
-    \caption{Absolute keypoint and matching numbers for \texttt{\acrshort{akaze}/raw/default}.}
+    \caption[Keypoint and matching results for \texttt{\acrshort{akaze}/raw/default}]{\emph{Keypoint and matching results for \texttt{\acrshort{akaze}/raw/default}.} \acrshort{akaze} achieves better results than \acrshort{surf} and \acrshort{orb}. The number of correspondences is very high compared to \acrshort{sift}, but true positives are still higher than false negatives. This indicates reasonable descriptor performance and stability of the keypoint detector.}
 \end{table}
 The final feature detection algorithm evaluate is \acrshort{akaze}, that is again closer to \acrshort{sift} for the keypoint detector design compared to \acrshort{orb}.
 \acrshort{akaze} results approximatly one order of magnitude more detected keypoints and correspondences compared to \acrshort{sift}.
@@ -23,7 +23,7 @@ The enhancement in \acrshort{mldb} solidifies the tendency though.
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/bearing/descriptor_distances.pdf}%
     \caption{\glspl{bearing-angle-image}}
 \end{subfigure}
-    \caption{\acrshort{akaze} descriptors distances.}
+    \caption[\acrshort{akaze} descriptors distances]{\emph{\acrshort{akaze} descriptors distances.} The true positives and false positives are partially separable by the descriptor distance. The \gls{flexion-image} shows better separation than the \gls{bearing-angle-image}. The descriptor is binary and similar to \acrshort{orb}'s descriptor, but the improvements show measureable effects.}
 \end{figure}
 The \acrshort{ROC} graph in Figure~\ref{fig:roc_akaze} shows, that \acrshort{akaze} can perform quiet reasonable across all datasets.
 For the \glspl{flexion-image} there exists a configuration for each dataset with significantly higher true positive rate than false positive rate.
@@ -41,5 +41,5 @@ There, \acrshort{sift} has clear qualitative advantages over \acrshort{akaze}, b
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/bearing/roc.pdf}
     \caption{\gls{bearing-angle-image}}
 \end{subfigure}
-    \caption{\acrshort{ROC} graphs for \acrshort{akaze}.}\label{fig:roc_akaze}
+    \caption[\acrshort{ROC} graphs for \acrshort{akaze}]{\emph{\acrshort{ROC} graphs for \acrshort{akaze}.} \acrshort{akaze} results in a bigger spread of the algorithm performance depending on the configuration. The \acrshort{bearing-angle-image} falls behind the \gls{flexion-image}. The higher scoring results apply filtering of the keypoints by their response.}\label{fig:roc_akaze}
 \end{figure}

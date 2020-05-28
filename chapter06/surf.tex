@@ -24,7 +24,7 @@ The default settings of \acrshort{surf} are still used, but only one octave with
     \setlength{\tabcolsep}{0.3em}%
 \input{chapter06/results/SURF/absolute_numbers}
     }
-    \caption{Absolute keypoint and matching numbers for \texttt{\acrshort{surf}/raw/best-only}.}\label{tab:surf_results}
+    \caption[Keypoint and matching result for \texttt{\acrshort{surf}/raw/best-only}]{\emph{Keypoint and matching result for \texttt{\acrshort{surf}/raw/best-only}.} The Youden index around 0.1 and even below 0 already indicates bad performance. The number of keypoints is still substantially higher than for \acrshort{sift}, even with the limit of the keypoint cound and using only one octave.}\label{tab:surf_results}
 \end{table}
 The number of correspondences for the adjusted \acrshort{surf} is comparable to \acrshort{sift} on all scale.
 But the number of false negatives already indicates lesser descriptor performance.
@@ -54,7 +54,7 @@ The \acrshort{ROC} analysis points in the same direction showing performance aro
     \includegraphics[width=\linewidth]{chapter06/results/SURF/bearing/roc.pdf}
     \caption{\gls{bearing-angle-image}}
 \end{subfigure}
-    \caption{The \acrshort{ROC} graphs for \acrshort{surf} underline its bad performance.}
+    \caption[The \acrshort{ROC} graphs for \acrshort{surf}]{\emph{The \acrshort{ROC} graphs for \acrshort{surf}.} No metric for \acrshort{surf} shows any indication of a good classification for correspondences. The \acrshort{ROC} graph underlines, that no configurations or data preprocessing substantially improves the situation.}
 \end{figure}
 The suspected reason for this poor performance of \acrshort{surf} is the use of the Haar-Wavelet response as key metric of the descriptor.
 The feature image conversions do not result in sharp edges of brightness, as is the case for classical color images and the textures on real world objects.
