@@ -2,7 +2,7 @@
 
 To determine the performance of the feature-based approach, the matching of keypoints is framed in terms of a binary classifier.
 For a keypoint correspondence between two images the classification task is to determine if those keypoint correspond to the same point in the real world or not.
-The correspondence is computed based on the relative pose of consecutive images and only 2 consecutive images are analyzed.
+The correspondence is computed based on the relative pose of consecutive images and only two consecutive images are analyzed.
 This evaluation is done for \Glspl{bearing-angle-image} and \Glspl{flexion-image}.
 The following subsections describe each component of this evaluation pipeline in more detail.
 To the best of the author's knowledge no other work approaches the evaluation of feature detectors and descriptors like this.
@@ -18,25 +18,28 @@ The accuracy assumption of the \emph{FASTICPOdometry} poses is tested by manual 
 
 \subsubsection{Backprojection and Distance Threshold}
 
-In two consecutive images all keypoints are extracted with the choosen algorithm and settings.
-The keypoints of the first image is projected into the view of the second images using the determined relative pose and camera model.
-This gives two sets of keypoints in the second image, the keypoints detected in this frame and the keypoints detected in the previous frame, seen from this frames pose.
+In two consecutive images, all keypoints are extracted with the choosen algorithm and settings.
+The keypoints of the first image are projected into the view of the second image using the determined relative pose and camera model.
+Each keypoint is projected to spherical coordinates, e.g. with Equation~\ref{eq:pinhole_backward}, multiplied with the range value of the corresponding pixel and resulting camera coordinate transformed to the second camera coordinate system (Equation~\ref{eq:homogeneous_matrix}).
+Projecting the keypoint into the second camera with the matching forward projection (e.g. Equation~\ref{eq:pinhole_forward}) finalizes the procedure, demonstrated in Figure~\ref{fig:keypoint_projection}.
+This gives two sets of keypoints in the second image, the keypoints detected in this frame and the keypoints detected in the previous frame, seen from this frame's pose.
 Assuming a correct relative pose, the corresponding keypoints have a small pixel distance between each other.
-\emph{Small} is a relative value and the choosen threshold in the experiments is $2px$.
+\emph{Small} is a relative value and the choosen threshold in the experiments is 2\,px.
 This approach can only result in a proper analysis for a sparse distribution of keypoints that actually respond to image structure and small changes in pose.
-When the pose difference is big it can happen that keypoints to covered geometry get projected to the same position as some other valid keypoint.
+When the pose difference is big, it can happen that keypoints get projected to the same position as some other valid keypoint.
 Too many points create ambiguity with respect to the backprojection tolerance that is required due to imperfect projections of real world sensors.
 \begin{figure}[H]
     \input{chapter05/img/backprojection}
-    \caption[Backprojection of keypoints visualized]{\emph{Backprojection of keypoints visualized.} The choosen approach of projection keypoints between frames is demonstrated in this figure. Keypoints of image $I_1$ are blue dots in both images and the oranges ones are only detected in image $I_2$. Actual correspondences result in very close points in $I_2$, indicated as blue dot with orange border, whereas unrelated points show no proximity. This assumption holds for small changes in pose and relativly sparse distribution of detected keypoints.}
+    \caption[Backprojection of keypoints visualized]{\emph{Backprojection of keypoints visualized.} The choosen approach of projecting keypoints between frames is demonstrated in this figure. Keypoints of image $I_1$ are blue dots in both images and the orange ones are only detected in image $I_2$. Actual correspondences result in very close points in $I_2$, indicated as blue dot with orange border, whereas unrelated points show no proximity. This assumption holds for small changes in pose and relatively sparse distribution of detected keypoints.}\label{fig:keypoint_projection}
 \end{figure}
+\pagebreak[4]
 The analysis of the descriptor performance requires the matching step first, that establishes the correspondences of the matcher.
 To classify the result of the descriptor matching, each keypoint needs to be analyzed further.
 The result are four sets: \emph{true-positive}, \emph{false-positive}, \emph{true-negative} and \emph{false-negative} as introduced in Section~\ref{sec:statistic_classifier}.
 The union of these sets are all detected keypoints.
 
 Partitioning the keypoints is done with the following algorithms.
-First the matches are analyzed for true and false positives and true correspondences are removed from further analysis. 
+First the matches are analyzed for true and false positives and true correspondences are removed from further analysis (Algorithm~\ref{alg:false_positives}). 
 Let $proj$ be the keypoints from $I_1$, backprojected to $I_2$ with the relative pose and the appropriate camera model.
 $kps$ are the keypoints from $I_2$, $matches$ are pairs of keypoints the matching algorithm considers as correspondences and $threshold$ is the maximum allowed backprojection error for keypoints to still be considered a true correspondence.
 \begin{algorithm}[H]
@@ -59,9 +62,9 @@ $kps$ are the keypoints from $I_2$, $matches$ are pairs of keypoints the matchin
     \EndFor%
     \EndFunction%
 \end{algorithmic}
-\caption{This algorithm distinguishes between a true and a false positive match.}
+\caption{This algorithm distinguishes between a true and a false positive match.}\label{alg:false_positives}
 \end{algorithm}
-After this process some keypoints detected in $I_2$ might be left to analyze for a correspondence that was not assigned during matching, the false negatives.
+After this process some keypoints detected in $I_2$ might be left to analyze for a correspondence that was not assigned during matching, the false negatives (Algorithm~\ref{alg:false_negatives}).
 \begin{algorithm}[H]
 \setstretch{1.2}
 \footnotesize
@@ -80,11 +83,11 @@ After this process some keypoints detected in $I_2$ might be left to analyze for
     \State{$true\_negatives \gets kps \setminus false\_negatives$}
     \EndFunction%
 \end{algorithmic}
-\caption{After the explicit found matches are classified, the remaining keypoints need analysis to assign them as true or false positive.}
+\caption{The unmatched keypoints are classified as true or false negative.}\label{alg:false_negatives}
 \end{algorithm}
 To classify the negatives each keypoint's distance from $I_2$ to the backprojected keypoints from $I_1$ is tested to be within the defined threshold.
 If this is the case, both keypoints are defined as corresponding and result in a false negative. The remaining points are true negatives.
-The final partitioning of the keypoints allows to analyze more aspects of keypoints, e.g.~the descriptor distances for true and false positives.
+The partitioning of the keypoints allows to analyze more aspects of matches, e.g.~the descriptor distances for true and false positives.
 
 \subsubsection{Histograms and Summary Statistics}
 
