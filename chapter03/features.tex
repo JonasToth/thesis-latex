@@ -20,7 +20,7 @@ The extracted vector has a high dimension with tens to hundreds of elements.
 Connecting the keypoints between different images uses the extracted descriptors for each keypoint.
 \emph{Similar} descriptors are associated.
 Similarity of the descriptors is calculated with a matching norm depdendent on the structure of the descriptor.
-Dense real descriptors commonly use the $L2$-norm where as binary descriptors use the hamming norm.
+Dense real descriptors commonly use the Euclidean norm where as binary descriptors use the hamming norm.
 Additional constraints, like geometric consistency, improve the accuracy of the matching result.
 For the provided example this result might be
 \begin{align*}

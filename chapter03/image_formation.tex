@@ -18,11 +18,13 @@ On some robotic platforms, like \acrshort{ROS} (\acrlong{ROS}), this is done aut
 The pinhole camera model is one of the most common camera models in computer vision, modelling both classical and depth cameras.
 Figure~\ref{fig:pinhole_model} shows the perspective projection of three-dimensional points onto the plane\cite[p. 25-35]{hartley_2004}.
 This projection reduces the input dimension by one and is not depth preserving.
-The model is parameterized by the focal length $f_x$ and $f_y$, that correspond to the distance of the pinhole to the image plane, the skew~$s$, that resembles non-quadratic pixel shape and is most of the time $s = 0$ and the image center $c_x$ and $c_y$.
+The model is parameterized by multiple parameters.
+The focal length~$f_x > 0$ and $f_y > 0$ corresponds to the distance of the idealized pinhole to the image plane.
+The skew~$s$, that resembles non-quadratic pixel shape and is most of the time $s = 0$ and the image center $c_x > 0$ and $c_y > 0$.
 
 \subsubsection*{Forward Projection}
 
-Let $\vec{P_\mathcal{W}} = \rowvecxxx{X}{Y}{Z}$ be a world point in camera coordinates.
+Let $\vec{P_\mathcal{W}} = \rowvecxxx{X}{Y}{Z},~Z \neq 0$ be a world point in camera coordinates.
 The perspective projection
 \begin{equation}
     \vec{P_\mathcal{I}} = \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z}
@@ -30,7 +32,7 @@ The perspective projection
 \end{equation}
 results in the point $\vec{P_\mathcal{W}}$ in image coordinates $\vec{P_\mathcal{I}}$. This step looses the depth information.
 The image coordinates could be distorted and any correction would happen at this stage.
-Multiplication of the $3 \times 3$ camera matrix $K$ and the homogeneous image coordinates results in the final pixel coordinates:
+Multiplication of the $3 \times 3$ upper triangular camera matrix $K$ and the homogeneous image coordinates results in the final pixel coordinates:
 \begin{equation}
 \begin{aligned}
 K &= \begin{pmatrix}
@@ -38,7 +40,7 @@ K &= \begin{pmatrix}
         0   & f_y   & c_y \\
         0   & 0     & 1
      \end{pmatrix} \\
-K \vec{\hat{p}} &= \begin{pmatrix}
+    K \vec{P_\mathcal{I}} &= \begin{pmatrix}
         f_x & f_x s & c_x \\
         0   & f_y   & c_y \\
         0   & 0     & 1
@@ -82,17 +84,17 @@ Additionally, to suite the \acrshort{LIDAR} sensor better a slight addition for 
 This field of view simply crops the full equirectangular image to the predefined slice and discards other coordinates as invalid.
 Figure~\ref{fig:spherical} shows the relationship between points in spherical coordinates and the equirectangular projection.
 
-The model is parametrized by the width $w$ and height $h$ of the image and the vertical field of view $[\theta_{min}, \theta_{max}]$ which defaults to $\theta_{min} = 0$ and $\theta_{max} = \pi$.
+The model is parametrized by the width $w > 0$ and height $h > 0$ of the image and the vertical field of view $[\theta_{min}, \theta_{max}],~\theta_{min} < \theta_{max}$ which defaults to $\theta_{min} = 0$ and $\theta_{max} = \pi$.
 This definition yields the vertical and horizontal angular resolution of a pixel, which is a constant:
 \begin{equation}
 \label{eq:equi_angular_resolution}
 \begin{aligned}
     d\varphi &= \frac{2 \pi}{w} \\
-    d\theta &= \frac{\theta_{max} - \theta_{min}}{h}\text{.}
+    d\theta &= \frac{\theta_{max} - \theta_{min}}{h} \text{.}
 \end{aligned}
 \end{equation}
-The used spherical coordinates $z = (r, \varphi, \theta)$ convention defines the radius $r \in \mathbb{R}$, the azimuthal angle $\varphi \in [-\pi, \pi)$ and the polar angle $\theta \in [0, \pi]$.
-Measurements with $r = 0$ are filtered out as invalid data points.
+The used spherical coordinates $z = (r, \varphi, \theta)$ convention defines the radius $r \ge 0$, the azimuthal angle $\varphi \in [-\pi, \pi)$ and the polar angle $\theta \in [0, \pi]$.
+Invalid range measurements result~in~$r = 0$ and are filtered out.
 
 \subsubsection*{Forward Projection}
 
@@ -132,12 +134,12 @@ In general, $r = 1$ as the resulting vector is of unit length:
     \scalebox{0.8}{%
     \input{chapter03/img/depth_range}
     }
-    \caption[Orthographic depth and range visualized]{\emph{Orthographic depth and range visualized.} The distance information of a point relative to the center of a sensor at $\vec{C_\mathcal{C}}$ can either be stored as the orthographic depth, mathematically the $Z$ component of the camera coordinates or the range, equivalent to the $L2$ norm of the point $\vec{P_\mathcal{C}}$ in camera coordinates. The orthographic depth is commonly provided by depth cameras and the range by \acrshort{LIDAR} systems.}
+    \caption[Orthographic depth and range visualized]{\emph{Orthographic depth and range visualized.} The distance information of a point relative to the center of a sensor at $\vec{C_\mathcal{C}}$ can either be stored as the orthographic depth, mathematically the $Z$ component of the camera coordinates or the range, equivalent to the Euclidean norm of the point $\vec{P_\mathcal{C}}$ in camera coordinates. The orthographic depth is commonly provided by depth cameras and the range by \acrshort{LIDAR} systems.}
     \label{fig:range_depth}
 \end{figure}
 There are two possible conventions on how to store depth data, both demonstrated in Figure~\ref{fig:range_depth}.
 The orthographic depth~$d$ is the distance from the image plane and commonly returned by pinhole depth sensors like the Kinectv2.
-On the other hand, the range~$r$ is the $L2$ norm of the vector from the camera origin to $\vec{P_\mathcal{C}}$.
+On the other hand, the range~$r$ is the Euclidean norm of the vector from the camera origin to $\vec{P_\mathcal{C}}$.
 For consistency and generality, depth data is converted to range data before further processing takes place.
 This simplifies later conversion and mixing of different camera models in a coherent fashion.
 The conversion depends on the camera model and only the pinhole model is subject to analysis here.
@@ -147,7 +149,7 @@ From the forward projection function of the pinhole model (Equation~\ref{eq:pinh
 \begin{aligned}
     \vec{P_\mathcal{I}} &= \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z} \\
     \implies Z \vec{P_\mathcal{I}} &= \vec{P_\mathcal{C}} \implies Z \lnorm{\vec{P_\mathcal{I}}} = \lnorm{\vec{P_\mathcal{C}}} \\
-    \iff Z r &= d
+    \iff Z r &= d \iff r = \frac{d}{Z}
 \end{aligned}
 \end{equation}
 The inverse of the $Z_{s}$ component of the backward projection from Equation~\ref{eq:pinhole_backward} provides the scaling factor between orthographic depth and range.

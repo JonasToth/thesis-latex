@@ -5,13 +5,13 @@
 \newcommand{\rowvecxx}[2]{\left(\begin{array}{cc} #1 & #2 \end{array}\right)^T}
 \newcommand{\rowvecxxx}[3]{\left(\begin{array}{ccc} #1 & #2 & #3 \end{array}\right)^T}
 
-\newcommand{\lnorm}[1]{\lVert#1\rVert}
+\newcommand{\lnorm}[1]{\lVert#1\rVert_{2}}
 
 \DeclareMathOperator{\arctantwo}{arctan2}
 
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
-\DeclarePairedDelimiter{\abs}{\lVert}{\rVert} % definiere absoluten betrag
+\DeclarePairedDelimiter{\abs}{\lVert}{\rVert_{2}} % definiere absoluten betrag
 
 % https://tex.stackexchange.com/questions/9466/color-underline-a-formula
 \def\mathunderline#1#2{\color{#1}\underline{{\color{black}#2}}\color{black}}
