@@ -10,11 +10,11 @@ A point in space is referenced by a vector in that space.
 The global reference frame is arbitrarily choosen in \emph{world coordinates}.
 Within that world coordinate system exist one or more sensors spanning their own coordinate system.
 Referencing the point relative to such a sensor yields \emph{camera coordinates}.
-The sensor itself performs some form of dimension reducing projection of the three dimensional point to a two dimensional point, an \emph{image coordinate}.
+The sensor itself performs some form of dimension reducing projection of the three dimensional point to a two dimensional point, an \emph{image coordinate}\cite[p. 251-261]{corke_2011}.
 \emph{Image coordinates} are an intermediate representation before discretizing the point to individual pixels, called \emph{pixel coordinates}.
 Inverting this projection results in \emph{spherical coordinates}, camera coordinates with unit length that just encode the direction of a light ray that hits a pixel.
 Different sensor models describe these projecting transformations mathematically.
-Note, that the relative transformation between \emph{camera coordiantes} and \emph{world coordinates}, the sensors \emph{pose}, can change over time.
+The relative transformation between \emph{camera coordinates} and \emph{world coordinates}, the sensors \emph{pose}, can change over time.
 Multiple sensors can exist within the \emph{world coordinate system}.
 
 \subsubsection*{Coordinate Transformations and Pose}
@@ -23,17 +23,16 @@ Multiple sensors can exist within the \emph{world coordinate system}.
     \scalebox{0.7}{%
     \input{chapter03/img/coordinate_transformation}
     }
-    \caption[Coordinate transformation]{\emph{Coordinate transformation.} Relationship between different representation of the same point in different coordinate systems. The relationship displayed here and the corresponding linear algebra holds true for cartesian coordinate systems of any dimension.}
+    \caption[Coordinate transformation]{\emph{Coordinate transformation.} Relationship between different representation of the same point in different coordinate systems. The relationship displayed here and the corresponding linear algebra holds true for cartesian coordinate systems of any dimension.}\label{fig:coordinate_transformation}
 \end{figure}
 
 Let $\mathbf{O_\mathcal{W}}$ be the origin of the \emph{world coordinate system}.
 A three dimensional vector $\vec{P_\mathcal{W}} = \rowvecxxx{U}{V}{W}$ represents a point in this room relative to the origin $\mathbf{O_\mathcal{W}}$.
-Seeing this point $\mathbf{P_\mathcal{W}}$ from a camera $\mathbf{C_\mathcal{W}}$ within the same room is equivalent to changing the coordinate system from \emph{world coordinates} to \emph{camera coordinates} of that sensor.
-The relative rotation and translation of the camera $\mathbf{C_\mathcal{W}}$ to the room is also called its \emph{pose}.
+Seeing this point $\mathbf{P_\mathcal{W}}$ from a camera $\mathbf{C_\mathcal{W}}$ within the same room is equivalent to changing the coordinate system from \emph{world coordinates} to \emph{camera coordinates} of that sensor, as demonstrated in Figure~\ref{fig:coordinate_transformation}.
+The relative rotation and translation of the camera $\mathbf{C_\mathcal{W}}$ to the room is also called its \emph{pose}\cite[p.15-39]{corke_2011}.
 It is parametrized by a rotation matrix $R$ and a translation vector $\vec{t}$.
-Homogeneous coordinates provide a computational more efficient way to apply the transformation to vectors by $4 \times 4$ matrix-vector multiplication instead of $3 \times 3$ matrix-vector multiplication and an additional $3 \times 1$ vector addition.
-The point $\mathbf{P_\mathcal{W}}$ seen from the camera $\mathbf{C_\mathcal{W}}$ is computed with the homogeneous transformation matrix $H = \begin{bmatrix} R & \vec{t} \\
-    \begin{matrix}0 & 0 & 0\end{matrix} & 1 \end{bmatrix}$.
+Homogeneous coordinates provide a computational more efficient way to apply the transformation to vectors by $4 \times 4$ matrix-vector multiplication (Equation~\ref{eq:homogeneous_matrix}) instead of $3 \times 3$ matrix-vector multiplication and an additional $3 \times 1$ vector addition.
+The point $\mathbf{P_\mathcal{W}}$ seen from the camera $\mathbf{C_\mathcal{W}}$ is computed with the homogeneous transformation matrix $H = \begin{bmatrix} R & \vec{t} \\ \begin{matrix}0 & 0 & 0\end{matrix} & 1 \end{bmatrix}$.
 \begin{equation}
 \begin{aligned}
     \colvech{X}{Y}{Z}&= \begin{pmatrix}
@@ -44,5 +43,5 @@ The point $\mathbf{P_\mathcal{W}}$ seen from the camera $\mathbf{C_\mathcal{W}}$
     \end{pmatrix} \colvech{U}{V}{W} \\
     \vec{P_\mathcal{C}} &= H \vec{P_\mathcal{W}}
 \end{aligned}
+\label{eq:homogeneous_matrix}
 \end{equation}
-Coordinate transformations do not loose information.

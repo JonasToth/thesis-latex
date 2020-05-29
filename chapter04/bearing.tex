@@ -16,13 +16,13 @@ This does not exhibit new information, because the angle of the other direction 
 Nontheless, the direction must be defined to obtain stable results.
 
 The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
-Note, that both Scaramuzza\cite{scaramuzza_iros2007} and Lin\cite{lin_easp2017} have typos in the formulae they provided.
+Both Scaramuzza\cite{scaramuzza_iros2007} and Lin et al.\cite{lin_easp2017} have typos in the formulae they provided.
 A full derivation for the correct equation is provided in Appendix~\ref{sec:bearing_derivation}.
-For the horizontal left-to-right calculation the formula is as follows.
+For the horizontal left-to-right calculation the formula is as follows:
 \begin{equation}\label{eq:bearing-angle}
     \beta = \arccos%
             \frac{d_{i,j} - d_{i-1,j} \cos \Delta\varphi}%
-                 {\sqrt{d_{i,j}^2 + d_{i-1,j}^2 - 2 d_{i,j} d_{i-1,j} \cos \Delta\varphi}}
+                {\sqrt{d_{i,j}^2 + d_{i-1,j}^2 - 2 d_{i,j} d_{i-1,j} \cos \Delta\varphi}}\text{.}
 \end{equation}
 The angular resolution $\Delta\varphi$ between two pixels of the depth image depends on the camera model in use.
 The pinhole model's angular resolution changes between pixel pairs, equirectangular image have a constant resolution.

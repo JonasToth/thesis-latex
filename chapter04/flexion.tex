@@ -36,14 +36,13 @@ As Figure~\ref{fig:flexion_space} demonstrates, both normals span an angle.
     \label{eq:flexion_normals}
 \end{aligned}
 \end{equation}
-Note, that both normals $\vec{n_1}$ and $\vec{n_2}$ are not unit length, but only the direction vector between the neighbouring points of $\mathbf{P_{i,j}}$.
-Finally, the Flexion $\mathcal{F}$ of point $\mathbf{P_{i,j}}$ is defined as
+Both normals $\vec{n_1}$ and $\vec{n_2}$ are not unit length, but only the direction vector between the neighbouring points of $\mathbf{P_{i,j}}$.
+Finally, the Flexion $\mathcal{F}$ of point $\mathbf{P_{i,j}}$ is defined as:
 \begin{align}
-    \mathcal{F} &= \abs{\vec{n_1} \cdotp \vec{n_2}}
+    \mathcal{F} &= \abs{\vec{n_1} \cdotp \vec{n_2}}\text{.}
 \end{align}
 Because $\lnorm{\vec{n_1}},\lnorm{\vec{n_2}} \in [0,1]$ the value of is bound to $\mathcal{F} \in [0, 1]$.
 Creating the final image requires a linear scaling to the desired output image depth using Equation~\ref{eq:linear_scaling}.
-
 Figure~\ref{fig:flexion_images} visualizes the \Gls{flexion-image} for the same camera positions as for the other feature images.
 \begin{figure}[H]
     \begin{subfigure}[t]{0.32\textwidth}

@@ -3,8 +3,7 @@
 Extracting information from images is a common task in computer vision.
 One approach is the detection of salient regions of special interest --- \emph{features}.
 Such regions can have arbitrary detectable properties, like a sharp brightness gradient or being corner-like.
-Detecting such a region results in a \emph{keypoint} that might have properties like a \emph{size}, \emph{response} and sometimes even a \emph{orientation}.
-Figure~\ref{fig:features_example} demonstrate what information contributes to the feature processing in abstract.
+Detecting such a region results in a \emph{keypoint} that might have properties like a \emph{size}, \emph{response} and sometimes even an \emph{orientation} (Figure~\ref{fig:features_example}).
 \begin{figure}[H]
     \scalebox{0.95}{%
     \input{chapter03/img/features.tex}
@@ -32,7 +31,7 @@ For the provided example this result might be
     \mathbf{K_{1,1}} &\leftrightarrow \mathbf{K_{2,1}} &
 \end{align*}
 with green bullets indicating a correct match.
-Note, that one descriptor design criteria is the trade-off between computational cost and descriptive power, as especially descriptor matching is computationally expensive.
+An important descriptor design criteria is the trade-off between computational cost and descriptive power, as especially descriptor matching is computationally expensive.
 
 Features play a key role in multiple computer vision tasks.
 Place or object recognition and document searching rely on the identification of similar descriptors in queried image to already indexed descriptors of known images.
@@ -42,16 +41,15 @@ The second major application is visual odometry and \gls{sfm}.
 Corresponding keypoints provide landmarks for triangulation and pose reconstruction.
 The relative pose between the two camera is computed with Nistér's 5-point algorithm\cite{nister_ieee2004}.
 To obtain a stable and consistent result for the pose the \acrshort{RANSAC} (\acrlong{RANSAC})\cite{fischler_ransac_1980} algorithm performs multiple pose computations with random subsets of keypoint correspondences.
-The assumed pose is used to project the keypoints from image into the other.
-A high pixel distance for the projected keypoints to the expected keypoints indicates a wrong pose showing that the used subset of keypoints for the pose calculation had false matches.
-The false matches are rejected iterativly.
-After multiple iterations a consensus pose might be obtained and can be optimized as final pose.
-If no such consensus pose exists the image pair is rejected.
+The assumed pose is used to project the keypoints from one image into the other.
+A high pixel distance for the projected keypoints to the expected keypoints indicates a wrong pose, showing that the used subset of keypoints for the pose calculation had false matches.
+After multiple iterations, a consensus pose might be obtained and can be optimized as final pose.
+If no such consensus pose exists, the image pair is rejected.
 
 Establishing the correspondence between keypoints of multiple images can be supported by using additional heuristics for descriptor matching.
 The first heuristic is \emph{cross checking}.
 Descriptors correspond only if the distance of the descriptors is minimal in both directions.
-The second commonly used heuristic is \emph{Lowe's ratio check}\cite{lowe_ijcv04} putting the best and second best descriptor match distance into relation and requiring a certain distance ratio to be superceeded.
+The second commonly used heuristic is \emph{Lowe's ratio check}\cite{lowe_ijcv04} putting the best and second best descriptor match distance into relation and requiring a certain distance ratio to be superseded.
 The last simple heuristic is the definition of an \emph{upper bound} for the match distance.
 Improvements to \acrshort{RANSAC}\cite{sattler_iccv2009,chum_cvpr2005} use more sophisticated keypoint sampling criteria by exploiting spatial consistency or the descriptor distance.
 

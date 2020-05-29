@@ -20,12 +20,11 @@ This conecept can be generalized to higher dimensions and two common \glspl{curv
     \caption[Curvature of curves and surfaces]{\emph{Curvature of curves and surfaces.} The \gls{curvature} of a curve is defined through its osculating circle. This simple definition is not possible for surfaces in three dimensions. Analyzing all directions, each point on the surface does have a minimum and maximum \gls{curvature} --- the \emph{principal curvatures}.}
 \end{figure}
 A straight line has no \gls{curvature}, hence $\kappa = 0$.
-The \gls{curvature} of a circle is defined is the inverse of its radius.
+The \gls{curvature} of a circle is defined is the inverse of its radius
 \begin{equation}
-    \kappa_{circle} = \frac{1}{r}
+    \kappa_{circle} = \frac{1}{r}\text{.}
 \end{equation}
 Any point's \gls{curvature} on a one-dimensional, twice differentiable function is defined as the \gls{curvature} of its osculating circle, visualized in Figure~\ref{fig:osculating_circle}.
-
 The \gls{curvature} of any point of a surface in three-dimensional space is ambigous, because it has infinite many curves crossing through this point.
 But it exists a maximum and minimum \gls{curvature}, the \emph{principal curvatures} $k_1$ and $k_2$.
 Figure~\ref{fig:curvature_surface} visualizes the directions of the minimum and maximum \gls{curvature} of a surface in three-dimensional space as dotted black lines.
@@ -40,17 +39,17 @@ and the \emph{\Gls{mean-curvature}} $\mathcal{H}$ as the mean
 of the principal curvatures.
 
 Both quantities can be calculated differently, as the \gls{curvature} is related to the derivates of a function.
-The range image is the two-dimensional function $f(u, v)$ and $f_u$, $f_v$, $f_{uu}$ and $f_{vv}$ its partial derivatives.
+The range image is the two-dimensional function $f(u, v)$ and $f_u$, $f_v$, $f_{uu}$ and $f_{vv}$ its partial derivatives:
 \begin{equation}
 \begin{aligned}
-    \mathcal{K} &= \frac{f_{uu} f_{vv} - f_{uv}^2}{{(1 + f_u^2 + f_v^2)}^2} \\
-    \mathcal{H} &= \frac{{(1 + f_{v}^2)} f_{uu} - 2 f_u f_v f_{uv} + {(1 + f_u^2)} f_{vv}}{2 \sqrt{1 + f_u^2 + f_v^2}^3}
+    \mathcal{K} &= \frac{f_{uu} f_{vv} - f_{uv}^2}{{(1 + f_u^2 + f_v^2)}^2}\text{,} \\
+    \mathcal{H} &= \frac{{(1 + f_{v}^2)} f_{uu} - 2 f_u f_v f_{uv} + {(1 + f_u^2)} f_{vv}}{2 \sqrt{1 + f_u^2 + f_v^2}^3}\text{.}
 \end{aligned}
 \end{equation}
-The central differential quotients approximate the first and second derivatives with $\mathcal{O}(\Delta x^2)$ accuracy.
+The central differential quotients approximate the first and second derivatives with $\mathcal{O}(\Delta x^2)$ accuracy:
 \begin{align*}
     f_{x} &= \frac{y_{i+1} - y_{i-1}}{2 \Delta x} \\
-    f_{xx} &= \frac{y_{i+1} + y_{i-1} - 2 y_{i}}{{\Delta x}^2}
+    f_{xx} &= \frac{y_{i+1} + y_{i-1} - 2 y_{i}}{{\Delta x}^2}\text{.}
 \end{align*}
 
 \begin{figure}[H]
