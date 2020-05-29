@@ -58,9 +58,19 @@
 \usepackage{booktabs}
 % Images end
 
-% \usepackage{subscript} % tief stellen
 \usepackage{setspace}
 \renewcommand{\baselinestretch}{1.5}
+
+\let\oldthebibliography\thebibliography
+\let\endoldthebibliography\endthebibliography
+\renewenvironment{thebibliography}[1]{
+  \begin{oldthebibliography}{#1}
+    \setlength{\itemsep}{0.2em}
+    \setlength{\parskip}{0.2em plus 0.3ex}
+}
+{
+  \end{oldthebibliography}
+}
 
 \usepackage{mathtools}
 \input{commands}
