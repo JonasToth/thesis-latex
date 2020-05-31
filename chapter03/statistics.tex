@@ -50,6 +50,7 @@ Different common ratios are derived from the confusion matrix.
             FPR = \frac{FP}{\#N}
             \label{eq:false_positive_rate}
         \end{equation}
+\newpage
     \item[True Negative Rate] Also called \textbf{specificity}, the true negative rate is the ratio of correctly rejected elements.
         \begin{equation}
         \begin{aligned}
@@ -89,11 +90,11 @@ They plot the false positive rate and true positive rate, the \emph{\acrshort{RO
   \node[label={315:{$\mathbf{E}$}},circle,fill,inner sep=2pt] at (axis cs:0.4,0.3) {};
 \end{axis}
 \end{tikzpicture}
-\caption[The elements of a \acrshort{ROC} graph]{\emph{The elements of a \acrshort{ROC} graph.} A \acrshort{ROC} graph plots the true positive rate versus the false positive rate of a binary classifier. Each point is one classification system. The diagonal $f(x) = x$ is equivalent to a 50\% chance of correct classification and a system on this line has no predictive power, as in this case $\mathbf{B}$. Points above this line ($\mathbf{A}$, $\mathbf{C}$, $\mathbf{D}$) indicate better-than-random performance and the bigger the distance to this diagonal the higher the informedness, also called Youden-Index, of this system. The optimal classifier ($\mathbf{A}$) is in the topleft corner and has no false decisions. Points below the diagonal ($\mathbf{E}$) might still have predictive power but indicate a wrong labeling of the outcomes.}\label{fig:roc_graph}
+\caption[The elements of a \acrshort{ROC} graph]{\emph{The elements of a \acrshort{ROC} graph.} A \acrshort{ROC} graph plots the true positive rate versus the false positive rate of a binary classifier. Each point is one classification system. The diagonal $f(x) = x$ is equivalent to a 50\% chance of correct classification and a system on this line has no predictive power, as in this case $\mathbf{B}$. Points above this line ($\mathbf{A}$, $\mathbf{C}$, $\mathbf{D}$) indicate better-than-random performance and the bigger the distance to this diagonal the higher the informedness, also called Youden's index, of this system. The optimal classifier ($\mathbf{A}$) is in the topleft corner and has no false decisions. Points below the diagonal ($\mathbf{E}$) might still have predictive power but indicate a wrong labeling of the outcomes.}\label{fig:roc_graph}
 \end{figure}
 
 Points above the diagonal have predictive power proportional to the distance to the diagonal.
-This distance is also called the \textbf{Youden-Index} $\mathbf{J}$\cite{youden_cancer1950} and is a measure of informedness of the classifier:
+This distance is also called the \textbf{Youden's index} $\mathbf{J}$\cite{youden_cancer1950} and is a measure of informedness of the classifier:
 \begin{equation}
 \begin{aligned}
     J &= sensitivity + specificity - 1
@@ -101,7 +102,7 @@ This distance is also called the \textbf{Youden-Index} $\mathbf{J}$\cite{youden_
 \end{aligned}
 \label{eq:youden}
 \end{equation}
-Unless there are no samples tested, the Youden-Index is $\mathbf{J} \in [0, 1]$.
+Unless there are no samples tested, Youden's index is $\mathbf{J} \in [0, 1]$.
 The higher $\mathbf{J}$ the better the two groups are separated by the classifier.
 \acrshort{ROC} analysis gives a valueable instrument to compare the relative performance of classifiers.
 A final judgement requires to take additional measures like absolute number of classified elements into account.

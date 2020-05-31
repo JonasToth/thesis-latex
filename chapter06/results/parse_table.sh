@@ -70,7 +70,7 @@ cat <<EOF
     \num{$(recall flexion synthetic)} & \num{$(recall bearing synthetic)} &
     \num{$(recall flexion lehrpfad)} & \num{$(recall bearing lehrpfad)} &
     \num{$(recall flexion office)} & \num{$(recall bearing office)} \\\\
-\textbf{Youden Index} &
+\textbf{Youden's index} &
     \num{$(youden flexion synthetic)} & \num{$(youden bearing synthetic)} &
     \num{$(youden flexion lehrpfad)} & \num{$(youden bearing lehrpfad)} &
     \num{$(youden flexion office)} & \num{$(youden bearing office)} \\\\

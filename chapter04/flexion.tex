@@ -2,19 +2,19 @@
 
 The local shape of an object that is sampled by a depth sensor is characterized by its normalized surface normal.
 A surface normal is a vector perpendicular to the surface of the object.
-This characterization builds the foundation of the \Gls{flexion-image} and its inspiration, too.
+This characterization builds the foundation of the \Gls{flexion-image} and its inspiration, too.\pagebreak[4]
 
 Each measured pixel is backprojected to camera coordinates, scaling the point in spherical coordinates with its measured range, as first step.
 Approximating the normal for a measured surface point $\mathbf{P_{i,j}}$ is possible using the cross product of its neighbours connecting vectors.
 The point relationship is visualized in Figure~\ref{fig:flexion_normals_plane}.
 \begin{figure}[H]
-    \begin{subfigure}[t]{0.49\linewidth}
+    \begin{subfigure}[t]{0.48\linewidth}
         \centering
         \scalebox{1.0}{%
         \input{chapter04/img/flexion_tikz.tex}
         }
         \caption{The normals for a point $\mathbf{P_{i,j}}$ can be estimated its diagonal or horizontal and vertical neighbours.}\label{fig:flexion_normals_plane}
-    \end{subfigure}
+    \end{subfigure}\quad
     \begin{subfigure}[t]{0.49\linewidth}
         \centering
         \scalebox{1.0}{%
@@ -43,7 +43,9 @@ Finally, the Flexion $\mathcal{F}$ of point $\mathbf{P_{i,j}}$ is defined as:
 \end{align}
 Because $\lnorm{\vec{n_1}},\lnorm{\vec{n_2}} \in [0,1]$ the value of is bound to $\mathcal{F} \in [0, 1]$.
 Creating the final image requires a linear scaling to the desired output image depth using Equation~\ref{eq:linear_scaling}.
-Figure~\ref{fig:flexion_images} visualizes the \Gls{flexion-image} for the same camera positions as for the other feature images.
+
+\subsubsection*{Characteristics}
+
 \begin{figure}[H]
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/flexion-0001.png}
@@ -56,9 +58,7 @@ Figure~\ref{fig:flexion_images} visualizes the \Gls{flexion-image} for the same 
     \end{subfigure}
     \caption[Characterstic look of a \gls{flexion-image}]{\emph{Characterstic look of a \gls{flexion-image}.} These figures demonstrate the characteristical look of the \Glspl{flexion-image}. Its appearence is very plastic and the shading effects give a good feel for depth. The conversion is rotation invariant.}\label{fig:flexion_images}
 \end{figure}
-
-\subsubsection*{Characteristics}
-
+Figure~\ref{fig:flexion_images} visualizes the \Gls{flexion-image} for the same camera positions as for the other feature images.
 The \gls{flexion-image} is rotation invariant.
 Rotation of either an object or the camera does not change the difference between the two normal approximations.
 A flat surface has an almost constant shading, because the normal approximation results in the same vector directions.
@@ -69,12 +69,12 @@ The length of the normal vectors reduces with the distance to the camera, becaus
     \input{chapter04/img/flexion_angle_decrease}
     \caption[Explanation of shading effect in \glspl{flexion-image}]{\emph{Explanation of shading effect in \glspl{flexion-image}.} The angle between the diagonals decreases with increasing distance from the camera center. This results in shorter normals.}\label{fig:flexion_angle_decrease}
 \end{figure}
-The origin is the nature of the cross product is maximal if both vectors are perpendicular.
+The origin is the nature of the cross product is maximal if both vectors are perpendicular:
 \begin{equation*}
-    \lnorm{\vec{v_1} \times \vec{v_2}} = \lnorm{\vec{v_1}} \lnorm{\vec{v_2}} \sin \angle(\vec{v_1}, \vec{v_2})
+    \lnorm{\vec{v_1} \times \vec{v_2}} = \lnorm{\vec{v_1}} \lnorm{\vec{v_2}} \sin \angle(\vec{v_1}, \vec{v_2})\text{.}
 \end{equation*}
-The lack of normalization in Equation~\ref{eq:flexion_normals} propagates this effect through to the scalar product.
+The lack of normalization in Equation~\ref{eq:flexion_normals} propagates this effect through to the scalar product:
 \begin{equation*}
-    \vec{v_1} \cdot \vec{v_2} = \lnorm{\vec{v_1}} \lnorm{\vec{v_2}} \cos \angle(\vec{v_1}, \vec{v_2})
+    \vec{v_1} \cdot \vec{v_2} = \lnorm{\vec{v_1}} \lnorm{\vec{v_2}} \cos \angle(\vec{v_1}, \vec{v_2})\text{.}
 \end{equation*}
 This shading effect gives the \gls{flexion-image} its plastic look and helps to develop the feeling for the geometric constellations.

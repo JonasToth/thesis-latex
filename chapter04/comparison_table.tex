@@ -1,0 +1,20 @@
+\subsubsection{Short Comparison}
+
+Table~\ref{tab:detector_comparison} gives a short overview of the presented descriptors and how their runtime and usage characteristics compare to each other.
+This overview does not reflect the performance of the algorithms in terms of accuracy or descriptiveness, but compares design decisions and execution characteristics.
+\begin{table}[H]
+    {\renewcommand{\arraystretch}{1.3}%
+    \setlength{\tabcolsep}{0.3em}%
+    \begin{tabular}{rcccc}
+    \toprule
+    \null & \textbf{\acrshort{sift}} & \textbf{\acrshort{surf}} & \textbf{\acrshort{orb}} & \textbf{\acrshort{akaze}} \\
+    \midrule
+    \textbf{Detector Speed} & \textbf{-} & \textbf{+} & \textbf{++} & \textbf{+} \\
+    \textbf{Descriptor Speed} & \textbf{- -} & \textbf{-} & \textbf{++} & \textbf{+} \\
+    \textbf{Matching Speed} & \textbf{- -} & \textbf{-} & \textbf{++} & \textbf{++} \\
+    \textbf{Descriptor Memory Footprint} & \textbf{- -} & \textbf{-} & \textbf{++} & \textbf{++} \\
+    \bottomrule
+    \end{tabular}
+    }
+    \caption[Comparison of feature detection algorithms]{\emph{Comparison of feature detection algorithms.} The algorithms have different runtime requirements and characteristics. The comparison is just based on the design decisions of each algorithm, but does not reflect real world performance of an algorithm integrated in a complex use case.}\label{tab:detector_comparison}
+\end{table}
