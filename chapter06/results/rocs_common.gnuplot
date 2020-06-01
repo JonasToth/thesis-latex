@@ -1,9 +1,8 @@
 set terminal pdf color size 4,4
 set size ratio 1
 set output "roc.pdf"
-set style line 12 lc rgbcolor '#4A4A4A' dt 2 lw 1
-set style line 13 lc rgbcolor '#9B9B9B' dt 3 lw 1
-set grid xtics mxtics ytics mytics ls 12, ls 13
+set style line 12 lc rgbcolor '#9B9B9B' dt 2 lw 1
+set grid xtics mxtics ytics mytics ls 12, ls 12
 set mxtics
 set mytics
 set xlabel "False Positive Rate"
