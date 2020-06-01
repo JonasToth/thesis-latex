@@ -1,14 +1,14 @@
 \subsection{Feature-Descriptor Discussion}
 
-\acrshort{sift} proves again as a very good descriptor that has over $80\%$ recall in even challenging conditions.
-This unmet performance comes at the cost high computational complexity and memory footprint, simply reproducing the reasons why alternatives to \acrshort{sift} were developed in classical Computer Vision.
+\acrshort{sift} again proves as a very good descriptor that has over 80\% recall in even challenging conditions.
+This unmet performance comes at the cost of high computational complexity and memory footprint, simply recreating some of the reasons why alternatives to \acrshort{sift} were developed in classical computer vision.
 Still, for global place recognition, loop closure and other tasks requiring such descriptive power, \acrshort{sift} seems to be the first choice for the feature images.
-The odometry results are a clear indication, that \acrshort{sift}'s keypoint detector does not produce enough features, at least for classical pinhole cameras and geometric simple scenes.
+The odometry results are a clear indication, that \acrshort{sift}'s keypoint detector does not produce enough features, at least for classical pinhole cameras and geometrically clean looking scenes.
 
-The very similar descriptor \acrshort{mldb} and \acrshort{brief}, used in \acrshort{akaze} and \acrshort{orb} respectivly, proof their potential, too.
+The very similar descriptor \acrshort{mldb} and \acrshort{brief}, used in \acrshort{akaze} and \acrshort{orb} respectively, proof their potential, too.
 They function very different compared to \acrshort{sift}'s brightness histograms.
 The brightness sampling around the keypoint and construction of the binary descriptor is effective.
-Using an averaged value for the area around that sampling point improves the robustness of \acrshort{mldb}.
+Using an averaged value for the area around the sampling point improves the robustness of \acrshort{mldb}.
 The combination of \acrshort{sift} keypoint detector and descriptor has a slightly lower false positive rate compared to \acrshort{akaze}'s detector and \acrshort{mldb}, but the difference in the number of keypoints needs to be considered, too.
 The much lesser computational complexity and drastically higher matching speed of \acrshort{mldb} is promising for real-time applications, like visual odometry.
 
@@ -17,10 +17,10 @@ Similar to the \acrshort{fast} detector, the lack of strong edges typically indu
 Another indication for this finding is, that \acrshort{kaze} has similar Random-Guess perfomance like \acrshort{surf}.
 \acrshort{kaze}'s descriptor is not discussed further, but part of the \acrshort{akaze} tests and is based on the \acrshort{surf} descriptor.
 
-It is interesting to see, that for all evaluated descriptors the false positive rate is around $35\% \pm 5\%$.
+It is interesting to see, that the false positive rate is around 35\%$\pm$5\% for all evaluated descriptors.
 This can be partly explained by inherent similarity of objects in the scenes.
 As only the geometric shape serves as information source, similarity between boxes and edges will always exist.
 The more nuanced shading details, complex textures and color differences from color images can not influence the result.
 An additional factor to such a similar false positive rate is the rudimentary matching scheme applied.
 A reasonable maximum matching distance and additional heuristics in the matching system will produce less false positives.
-Such heuristics do not exist yet and only the evaluation brings foundation for such heuristics.
+Such heuristics do not exist yet for the proposed feature images and only this evaluation brings an empirical foundation for such heuristics.

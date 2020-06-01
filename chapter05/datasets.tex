@@ -3,13 +3,13 @@
 % Depth Resolution not good enough.
 % Intel Realsense Sensor
 
-\subsubsection{Synthetic}
+\subsubsection{Synthetic}\label{sec:dataset_synthetic}
 
 The first dataset is a manually created scene in Blender\cite{blender} demonstrating the principle effects of rotation and translation on the conversion results.
 Both rotation and translation are done in isolation as well combined.
 The scene consists of a sphere, a cylinder, a cube-like object with additional edges of different smootheness and a complex monkey head in a room (Figure~\ref{fig:blender_scene}).
 The camera movement is rendered as an animation and the depth buffer of each frame is extracted and used as depth image.
-From the rendering settings the camera matrix is calculated and its parameters provided in Table~\ref{tab:blender_intrinsic}.
+The camera matrix is calculated from the rendering settings and its parameters are provided in Table~\ref{tab:blender_intrinsic}.
 The total animation consists of 211 images and no noise is applied to the depth image (example images in Appendix~\ref{sec:synthetic_conversions}).
 \begin{figure}[H]
 \CenterFloatBoxes%
@@ -22,7 +22,7 @@ The total animation consists of 211 images and no noise is applied to the depth 
     \textbf{Parameter} & \textbf{Blender Camera} \\
     \midrule
     Principle  & render/pinhole \\
-    Resolution & 1080 $\times$ 1080px \\
+    Resolution & 1080 $\times$ 1080\,px \\
     $f_x$, $f_y$ & 2220.0, 2220.0 \\
     $c_x$, $c_y$ &  540.0, 540.0 \\
     \bottomrule
@@ -39,11 +39,11 @@ The total animation consists of 211 images and no noise is applied to the depth 
 \subsubsection{Lehrpfad}
 
 One real-world dataset is obtained with a mobile robot using a Kinectv2 in an underground mining environment.
-The route has been previously reconstructed with classical SLAM using color images.
+The route has been previously reconstructed with \gls{sfm} using color images.
 Due to the global optimization in the \gls{sfm} pipeline not preserving the proper scale for the depth images, the translations do not match the measured distances of the depth sensor.
 The preexisting poses are used as initial pose for ICP refinement.
-\emph{Lehrpfad} is the biggest tested dataset with 734 frames and the biggest variation in the visible structures (example images in Appendix~\ref{sec:lehrpfad_conversions}).
-It is a challenging dataset with high noise values, many missing depth values and differing data quality over the whole set of images.
+\emph{Lehrpfad} is the biggest tested dataset with 734 frames and has the biggest variation in the visible structures (example images in Appendix~\ref{sec:lehrpfad_conversions}).
+It is a challenging dataset with high amount of noise, many missing depth values and differing data quality over the whole set of images.
 \begin{figure}[H]
 \CenterFloatBoxes%
 \begin{floatrow}
@@ -55,7 +55,7 @@ It is a challenging dataset with high noise values, many missing depth values an
     \textbf{Parameter} & \textbf{Kinectv2} \\
     \midrule
     Principle  & pinhole \\
-    Resolution & 960 $\times$ 540px \\
+    Resolution & 960 $\times$ 540\,px \\
     $f_x$, $f_y$ & 519.23, 522.23 \\
     $c_x$, $c_y$ &  479.46, 272.74 \\
     \bottomrule
@@ -75,7 +75,7 @@ It is a challenging dataset with high noise values, many missing depth values an
 
 The second Kinectv2 dataset is taken in an office with many smaller elements, wires and other manmade objects.
 It contains 57 images composed of translation and rotation of the depth sensor (example images in Appendix~\ref{sec:office_conversions}).
-No prior trajectory reconstruction other than the ICP is used for the relative poses.
+No trajectory reconstruction other than the ICP is used for the relative poses.
 It contains similar measurement errors as the Lehrpfad dataset, but has more distinctive shapes and better overall conditions for the depth sensor.
 \begin{figure}[H]
 \CenterFloatBoxes%
@@ -88,7 +88,7 @@ It contains similar measurement errors as the Lehrpfad dataset, but has more dis
     \textbf{Parameter} & \textbf{Kinectv2} \\
     \midrule
     Principle  & pinhole \\
-    Resolution & 960 $\times$ 540px \\
+    Resolution & 960 $\times$ 540\,px \\
     $f_x$, $f_y$ & 519.23, 522.23 \\
     $c_x$, $c_y$ &  479.46, 272.74 \\
     \bottomrule
@@ -110,10 +110,10 @@ Full \acrshort{LIDAR} scans are taken as part of classical mine surveying in the
 The scans were done in the section \emph{Wilhelm-Stehender-Süd} of the mine.
 These scans are examined for the conversions, too.
 Because they were done with classical artificial marker based registration in mind, the overlap between those scans is minimal.
-This unfortunatly means, that a direct matching between scans can not show potential registration performance.
+This unfortunatly means, that a direct matching between scans is meaningless.
 The distribution and characteristics of the extracted features is analyzed, though.
 From the raw dataset only 6 scans are selected, because each scan had a slightly different resolution and aspect ratio (example scans in Appendix~\ref{sec:laserscan_conversions}).
-The selected scans are processed to a common resolution and aspect ratio.
+The selected scans were manually processed to have a common resolution and aspect ratio.
 \begin{figure}[H]
 \CenterFloatBoxes%
 \begin{floatrow}
@@ -125,7 +125,7 @@ The selected scans are processed to a common resolution and aspect ratio.
     \textbf{Parameter} & \textbf{Riegl Z300} \\
     \midrule
     Principle  & equirectangular \\
-    Resolution & 3600 $\times$ 800px \\
+    Resolution & 3600 $\times$ 800\,px \\
     $\theta_{min}$, $\theta_{max}$ & \shortstack{0.87, 2.27 \\ (49.85\degree, 130.06\degree)} \\
     \bottomrule
     \end{tabular}}
@@ -160,10 +160,11 @@ The selected scans are processed to a common resolution and aspect ratio.
 \subsubsection{Synthetic City Scene Odometry}
 
 The datasets evaluating the feature algorithms show the potential and performance of the common algorithms.
-To demonstrate, that this performance translates into applicability the promising algorithms are used in a visual odometry scenario.
-A synthetic dataset for city scenario, developed by Zhang et al.\cite{zhang_icra2016}, that provides a groundthruth trajectory is used for this purpose.
-The in-house implementation, based on Singh's\cite{singh_report2015} work, of the visual odometry is very basic with the four following steps applied only on consecutive image.
-First the feature are detected and their descriptors extracted, the descriptors are matched with OpenCV's RANSAC.
-The essential matrix is computed in each RANSAC step and the consensus pose is used as relative pose.
+To demonstrate, that the results are applicable in other scenarios, the most promising algorithms are used to compute a visual odometry.
+A synthetic city dataset, developed by Zhang et al.\cite{zhang_icra2016}, that provides a groundthruth trajectory is used for this purpose.
+The in-house visual odometry implementation, based on Singh's\cite{singh_report2015} work, is very basic with the following four steps.
+First, the features are detected and their descriptors extracted.
+The descriptors are matched.
+The essential matrix is computed using RANSAC and the consensus pose is used as relative pose.
 Each feature algorithm is used with default configuration.
 Both conditions imply that the result is not optimal and further optimizations would improve it further.

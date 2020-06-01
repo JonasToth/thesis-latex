@@ -1,9 +1,9 @@
 \acrshort{surf} showed vastly different results then expected.
-The first observation is the vast number of detected keypoints in the default settings renders the results meaningless.
-After some experimentation with the settings it became clear, that on each octave and every blurring convolution the number of keypoints does not reduce significantly.
-This finding was true for both the \glspl{flexion-image} and \glspl{bearing-angle-image} resulting in a suboptimal keypoint detector performs bad in scale space.
-In theory different keypoint detector can be combined with different keypoint descriptors and as \acrshort{surf} is commonly referred to as the faster \acrshort{sift}, its description potential should still be evaluated.
-The default settings of \acrshort{surf} are still used, but only one octave with four blurring convolutions is used as keypoint detector (Figure~\ref{fig:surf_keypoints_mess}) resulting in the keypoint statistics in Table~\ref{tab:surf_results}.
+The first observation is that the sheer numbers of detected keypoints with default settings are rendering the keypoint classification results meaningless.
+After some experimentation with the settings it became clear, that on each octave and every blurring convolution a high number of keypoints are detected redundantly.
+This finding was true for both the \glspl{flexion-image} and \glspl{bearing-angle-image}, resulting in a suboptimal keypoint detector performance in scale space.
+In theory, different keypoint detectors can be combined with different keypoint descriptors and as \acrshort{surf} is commonly referred to as the faster \acrshort{sift}, its description potential should still be evaluated.
+The default settings for \acrshort{surf} are still used, but only one octave with four blurring convolutions detects keypoints (Figure~\ref{fig:surf_keypoints_mess}), resulting in the keypoint statistics presented in Table~\ref{tab:surf_results}.
 \begin{figure}[H]
 \begin{subfigure}[t]{0.25\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SURF/flexion/default_kp0005.png}%
@@ -17,7 +17,7 @@ The default settings of \acrshort{surf} are still used, but only one octave with
 \begin{subfigure}[t]{0.25\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SURF/bearing/oneoctave_kp0005.png}%
 \end{subfigure}%
-\caption[\acrshort{surf} keypoint plotted in feature images]{\emph{\acrshort{surf} keypoint plotted in feature images.} This figure shows the number of keypoints that are detected with \acrshort{surf} in its default configuration compared to just using one octave. Limiting the number of keypoints is mandatory to achieve some potentially meaningfull result.}\label{fig:surf_keypoints_mess}
+    \caption[\acrshort{surf} keypoints plotted in feature images]{\emph{\acrshort{surf} keypoints plotted in feature images.} This figure shows the number of keypoints that are detected with \acrshort{surf} in its default configuration compared to just using one octave. Limiting the number of keypoints is mandatory to achieve some potentially meaningful result.}\label{fig:surf_keypoints_mess}
 \end{figure}
 \begin{table}[H]
     {\renewcommand{\arraystretch}{1.2}%
@@ -25,10 +25,10 @@ The default settings of \acrshort{surf} are still used, but only one octave with
     \footnotesize
 \input{chapter06/results/SURF/absolute_numbers}
     }
-    \caption[Keypoint and matching result for \texttt{\acrshort{surf}/raw/best-only}]{\emph{Keypoint and matching result for \texttt{\acrshort{surf}/raw/best-only}.} The Youden index around 0.1 and even below 0 already indicates bad performance. The number of keypoints is still substantially higher than for \acrshort{sift}, even with the limit of the keypoint cound and using only one octave.}\label{tab:surf_results}
+    \caption[Keypoint and matching result for \texttt{\acrshort{surf}/raw/best-only}]{\emph{Keypoint and matching result for \texttt{\acrshort{surf}/raw/best-only}.} The Youden index around 0.1 and even below 0 already indicates bad performance. The number of keypoints is still substantially higher than for \acrshort{sift}, even with the limit of the keypoint count and usage of only one octave.}\label{tab:surf_results}
 \end{table}
-The number of correspondences for the adjusted \acrshort{surf} is comparable to \acrshort{sift} on all scale.
-But the number of false negatives already indicates lesser descriptor performance.
+The number of correspondences for the adjusted \acrshort{surf} setup is comparable to \acrshort{sift} detecting keypoints on multiple scales.
+But the high number of false negatives already indicates lesser descriptor performance.
 This impression is solidified with the descriptor distance analysis in Figure~\ref{fig:surf_descriptor_distance}.
 \begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
@@ -39,13 +39,13 @@ This impression is solidified with the descriptor distance analysis in Figure~\r
     \includegraphics[width=\linewidth]{chapter06/results/SURF/bearing/descriptor_distances.pdf}%
     \caption{\gls{bearing-angle-image}}
 \end{subfigure}
-\caption[\acrshort{surf} descriptor distances]{\emph{\acrshort{surf} descriptor distances.} The descriptor of \acrshort{surf} does not discriminate regions well and true positives barely seperate from false positives.}\label{fig:surf_descriptor_distance}
+\caption[\acrshort{surf} descriptor distances]{\emph{\acrshort{surf} descriptor distances.} The descriptor of \acrshort{surf} does not discriminate regions well. True positives barely seperate from false positives.}\label{fig:surf_descriptor_distance}
 \end{figure}
-For \glspl{flexion-image} a slight separation of true and false positives exists which is not the case for \glspl{bearing-angle-image}.
-Even this slight seperation is neglected by the number drastically higher number of false positives.
+A slight separation of true and false positives exists for \glspl{flexion-image}, which is not the case for \glspl{bearing-angle-image}.
+Even this slight seperation is neglected by drastically higher numbers of false positives.
 Seperating both distributions through a maximum matching distance is hard to justify.
-For a 64 element descriptor that \acrshort{surf} deploys the match distance around \num{0.3} seems very low, too.
-The \acrshort{ROC} analysis points in the same direction showing performance around the \emph{Random Guess} quality, for \emph{Lehrpfad} even below.
+For a 64 element descriptor that \acrshort{surf} deploys, the match distance around \num{0.3} seems very low, too.
+The \acrshort{ROC} analysis (Figure~\ref{fig:roc_surf}) points in the same direction showing performance around the \emph{Random Guess} quality, for \emph{Lehrpfad} even below.
 \begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SURF/flexion/roc.pdf}%
@@ -55,7 +55,7 @@ The \acrshort{ROC} analysis points in the same direction showing performance aro
     \includegraphics[width=\linewidth]{chapter06/results/SURF/bearing/roc.pdf}
     \caption{\gls{bearing-angle-image}}
 \end{subfigure}
-    \caption[The \acrshort{ROC} graphs for \acrshort{surf}]{\emph{The \acrshort{ROC} graphs for \acrshort{surf}.} No metric for \acrshort{surf} shows any indication of a good classification for correspondences. The \acrshort{ROC} graph underlines, that no configurations or data preprocessing substantially improves the situation.}
+\caption[The \acrshort{ROC} graphs for \acrshort{surf}]{\emph{The \acrshort{ROC} graphs for \acrshort{surf}.} No metric for \acrshort{surf} shows any indication of a good classification for correspondences. The \acrshort{ROC} graph underlines, that no configurations or data preprocessing substantially improves the situation.}\label{fig:roc_surf}
 \end{figure}
 The suspected reason for this poor performance of \acrshort{surf} is the use of the Haar-Wavelet response as key metric of the descriptor.
 The feature image conversions do not result in sharp edges of brightness, as is the case for classical color images and the textures on real world objects.

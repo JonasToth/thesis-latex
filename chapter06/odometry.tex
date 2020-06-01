@@ -1,8 +1,8 @@
-The final application of the feature detection and matching algorithms is the application to compute a visual odometry. 
+The final application of the feature detection and matching algorithms is the computation of a visual odometry.
 Only the promising candidates \acrshort{sift} and \acrshort{akaze} are compared.
 Both feature images and the color images are used separatly to determine the visual odometry for a given trajectory, the groundtruth.
 
-\acrshort{sift} neither results in a good odometry for color images, \glspl{flexion-image} nor \glspl{bearing-angle-image}.
+\acrshort{sift} neither results in a good odometry for color images nor for the feature images.
 Figure~\ref{fig:sift_odometry} shows random turns and barely straight trajectories for any conversion.
 \begin{figure}[htp]
 \begin{subfigure}[b]{0.31\linewidth}
@@ -21,7 +21,7 @@ Figure~\ref{fig:sift_odometry} shows random turns and barely straight trajectori
 \end{figure}
 \acrshort{akaze} on the other hand performs much better in all cases, as can be seen in Figure~\ref{fig:akaze_odometry}.
 The prinicpal shape of the trajectory is reconstructed well.
-The \glspl{bearing-angle-image} have higher drift compared to the \glspl{flexion-image} or colored images, but only in certain areas where all images suffer from similar issues.
+The \glspl{bearing-angle-image} have higher drift compared to the \glspl{flexion-image} or colored images, but only in certain areas where all inputs suffer from similar issues.
 \begin{figure}[htp]
 \begin{subfigure}[t]{0.31\linewidth}
     \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_AKAZE_nice.png}%
@@ -37,8 +37,8 @@ The \glspl{bearing-angle-image} have higher drift compared to the \glspl{flexion
 \end{subfigure}
 \caption[\acrshort{akaze} odometry trajectories compared]{\emph{\acrshort{akaze} odometry trajectories compared.} The presented odometry trajectories for the benchmark dataset from Zhang et al.\cite{zhang_icra2016} are calculated with an in-house implementation of a basic visual odometry system using \acrshort{akaze}.}\label{fig:akaze_odometry}
 \end{figure}
-The findings show that the higher number of keypoints created result in better localization performance.
-Because the benchmark dataset is a synthetic, the colored image do not contain the same level of object texture as in real life.
+The findings show that the higher number of keypoints results in better localization performance.
+Because the benchmark dataset is a synthetic, the colored image do not contain the same level of texture as in real life.
 This explains the bad performance of \acrshort{sift} for the colored images.
 The range data conversions on the other hand are representative for real world cases.
-A higher number of keypoints, combined with false positive rejection through \acrshort{RANSAC} are enough to produce similar odometry performance than colored images yield.
+A higher number of keypoints, combined with false positive rejection through \acrshort{RANSAC} are enough to yield odometry performance similar to colored images.

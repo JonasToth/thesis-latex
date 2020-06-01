@@ -1,26 +1,24 @@
 \subsection{Error Discussion}
 
-The use range data underlies different errors and simplifications that are discussed in this section.
-\emph{Synthetic} is an noise free dataset with very simple scene structure.
+The datasets are affected by different errors and simplifications, that are discussed in this section.
+\emph{Synthetic} is a noise free dataset with very simple scene structure.
 Findings and conclusion based on this dataset are only of principle nature but do not reflect real world performance.
 
 The \emph{Lehrpfad} and \emph{Office} dataset are both gathered using the same Kinectv2 technology, but under different conditions and environments.
 \emph{Lehrpfad}, an underground mining environment with partially wet walls, contains drastically more missing depth measurements.
-For parts of the whole trajectory it is very challenging to make out the basic shapes of the scene as a human.
+For parts of the whole trajectory, it is very challenging to make out the basic shapes of the scene as a human.
 The computer vision algorithms can not magically perform better at these places.
-Parts of the scene are not within the measurement range, the walls and wide areas are not fully lit by the sensor infrared \acrshort{led} or the light is absorbed by water.
-These effects make the dataset challenging for the computer vision algorithms.
+Parts of the scene are not within the measurement range, the walls and wide areas are not fully lit by the sensor's infrared \acrshort{led} or the light is absorbed by water.
 Missing range measurements also occur in \emph{Office}, but the overall influence of bad conditions is not as high as in \emph{Lehrpfad}.
 
 Another major consideration is the rectification of the depth images before being processed by the proposed pipeline.
 The native resolution of the Kinectv2 depth sensor is 512$\times$424\,px\cite{wasenmuller_accv2016}, which is lower than the input depth images used for the feature image conversions.
-This change in resolution is artifact of \acrshort{ROS} image rectification, that maps each depth pixel to its matching color pixel.
+This change in resolution is artifact of \acrshort{ROS}' image rectification, that maps each depth pixel to its matching color pixel.
 The experiments show no qualitative difference of results between different image scale, but unrectified depth images experience distortion which will change the quality of the results at the image borders.
-The sensors depth resolution is noticible by smaller waves in the conversion images for stand images.
-Their effect is considered small, because different filtering algorithms show only slight but measurable changes in the final result.
+The sensors depth image is noticibly affected by smaller waves in the conversion images for stand images.
+Their effect is considered small, because different filtering algorithms show only slight changes in the final result.
 
 The much finer resolution of the \emph{Laserscan} dataset on the other hand showed that prior filtering with median blur can improve the quality of the final feature image drastically (Appendix~\ref{sec:laserscan_conversions}).
-Comparing the results for these different sensors show a clear impact of depth resolution on the conversions.
 
-Because reference implementation are used for the detection and filtering algorithms, no additional errors are expected for those components.
+Because reference implementations are used for the detection and filtering algorithms, no additional errors are expected for those components.
 The implementation of the feature image conversions is heavily tested and implements additonal measures to ensure correctness, such that no errornous impact is expected from them either.

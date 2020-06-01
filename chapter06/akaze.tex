@@ -6,15 +6,16 @@
     }
     \caption[Keypoint and matching results for \texttt{\acrshort{akaze}/raw/default}]{\emph{Keypoint and matching results for \texttt{\acrshort{akaze}/raw/default}.} \acrshort{akaze} achieves better results than \acrshort{surf} and \acrshort{orb}. The number of correspondences is very high compared to \acrshort{sift}, but true positives are still higher than false negatives. This indicates reasonable descriptor performance and stability of the keypoint detector.}
 \end{table}
-The final feature detection algorithm evaluate is \acrshort{akaze}, that is again closer to \acrshort{sift} for the keypoint detector design compared to \acrshort{orb}.
-\acrshort{akaze} results approximatly one order of magnitude more detected keypoints and correspondences compared to \acrshort{sift}.
-Its keypoints characteristics show expected results (Appendix~\ref{sec:akaze_stats}).
-Compared to \acrshort{sift} the detection does not result in as similar diverse keypoint sizes and the response is narrower with a stronger skew towards small responses.
+The final evaluated feature detection algorithm is \acrshort{akaze}.
+Its keypoint detector design is again closer to \acrshort{sift}.
+\acrshort{akaze} results in approximatly one order of magnitude more detected keypoints and correspondences compared to \acrshort{sift}.
+Its keypoint characteristics show expected results (Appendix~\ref{sec:akaze_stats}).
+The detection does not result in as similar diverse keypoint sizes and the response is narrower with a stronger skew towards small responses compared to \acrshort{sift}.
 
-The \acrshort{mldb} descriptor shows separation between true positive and false positives across the datasets and feature images.
+The \acrshort{mldb} descriptor shows separation between true and false positives across the datasets and feature images (Figure~\ref{fig:descriptor_akaze}).
 This indicates good performance of the binary descriptor.
-Additionally it reaffirms the finding of \acrshort{orb}'s \acrshort{brief} descriptor showing separation potential.
-The enhancement in \acrshort{mldb} solidifies the tendency though.
+Additionally it reaffirms the finding of \acrshort{orb}'s \acrshort{brief} descriptor demonstrating separation potential.
+The enhancement of \acrshort{mldb} solidifies the tendency though.
 \begin{figure}[htp]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/flexion/descriptor_distances.pdf}%
@@ -24,14 +25,14 @@ The enhancement in \acrshort{mldb} solidifies the tendency though.
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/bearing/descriptor_distances.pdf}%
     \caption{\glspl{bearing-angle-image}}
 \end{subfigure}
-    \caption[\acrshort{akaze} descriptors distances]{\emph{\acrshort{akaze} descriptors distances.} The true positives and false positives are partially separable by the descriptor distance. The \gls{flexion-image} shows better separation than the \gls{bearing-angle-image}. The descriptor is binary and similar to \acrshort{orb}'s descriptor, but the improvements show measureable effects.}
+\caption[\acrshort{akaze} descriptors distances]{\emph{\acrshort{akaze} descriptors distances.} The true and false positives are partially separable by the descriptor distance. The \gls{flexion-image} shows better separation than the \gls{bearing-angle-image}. The descriptor is binary and similar to \acrshort{orb}'s descriptor, but the improvements show measureable effects.}\label{fig:descriptor_akaze}
 \end{figure}
-The \acrshort{ROC} graph in Figure~\ref{fig:roc_akaze} shows, that \acrshort{akaze} can perform quiet reasonable across all datasets.
-For the \glspl{flexion-image} there exists a configuration for each dataset with significantly higher true positive rate than false positive rate.
+The \acrshort{ROC} graph in Figure~\ref{fig:roc_akaze} shows that \acrshort{akaze} can perform quiet reasonable across all datasets.
+There exists a configuration for each dataset with significantly higher true than false positive rate for the \glspl{flexion-image}.
 The top performers for each dataset are the configurations using only the best 400 keypoints for matching, regardless of filtering.
-Applying additional heuristics in matching, like a maximum matching distance, will certainly improve the ratio of true positives to false positives further.
+Applying additional heuristics in matching, like a maximum matching distance, will certainly improve the ratio of true to false positives further.
 The backprojections in Appendix~\ref{sec:backprojection_akaze} show the higher amount of keypoints compared to \acrshort{sift}.
-But bad scale coverage leads to unsatisfying keypoint for the \emph{Laserscan} dataset.
+But bad scale coverage leads to unsatisfying keypoint coverage for the \emph{Laserscan} dataset.
 There, \acrshort{sift} has clear qualitative advantages over \acrshort{akaze}, because its keypoints cover the whole scan.
 \begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
@@ -42,5 +43,5 @@ There, \acrshort{sift} has clear qualitative advantages over \acrshort{akaze}, b
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/bearing/roc.pdf}
     \caption{\gls{bearing-angle-image}}
 \end{subfigure}
-    \caption[\acrshort{ROC} graphs for \acrshort{akaze}]{\emph{\acrshort{ROC} graphs for \acrshort{akaze}.} \acrshort{akaze} results in a bigger spread of the algorithm performance depending on the configuration. The \acrshort{bearing-angle-image} falls behind the \gls{flexion-image}. The higher scoring results apply filtering of the keypoints by their response.}\label{fig:roc_akaze}
+    \caption[\acrshort{ROC} graphs for \acrshort{akaze}]{\emph{\acrshort{ROC} graphs for \acrshort{akaze}.} \acrshort{akaze} results in a bigger spread of the algorithm performance depending on the configuration. The \gls{bearing-angle-image} falls behind the \gls{flexion-image}. The higher scoring configurations apply filtering of the keypoints by their response.}\label{fig:roc_akaze}
 \end{figure}

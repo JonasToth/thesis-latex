@@ -1,47 +1,42 @@
 \subsection{Metrics}
 
 To determine the performance of the feature-based approach, the matching of keypoints is framed in terms of a binary classifier.
-For a keypoint correspondence between two images the classification task is to determine if those keypoint correspond to the same point in the real world or not.
+For a keypoint correspondence between two images, the classification task is to determine if those keypoints correspond to the same point in the real world or not.
 The correspondence is computed based on the relative pose of consecutive images and only two consecutive images are analyzed.
-This evaluation is done for \Glspl{bearing-angle-image} and \Glspl{flexion-image}.
 The following subsections describe each component of this evaluation pipeline in more detail.
-To the best of the author's knowledge no other work approaches the evaluation of feature detectors and descriptors like this.
 
 \subsubsection{Groundtruth Poses}
 
 The dataset \emph{Lehrpfad} provides groundthruth poses from a prior \gls{sfm} reconstruction.
-Due to the global optimization of the \gls{sfm} algorithm these poses do not match with the depth values of the depth images.
-The other dataset do not contain a precomputed pose.
-Each pose is computed and refined with an ICP algorithm, namely OpenCV's \emph{FASTICPOdometry} that is based on the KinectFusion\cite{newcombe_ismar2011} work.
+Due to the global optimization of the \gls{sfm} algorithm, these poses do not match with the depth values of the depth images.
+The other datasets do not contain a precomputed pose.
+Therefore, each pose is computed and refined with an ICP algorithm, namely OpenCV's \emph{FASTICPOdometry} that is based on the KinectFusion\cite{newcombe_ismar2011} work.
 This relative pose serves as foundation of the evaluation and is assumed to be correct within small tolerance.
 The accuracy assumption of the \emph{FASTICPOdometry} poses is tested by manual inspection of the backprojection of obviously related keypoints and the results showed no systematic errornous poses.
 
 \subsubsection{Backprojection and Distance Threshold}
 
 In two consecutive images, all keypoints are extracted with the choosen algorithm and settings.
-The keypoints of the first image are projected into the view of the second image using the determined relative pose and camera model.
-Each keypoint is projected to spherical coordinates, e.g. with Equation~\ref{eq:pinhole_backward}, multiplied with the range value of the corresponding pixel and resulting camera coordinate transformed to the second camera coordinate system (Equation~\ref{eq:homogeneous_matrix}).
+Each keypoint of the first image $I_1$ is projected to the unit sphere, e.g. with Equation~\ref{eq:pinhole_backward}, multiplied with the range value of the corresponding pixel and the resulting camera coordinate transformed to the second camera coordinate system (Equation~\ref{eq:homogeneous_matrix}).
 Projecting the keypoint into the second camera with the matching forward projection (e.g. Equation~\ref{eq:pinhole_forward}) finalizes the procedure, demonstrated in Figure~\ref{fig:keypoint_projection}.
-This gives two sets of keypoints in the second image, the keypoints detected in this frame and the keypoints detected in the previous frame, seen from this frame's pose.
+This results in two sets of keypoints in the second image $I_2$, the keypoints detected in this frame and the keypoints detected in the previous frame, seen from this frame's pose.
 Assuming a correct relative pose, the corresponding keypoints have a small pixel distance between each other.
 \emph{Small} is a relative value and the choosen threshold in the experiments is 2\,px.
-This approach can only result in a proper analysis for a sparse distribution of keypoints that actually respond to image structure and small changes in pose.
-When the pose difference is big, it can happen that keypoints get projected to the same position as some other valid keypoint.
-Too many points create ambiguity with respect to the backprojection tolerance that is required due to imperfect projections of real world sensors.
+This approach can only result in a proper analysis for a sparse distribution of keypoints that actually correspond to image structure and requires small changes in pose.
+When the pose difference is big, it can happen that keypoints get projected to the same position as some other valid keypoint without referencing the same world point.
+Too many points create ambiguity with respect to the backprojection tolerance.
 \begin{figure}[H]
     \input{chapter05/img/backprojection}
     \caption[Backprojection of keypoints visualized]{\emph{Backprojection of keypoints visualized.} The choosen approach of projecting keypoints between frames is demonstrated in this figure. Keypoints of image $I_1$ are blue dots in both images and the orange ones are only detected in image $I_2$. Actual correspondences result in very close points in $I_2$, indicated as blue dot with orange border, whereas unrelated points show no proximity. This assumption holds for small changes in pose and relatively sparse distribution of detected keypoints.}\label{fig:keypoint_projection}
 \end{figure}
 \pagebreak[4]
 The analysis of the descriptor performance requires the matching step first, that establishes the correspondences of the matcher.
-To classify the result of the descriptor matching, each keypoint needs to be analyzed further.
-The result are four sets: \emph{true-positive}, \emph{false-positive}, \emph{true-negative} and \emph{false-negative} as introduced in Section~\ref{sec:statistic_classifier}.
+The matches are partitioned into four sets: \emph{true-positive}, \emph{false-positive}, \emph{true-negative} and \emph{false-negative} as introduced in Section~\ref{sec:statistic_classifier}.
 The union of these sets are all detected keypoints.
-
-Partitioning the keypoints is done with the following algorithms.
-First the matches are analyzed for true and false positives and true correspondences are removed from further analysis (Algorithm~\ref{alg:false_positives}). 
-Let $proj$ be the keypoints from $I_1$, backprojected to $I_2$ with the relative pose and the appropriate camera model.
+First, the matches are analyzed for true and false positives and true correspondences are removed from further analysis. 
+Let $proj$ be the keypoints from $I_1$, backprojected to $I_2$.
 $kps$ are the keypoints from $I_2$, $matches$ are pairs of keypoints the matching algorithm considers as correspondences and $threshold$ is the maximum allowed backprojection error for keypoints to still be considered a true correspondence.
+Algorithm~\ref{alg:false_positives} classifies all $matches$ as true or false positives.
 \begin{algorithm}[H]
 \setstretch{1.2}
 \footnotesize
@@ -64,7 +59,7 @@ $kps$ are the keypoints from $I_2$, $matches$ are pairs of keypoints the matchin
 \end{algorithmic}
 \caption{This algorithm distinguishes between a true and a false positive match.}\label{alg:false_positives}
 \end{algorithm}
-After this process some keypoints detected in $I_2$ might be left to analyze for a correspondence that was not assigned during matching, the false negatives (Algorithm~\ref{alg:false_negatives}).
+After this process some keypoints detected in $I_2$ might be left to analyze for a correspondence that were not assigned during matching, the false negatives (Algorithm~\ref{alg:false_negatives}).
 \begin{algorithm}[H]
 \setstretch{1.2}
 \footnotesize
@@ -91,7 +86,7 @@ The partitioning of the keypoints allows to analyze more aspects of matches, e.g
 
 \subsubsection{Histograms and Summary Statistics}
 
-To visualize and understand the analyze the distribution of properties of keypoints and matches, the partitioned keypoint's are tracked in histograms.
+To visualize and understand the properties of keypoints and matches, the partitioned keypoint's are tracked in histograms.
 Summary statistics reduce the statistical distributions to a few representative values.
 Combining different measures, such as the measure of location, distribution and shape gives key insights.
 
@@ -100,13 +95,12 @@ The quantitive measures for each property are the \emph{minimum} and \emph{maxim
 
 \subsubsection{Classification Evaluation}
 
-The analysis of the keypoint and descriptor characteristics give already some insight into the algorithm performance but are not suitable for a comparison between different algorithms and help not to find potential trade-offs.
-For this task the quality of the decisions the keypoint matching algorithm is required.
+The analysis of the keypoint and descriptor characteristics already gives some insight into the algorithm performance but is not suitable for a comparison between different algorithms.
+For this task the quality of the decisions the keypoint matching algorithm must be assessed.
 The evaluation builds on the analysis of binary classifiers as introduced in Section~\ref{sec:statistic_classifier}.
 
 The matching of descriptors is done in a simple but consistent way.
-A match is defined as the closest descriptor in the other image, that also matches in the other direction.
+A match is defined as the closest descriptor in the other image, that also matches in the other direction, a heuristic commonly called \emph{crosschecking}.
 No other criteria like a maximum matching distance is taken into account.
-The matching is assessed with the computed groundtruth data.
 For each obtained confusion matrix, the ratios \emph{precision}, \emph{recall} or \emph{sensitivity}, \emph{fallout} or \emph{false alarm rate}, \emph{accuracy} or the \emph{Rand index} and \emph{Youden's index} are computed at first.
 For a comparison between algorithms and configurations the results are plotted in \gls{ROC} space.

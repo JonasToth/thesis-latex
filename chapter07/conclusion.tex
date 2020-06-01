@@ -1,9 +1,9 @@
-This thesis evaluated the use of state-of-the-art computer vision feature detection and description algorithm to find salient points in a range image.
+This thesis evaluated the use of state-of-the-art computer vision feature detection and description algorithms to find salient points in a range image.
 Instead of direct application of the algorithm to the range image, it is transformed into a derived image constructed from local geometric properties of the range values.
 The approach is introduced by Scaramuzza et al.\cite{scaramuzza_iros2007} with their \gls{bearing-angle-image} and the usage of \acrshort{surf} to detect keypoints on those by Lin et al.\cite{lin_easp2017}.
-To overcome the \gls{bearing-angle-image}'s limitation, the lack of rotation invariance, the thesis proposed four additional feature image conversions.
+To overcome the \gls{bearing-angle-image}'s limitation, the lack of rotation invariance, this work proposed four additional feature image conversions.
 Only the \gls{flexion-image} is judged as viable.
-The performance of \acrshort{sift}, \acrshort{surf}, \acrshort{orb} and \acrshort{akaze} were evaluated for both the \gls{bearing-angle-image} and the \gls{flexion-image}.
+The performance of \acrshort{sift}, \acrshort{surf}, \acrshort{orb} and \acrshort{akaze} were evaluated for both the \gls{bearing-angle} and the \gls{flexion-image}.
 Surprisingly, the evaluation showed that \acrshort{surf} lacks descriptive power to achieve good recognition performance.
 \acrshort{orb}'s corner-based keypoint detector failed to produce stable keypoints.
 \acrshort{sift} and \acrshort{akaze} were the only algorithms achieving acceptable detection and recognition performance.

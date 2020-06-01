@@ -9,9 +9,9 @@
 \acrshort{orb}'s detector finds less keypoints than \acrshort{sift} for both \glspl{flexion-image} and \glspl{bearing-angle-image}.
 But their size, response and location distribution (Appendix~\ref{sec:orb_stats}) indicate severe problems.
 Keypoints are not detected over multiple scales and the response shows a very inconsistent pattern over the different datasets.
-For \emph{Lehrpfad} the keypoints cluster in the middle and the borders of the field-of-view of the depth sensors.
+For \emph{Lehrpfad}, the keypoints cluster in the middle and the borders of the field-of-view of the depth sensors.
 Those regions contains sharp edges from feature image to black because of missing range data.
-The \acrshort{fast} keypoint detector characteristics of comparing brightness values at different sampling points is to blame for the keypoints bad performance.
+The \acrshort{fast} keypoint detector characteristics of comparing brightness values at different sampling points is likely to blame for the bad detector performance.
 Similar to \acrshort{surf}'s shortcoming, it does not deal well with the smoother gray changes but requires sharp edges.
 As \acrshort{orb} employs blurring and scale space, too, the effect of missing contrast between sampling points worsens in higher levels of the pyramid, yielding no keypoints there.
 \begin{figure}[htp]
@@ -23,10 +23,11 @@ As \acrshort{orb} employs blurring and scale space, too, the effect of missing c
     \includegraphics[width=\linewidth]{chapter06/results/ORB/bearing/descriptor_distances.pdf}%
     \caption{\gls{bearing-angle-image}}
 \end{subfigure}
-\caption[\acrshort{orb} descriptor distances]{\emph{\acrshort{orb} descriptor distances.} The results show a slight separation of true positive from false positives. The binary descriptor compares brightness values on specific sampling points. This mechanism is different from \acrshort{sift} or \acrshort{surf} and seemingly not as robust as \acrshort{sift}.}\label{fig:orb_descriptor_distances}
+\caption[\acrshort{orb} descriptor distances]{\emph{\acrshort{orb} descriptor distances.} The results show a slight separation of true from false positives. The binary descriptor compares brightness values on specific sampling points. This mechanism is different from \acrshort{sift} or \acrshort{surf} and seemingly not as robust as \acrshort{sift}.}\label{fig:orb_descriptor_distances}
 \end{figure}
-The descriptor distance in Figure~\ref{fig:orb_descriptor_distances} show some separation between true positives and false positives better than \acrshort{surf} but worse than \acrshort{sift}.
-In \acrshort{ROC} space (Figure~\ref{fig:orb_roc}) these mixed result show in random performance for \emph{Lehrpfad} and OK performance for \emph{Synthetic} and \emph{Office}.
+The descriptor distance in Figure~\ref{fig:orb_descriptor_distances} show some separation between true and false positives.
+This is better than \acrshort{surf}, but worse than \acrshort{sift}.
+The mixed results are reflected in ROC space (Figure~\ref{fig:orb_roc}) by the random performance for \emph{Lehrpfad} and OK performance for \emph{Synthetic} and \emph{Office}.
 Everything considered, \acrshort{orb} is not suitable for the proposed feature images.
 \begin{figure}[htp]
 \begin{subfigure}[t]{0.45\linewidth}

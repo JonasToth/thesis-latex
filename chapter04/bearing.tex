@@ -7,9 +7,8 @@
     }
     \caption[Schematic representation of \glspl{bearing-angle}]{\emph{Schematic representation of \glspl{bearing-angle}.} This figure shows the relationship of the light rays that form the \gls{bearing-angle} $\beta$.}\label{fig:bearing_angle}
 \end{figure}
-
-Scaramuzza\cite{scaramuzza_iros2007} proposes \Glspl{bearing-angle-image} that assigns each pixel the angle $\beta$ as Figure~\ref{fig:bearing_angle} demonstrates.
-This angle is spanned by the two idealized lightrays for pixels of the range image.
+Scaramuzza\cite{scaramuzza_iros2007} proposes the \Glspl{bearing-angle-image} that assigns each pixel the angle $\beta$, defined in Figure~\ref{fig:bearing_angle}.
+This angle is spanned by connecting the two idealized lightrays for pixels next to each other.
 The neighbourhood relationship between pixels can be choosen arbitrarily resulting in four \Glspl{bearing-angle-image}, horizontal, vertical, diagonal and antidiagonal.
 The second variable is the direction the angle is calculted, e.g.~for horizontal images it can be calculated from left-to-right or right-to-left.
 This does not exhibit new information, because the angle of the other direction is immediatly known from the fact that the sum of the angles is $180\degree$.
@@ -26,7 +25,7 @@ For the horizontal left-to-right calculation the formula is as follows:
 \end{equation}
 The angular resolution $\Delta\varphi$ between two pixels of the depth image depends on the camera model in use.
 The pinhole model's angular resolution changes between pixel pairs, equirectangular image have a constant resolution.
-In general, the angle $\Delta\varphi$ can be calculated with the spherical coordinates $\mathbf{P_{\mathcal{S},1}}, \mathbf{P_{\mathcal{S},2}}$ of the pixel pair $\mathbf{p_1}, \mathbf{p_2}$.
+In general, the angle $\Delta\varphi$ can be calculated with the spherical coordinates $\vec{P_{\mathcal{S},1}}, \vec{P_{\mathcal{S},2}}$ of the pixel pair $\mathbf{P_{\mathcal{P},1}}, \mathbf{P_{\mathcal{P},2}}$.
 Optimized versions for the specific camera model are possible in real world applications.
 \begin{equation}
 \begin{aligned}
@@ -37,7 +36,7 @@ Optimized versions for the specific camera model are possible in real world appl
 
 The \Gls{bearing-angle} is in the range $\beta \in (0, \pi)~rad$.
 Linear scaling of the angle to the color depth of the target image results in a grayscale image suitable for feature extraction.
-A general scaling function for an \emph{unsigned 8bit} image and arbitrary angle range follows here.
+A general scaling function for an \texttt{unsigned 8\,bit} image and arbitrary angle range is provided by Equation~\ref{eq:linear_scaling}.
 This formulation can be used for different color depths and other potential angle calculations that result in different boundary conditions.
 \begin{equation}
 \begin{aligned}
@@ -74,7 +73,7 @@ Calculating the \gls{bearing-angle} from multiple directions could lead to some 
     \input{chapter04/img/bearing_understand_shading.tex}%
     \caption[Two \glspl{bearing-angle} for the same ground plane]{\emph{Two \glspl{bearing-angle} for the same ground plane.} Different shadings of plane surfaces depend on the perspective projection and the distance from the camera center $C$ to the surface.}\label{fig:bearing_angle_shading}
 \end{figure}
-The second apparent aspect is the change in shading for example the flat ground, but other surfaces as well.
+The second apparent aspect is the change in shading, for example the flat ground but on other surfaces, too.
 This effect is due to the perspective transformation and the distance of a point to the camera, as Figure~\ref{fig:bearing_angle_shading} demonstrates.
 Round objects, like spheres, experience no visual change in shading.
 The triangles of the lightrays are invariant to camera transformation for such objects.

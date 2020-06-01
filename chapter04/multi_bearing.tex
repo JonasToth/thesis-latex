@@ -1,22 +1,23 @@
 \subsubsection{Multi-Directional Bearing Angle Image}
 
 The \emph{\gls{multi-directional-bearing-angle-image}} attempts to overcome the limitation of missing rotation invariance for the classical \gls{bearing-angle-image}.
-Instead of just one angle in one direction, the two adjacent triangle are analyzed together.
+Instead of computing one angle in one direction, the two adjacent triangle are combined.
 Figure~\ref{fig:max-curve} shows how the triangles are related.
-Both angles $\beta$ and $\gamma$ are calculated with Equation~\ref{eq:bearing-angle}, for $\gamma$ the values of $d_{i,j}$ and $d_{i-1,j}$ just need to be swapped.
+Both angles $\beta$ and $\gamma$ are calculated with Equation~\ref{eq:bearing-angle}.
+For $\gamma$ the values of $d_{i,j}$ and $d_{i-1,j}$ need to be swapped.
 \begin{figure}
     \scalebox{0.9}{%
     \input{chapter04/img/max-curve.tikz}
     }
     \caption[Schematic representation of the \gls{multi-directional-bearing-angle-image}]{\emph{Schematic representation of the \gls{multi-directional-bearing-angle-image}.} The \gls{multi-directional-bearing-angle-image} composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and antidiagonal direction. The maximum angle is then selected as pixel value.}\label{fig:max-curve}
 \end{figure}
-Both angles are added together, resulting in the angle of an edge at this position.
+Both angles are added together, resulting in the angle of the surface at this position.
 \begin{equation}
-    \mathcal{B} = \beta + \gamma
+    \mathcal{B_{\textit{direction}}}= \beta + \gamma
 \end{equation}
 This calculation is again only in one direction and not rotation invariant but already symmetrical.
-The value $B$ can be defined for diagonal, antidiagonal, horizontal and vertical sampling of the image.
-The final step for rotation invariance is the reduction of these four values to its maximum.
+The value $\mathcal{B_{\textit{direction}}}$ can be defined for diagonal, antidiagonal, horizontal and vertical sampling of the image.
+The final step for rotation invariance is the reduction of these four values to their maximum:
 \vspace{-2mm}
 \begin{align}
     \mathcal{B} &= \max{\{\mathcal{B}_{diagonal}, \mathcal{B}_{antidiagonal}, \mathcal{B}_{horizontal}, \mathcal{B}_{vertical}\}}

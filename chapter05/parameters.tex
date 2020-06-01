@@ -1,14 +1,14 @@
 \subsection{Parameter Search}
 
 As first step the unfiltered depth images are used for the conversions.
-The keypoint count, distribution, response and size are analyzed as baseline.
-Given this baseline different algorithm configurations and data filtering are analyzed and compared to this baseline.
-Notable differences receive further attention and analysis in this thesis.
+The keypoint count, distribution, response and size are analyzed.
+Different algorithm and filter configurations are analyzed and compared to this baseline.
+Notable differences receive further attention and analysis.
 
-The effect of different filters for the depth image is tested by running the median blur and bilateral filter on the raw range data creating a new data source.
-Each of those data sources is analyzed with the same different settings for each algorithm.
-The total number of configurations is the cartesian product of the data sources with each algorithm configuration.
-Only the Synthetic dataset is not filtered as its range values have no measurement error.
+The effect of different filters for the depth image is tested by running the median blur and bilateral filter on the raw range data, effectively creating a new depth image source.
+Each of those data sources is analyzed with the same settings for each algorithm.
+The total number of configurations is the cartesian product of the data sources (Table~\ref{tab:filter}) with each algorithm configuration (Tables~\ref{tab:sift_akaze} and~\ref{tab:surf_orb}).
+Only the \emph{Synthetic} dataset is not filtered as its range values have no measurement error.
 \begin{table}[H]
     {\renewcommand{\arraystretch}{1.3}%
     \setlength{\tabcolsep}{0.3em}%
@@ -24,7 +24,7 @@ Only the Synthetic dataset is not filtered as its range values have no measureme
     \bottomrule
     \end{tabular}
     }
-    \caption{The parameters for the filters applied to the sensor data.}
+    \caption{The parameters for the filters applied to the sensor data.}\label{tab:filter}
 \end{table}
 \begin{table}[H]
     {\renewcommand{\arraystretch}{1.2}%
@@ -34,18 +34,18 @@ Only the Synthetic dataset is not filtered as its range values have no measureme
     \toprule
     \textbf{Name}   & \textbf{\acrshort{sift} Parameters} & \textbf{\acrshort{akaze} Parameters} \\
     \midrule
-        Default     & \texttt{keypoint size > 5px}        & \texttt{descriptor \acrshort{mldb}} \\
-        \null       & \texttt{contrast threshold = 0.04}  & \texttt{diffusity PM\_G2} \\
+        Default     & \texttt{keypoint size > 5px}        & \texttt{descriptor: \acrshort{mldb}} \\
+        \null       & \texttt{contrast threshold = 0.04}  & \texttt{diffusity: PM\_G2} \\
         \null       & \texttt{$\sigma$ = 1.6}             & \null \\
         Best only   & \texttt{best 400 keypoints}         & \texttt{best 400 keypoints} \\
-        Variation 1 & \texttt{contrast threshold = 0.02}  & \texttt{descriptor KAZE} \\
-        Variation 2 & \texttt{contrast threshold = 0.08}  & \texttt{diffusity PM\_G1} \\
-        Variation 3 & \texttt{$\sigma$ = 1.0}             & \texttt{diffusity WEICKERT} \\
-        Variation 4 & \texttt{$\sigma$ = 2.2}             & \texttt{diffusity CHARBONNIER} \\
+        Variation 1 & \texttt{contrast threshold = 0.02}  & \texttt{descriptor: KAZE} \\
+        Variation 2 & \texttt{contrast threshold = 0.08}  & \texttt{diffusity: PM\_G1} \\
+        Variation 3 & \texttt{$\sigma$ = 1.0}             & \texttt{diffusity: WEICKERT} \\
+        Variation 4 & \texttt{$\sigma$ = 2.2}             & \texttt{diffusity: CHARBONNIER} \\
     \bottomrule
     \end{tabular}
     }
-    \caption[Parameters evaluated for \acrshort{sift} and \acrshort{akaze}]{\emph{Parameters evaluated for \acrshort{sift} and \acrshort{akaze}.} \emph{Default} is used as basis for all configurations and only differences are presented. The keypoints of \acrshort{sift} are filtered by keypoint size, because many small keypoints were detected on artifacts of sensor noise.}
+    \caption[Parameters evaluated for \acrshort{sift} and \acrshort{akaze}]{\emph{Parameters evaluated for \acrshort{sift} and \acrshort{akaze}.} \emph{Default} is used as basis for all configurations and only differences are presented. The keypoints of \acrshort{sift} are filtered by keypoint size, because many small keypoints were detected on artifacts of sensor noise.}\label{tab:sift_akaze}
 \end{table}
 \begin{table}[H]
     {\renewcommand{\arraystretch}{1.2}%
@@ -63,5 +63,5 @@ Only the Synthetic dataset is not filtered as its range values have no measureme
     \bottomrule
     \end{tabular}
     }
-    \caption[Parameters evaluated for \acrshort{orb} and \acrshort{surf}]{\emph{Parameters evaluated for \acrshort{orb} and \acrshort{surf}.} Both \acrshort{orb} and \acrshort{surf} are only analyzed with two configurations. The algorithms showed systematic issues when applied to the novel feature images, that are discussed later.}
+    \caption[Parameters evaluated for \acrshort{orb} and \acrshort{surf}]{\emph{Parameters evaluated for \acrshort{orb} and \acrshort{surf}.} Both \acrshort{orb} and \acrshort{surf} are only analyzed with two configurations. The algorithms showed systematic issues when applied to the novel feature images, that are discussed later.}\label{tab:surf_orb}
 \end{table}

@@ -1,41 +1,41 @@
 \subsection{Feature Detection and Description}\label{sec:feature_algorithms}
 
 After preprocessing and image conversion, the final processing step of the range data is the feature detection and description.
-This thesis analyzes multiple state-of-the-art algorithms well established in the computer vision community.
+This thesis analyzes multiple well established, state-of-the-art algorithms.
 Although each keypoint detector and descriptor is designed with gray-scale images in mind, they are optimized for classical camera images that provide more texture than the converted feature images.
 Key to all algorithms is the search for salient regions in the image that can be consistently detected from different viewpoints and changing environmental conditions.
 The detector performance is critical to apply classical image registration approaches to the converted feature images.
-The following sections introduce established algorithms briefly and mentions key aspects of their functionality.
+The following sections introduce the algorithms briefly and mentions key aspects of their functionality.
 Details and foundational concepts are out of scope and the original publications are highly recommended for further comprehension.
 
 \subsubsection{\acrshort{sift} (\acrlong{sift})}
 
 Introduced by Lowe\cite{lowe_iccv99,lowe_ijcv04}, \acrshort{sift} is an established feature detection algorithm.
 The design goal of the algorithm is to detect keypoints that are invariant with respect to scale and rotation.
-Robustness against noise, change in illumination and affine transformation is additionally considered.
-\acrshort{sift}'s design influenced the design decision of the other presented algorithms heavily.
+Robustness against noise, change in illumination and affine transformations is additionally considered.
+\acrshort{sift}'s design influenced the design decisions of the other presented algorithms heavily.
 
 The input image is processed in a hierarchical pyramid of downscaled versions of the image, called octaves.
 On each octave a Gaussian filter is applied consecutivly with increased standard deviation on each run.
 The difference between two consecutive blurred images is computed, the so called \acrlong{DoG} (\acrshort{DoG}) forming an approximation of the Laplacion of the image.
 Lindeberg's\cite{lindeberg_ijcv98} work on scale space and automatic scale selection gives a theoretical introduction why this process gives a good way to select the scale of features.
-The underlying principle is that fine structures dissolve at bigger scales.
-This process is related to the diffusion equation that strongly tied to the Laplacian of the image.
+The underlying principle exploits that fine structures dissolve at bigger scales.
+This process is related to the diffusion equation that is strongly tied to the Laplacian of the image.
 Keypoint candidates are local extrema in these \acrshort{DoG}s.
 Each candidate is filtered by a contrast threshold, its accurate position is determined using a local spline interpolation and its scale is assigned based on the octave and blurring factor.
 Edge-like responses are filtered out based on an estimate of the ratio between the principal curvatures.
 Highly skewed curvatures indicate an edge.
 
-Every keypoint candidate left gets one or more orientations assigned.
+Every keypoint candidate gets one or more orientations assigned.
 These are computed by storing the gradients of a local neighbourhood to the keypoints in the octave matching the keypoints scale in an orientation histogram.
 Each peak in this histogram reflects a dominant direction of gradients in the local neighbourhood and the corresponding angle is used as the orientation of the keypoint.
-According to Lowe\cite{lowe_ijcv04}, about 15\% of keypoints have multiple peaks and become multiple orientations assigned, equivalent to storing multiple keypoints at this position.
+According to Lowe\cite{lowe_ijcv04}, about 15\% of keypoints have multiple peaks and get multiple orientations assigned.
 The orientation is used to rotate the local neighbourhood of the keypoint to compute the descriptor consistently.
 
-The image gradients direction and magnitude are computed for each pixel in a local environment, weighted by a Gaussian to magnify the influence of close pixels and then binned into orientation histograms.
-Each histograms reflects a fraction of the grid beeing sampled.
+The image gradients direction and magnitude are computed for each pixel in a local environment, first weighted by a Gaussian to magnify the influence of close pixels and then binned into orientation histograms.
+Each histogram reflects a fraction of the sampling grid.
 A 16$\times$16 grid around the keypoint that is stored to 4$\times$4 histograms with 8 bins for the orientations results in a vector of 128 elements in the descriptor.
-These numbers can be adjusted, but the 128 element descriptor is used in practice.
+These dimensions can be adjusted, but the 128 element descriptor is most common.
 Finally, the histograms are normalized to increase robustness against illumination changes.
 The Euclidean distance of the descriptor vectors is the most common similarity measure.
 Arandjelović and Zisserman\cite{arandjelovic_2012} introduced RootSIFT using the Hellinger distance\cite{hellinger_1909} as better measure for similarity of histograms.
@@ -48,24 +48,24 @@ Each pixel's value is the sum of all pixels in the rectangle formed by the origi
 This representation reduces computational complexity.
 
 The underlying principal of scale space and extrema detection derives from the same principles as for \acrshort{sift} but undergoes simplification.
-The Gaussian convolution is approximated with a box filter that approximate a second order Gaussian derivative and is related to the Hessian matrix at this point.
-Instead building a pyramid of images at different scales the filter itself is scaled up successivly.
-Maxima undergo a non-maximum suppression at different scales and their local neighbourhood.
+The Gaussian convolution is approximated with a box filter that approximate a second order Gaussian derivative and is related to the Hessian matrix.
+Instead of building a pyramid of images at different scales, the filter itself is scaled up successively.
+Maxima undergo a non-maximum suppression at different scales.
 The maximum of the Hessian determinant for the detected pixel is interpolated in image scale and space.
 The determinants value is the keypoint's response.
 
 Orientation assignment of \acrshort{surf} can be skipped for scenarios that do not involve camera rotation.
-The rotation is derived from the Haar wavelets response in $x$ and $y$ direction in the local neighbourhood.
+The rotation is derived from the Haar wavelets\cite{haar_1911} response in $x$ and $y$ direction in the local neighbourhood.
 The descriptor itself is constructed from a 4$\times$4 grid structure of sample points around the detected keypoint.
 Again, the Haar wavelets response in $x$ and $y$ direction are used to derive the elements of the descriptor.
 
 \subsubsection{\acrshort{orb} (\acrlong{orb})}
 
 \acrshort{orb}\cite{rublee_iccv11} combines the \acrshort{fast}\cite{rosten_eccv06} (\acrlong{fast}) feature detector and \acrshort{brief}\cite{calonder_eccv10} (\acrlong{brief}) descriptor with additional improvements to both algorithms.
-The design goal is to achieve similar matching performance to \acrshort{sift} and \acrshort{surf} but to be computationally cheaper for use in embedded devices.
+The design goal is to achieve similar matching performance to \acrshort{sift} and \acrshort{surf} but to be computationally cheaper to make usage in embedded devices feasable.
 
-The \acrshort{fast} detector evaluates a corner candidate by testing the brightness of 16~pixels on a circle around the corner.
-If there are enough consecutive pixels brighter or darker than the center with a certain threshold, the candidate is accepted as corner.
+The \acrshort{fast} detector evaluates a each pixel by testing the brightness of 16~pixels on a circle around the corner.
+If there are enough consecutive pixels brighter or darker than the center with a certain threshold, the pixel is accepted as corner.
 This approach results in a decision tree.
 The optimal traversal of this tree is learned by observing real world execution of the algorithm on predefined traversal.
 \acrshort{orb} detects keypoints with \acrshort{fast}, filters edge results with the Harris corner detector\cite{harris_1988} and assigns scale using image pyramids.
@@ -75,14 +75,14 @@ Each keypoint's descriptor uses a rotated version of \acrshort{brief}.
 \acrshort{brief} is a binary descriptor built from a set of binary intensity tests of consecutive pixels around the keypoint.
 The more recent publications, like \acrshort{brief}, \acrshort{orb} and \acrshort{mldb}, employ binary descriptors for their fast matching speed.
 The distance of binary descriptors can be computed with the Hamming distance that reduces to \emph{XOR} instructions on machine level.
-Ziegler et al.\cite{ziegler_anips2012} provide a theoretical analysis of \acrshort{brief} and sibblings and show, that those are hashing schemes of Kendall's $\tau$ metric\cite{kendall_1938}.
+Ziegler et al.\cite{ziegler_anips2012} provide a theoretical analysis of \acrshort{brief} and its sibblings and show, that those are hashing schemes of Kendall's $\tau$ metric\cite{kendall_1938}.
 
 \subsubsection{\acrshort{akaze}}
 
 \acrshort{kaze}'s\cite{alcantarilla_eccv12} (\acrlong{kaze}) and \acrshort{akaze}\cite{alcantarilla_bmva13}'s (\acrlong{akaze}) approaches are similar to \acrshort{sift}'s.
 Again, the diffusion of the brightness is the starting point for scale space analysis.
-\acrshort{kaze} applies non-linear diffusion filtering with a special computational scheme, that makes it feasable to solve in real time.
-The difference to the Gaussian diffusion is the preservation of edges.
+\acrshort{kaze} applies non-linear diffusion filtering with a special computational scheme, that makes it feasable to solve the diffusion in real time.
+The difference to the Gaussian blurring is the preservation of edges.
 The Gaussian blurs the whole image, reducing the signal crispness at higher scales.
 Contrary, the non-linear diffusion preserves edges over higher scales.
 After non-maximum suppression, the determinant of the Hessian is computed and the interpolation of the maximum on different scales yields the position of the keypoint.
