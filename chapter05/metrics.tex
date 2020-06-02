@@ -30,7 +30,7 @@ Too many points create ambiguity with respect to the backprojection tolerance.
     \caption[Backprojection of keypoints visualized]{\emph{Backprojection of keypoints visualized.} The choosen approach of projecting keypoints between frames is demonstrated in this figure. Keypoints of image $I_1$ are blue dots in both images and the orange ones are only detected in image $I_2$. Actual correspondences result in very close points in $I_2$, indicated as blue dot with orange border, whereas unrelated points show no proximity. This assumption holds for small changes in pose and relatively sparse distribution of detected keypoints.}\label{fig:keypoint_projection}
 \end{figure}
 \pagebreak[4]
-The analysis of the descriptor performance requires the matching step first, that establishes the correspondences of the matcher.
+As first step, the matcher establishes correspondences based on the descriptor distance and applies crosschecking --- the descriptors must have minimal distance in both directions --- as only heuristic.
 The matches are partitioned into four sets: \emph{true-positive}, \emph{false-positive}, \emph{true-negative} and \emph{false-negative} as introduced in Section~\ref{sec:statistic_classifier}.
 The union of these sets are all detected keypoints.
 First, the matches are analyzed for true and false positives and true correspondences are removed from further analysis. 

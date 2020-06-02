@@ -1,8 +1,5 @@
 \subsection{Datasets}
 
-% Depth Resolution not good enough.
-% Intel Realsense Sensor
-
 \subsubsection{Synthetic}\label{sec:dataset_synthetic}
 
 The first dataset is a manually created scene in Blender\cite{blender} demonstrating the principle effects of rotation and translation on the conversion results.
@@ -159,12 +156,12 @@ The selected scans were manually processed to have a common resolution and aspec
 
 \subsubsection{Synthetic City Scene Odometry}
 
-The datasets evaluating the feature algorithms show the potential and performance of the common algorithms.
+The datasets presented before evaluate the feature algorithms and show their potential and performance.
 To demonstrate, that the results are applicable in other scenarios, the most promising algorithms are used to compute a visual odometry.
-A synthetic city dataset, developed by Zhang et al.\cite{zhang_icra2016}, that provides a groundthruth trajectory is used for this purpose.
+A synthetic city dataset, developed by Zhang et al.\cite{zhang_icra2016}, that provides a groundthruth trajectory serves as test.
 The in-house visual odometry implementation, based on Singh's\cite{singh_report2015} work, is very basic with the following four steps.
 First, the features are detected and their descriptors extracted.
 The descriptors are matched.
 The essential matrix is computed using RANSAC and the consensus pose is used as relative pose.
-Each feature algorithm is used with default configuration.
+Each feature algorithm is executed with its default configuration.
 Both conditions imply that the result is not optimal and further optimizations would improve it further.

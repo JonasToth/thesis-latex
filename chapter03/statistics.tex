@@ -83,7 +83,7 @@ They plot the false positive rate and true positive rate, the \emph{\acrshort{RO
 \begin{tikzpicture}
 \begin{axis}[xmin=0,xmax=1,ymin=0,ymax=1,samples=50,xlabel={false positive rate}, ylabel={true positive rate},grid=major]
   \addplot[gray, dashed] (x,x);
-  \node[label={315:{$\mathbf{A}$}},circle,fill,inner sep=2pt] at (axis cs:0.01,0.99) {};
+  \node[label={315:{$\mathbf{A}$}},circle,fill,inner sep=2pt] at (axis cs:0.005,0.995) {};
   \node[label={315:{$\mathbf{B}$}},circle,fill,inner sep=2pt] at (axis cs:0.2,0.2) {};
   \node[label={315:{$\mathbf{C}$}},circle,fill,inner sep=2pt] at (axis cs:0.2,0.5) {};
   \node[label={315:{$\mathbf{D}$}},circle,fill,inner sep=2pt] at (axis cs:0.35,0.65) {};

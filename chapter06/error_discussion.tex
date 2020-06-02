@@ -14,11 +14,11 @@ Missing range measurements also occur in \emph{Office}, but the overall influenc
 Another major consideration is the rectification of the depth images before being processed by the proposed pipeline.
 The native resolution of the Kinectv2 depth sensor is 512$\times$424\,px\cite{wasenmuller_accv2016}, which is lower than the input depth images used for the feature image conversions.
 This change in resolution is artifact of \acrshort{ROS}' image rectification, that maps each depth pixel to its matching color pixel.
-The experiments show no qualitative difference of results between different image scale, but unrectified depth images experience distortion which will change the quality of the results at the image borders.
+The experiments show no qualitative difference of results between different image scales, but unrectified depth images experience distortion which will change the results at the image borders.
 The sensors depth image is noticibly affected by smaller waves in the conversion images for stand images.
 Their effect is considered small, because different filtering algorithms show only slight changes in the final result.
-
 The much finer resolution of the \emph{Laserscan} dataset on the other hand showed that prior filtering with median blur can improve the quality of the final feature image drastically (Appendix~\ref{sec:laserscan_conversions}).
 
-Because reference implementations are used for the detection and filtering algorithms, no additional errors are expected for those components.
-The implementation of the feature image conversions is heavily tested and implements additonal measures to ensure correctness, such that no errornous impact is expected from them either.
+There are no errors expected from the implementation of the software as all components are thoroughly tested.
+The usage of integers to store the range information on the other hand creates visible artifacts.
+Their effect is neglectable because every feature algorithm employs some form of blurring and detail reduction.
