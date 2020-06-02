@@ -4,6 +4,7 @@ After some experimentation with the settings it became clear, that on each octav
 This finding was true for both the \glspl{flexion-image} and \glspl{bearing-angle-image}, resulting in a suboptimal keypoint detector performance in scale space.
 In theory, different keypoint detectors can be combined with different keypoint descriptors and as \acrshort{surf} is commonly referred to as the faster \acrshort{sift}, its description potential should still be evaluated.
 The default settings for \acrshort{surf} are still used, but only one octave with four blurring convolutions detects keypoints (Figure~\ref{fig:surf_keypoints_mess}), resulting in the keypoint statistics presented in Table~\ref{tab:surf_results}.
+\vspace{-2mm}
 \begin{figure}[H]
 \begin{subfigure}[t]{0.25\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SURF/flexion/default_kp0005.png}%
@@ -19,6 +20,7 @@ The default settings for \acrshort{surf} are still used, but only one octave wit
 \end{subfigure}%
     \caption[\acrshort{surf} keypoints plotted in feature images]{\emph{\acrshort{surf} keypoints plotted in feature images.} This figure shows the number of keypoints that are detected with \acrshort{surf} in its default configuration compared to just using one octave. Limiting the number of keypoints is mandatory to achieve some potentially meaningful result.}\label{fig:surf_keypoints_mess}
 \end{figure}
+\vspace{-8mm}
 \begin{table}[H]
     {\renewcommand{\arraystretch}{1.2}%
     \setlength{\tabcolsep}{0.3em}%

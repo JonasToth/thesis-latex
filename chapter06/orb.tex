@@ -14,7 +14,7 @@ Those regions contains sharp edges from feature image to black because of missin
 The \acrshort{fast} keypoint detector characteristics of comparing brightness values at different sampling points is likely to blame for the bad detector performance.
 Similar to \acrshort{surf}'s shortcoming, it does not deal well with the smoother gray changes but requires sharp edges.
 As \acrshort{orb} employs blurring and scale space, too, the effect of missing contrast between sampling points worsens in higher levels of the pyramid, yielding no keypoints there.
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/ORB/flexion/descriptor_distances.pdf}%
     \caption{\gls{flexion-image}}
@@ -29,7 +29,7 @@ The descriptor distance in Figure~\ref{fig:orb_descriptor_distances} show some s
 This is better than \acrshort{surf}, but worse than \acrshort{sift}.
 The mixed results are reflected in ROC space (Figure~\ref{fig:orb_roc}) by the random performance for \emph{Lehrpfad} and OK performance for \emph{Synthetic} and \emph{Office}.
 Everything considered, \acrshort{orb} is not suitable for the proposed feature images.
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/ORB/flexion/roc.pdf}%
     \caption{\gls{flexion-image}}

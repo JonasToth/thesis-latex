@@ -11,12 +11,7 @@ Its keypoint detector design is again closer to \acrshort{sift}.
 \acrshort{akaze} results in approximatly one order of magnitude more detected keypoints and correspondences compared to \acrshort{sift}.
 Its keypoint characteristics show expected results (Appendix~\ref{sec:akaze_stats}).
 The detection does not result in as similar diverse keypoint sizes and the response is narrower with a stronger skew towards small responses compared to \acrshort{sift}.
-
-The \acrshort{mldb} descriptor shows separation between true and false positives across the datasets and feature images (Figure~\ref{fig:descriptor_akaze}).
-This indicates good performance of the binary descriptor.
-Additionally it reaffirms the finding of \acrshort{orb}'s \acrshort{brief} descriptor demonstrating separation potential.
-The enhancement of \acrshort{mldb} solidifies the tendency though.
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/flexion/descriptor_distances.pdf}%
     \caption{\glspl{flexion-image}}
@@ -27,6 +22,10 @@ The enhancement of \acrshort{mldb} solidifies the tendency though.
 \end{subfigure}
 \caption[\acrshort{akaze} descriptors distances]{\emph{\acrshort{akaze} descriptors distances.} The true and false positives are partially separable by the descriptor distance. The \gls{flexion-image} shows better separation than the \gls{bearing-angle-image}. The descriptor is binary and similar to \acrshort{orb}'s descriptor, but the improvements show measureable effects.}\label{fig:descriptor_akaze}
 \end{figure}
+The \acrshort{mldb} descriptor shows separation between true and false positives across the datasets and feature images (Figure~\ref{fig:descriptor_akaze}).
+This indicates good performance of the binary descriptor.
+Additionally it reaffirms the finding of \acrshort{orb}'s \acrshort{brief} descriptor demonstrating separation potential.
+The enhancement of \acrshort{mldb} solidifies the tendency though.
 The \acrshort{ROC} graph in Figure~\ref{fig:roc_akaze} shows that \acrshort{akaze} can perform quiet reasonable across all datasets.
 There exists a configuration for each dataset with significantly higher true than false positive rate for the \glspl{flexion-image}.
 The top performers for each dataset are the configurations using only the best 400 keypoints for matching, regardless of filtering.

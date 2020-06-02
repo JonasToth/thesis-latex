@@ -29,13 +29,13 @@ The \gls{curvature} of any point of a surface in three-dimensional space is ambi
 But a maximum and minimum \gls{curvature} exist, the \emph{principal curvatures} $k_1$ and $k_2$.
 Figure~\ref{fig:curvature_surface} visualizes the directions of the minimum and maximum \gls{curvature} of a surface in three-dimensional space as dotted black lines.
 The \emph{\Gls{gaussian-curvature}} $\mathcal{K}$ is defined as the product
-\[
+\begin{equation}
     \mathcal{K} = k_1 k_2
-\]
+\end{equation}
 and the \emph{\gls{mean-curvature}} $\mathcal{H}$ as the mean
-\[
+\begin{equation}
     \mathcal{H} = \frac{1}{2} (k_1 k_2)
-\]
+\end{equation}
 of the principal curvatures.
 
 Both quantities can be calculated differently, as the \gls{curvature} is related to the derivates of a function.
@@ -48,10 +48,12 @@ Then the \gls{gaussian-curvature} and \gls{mean-curvature} are computed with:
 \end{aligned}
 \end{equation}
 The central differential quotients approximate the first and second derivatives with $\mathcal{O}(\Delta x^2)$ accuracy:
-\begin{align*}
+\begin{equation}
+\begin{aligned}
     f_{x} &= \frac{y_{i+1} - y_{i-1}}{2 \Delta x} \\
     f_{xx} &= \frac{y_{i+1} + y_{i-1} - 2 y_{i}}{{\Delta x}^2}\text{.}
-\end{align*}
+\end{aligned}
+\end{equation}
 
 \begin{figure}[H]
     \begin{subfigure}[t]{0.32\textwidth}
