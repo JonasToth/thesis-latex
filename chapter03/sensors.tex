@@ -6,6 +6,10 @@ The following paragraphs describe the underlying sensing principles\cite{blais_2
 
 \subsubsection{Structured-Light Depth Sensors}
 
+Structured-light depth sensors project a known light pattern into space and optically sense the reflection.
+The pattern appears distorted from a viewpoint different than the projector due to the shape of the reflecting object.
+Figure~\ref{fig:sl_face} provides an example for structured-light sensing using visible light.
+Stripes and grids of lines or points are common for sensors in robotic applications, such as the Kinectv1 and Intel RealSense\cite{intel_realsense} sensors.
 \begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.45\textwidth}
@@ -16,18 +20,18 @@ The following paragraphs describe the underlying sensing principles\cite{blais_2
         \includegraphics[width=\textwidth]{chapter03/img/depth_face_reconstructed.png}
         \caption{Reconstructed result}
     \end{subfigure}
-    \caption[Demonstration of structured-light depth sensors]{\emph{Demonstration of structured-light depth sensors.} One way to reconstruct depth information are structured light depth sensors. A predefined light pattern is projected into space. As the photons are reflected from obstacles at different distances relative to the observer, the light pattern appears transformed. This deformation is used to reconstruct the geometry of the objects. The light emitted is usually not visible to humans as infrared light sources and cameras are commonly used in robotic applications.The images are taken from \cite{sl_depthsensor_calibration}.}\label{fig:sl_face}
+    \caption[Demonstration of structured-light depth sensors]{\emph{Demonstration of structured-light depth sensors.} One way to reconstruct depth information are structured light depth sensors. A predefined light pattern is projected into space. As the photons are reflected from obstacles at different distances relative to the observer, the light pattern appears transformed. This deformation is used to reconstruct the geometry of the objects. The light emitted is usually not visible to humans as infrared light sources and cameras are commonly used in robotic applications. The images are taken from \cite{sl_depthsensor_calibration}.}\label{fig:sl_face}
 \end{figure}
-Structured-light depth sensors project a known light pattern into space and optically sense the reflection.
-The pattern appears distorted from a viewpoint different than the projector due to the shape of the reflecting object.
-Figure~\ref{fig:sl_face} provides an example for structured-light sensing using visible light.
-Stripes and grids of lines or points are common for sensors in robotic applications, such as the Kinectv1 and Intel RealSense\cite{intel_realsense} sensors.
 Viewing the projected patterns from multiple viewpoints allows triangulation to recover the depth information.
 Mobile robotic depth sensors achieve frame rates of 30\,\acrshort{fps} or more.
 The projected pattern should not interfere with other optic devices leading to infrared light.
 
 \subsubsection{\acrlong{ToF} (\acrshort{ToF}) cameras}
 
+The second prevalent sensing technology measures the traveling time of light\cite[p. 27-41]{hansard_springer2012}.
+Multiplying the measured roundtrip time by the known speed of light in the surrounding medium results in twice the distance of the object.
+Such a sensor system requires a light sources.
+Unlike the specialized patterns emitted for structured light, this can be an ordinary infrared \acrshort{led}, again preventing interference in other spectra of light.
 \begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.45\textwidth}
@@ -40,11 +44,6 @@ The projected pattern should not interfere with other optic devices leading to i
     \end{subfigure}
     \caption[Illustration of the measuring principles for \acrshort{ToF} cameras]{\emph{Illustration of the measuring principles for \acrshort{ToF} cameras.} \acrlong{ToF} is first of all a measurement principle for distances used in different contexts. In this specific case \acrshort{ToF} sensors measure the roundtrip time of light from emittance, reflection and sensing. Multiplying the measured time by the speed of light results in the distance the light traveled. The illustrations are adopted from\cite{tof_cameras}.}\label{fig:tof_illustration}
 \end{figure}
-The second prevalent sensing technology measures the traveling time of light\cite{hansard_springer2012}.
-Multiplying the measured roundtrip time by the known speed of light in the surrounding medium results in twice the distance of the object.
-Such a sensor system requires a light sources.
-Unlike the specialized patterns emitted for structured light, this can be an ordinary infrared \acrshort{led}, again preventing interference in other spectra of light.
-
 A pulsed and synchronized light emitter, as examplarized in Figure~\ref{fig:tof_roundtrip}, allows direct measurement of the roundtrip time of light.
 Such a system requires exact synchronisation and a high temporal resolution to achieve accurate measurements.
 The different and more recent development in depth sensing technology is measuring the phase shift (Figure~\ref{fig:tof_phase_shift}) of the reflected light to recover the traveling time of the light wave.
@@ -69,4 +68,3 @@ Additionally, the intensity of the reflected light beam might be obtained as sec
 
 Flash \acrshort{LIDAR} is a scannerless type of \acrshort{LIDAR} that does not require a rotating mirror or other mechanical system\cite{natale_ssiai2010}.
 A flash \acrshort{LIDAR} uses the measurement principles described for \acrshort{ToF} cameras and measures a dense range image in one shot.
-% TODO cite 10.1109/SSIAI.2010.5483929

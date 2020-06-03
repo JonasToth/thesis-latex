@@ -23,7 +23,7 @@ Figure~\ref{fig:benchmarks} shows the results of micro benchmarks of the two pro
     \begin{subfigure}[b]{0.45\linewidth}
         \includegraphics[width=\linewidth]{chapter06/results/benchmarks/laserscan_benchmarks.pdf}
     \end{subfigure}
-    \caption[Benchmarks for Flexion and \gls{bearing-angle-image} conversions]{\emph{Benchmarks for Flexion and \gls{bearing-angle-image} conversions.} The benchmarks are run on an Intel i7-8550U with 1.8GHz base clock and 4 hyperthreaded cores. Each conversion is repeated 100 times for solid statistical data. The resolution of the pinhole image is 960$\times$540px and the \acrshort{LIDAR} scan is 3600$\times$800px big. The higher memory consumption of the \acrshort{LIDAR} scan results in a memory bound execution for the single threaded conversion.}\label{fig:benchmarks}
+    \caption[Benchmarks for Flexion and \gls{bearing-angle-image} conversions]{\emph{Benchmarks for Flexion and \gls{bearing-angle-image} conversions.} The benchmarks are run on an Intel i7-8550U with 1.8\,GHz base clock and 4 hyperthreaded cores. Each conversion is repeated 100 times for solid statistical data. The resolution of the pinhole image is 960$\times$540\,px and the \acrshort{LIDAR} scan is 3600$\times$800\,px big. The higher memory consumption of the \acrshort{LIDAR} scan results in a memory bound execution for the single threaded conversion.}\label{fig:benchmarks}
 \end{figure}
 Each of the feature image conversions is implemented as C++ library code working on OpenCV's\cite{opencv_library} \lstinline[basicstyle=\ttfamily]|cv::Mat| matrix type.
 The conversion is generic in the sense, that any camera model implementing the forward and backward projection for pixel coordinates is suitable for the feature image conversion.

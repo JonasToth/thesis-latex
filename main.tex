@@ -112,13 +112,17 @@
 
 \input{chapter00/abstract_english}
 \newpage
-\input{chapter00/abstract_german}
-\newpage
 
 \tableofcontents
 \newpage
 
 \input{chapter00/glossary}
+
+\newpage
+\addcontentsline{toc}{section}{\listtablename}\listoftables
+
+\newpage
+\addcontentsline{toc}{section}{\listfigurename}\listoffigures
 
 \pagenumbering{arabic}
 \newpage
@@ -173,7 +177,7 @@ This requires to quantize the real valued distances to integers, adding a roundi
 \input{chapter06/error_discussion}
 \newpage
 
-\section{Conclusion}\label{sec:conclusion}
+\section{Conclusion and Future Work}\label{sec:conclusion}
 
 \input{chapter07/conclusion}
 \input{chapter07/future_work}
@@ -188,7 +192,7 @@ This requires to quantize the real valued distances to integers, adding a roundi
     % \input{anhang/content}
     \newpage
 
-    \section{Mathematical Derivation}
+    \section{Derivation of the \Gls{bearing-angle} Formula}\label{sec:bearing_derivation}
     \input{chapterA/derivation_bearing}
     \newpage
 
@@ -222,20 +226,12 @@ This requires to quantize the real valued distances to integers, adding a roundi
     \input{chapterD/orb}
     \input{chapterD/akaze}
     \newpage
-
-    \addcontentsline{toc}{section}{References}
-    \bibliographystyle{IEEEtran}
-    \bibliography{references}
-
-    \newpage
-    \addcontentsline{toc}{section}{\listtablename}\listoftables
-
-    \newpage
-    \addcontentsline{toc}{section}{\listfigurename}\listoffigures
-
-    \newpage
-    %\renewcommand{\indexname}{Stichwortverzeichnis}
-    %\addcontentsline{toc}{section}{Stichwortverzeichnis}
-    % \printindex
 \end{appendix}
+% \pagenumbering{arabic}
+% \setcounter{page}{76}
+
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
 \end{document}

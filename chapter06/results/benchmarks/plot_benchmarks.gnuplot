@@ -3,7 +3,7 @@
 load '../mathcha.pal'
 set terminal pdf color
 set output sprintf("%s_benchmarks.pdf", data_name)
-set title sprintf("Conversion of a %s image", data_name)
+set title sprintf("Conversion of a %s", title_sub)
 set size 1.0,1.0
 
 set border 3

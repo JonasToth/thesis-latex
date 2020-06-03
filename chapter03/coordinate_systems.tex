@@ -31,7 +31,7 @@ A three dimensional vector $\vec{P_\mathcal{W}} = \rowvecxxx{U}{V}{W}$ represent
 Seeing this point $\mathbf{P_\mathcal{W}}$ from a camera $\mathbf{C_\mathcal{W}}$ within the same room is equivalent to transforming the coordinate system from \emph{world coordinates} to \emph{camera coordinates} by a change of basis, as demonstrated in Figure~\ref{fig:coordinate_transformation}.
 The relative rotation and translation of the camera $\mathbf{C_\mathcal{W}}$ to the room is also called its \emph{pose}\cite[p.15-39]{corke_2011}.
 It is parametrized by a rotation matrix $R$ and a translation vector $\vec{t}$.
-Homogeneous coordinates provide a computational more efficient way to apply pose transformations to vectors with a single 4 dimensional matrix-vector multiplication (Equation~\ref{eq:homogeneous_matrix}) instead of a 3 dimensional matrix-vector multiplication and an additional 3$\times$1 vector addition.
+Homogeneous coordinates provide a computational more efficient way to apply pose transformations to vectors with a single 4 dimensional matrix-vector multiplication (Equation~\ref{eq:homogeneous_matrix}) instead of a three dimensional matrix-vector multiplication and an additional 3$\times$1 vector addition.
 The point $\mathbf{P_\mathcal{W}}$ seen from the camera $\mathbf{C_\mathcal{W}}$ is computed with the homogeneous transformation matrix $H = \begin{bmatrix} R & \vec{t} \\ \begin{matrix}0 & 0 & 0\end{matrix} & 1 \end{bmatrix}$.
 \begin{equation}
 \begin{aligned}
