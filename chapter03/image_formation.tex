@@ -11,7 +11,7 @@ On some robotic platforms, like \acrshort{ROS} (\acrlong{ROS}), this is done aut
 
 \subsubsection{Pinhole Camera Model}\label{sec:pinhole_model}
 
-\begin{figure}[H]
+\begin{figure}[b!]
     \includegraphics[width=0.6\textwidth]{chapter03/img/pinhole_camera_model.png}
     \caption[Pinhole camera model]{\emph{Pinhole camera model.} The pinhole camera model performs the perspective projection of three dimensional points into the plane. Real cameras additionally have a lense system that can result in radial and tangential distortion. These effects must be compensated with a proper calibration of distortion models. The camera-coordinate-to-pixel-coordinate projection looses information on the depth. Therefore, the back projection results only in the direction of the light ray. The depth sensor gives the additional distance information to recover the point in camera coordinates. Graphic adopted from\cite{opencv_pinhole}.}\label{fig:pinhole_model}
 \end{figure}

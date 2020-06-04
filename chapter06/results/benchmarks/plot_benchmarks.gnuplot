@@ -1,7 +1,7 @@
 #!/usr/bin/gnuplot
 
 load '../mathcha.pal'
-set terminal pdf color
+set terminal pdf color font ",15"
 set output sprintf("%s_benchmarks.pdf", data_name)
 set title sprintf("Conversion of a %s", title_sub)
 set size 1.0,1.0

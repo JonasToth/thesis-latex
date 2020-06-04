@@ -4,7 +4,7 @@ Both feature images and the color images are used separatly to determine the vis
 
 \acrshort{sift} neither results in a good odometry for color images nor for the feature images.
 Figure~\ref{fig:sift_odometry} shows random turns and barely straight trajectories for any conversion.
-\begin{figure}[htp]
+\begin{figure}[t]
 \begin{subfigure}[b]{0.31\linewidth}
     \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_SIFT_nice.png}%
     \caption{\glspl{flexion-image}}
@@ -22,7 +22,7 @@ Figure~\ref{fig:sift_odometry} shows random turns and barely straight trajectori
 \acrshort{akaze} on the other hand performs much better in all cases, as can be seen in Figure~\ref{fig:akaze_odometry}.
 The prinicpal shape of the trajectory is reconstructed well.
 The \glspl{bearing-angle-image} have higher drift compared to the \glspl{flexion-image} or colored images, but only in certain areas where all inputs suffer from similar issues.
-\begin{figure}[htp]
+\begin{figure}[b!]
 \begin{subfigure}[t]{0.31\linewidth}
     \includegraphics[width=\linewidth]{chapter06/odo/jonas_flexion_AKAZE_nice.png}%
     \caption{\glspl{flexion-image}}

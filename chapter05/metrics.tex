@@ -10,9 +10,9 @@ The following subsections describe each component of this evaluation pipeline in
 The dataset \emph{Lehrpfad} provides groundthruth poses from a prior \gls{sfm} reconstruction.
 Due to the global optimization of the \gls{sfm} algorithm, these poses do not match with the depth values of the depth images.
 The other datasets do not contain a precomputed pose.
-Therefore, each pose is computed and refined with an ICP algorithm, namely OpenCV's \emph{FASTICPOdometry} that is based on the KinectFusion\cite{newcombe_ismar2011} work.
+Therefore, each pose is computed and refined with an ICP algorithm, namely OpenCV's \texttt{FASTICPOdometry} that is based on the KinectFusion\cite{newcombe_ismar2011} work.
 This relative pose serves as foundation of the evaluation and is assumed to be correct within small tolerance.
-The accuracy assumption of the \emph{FASTICPOdometry} poses is tested by manual inspection of the backprojection of obviously related keypoints and the results showed no systematic errornous poses.
+The accuracy assumption of the \texttt{FASTICPOdometry} poses is tested by manual inspection of the backprojection of obviously related keypoints and the results showed no systematic errornous poses.
 
 \subsubsection{Backprojection and Distance Threshold}
 

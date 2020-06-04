@@ -2,7 +2,7 @@
 
 Differential geometry provides a scalar quantity assignable to each point of a one-dimensional differntiable function, the \emph{\gls{curvature}} $\kappa$\cite[p. 10]{Kuhnel2008}.
 This concept can be generalized to higher dimensions and two common \glspl{curvature} exist for surfaces in three-dimensional space, \emph{\gls{gaussian-curvature}} and \emph{\gls{mean-curvature}}.
-\begin{figure}[H]
+\begin{figure}[t]
     \begin{subfigure}[t]{0.48\textwidth}
         \centering
         \scalebox{0.85}{%
@@ -55,7 +55,7 @@ The central differential quotients approximate the first and second derivatives 
 \end{aligned}
 \end{equation}
 
-\begin{figure}[H]
+\begin{figure}[tb]
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/mean-0001.png}
     \end{subfigure}
@@ -75,7 +75,7 @@ It is even more prone to noise in the input and suffers from the same range issu
 Both the \gls{mean-curvature} and \gls{gaussian-curvature} are unbound and result in any real number.
 Simple scaling between the computed minimum and maximum value is unstable between images and results in completly gray images as these quantities have noticable outliers.
 As solution for this problem the computed values are clamped to a predefined range, for example $\mathcal{H},\mathcal{K} \in (-20, 20)$ and then scaled to the desired image depth of the feature image.
-\begin{figure}[H]
+\begin{figure}[tb]
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/gauss-0001.png}
     \end{subfigure}

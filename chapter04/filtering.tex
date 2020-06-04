@@ -14,7 +14,7 @@ A window of $n \times m$ pixels with $n,m \in \mathbb{N}_{2k + 1}$ is centered a
 The median of all pixels in that window is calculated and stored as the new value.
 Floating point operations are not required and the filter is implementable with $\mathcal{O}(n)$\cite{huang_ieee79} time complexity.
 $n$ and $m$ are the controllable parameters.
-OpenCV's\cite{opencv_library} implementation additionally utilizes \acrshort{SIMD} instructions for increased processing speed.
+OpenCV's\cite{opencv_library} implementation additionally utilizes \acrshort{SIMD} (\acrlong{SIMD}) instructions for increased processing speed.
 
 \subsubsection{Bilateral Filter}
 
@@ -25,7 +25,7 @@ Each neighbouring pixel's effect on the central pixel is weighted by a geometric
 Similarity can be based on a classical distance norm of photometric values, like brightness, or be more sophisticated, like perceived similarity.
 A common function for both aspects is a Gaussian kernel with the Euclidean norm as distance measure.
 Figure~\ref{fig:bilateral_filter} provides an example application of the bilateral filter on a single channel, two-dimensional signal with the Gaussian function for \emph{closeness} and \emph{similarity}.
-\begin{figure}[H]
+\begin{figure}[b!]
     \begin{subfigure}[b]{0.3\linewidth}
         \includegraphics[width=\linewidth]{chapter04/img/bilateral1.png}
         \caption{}\label{fig:bilateral_1}
@@ -38,7 +38,7 @@ Figure~\ref{fig:bilateral_filter} provides an example application of the bilater
         \includegraphics[width=\linewidth]{chapter04/img/bilateral3.png}
         \caption{}\label{fig:bilateral_3}
     \end{subfigure}
-    \caption[Bilateral filtering visualized]{\emph{Bilateral filtering visualized.} The figures show how the bilateral filter works on a single channel step function. Figure~\ref{fig:bilateral_1} shows the original signal with random noise added. The weighting of its neighbouring pixels is computed for a pixel in the center. The weights are visualized in Figure~\ref{fig:bilateral_2}. The lower values of the step are neglected due to their lack of similarity regardless of closeness. Figure~\ref{fig:bilateral_3} shows the result of the full convolution of the filter, yielding a smoothed signal without blurred edge.}\label{fig:bilateral_filter}
+    \caption[Bilateral filtering visualized]{\emph{Bilateral filtering visualized.} The figures show how the bilateral filter works on a single channel step function. Figure~\ref{fig:bilateral_1} shows the original signal with random noise added. The weighting of its neighbouring pixels is computed for a pixel in the center. The weights are visualized in Figure~\ref{fig:bilateral_2}. The lower values of the step are neglected due to their lack of similarity regardless of closeness. Figure~\ref{fig:bilateral_3} shows the result of the full convolution of the filter, yielding a smoothed signal without blurred edge. Images adopted from~\cite{tomasi_iccv98}.}\label{fig:bilateral_filter}
 \end{figure}
 The filter is dependant on the functions for \emph{similarity} and \emph{closeness} and the available parameters are defined through these functions.
 The Gaussian case is controlled by the parameters $\sigma_d$, the standard deviation of \emph{closeness} and $\sigma_r$, the standard deviation of \emph{similarity}.

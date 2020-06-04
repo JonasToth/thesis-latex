@@ -7,7 +7,7 @@ The core idea of the \Gls{flexion-image} is the approximation of the surface nor
 Each measured pixel is backprojected to camera coordinates, scaling the spherical coordinates with its measured range as first step.
 The normal for a measured surface point $\mathbf{P_{i,j}}$ is calculated with the cross product of vectors connecting the neighbouring points of $\mathbf{P_{i,j}}$.
 This point relationship is visualized in Figure~\ref{fig:flexion_normals_plane}.
-\begin{figure}[H]
+\begin{figure}[ht]
     \begin{subfigure}[t]{0.48\linewidth}
         \centering
         \scalebox{1.0}{%
@@ -46,7 +46,7 @@ Creating the final image requires a linear scaling to the desired output image d
 
 \subsubsection*{Characteristics}
 
-\begin{figure}[H]
+\begin{figure}[tb]
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/flexion-0001.png}
     \end{subfigure}
@@ -64,17 +64,16 @@ Rotation of either an object or the camera does not change the difference betwee
 A flat surface has an almost constant shading, because the normal approximation results in the same vector directions.
 Flat surfaces not perpendicular to the camera plane have non-constant shading with the brightness reducing the further the surface patch is appart from the camera center.
 This effect is caused by the perspective transformation.
-\begin{figure}[H]
-    \input{chapter04/img/flexion_angle_decrease}
-    \caption[Explanation of shading effect in \glspl{flexion-image}]{\emph{Explanation of shading effect in \glspl{flexion-image}.} The angle between the diagonals decreases with increasing distance from the camera center. This results in shorter normals.}\label{fig:flexion_angle_decrease}
-\end{figure}
 The norm of cross product is maximal if both multiplied vectors are perpendicular:
 \begin{equation}
     \lnorm{\vec{v_1} \times \vec{v_2}} = \lnorm{\vec{v_1}} \lnorm{\vec{v_2}} \sin \angle(\vec{v_1}, \vec{v_2})\text{.}
 \end{equation}
-\pagebreak[4]
-Because the vectors multiplied to form the normals $n_1$ and $n_2$ have different angles based on their distance to the camera (see Figure~\ref{fig:flexion_angle_decrease} for an example), the lengths of the normals differ throughout the image.
+Because the vectors multiplied to form the normals $n_1$ and $n_2$ have different angles based on their distance to the camera (Figure~\ref{fig:flexion_angle_decrease}), the lengths of the normals differ throughout the image.
 The lack of normalization in Equation~\ref{eq:flexion_normals} propagates this effect through to the scalar product, as the length of the both vectors are multiplied:
 \begin{equation}
     \vec{v_1} \cdot \vec{v_2} = \lnorm{\vec{v_1}} \lnorm{\vec{v_2}} \cos \angle(\vec{v_1}, \vec{v_2})\text{.}
 \end{equation}
+\begin{figure}[b!]
+    \input{chapter04/img/flexion_angle_decrease}
+    \caption[Explanation of shading effect in \glspl{flexion-image}]{\emph{Explanation of shading effect in \glspl{flexion-image}.} The angle between the diagonals decreases with increasing distance from the camera center. This results in shorter normals.}\label{fig:flexion_angle_decrease}
+\end{figure}

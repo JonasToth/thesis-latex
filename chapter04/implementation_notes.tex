@@ -17,10 +17,10 @@ Only simple measures for speedup, namely exploiting the embarrassingly parallel 
 Figure~\ref{fig:benchmarks} shows the results of micro benchmarks of the two promising feature images.
 \begin{figure}
 \centering
-    \begin{subfigure}[b]{0.45\linewidth}
+    \begin{subfigure}[b]{0.49\linewidth}
         \includegraphics[width=\linewidth]{chapter06/results/benchmarks/pinhole_benchmarks.pdf}
-    \end{subfigure}\quad
-    \begin{subfigure}[b]{0.45\linewidth}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.49\linewidth}
         \includegraphics[width=\linewidth]{chapter06/results/benchmarks/laserscan_benchmarks.pdf}
     \end{subfigure}
     \caption[Benchmarks for Flexion and \gls{bearing-angle-image} conversions]{\emph{Benchmarks for Flexion and \gls{bearing-angle-image} conversions.} The benchmarks are run on an Intel i7-8550U with 1.8\,GHz base clock and 4 hyperthreaded cores. Each conversion is repeated 100 times for solid statistical data. The resolution of the pinhole image is 960$\times$540\,px and the \acrshort{LIDAR} scan is 3600$\times$800\,px big. The higher memory consumption of the \acrshort{LIDAR} scan results in a memory bound execution for the single threaded conversion.}\label{fig:benchmarks}

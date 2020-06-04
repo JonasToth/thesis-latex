@@ -1,6 +1,6 @@
 \subsubsection{Bearing-Angle Image}
 
-\begin{figure}[H]
+\begin{figure}[b!]
     \centering
     \scalebox{0.9}{%
     \input{chapter04/img/bearing_angle.tikz}%
@@ -25,12 +25,13 @@ For the horizontal left-to-right calculation the formula is as follows:
 \end{equation}
 The angular resolution $\Delta\varphi$ between two pixels of the depth image depends on the camera model in use.
 The pinhole model's angular resolution changes between pixel pairs, equirectangular image have a constant resolution.
-In general, the angle $\Delta\varphi$ can be calculated with the spherical coordinates $\vec{P_{\mathcal{S},1}}, \vec{P_{\mathcal{S},2}}$ of the pixel pair $\mathbf{P_{\mathcal{P},1}}, \mathbf{P_{\mathcal{P},2}}$.
+In general, the angle $\Delta\varphi$ can be calculated with the spherical coordinates $\vec{P_{\mathcal{S},1}}, \vec{P_{\mathcal{S},2}}$ (Equation~\ref{eq:dphi}).
 Optimized versions for the specific camera model are possible in real world applications.
 \begin{equation}
 \begin{aligned}
     \abs{\vec{P_{\mathcal{S},1}}} &= \abs{\vec{P_{\mathcal{S},2}}} = 1 \implies \vec{P_{\mathcal{S},1}} \cdot \vec{P_{\mathcal{S},2}} = \cos \Delta\varphi \\
     \Delta\varphi &= \arccos \vec{P_{\mathcal{S},1}} \cdot \vec{P_{\mathcal{S},2}}
+    \label{eq:dphi}
 \end{aligned}
 \end{equation}
 
@@ -49,7 +50,7 @@ This formulation can be used for different color depths and other potential angl
 
 \subsubsection*{Characteristics}
 
-\begin{figure}[H]
+\begin{figure}[b!]
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/bearing-diag-0001.png}
     \end{subfigure}
@@ -68,12 +69,12 @@ The most notable property is the lack of rotation invariance.
 This follows directly from the definition of the \gls{bearing-angle}.
 A triangle is build by a predefined pixel relationship.
 Calculating the \gls{bearing-angle} from multiple directions could lead to some rotation stability, because rotations of $45\degree$ corresponds to a different direction of pixel neighbourhood.
-\begin{figure}[H]
+\begin{figure}[tb]
     \centering
     \input{chapter04/img/bearing_understand_shading.tex}%
     \caption[Two \glspl{bearing-angle} for the same ground plane]{\emph{Two \glspl{bearing-angle} for the same ground plane.} Different shadings of plane surfaces depend on the perspective projection and the distance from the camera center $C$ to the surface.}\label{fig:bearing_angle_shading}
 \end{figure}
-The second apparent aspect is the change in shading, for example the flat ground but on other surfaces, too.
+The second apparent aspect is the change in shading, for example on the flat ground but on other surfaces, too.
 This effect is due to the perspective transformation and the distance of a point to the camera, as Figure~\ref{fig:bearing_angle_shading} demonstrates.
 Round objects, like spheres, experience no visual change in shading.
 The triangles of the lightrays are invariant to camera transformation for such objects.

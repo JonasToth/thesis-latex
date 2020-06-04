@@ -1,7 +1,7 @@
 \subsection{Feature Detection and Description}\label{sec:feature_algorithms}
 
 After preprocessing and image conversion, the final processing step of the range data is the feature detection and description.
-This thesis analyzes multiple well established, state-of-the-art algorithms.
+This thesis analyzes \acrshort{sift}\cite{lowe_ijcv04}, \acrshort{surf}\cite{bay_eccv06}, \acrshort{orb}\cite{rublee_iccv11} and \acrshort{akaze}\cite{alcantarilla_bmva13}.
 Although each keypoint detector and descriptor is designed with gray-scale images in mind, they are optimized for classical camera images that provide more texture than the converted feature images.
 Key to all algorithms is the search for salient regions in the image that can be consistently detected from different viewpoints and changing environmental conditions.
 The detector performance is critical to apply classical image registration approaches to the converted feature images.

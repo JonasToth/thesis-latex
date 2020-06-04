@@ -1,4 +1,4 @@
-\begin{table}[H]
+\begin{table}[ht]
     {\renewcommand{\arraystretch}{1.2}%
     \setlength{\tabcolsep}{0.3em}%
     \footnotesize
@@ -20,7 +20,7 @@ Each curve is normalized with the total number of true and false positives per d
 Defining a maximum matching distance threshold would result in less false positives for both conversion types.
 The overlapping curves for \emph{Synthetic} are an artifact of the inherent similarity of different regions and can not be avoided.
 Appendix~\ref{sec:backprojection_sift} contains plots visualizing the matching performance in each dataset in the actual images.
-\begin{figure}[H]
+\begin{figure}[t]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/descriptor_distances.pdf}%
     \caption{\gls{flexion-image}}
@@ -43,7 +43,7 @@ The \gls{flexion-image} produces more keypoints and correspondences compared to 
 Additionally, the true positive rate in \emph{Lehrpfad} is slightly higher in this challenging dataset.
 From these findings the author concludes that the \gls{flexion-image} performs better.
 The theoretical aspects, like rotation invariance and the inclusion of more information per pixel, are additional arguments to prefer the \gls{flexion-image}.
-\begin{figure}[H]
+\begin{figure}[ht]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/flexion/roc.pdf}%
     \caption{\gls{flexion-image}}
