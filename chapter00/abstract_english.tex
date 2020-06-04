@@ -1,15 +1,15 @@
 \begin{abstract}
 Features and their recognition between different images play an important role in computer vision to solve tasks like visual odometry, place and object recognition or global localization.
 Methods for these areas are established and implemented for common mobile devices and robots.
-Even though range data processing is omnipresent for robotic systems, feature detectors for salient, recognizable segments of such pointclouds are challenged to reliably and robustly perform localizations without prior knowlegde.
+Even though range data processing is omnipresent for robotic systems, feature detectors for salient, recognizable segments of such pointclouds can not yet reliably and robustly perform localizations without prior knowlegde.
 
-This thesis takes up the idea of transforming range images into feature images in order to subsequently apply the classical keypoint detector and descriptors of SIFT, SURF, ORB and AKAZE.
-Multiple possible transformations of the range data, from the already proposed Bearing-Angle image to measures of curvature and finally the novel Flexion image, are developed, analyzed and evaluated.
-The characteristics of both the keypoints distribution and properties, as well as the descriptors capability to discriminate regions is carefully examined.
-Each aspect, the keypoint count, size, response, the matching distance between true and false positives and additional measures like precision, recall and informedness is determined for four datasets.
-They consist of a synthetic scene, a challenging underground mining environment, an office scene and LiDAR scans.
-The impact of filtering the data with edge-preserving filters is analyzed on the outcome, too.
+In order to apply the classical keypoint detectors and descriptors of SIFT, SURF, ORB and AKAZE on range images, they are converted into dervied feature images that encode the local geometry of the measured environment.
+Multiple possible transformations of the range data, from the already proposed Bearing-Angle image to measures of curvature and finally the novel Flexion image, are developed, analyzed and evaluated with respect to, among other things, keypoint stability and discrimination potential of the descriptors.
+The aspects keypoint count, size, response, the matching distance between true and false positives and additional measures like precision, recall and informedness are determined for four experimental datasets.
+They consist of a synthetic scene, a underground mining environment, an office scene and LiDAR scans.
+In addition, the impact of filtering the range data with edge-preserving filters is analyzed on the outcome.
 
 All experiments indicate a consistently better performance of the Flexion image compared to the Bearing-Angle image and proof that SIFT and AKAZE are suitable as feature detectors and descriptors whereas SURF and ORB are not.
-The findings of this thesis are a solid foundation to apply classical computer vision algorithms on Flexion images to in turn perform feature recognition on range data.
+This insight is underlined by a comparison of a benchmark visual odometry of the feature to colored images.
+These findings are a solid foundation to apply classical computer vision algorithms on Flexion images to in turn perform feature recognition on range data.
 \end{abstract}
