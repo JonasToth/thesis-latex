@@ -2,7 +2,7 @@ Scaramuzza's\cite{scaramuzza_iros2007} work on calibrating the extrinsic of a \a
 The conversion of range data to a derived visual representation format allows manual selection of corresponding corners, edges and other salient regions in both the color image and the \gls{bearing-angle-image}.
 Minimizing the reprojection error for the selected points allows to compute a relative rotation and translation between both modalities.
 Lin et al.\cite{lin_easp2017} apply the \acrshort{surf}\cite{bay_eccv06} feature detector on \glspl{bearing-angle-image}.
-The keypoints detected in multiple range images allow to reconstruct the relative pose between dense pointclouds.
+The keypoints detected in multiple depth images allow to reconstruct the relative pose between dense pointclouds.
 They additionally compare the performance of this registration to state-of-the-art \acrshort{icp} (\acrlong{icp}) algorithms.
 They conclude, that the \acrshort{icp} has higher precision but execution speed is drastically improved when using the \gls{bearing-angle} based pose as initial state.
 To the best of the author's knowledge, no other work includes the use of \glspl{bearing-angle-image}.
@@ -23,7 +23,7 @@ Failure to converge on a relative pose can happen both due to a bad initial pose
 
 A different approach to pointcloud registration is provided by the \acrlong{NDT} (\acrshort{NDT}) algorithm proposed by Biber and Straßer\cite{biber_iros2003}.
 It works without explicit correspondences between both pointclouds.
-First, the range image is subdivided into cells.
+First, the pointcloud is subdivided into cells.
 Each cell approximates a normal distribution of the probability of measuring a point at a position within the cell.
 Registering a second pointcloud is a matter of maximizing the likelihood that the pointcloud is measured in the reference pointcloud under a given pose.
 The normal distributions are differentiable and classical numerical algorithms, like Newton's algorithm, can be used for the maximization.
@@ -40,11 +40,11 @@ Elbaz et al.\cite{elbaz_cvpr2017} extract subsets of a pointcloud, analyze its m
 A deep neural network based auto-encoder computes a low-dimensional descriptor for each patch.
 Registration of pointclouds is achieved by matching these descriptors followed by a conventional fine-tuning step.
 
-Steder et al.\cite{steder_robot2010} proposed an interest point detector for range images.
+Steder et al.\cite{steder_robot2010} proposed an interest point detector for pointclouds.
 The image's curvature is analyzed by first smoothing with a Gaussian and then computing the second derivatives of the range data.
 High curvature is used for saliency, but special points on an edge and regions of occlusion are filtered out first.
 Interest points must succeed a certain threshold to be selected.
-The selected points are used to calculate transformations between different range images and each potential transformation is scored by the reprojection error.
+The selected points are used to calculate transformations between different pointclouds and each potential transformation is scored by the reprojection error.
 
 % \subsection{Multi-Modal Sensor Registration}
 
@@ -71,6 +71,6 @@ ORB\cite{rublee_iccv11} on the other hand is less accurate but due to its lower 
 The use of classical feature descriptors and template based matching for different modalities, like thermal imaging, is evaluated by Gesto-Diaz et al.\cite{gesto-diaz_2017}.
 They conclude that the detectors result in many correct matches within on modality.
 Correct intermodal matching on the other hand is harder and depends on the modalities used.
-They note that combining thermal and range images yield the worst performance regardless of the used registration technique.
+They note that combining thermal and depth images yield the worst performance regardless of the used registration technique.
 The result is encouraging that algorithms like SIFT\cite{lowe_ijcv04} are not bound to color images but can be used in scenarios with vastly different appearance.
 It also motivates to search for better ways to process range data with feature based matching.

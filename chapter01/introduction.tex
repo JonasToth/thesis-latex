@@ -18,17 +18,17 @@ Instead of working on the three dimensional data directly, each depth image is f
 The feature detectors and descriptors are then run on the feature image.
 
 The feature images have different characteristics than color images.
-For successfull usage of feature based range data registration, the detected keypoints need to be stable between multiple views and the descriptors for each keypoint must discriminate between different sections.
+For successfull usage of feature based depth data registration, the detected keypoints need to be stable between multiple views and the descriptors for each keypoint must discriminate between different sections.
 Researching the properties of both the keypoints and the descriptors for common state-of-the-art algorithms is therefore mandatory work before solving more complex tasks like global localization, that use features at their core.
 The findings shall be used in a simple visual odometry experiment to demonstrate principal applicability of the final result.
 
-The main contribution of this thesis is a novel way to convert range data into a derived feature image and the analysis of the performance of state-of-the-art keypoint detectors and descriptors on this derived image.
+The main contribution of this thesis is a novel way to convert depth data into a derived feature image and the analysis of the performance of state-of-the-art keypoint detectors and descriptors on this derived image.
 All developed tools can be reused as both library code and executable binary to create such images and run the feature algorithms on them.
 Both the qualitative and quantitative findings will build an empirical foundation on developing this approach further for more complex tasks such as place recognition, global localization in a known environment and visual odometry with the novel feature images as input.
 
 Section~\ref{sec:related_work} introduces the related work on state-of-the-art algorithms for pointcloud registration and feature performance comparisons.
-Necessary foundational knowledge on range sensors and the math of modeling their data is presented in Section~\ref{sec:fundamentals}.
+Necessary foundational knowledge on depth sensors and the math of modeling their data is presented in Section~\ref{sec:fundamentals}.
 It additionally gives a high level introduction on keypoint detectors and descriptors and how their performance can be evaluated.
-Section~\ref{sec:image_processing} describes the novel range data processing, starting with edge-preserving filtering followed by conversion to feature-images and finally explaining the evaluated feature detection and description algorithms.
+Section~\ref{sec:image_processing} describes the novel depth data processing, starting with edge-preserving filtering followed by conversion to feature-images and finally explaining the evaluated feature detection and description algorithms.
 The proposed pipeline is evaluated in Section~\ref{sec:experiments}, describing the approach and metrics, and Section~\ref{sec:results} that presents and discusses the results.
 Finally, Section~\ref{sec:conclusion} concludes the work and proposes further research areas to develop this new approach.

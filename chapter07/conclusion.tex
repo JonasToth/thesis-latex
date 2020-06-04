@@ -1,5 +1,5 @@
-This thesis evaluated the use of state-of-the-art computer vision feature detection and description algorithms to find salient points in a range image.
-Instead of direct application of the algorithm to the range image, it is transformed into a derived image constructed from local geometric properties of the range values.
+This thesis evaluated the use of state-of-the-art computer vision feature detection and description algorithms to find salient points in a depth image.
+Instead of direct application of the algorithm to the depth image, it is transformed into a derived image constructed from local geometric properties of the depth values.
 The approach is introduced by Scaramuzza et al.\cite{scaramuzza_iros2007} with their \gls{bearing-angle-image} and the usage of \acrshort{surf} to detect keypoints on those by Lin et al.\cite{lin_easp2017}.
 To overcome the \gls{bearing-angle-image}'s limitation, the lack of rotation invariance, this work proposed four additional feature image conversions.
 Only the \gls{flexion-image} is judged as viable.
@@ -10,7 +10,7 @@ Surprisingly, the evaluation showed that \acrshort{surf} lacks descriptive power
 The findings of this thesis --- the novel \gls{flexion-image} and its performance for \acrshort{sift} and \acrshort{akaze} --- may be the foundation for a descriptor for dense, structured pointcloud data, a problem not solved satisfactory yet.
 
 The proposed conversion has been tested with a Kinectv2 depth sensor and the Riegl Z300 \acrshort{LIDAR} scanner.
-Preprocessing the range data with edge-preserving filtering was part of the evaluation and has proven to be useful for the Riegl Z300, but unnecessary for the Kinectv2 sensor.
+Preprocessing the depth data with edge-preserving filtering was part of the evaluation and has proven to be useful for the Riegl Z300, but unnecessary for the Kinectv2 sensor.
 Applying a median blur is enough for consistent smooth results and a more advanced bilateral filtering was not beneficial.
 
 The implementation of the evaluation software and conversion code was done with state-of-the-art software engineering principles and is of high quality.
