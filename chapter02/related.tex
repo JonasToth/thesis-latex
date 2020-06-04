@@ -1,10 +1,10 @@
-Scaramuzza's\cite{scaramuzza_iros2007} work on calibrating the extrinsic of a \acrshort{LIDAR} scanner to a camera is the introduces the \gls{bearing-angle-image}.
-The conversion of range data to a derived visual representation format allows manual selection of corresponding corners, edges and other salient regions in both the color image and the \gls{bearing-angle-image}.
+Scaramuzza's work on calibrating the extrinsic of a \acrshort{LIDAR} scanner to a camera\cite{scaramuzza_iros2007} introduces the \gls{bearing-angle-image}.
+The conversion of range data to a derived visual representation format allows manual selection of corresponding corners, edges and other salient regions in both the color image and the \gls{bearing-angle-image}\cite{scaramuzza_iros2007}.
 Minimizing the reprojection error for the selected points allows to compute a relative rotation and translation between both modalities.
-Lin et al.\cite{lin_easp2017} apply the \acrshort{surf}\cite{bay_eccv06} feature detector on \glspl{bearing-angle-image}.
-The keypoints detected in multiple depth images allow to reconstruct the relative pose between dense pointclouds.
-They additionally compare the performance of this registration to state-of-the-art \acrshort{icp} (\acrlong{icp}) algorithms.
+Lin et al.\cite{lin_easp2017} apply the \acrshort{surf}\cite{bay_eccv06} feature detector on \glspl{bearing-angle-image} to reconstruct the relative pose between dense pointclouds.
+They additionally compare the performance of this registration to state-of-the-art \acrshort{icp} algorithms.
 They conclude, that the \acrshort{icp} has higher precision but execution speed is drastically improved when using the \gls{bearing-angle} based pose as initial state.
+Zhuang et al.\cite{zhuang_iam2013} apply \acrshort{sift}\cite{lowe_ijcv04} on \glspl{bearing-angle-image} for scene recognition on \acrshort{LIDAR} scans.
 To the best of the author's knowledge, no other work includes the use of \glspl{bearing-angle-image}.
 
 \subsection{Pointcloud Registration}
@@ -35,7 +35,6 @@ Again, alignment of two pointclouds means the maximal probability of the data po
 In iterative refinement steps of the relative pose the centeroids of the \acrshort{GMM} are enforced to move in topological consistent fashion, hence coherent point drift.
 The review articles~\cite{bellekens_ambient2014,pomerleau_2015} introduce state-of-the-art pointcloud registration algorithms both in general and for robotic applications.
 
-Feature-like algorithms are uncommon, but some approaches exist in the literature.
 Elbaz et al.\cite{elbaz_cvpr2017} extract subsets of a pointcloud, analyze its main directional components using a principal component analysis and synthesize a depth map for these patches.
 A deep neural network based auto-encoder computes a low-dimensional descriptor for each patch.
 Registration of pointclouds is achieved by matching these descriptors followed by a conventional fine-tuning step.
@@ -43,21 +42,8 @@ Registration of pointclouds is achieved by matching these descriptors followed b
 Steder et al.\cite{steder_robot2010} proposed an interest point detector for pointclouds.
 The image's curvature is analyzed by first smoothing with a Gaussian and then computing the second derivatives of the range data.
 High curvature is used for saliency, but special points on an edge and regions of occlusion are filtered out first.
-Interest points must succeed a certain threshold to be selected.
+Interest points must succeed an empirical found threshold to be selected.
 The selected points are used to calculate transformations between different pointclouds and each potential transformation is scored by the reprojection error.
-
-% \subsection{Multi-Modal Sensor Registration}
-
-% \begin{itemize}
-    % \item Kinect Fusion uses ICP\cite{newcombe_ismar2011}
-    % \item dense visual odometry uses photometric error of all image information, instead of sparse features like SIFT\cite{kerl_icra2013}, photo consistency assumption -> the brightness of a point stays constant between two camera poses.
-    % \item multi-cue photometric registration\cite{corte_icra2018}
-    % \item image-to-geometry mapping based on correlation\cite{corsini_cgf2009}
-    % \item laser scan registration based on panorama pictures from coregistered camera or intensity images\cite{alba_isprs2012}
-    % \item SIFT realistic rendering to match images with pointclouds\cite{sibbing_3dv2013}
-    % \item Synthetic views from dense pointcloud intensity images, matched with camera maximizing normalized mutual information\cite{wolcott_iros2014,zhao_icra2016}
-    % \item laser scan registration using planar patches and image data\cite{dold_iaprs2006}
-% \end{itemize}
 
 \subsection{Feature Algorithm Comparison}
 
@@ -66,11 +52,11 @@ They provide a way to detect salient regions of a gray-scale image that can be c
 The breakthrough development is Lowe's SIFT\cite{lowe_ijcv04} algorithm.
 The early benchmark\cite{mikolajczyk_pami2005} of SIFT to other classical algorithms, like the Harris corner detector\cite{harris_1988}, demonstrated the strong performance of SIFT.
 Since the early 2000s more work on improving upon SIFT in terms of performance, compute requirements and diverse applications lead to more competitors like SURF\cite{bay_eccv06}, ORB\cite{rublee_iccv11} and AKAZE\cite{alcantarilla_bmva13}.
-A recent comparison between those modern, well established algorithms by Andersson and Reyna Marquez\cite{andersson_2016} still puts SIFT as a top-performer, with AKAZE\cite{alcantarilla_bmva13} yielding similar but slightly less accurate results.
-ORB\cite{rublee_iccv11} on the other hand is less accurate but due to its lower computational cost still a viable option, especially for mobile applications.
+A recent comparison between those modern, well established algorithms by Andersson and Reyna Marquez\cite{andersson_2016} still puts SIFT as a top-performer, with AKAZE yielding similar but slightly less accurate results.
+ORB\cite{rublee_iccv11} on the other hand is less accurate but due to its lower computational cost still a viable option, especially for mobile applications\cite{andersson_2016}.
 The use of classical feature descriptors and template based matching for different modalities, like thermal imaging, is evaluated by Gesto-Diaz et al.\cite{gesto-diaz_2017}.
 They conclude that the detectors result in many correct matches within on modality.
 Correct intermodal matching on the other hand is harder and depends on the modalities used.
 They note that combining thermal and depth images yield the worst performance regardless of the used registration technique.
 The result is encouraging that algorithms like SIFT\cite{lowe_ijcv04} are not bound to color images but can be used in scenarios with vastly different appearance.
-It also motivates to search for better ways to process range data with feature based matching.
+It also motivates to search for better ways to process range data with feature-based matching.

@@ -3,15 +3,15 @@
 Evaluating the performance of the feature matching algorithms on the converted depth images is done by analyzing the matching process as a binary classifier.
 The classification task is to determine if a keypoint $\mathbf{K_1}$ of image $I_1$ corresponds with keypoint $\mathbf{K_2}$ in image $I_2$ with a binary outcome.
 A pair of keypoints corresponds, if both pixel coordinates projected into space intersect at the same point, allowing for a little bit of uncertainty, e.g. 2\,px backprojection difference.
-As with most statistics, it is necessary to consider the distribution of a quantity and analyze it from multiple view points.
+It is necessary to consider the distribution of a quantity and analyze it from multiple view points.
 Therefore, the final evaluation will consider other criteria, like distribution and characteristics of the keypoints.
 
 Pairs of keypoints are defined as \emph{positive} ($P$) if they correspond and \emph{negative} ($N$) otherwise.
 The predicted outcome of the matching system is either \emph{yes} ($y$) or \emph{no} ($n$).
 The result of this prediction is in one of four categories.
-A correspondence can be correctly, a \emph{true positive} ($TP$), or mistakenly recognized, a \emph{false positive} ($FP$).
-Similarly, the lack of correspondence can be either correctly or incorrectly, so called \emph{true negatives} ($TN$) and \emph{false negatives} ($FN$), detected.
-The \emph{confusion matrix}, a specialized case of a \emph{contingency table}\cite{agresti_2007}, keeps track of classification outcomes and is the basis for many performance criteria and derived metrics.
+A correspondence can be correctly recognized, a \emph{true positive} ($TP$), or mistakenly recognized, a \emph{false positive} ($FP$).
+Similarly, the lack of correspondence can be either correctly or incorrectly detected (\emph{true negatives} ($TN$) and \emph{false negatives} ($FN$), respectively).
+The \emph{confusion matrix}, a specialized case of a \emph{contingency table}\cite[p.21]{agresti_2007}, keeps track of classification outcomes and is the basis for many performance criteria and derived metrics.
 Table~\ref{tab:def_confusion_matrix} demonstrates the arrangement of elements in a confusion matrix.
 The provided values can be either an absolute count of elements or a relative share of total elements and must be exhaustive.
 
@@ -37,7 +37,7 @@ The provided values can be either an absolute count of elements or a relative sh
 
 All \emph{positive} elements are \emph{relevant elements} in the sense, that the keypoint pair points to the same world coordinate.
 Predicted correspondences ($y$) are called \emph{selected elements}.
-Different common ratios are derived from the confusion matrix.
+Different common ratios are derived from the confusion matrix\cite{fawcett_2006}.
 
 \begin{description}
     \item[True Positive Rate] The true positive rate defines the ratio of correctly identified positive elements to total positive elements and is also called \textbf{hit rate}, \textbf{recall} or \textbf{sensitivity}.

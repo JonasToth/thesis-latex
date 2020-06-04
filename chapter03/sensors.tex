@@ -1,15 +1,15 @@
 \subsection{Depth Sensors}
 
 Depth sensors play an increasingly important role in modern robotic applications.
-They give a robot a fast mean to detect obstacles and locate itself in its environment.
-The following paragraphs describe the underlying sensing principles\cite{blais_2003} for the depth sensors commonly used in mobile robotic applications.
+They give robots a fast mean to detect obstacles and locate themselves in their environments.
+The following paragraphs describe the underlying sensing principles for the depth sensors commonly used in mobile robotic applications.
 
 \subsubsection{Structured-Light Depth Sensors}
 
-Structured-light depth sensors project a known light pattern into space and optically sense the reflection.
+Structured-light depth sensors project a known light pattern into space and optically sense the reflection\cite{blais_2003}.
 The pattern appears distorted from a viewpoint different than the projector due to the shape of the reflecting object.
 Figure~\ref{fig:sl_face} provides an example for structured-light sensing using visible light.
-Stripes and grids of lines or points are common for sensors in robotic applications, such as the Kinectv1 and Intel RealSense\cite{intel_realsense} sensors.
+Stripes and grids of lines or points are common for sensors in robotic applications\cite{blais_2003}, such as the Kinectv1\cite{wasenmuller_accv2016} and Intel RealSense\cite{intel_realsense} sensors.
 \begin{figure}[H]
     \centering
     \begin{subfigure}[t]{0.45\textwidth}
@@ -24,7 +24,7 @@ Stripes and grids of lines or points are common for sensors in robotic applicati
 \end{figure}
 Viewing the projected patterns from multiple viewpoints allows triangulation to recover the depth information.
 Mobile robotic depth sensors achieve frame rates of 30\,\acrshort{fps} or more.
-The projected pattern should not interfere with other optic devices leading to infrared light.
+The projected pattern should not interfere with other optic devices leading to the usage of infrared light.
 
 \subsubsection{\acrlong{ToF} (\acrshort{ToF}) cameras}
 
@@ -32,7 +32,7 @@ The second prevalent sensing technology measures the traveling time of light\cit
 Multiplying the measured roundtrip time by the known speed of light in the surrounding medium results in twice the distance of the object.
 Such a sensor system requires a light sources.
 Unlike the specialized patterns emitted for structured light, this can be an ordinary infrared \acrshort{led}, again preventing interference in other spectra of light.
-\begin{figure}[H]
+\begin{figure}[hb!]
     \centering
     \begin{subfigure}[t]{0.45\textwidth}
         \includegraphics[width=\textwidth]{chapter03/img/tof_traveltime_original.png}
@@ -62,7 +62,7 @@ Each complete horizontal measurement is called a scan line.
 
 Some \acrshort{LIDAR}s, especially mobile systems with real time requirements, measure tens of scan lines.
 Such systems achieve a higher frame rate.
-A dense \acrshort{LIDAR} scan is required for the choosen feature-based approach.
+A dense \acrshort{LIDAR} scan is required for the optical feature-based registration approach.
 Such scans can be created with terrestrial \acrshort{LIDAR} stations, common in geodesic applications.
 Additionally, the intensity of the reflected light beam might be obtained as second measurement channel.
 

@@ -1,7 +1,7 @@
 \subsection{Coordinate Systems}
 
-This section introduces the used naming conventions and coordinate systems that model the sensory system commonly used in computer vision.
-Additionally, homogeneous coordinates allow efficient computation of affine transformations with one matrix-vector multiplication and knowledge of them is a prerequisite to fully understand the pinhole camera model in Section~\ref{sec:pinhole_model}.
+This section introduces the used naming conventions for coordinate systems that model the sensory system used in computer vision.
+Homogeneous coordinates allow efficient computation of affine transformations with one matrix-vector multiplication and knowledge of them is a prerequisite to fully understand the pinhole camera model in Section~\ref{sec:pinhole_model}.
 Corke\cite[p. 15-39,533]{corke_2011} provides excellent coverage of these topics.
 
 \subsubsection*{Naming Conventions}
@@ -19,11 +19,11 @@ Multiple sensors can exist within the \emph{world coordinate system}.
 
 \subsubsection*{Coordinate Transformations and Pose}
 
-\begin{figure}[H]
+\begin{figure}[tb!]
     \scalebox{0.7}{%
     \input{chapter03/img/coordinate_transformation}
     }
-    \caption[Coordinate transformation]{\emph{Coordinate transformation.} Relationship between different representation of the same point in different coordinate systems. The relationship displayed here and the corresponding linear algebra holds true for cartesian coordinate systems of any dimension.}\label{fig:coordinate_transformation}
+    \caption[Coordinate transformation]{\emph{Coordinate transformation.} Relationship between different representation of the same point in different coordinate systems. The relationship displayed here and the corresponding linear algebra holds true for cartesian coordinate systems of any dimension. Figure based on \cite[p.20]{corke_2011}.}\label{fig:coordinate_transformation}
 \end{figure}
 
 Let $\mathbf{O_\mathcal{W}}$ be the origin of the \emph{world coordinate system}.

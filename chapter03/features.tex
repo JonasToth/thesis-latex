@@ -1,10 +1,10 @@
 \subsection{Keypoint Detection and Feature Description}
 
 Extracting information from images is a common task in computer vision.
-One approach is the detection of salient regions of special interest --- \emph{features}.
+One approach is the detection of salient regions of special interest --- so called \emph{features}.
 Such regions can have arbitrary detectable properties, like a sharp brightness gradient or being corner-like.
 Detecting such a region results in a \emph{keypoint} that might have properties like a \emph{size}, \emph{response} and sometimes even an \emph{orientation} (Figure~\ref{fig:features_example}).
-\begin{figure}[H]
+\begin{figure}[b!]
     \scalebox{0.95}{%
     \input{chapter03/img/features.tex}
     }
@@ -14,15 +14,14 @@ Keypoints on itself are not descriptive enough to be identified in different ima
 A changing view point or even a different camera result in changes to the overall shape and appearance of the scene.
 Reliable keypoint identification requires the analysis of bigger image patches.
 The \emph{keypoint descriptor} analyzes a predefined region around the centered keypoint and extracts a vector for that region.
-Different aspects can be analyzed and Section~\ref{sec:feature_algorithms} introduces the most common algorithms for that task.
-The extracted vector has a high dimension with tens to hundreds of elements.
+The extracted descriptor has a high dimension with tens to hundreds of elements that for example store local brightness gradients.
 
 Connecting the keypoints between different images uses the extracted descriptors for each keypoint.
 \emph{Similar} descriptors are associated.
 Similarity of the descriptors is calculated with a matching norm depdendent on the structure of the descriptor.
 Dense real descriptors commonly use the Euclidean norm where as binary descriptors use the hamming norm.
 Additional constraints, like geometric consistency, improve the accuracy of the matching result.
-For the provided example this result might be
+For the provided example a potential matching result might be
 \begin{equation}
 \begin{aligned}
     \mathbf{K_{1,2}} &\leftrightarrow \mathbf{K_{2,2}}~\textcolor{darkgreen}{\bullet} &
@@ -32,7 +31,7 @@ For the provided example this result might be
     \mathbf{K_{1,1}} &\leftrightarrow \mathbf{K_{2,1}} &
 \end{aligned}
 \end{equation}
-with green bullets indicating a correct match.
+whereby green bullets indicate a correct match.
 An important descriptor design criteria is the trade-off between computational cost and descriptive power, as especially descriptor matching is computationally expensive.
 
 Features play a key role in multiple computer vision tasks.

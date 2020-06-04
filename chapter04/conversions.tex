@@ -1,8 +1,7 @@
 \subsection{Conversion from Depth Image to Feature Image}\label{sec:feature_images}
 
-To transition from a depth based to a feature based registration, a prior conversion from depth values to some derived \emph{feature image} is required.
+To transition from a depth-based to a feature-based registration, a prior conversion from depth values to some derived \emph{feature image} is required.
 This conversion needs to result in a single scalar value because all keypoint detectors work on a single signal channel.
-The converted images are coined \emph{feature image} alltogether, because they form the starting point for the classical feature based keypoint matching and image alignment.
 Every feature image is calculated on range data in floating point format, potentially requiring the preprocessing step presented in Section~\ref{sec:range_depth_conversion}.
 The representation change from integer to floating point data does no further processing than simple type conversion.
 
