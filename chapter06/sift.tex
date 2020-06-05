@@ -1,12 +1,12 @@
-\begin{table}[ht]
+\begin{table}[b!]
     {\renewcommand{\arraystretch}{1.2}%
-    \setlength{\tabcolsep}{0.3em}%
+    \setlength{\tabcolsep}{0.7em}%
     \footnotesize
 \input{chapter06/results/SIFT/absolute_numbers}
     }
-    \caption[Keypoint and matching results for \texttt{\acrshort{sift}/raw/default}]{\emph{Keypoint and matching results for \texttt{\acrshort{sift}/raw/default}.} The \gls{flexion-image} results in more detected keypoints for all datasets and hence more correspondences. The recall of \acrshort{sift} is outstanding and above 80\% for even the demanding \emph{Mine} dataset.}
+    \caption[Keypoint and matching results for \texttt{\acrshort{sift}/raw/default}]{\emph{Keypoint and matching results for \texttt{\acrshort{sift}/raw/default}.} The \gls{flexion-image} results in more detected keypoints for all datasets and hence more correspondences. The recall of \acrshort{sift} is outstanding and above 80\% for even the demanding \emph{Mine} dataset.}\label{tab:sift_data}
 \end{table}
-The number of detected keypoints is significantly higher for the \glspl{flexion-image} compared to the \glspl{bearing-angle-image} in each dataset.
+The number of detected keypoints is significantly higher for the \glspl{flexion-image} compared to the \glspl{bearing-angle-image} in each dataset (Table~\ref{tab:sift_data}).
 Approximately twice as many correspondences between keypoints are detected for \glspl{flexion-image}.
 The distribution of the keypoints in each dataset indicates no obvious problems in any regard (Figure~\ref{fig:sift_kp_distribution}).
 In \emph{Mine}, the keypoints are not as common in the ground area but denser on the walls.
@@ -52,6 +52,6 @@ The theoretical aspects, like rotation invariance and the inclusion of more info
     \includegraphics[width=\linewidth]{chapter06/results/SIFT/bearing/roc.pdf}
     \caption{\gls{bearing-angle-image}}
 \end{subfigure}
-\caption[\acrshort{ROC} graphs for \acrshort{sift}]{\emph{\acrshort{ROC} graphs for \acrshort{sift}.} The \acrshort{ROC} plot for \acrshort{sift} is tightly clustered for both conversions. No distinguished improvements are observable by parameter variations.}\label{fig:roc_sift}
+\caption[\acrshort{ROC} graphs for \acrshort{sift}]{\emph{\acrshort{ROC} graphs for \acrshort{sift}.} The \acrshort{ROC} plot for \acrshort{sift} is tightly clustered for both conversions. No distinguished improvements are observable by parameter variations. The unfiltered depth image with default \acrshort{sift} settings is marked with a horizontal line.}\label{fig:roc_sift}
 \end{figure}
 \vspace{-10mm}

@@ -9,9 +9,9 @@ set xlabel "False Positive Rate"
 set ylabel "True Positive Rate"
 set key right bottom nobox opaque
 
-set label default_name at graph 0.02,lehrpfad_default-0.018 left font ",9" noenhanced front textcolor ls 4
-set label default_name at graph 0.02,office_default-0.018 left font ",9" noenhanced front textcolor ls 2
-set label default_name at graph 0.02,synthetic_default-0.018 left font ",9" noenhanced front textcolor ls 5
+set label default_name at graph 0.015,lehrpfad_default-0.019 left font ",11" noenhanced front textcolor ls 4
+set label default_name at graph 0.015,office_default-0.019 left font ",11" noenhanced front textcolor ls 2
+set label default_name at graph 0.015,synthetic_default-0.019 left font ",11" noenhanced front textcolor ls 5
 
 plot [0:1] [0:1]\
      lehrpfad_default w l ls 4 notitle,\
