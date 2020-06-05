@@ -25,7 +25,7 @@ Assuming a correct relative pose, the corresponding keypoints have a small pixel
 This approach can only result in a proper analysis for a sparse distribution of keypoints that actually correspond to image structure and requires small changes in pose.
 When the pose difference is big, it can happen that keypoints get projected to the same position as some other valid keypoint without referencing the same world point.
 Too many points create ambiguity with respect to the backprojection tolerance.
-\begin{figure}[H]
+\begin{figure}[b!]
     \input{chapter05/img/backprojection}
     \caption[Backprojection of keypoints visualized]{\emph{Backprojection of keypoints visualized.} The choosen approach of projecting keypoints between frames is demonstrated in this figure. Keypoints of image $I_1$ are blue dots in both images and the orange ones are only detected in image $I_2$. Actual correspondences result in very close points in $I_2$, indicated as blue dot with orange border, whereas unrelated points show no proximity. This assumption holds for small changes in pose and relatively sparse distribution of detected keypoints.}\label{fig:keypoint_projection}
 \end{figure}

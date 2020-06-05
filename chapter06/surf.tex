@@ -4,8 +4,8 @@ After some experimentation with the settings it became clear, that on each octav
 This finding was true for both the \glspl{flexion-image} and \glspl{bearing-angle-image}, resulting in a suboptimal keypoint detector performance in scale space.
 In theory, different keypoint detectors can be combined with different keypoint descriptors and as \acrshort{surf} is commonly referred to as the faster \acrshort{sift}, its description potential should still be evaluated.
 The default settings for \acrshort{surf} are still used, but only one octave with four blurring convolutions detects keypoints (Figure~\ref{fig:surf_keypoints_mess}), resulting in the keypoint statistics presented in Table~\ref{tab:surf_results}.
-\vspace{-2mm}
-\begin{figure}[H]
+% \vspace{-2mm}
+\begin{figure}[t]
 \begin{subfigure}[t]{0.25\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SURF/flexion/default_kp0005.png}%
 \end{subfigure}%
@@ -20,8 +20,8 @@ The default settings for \acrshort{surf} are still used, but only one octave wit
 \end{subfigure}%
     \caption[\acrshort{surf} keypoints plotted in feature images]{\emph{\acrshort{surf} keypoints plotted in feature images.} This figure shows the number of keypoints that are detected with \acrshort{surf} in its default configuration compared to just using one octave. Limiting the number of keypoints is mandatory to achieve some potentially meaningful result.}\label{fig:surf_keypoints_mess}
 \end{figure}
-\vspace{-8mm}
-\begin{table}[ht]
+% \vspace{-8mm}
+\begin{table}[b!]
     {\renewcommand{\arraystretch}{1.2}%
     \setlength{\tabcolsep}{0.3em}%
     \footnotesize
@@ -32,7 +32,7 @@ The default settings for \acrshort{surf} are still used, but only one octave wit
 The number of correspondences for the adjusted \acrshort{surf} setup is comparable to \acrshort{sift} detecting keypoints on multiple scales.
 But the high number of false negatives already indicates lesser descriptor performance.
 This impression is solidified with the descriptor distance analysis in Figure~\ref{fig:surf_descriptor_distance}.
-\begin{figure}[b!]
+\begin{figure}[htb]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SURF/flexion/descriptor_distances.pdf}%
     \caption{\gls{flexion-image}}
@@ -48,7 +48,7 @@ Even this slight seperation is neglected by drastically higher numbers of false 
 Seperating both distributions through a maximum matching distance is hard to justify.
 For a 64 element descriptor that \acrshort{surf} deploys, the match distance around \num{0.3} seems very low, too.
 The \acrshort{ROC} analysis (Figure~\ref{fig:roc_surf}) points in the same direction showing performance around the \emph{Random Guess} quality, for \emph{Lehrpfad} even below.
-\begin{figure}[ht]
+\begin{figure}[b!]
 \begin{subfigure}[t]{0.45\linewidth}
     \includegraphics[width=\linewidth]{chapter06/results/SURF/flexion/roc.pdf}%
     \caption{\gls{flexion-image}}

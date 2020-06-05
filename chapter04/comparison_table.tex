@@ -2,9 +2,10 @@
 
 Table~\ref{tab:detector_comparison} gives a short overview of the presented descriptors and how their runtime and usage characteristics compare to each other.
 This overview does not reflect the performance of the algorithms in terms of accuracy or descriptiveness, but compares design decisions and execution characteristics.
+All presented algorithms are designed with color images in mind and all previous performance evaluations are not significant for the novel feature image types.
 \begin{table}[H]
     {\renewcommand{\arraystretch}{1.3}%
-    \setlength{\tabcolsep}{0.3em}%
+    \setlength{\tabcolsep}{1em}%
     \footnotesize
     \begin{tabular}{rcccc}
     \toprule
@@ -13,7 +14,7 @@ This overview does not reflect the performance of the algorithms in terms of acc
     \textbf{Detector Speed} & \textbf{-} & \textbf{+} & \textbf{++} & \textbf{+} \\
     \textbf{Descriptor Speed} & \textbf{- -} & \textbf{-} & \textbf{++} & \textbf{+} \\
     \textbf{Matching Speed} & \textbf{- -} & \textbf{-} & \textbf{++} & \textbf{++} \\
-    \textbf{Descriptor Memory Footprint} & \textbf{- -} & \textbf{-} & \textbf{++} & \textbf{++} \\
+    \textbf{Memory Footprint} & \textbf{- -} & \textbf{-} & \textbf{++} & \textbf{++} \\
     \bottomrule
     \end{tabular}
     }
