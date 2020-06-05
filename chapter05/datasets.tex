@@ -33,13 +33,13 @@ The total animation consists of 211 images and no noise is applied to the depth 
 \end{floatrow}
 \end{figure}
 
-\subsubsection{Lehrpfad}
+\subsubsection{Mine}
 
-One real-world dataset is obtained with a mobile robot using a Kinectv2 in an underground mining environment.
+One real-world dataset is obtained with a mobile robot using a Kinectv2 in an underground mining environment, the \emph{Lehrpfad} of the Reiche Zeche, the education and research mine of the TU Bergakademie Freiberg.
 The route has been previously reconstructed with \gls{sfm} using color images.
 Due to the global optimization in the \gls{sfm} pipeline not preserving the proper scale for the depth images, the translations do not match the measured distances of the depth sensor.
 The preexisting poses are used as initial pose for ICP refinement.
-\emph{Lehrpfad} is the biggest tested dataset with 734 frames and has the biggest variation in the visible structures (example images in Appendix~\ref{sec:lehrpfad_conversions}).
+\emph{Mine} is the biggest tested dataset with 734 frames and has the biggest variation in the visible structures (example images in Appendix~\ref{sec:lehrpfad_conversions}).
 It is a challenging dataset with high amount of noise, many missing depth values and differing data quality over the whole set of images.
 \begin{figure}[H]
 \CenterFloatBoxes%
@@ -57,14 +57,14 @@ It is a challenging dataset with high amount of noise, many missing depth values
     $c_x$, $c_y$ &  479.46, 272.74 \\
     \bottomrule
     \end{tabular}}
-    {\caption{Lehrpfad Kinectv2 intrinsic.}\label{tab:lehrpfad_intrinsic}}%
+    {\caption{Mine Kinectv2 intrinsic.}\label{tab:lehrpfad_intrinsic}}%
     \ffigbox{%
     \includegraphics[width=0.5\linewidth]{chapter05/img/lehrpfad/color0000.jpg}%
     \includegraphics[width=0.5\linewidth]{chapter05/img/lehrpfad/depth-scaled-0000.png}\\
     \includegraphics[width=0.5\linewidth]{chapter05/img/lehrpfad/flexion-0000.png}%
     \includegraphics[width=0.5\linewidth]{chapter05/img/lehrpfad/bearing-0000.png}%
     }
-    {\caption{Images of the \emph{Lehrpfad} dataset.}\label{fig:lehrpfad_data}}
+    {\caption{Images of the \emph{Mine} dataset.}\label{fig:lehrpfad_data}}
 \end{floatrow}
 \end{figure}
 
@@ -73,7 +73,7 @@ It is a challenging dataset with high amount of noise, many missing depth values
 The second Kinectv2 dataset is taken in an office with many smaller elements, wires and other manmade objects.
 It contains 57 images composed of translation and rotation of the depth sensor (example images in Appendix~\ref{sec:office_conversions}).
 No trajectory reconstruction other than the ICP is used for the relative poses.
-It contains similar measurement errors as the Lehrpfad dataset, but has more distinctive shapes and better overall conditions for the depth sensor.
+It contains similar measurement errors as the Mine dataset, but has more distinctive shapes and better overall conditions for the depth sensor.
 \begin{figure}[H]
 \CenterFloatBoxes%
 \begin{floatrow}
@@ -103,7 +103,7 @@ It contains similar measurement errors as the Lehrpfad dataset, but has more dis
 
 \subsubsection{Laserscan}
 
-Full \acrshort{LIDAR} scans are taken as part of classical mine surveying in the Reiche Zeche, the education and research mine of the TU Bergakademie Freiberg.
+Full \acrshort{LIDAR} scans are taken as part of classical mine surveying in the Reiche Zeche.
 The scans were done in the section \emph{Wilhelm-Stehender-Süd} of the mine.
 These scans are examined for the conversions, too.
 Because they were done with classical artificial marker based registration in mind, the overlap between those scans is minimal.
@@ -141,7 +141,7 @@ The selected scans were manually processed to have a common resolution and aspec
     \setlength{\tabcolsep}{0.3em}%
     \begin{tabular}{ccccc}
     \toprule
-    \null & \textbf{Synthetic} & \textbf{Lehrpfad} & \textbf{Office} & \textbf{Laserscan} \\
+    \null & \textbf{Synthetic} & \textbf{Mine} & \textbf{Office} & \textbf{Laserscan} \\
     \midrule
     \textbf{Camera Model} & pinhole & pinhole & pinhole & equirectangular \\
     \textbf{Number Images} & 211 & 734 & 57 & 6 \\

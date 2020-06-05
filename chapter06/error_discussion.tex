@@ -4,12 +4,12 @@ The datasets are affected by different errors and simplifications, that are disc
 \emph{Synthetic} is a noise free dataset with very simple scene structure.
 Findings and conclusion based on this dataset are only of principle nature but do not reflect real world performance.
 
-The \emph{Lehrpfad} and \emph{Office} dataset are both gathered using the same Kinectv2 technology, but under different conditions and environments.
-\emph{Lehrpfad}, an underground mining environment with partially wet walls, contains drastically more missing depth measurements.
+The \emph{Mine} and \emph{Office} dataset are both gathered using the same Kinectv2 technology, but under different conditions and environments.
+\emph{Mine}, an underground mining environment with partially wet walls, contains drastically more missing depth measurements.
 For parts of the whole trajectory, it is very challenging to make out the basic shapes of the scene as a human.
 The computer vision algorithms can not magically perform better at these places.
 Parts of the scene are not within the measurement range, the walls and wide areas are not fully lit by the sensor's infrared \acrshort{led} or the light is absorbed by water.
-Missing range measurements also occur in \emph{Office}, but the overall influence of bad conditions is not as high as in \emph{Lehrpfad}.
+Missing range measurements also occur in \emph{Office}, but the overall influence of bad conditions is not as high as in \emph{Mine}.
 
 Another major consideration is the rectification of the depth images before being processed by the proposed pipeline.
 The native resolution of the Kinectv2 depth sensor is 512$\times$424\,px\cite{wasenmuller_accv2016}, which is lower than the input depth images used for the feature image conversions.

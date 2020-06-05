@@ -5,6 +5,6 @@ count_laserscan = "`sed -ne 's/count: \(\w\+\)$/\1/p' laserscan_keypoint_stat.ym
 
 splot \
       "laserscan_size.dat" using (0.0):1:($2/count_laserscan):(0):($2/count_laserscan) with zerrorfill ls 6 title "Laserscan",\
-      "lehrpfad_size.dat" using (0.1):1:($2/count_lehrpfad):(0):($2/count_lehrpfad) with zerrorfill ls 4 title "Lehrpfad",\
+      "lehrpfad_size.dat" using (0.1):1:($2/count_lehrpfad):(0):($2/count_lehrpfad) with zerrorfill ls 4 title "Mine",\
       "office_size.dat" using (0.2):1:($2/count_office):(0):($2/count_office) with zerrorfill ls 2 title "Office",\
       "synthetic_size.dat" using (0.3):1:($2/count_synthetic):(0):($2/count_synthetic) with zerrorfill ls 5 title "Synthetic"

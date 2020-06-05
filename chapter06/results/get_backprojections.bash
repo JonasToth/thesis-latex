@@ -8,7 +8,7 @@ if [ $# -ne 2 ] ; then
 fi
 
 # Use image magic to crop the images
-# Lehrpfad:
+# Mine:
 #     convert -crop 770x540+75+0 0000.png 0000_cropped.png
 
 crop_images() {
@@ -22,7 +22,7 @@ crop_images() {
     cd - || exit 1
 }
 
-echo "Gathering Lehrpfad..."
+echo "Gathering Mine..."
 for idx in 90 180 360 631 ; do
     cp "../lehrpfad/${1}/flexion/raw/${2}/extracted/backprojected-$(printf "%04d" ${idx}).png" \
        "${1}/backprojections/lehrpfad/" || exit 1

@@ -15,7 +15,7 @@ unset ytics
 unset xlabel
 unset ylabel
 
-set multiplot layout 1,4 title plot_title 
+set multiplot layout 1,4 title plot_title
 
 # x- and ytics for each row resp. column
 set lmargin at screen 0.01
@@ -24,7 +24,7 @@ set label 1 'Laserscan' at graph 0.76,0.03 font ',12' front textcolor rgb '#0000
 plot "laserscan_distribution.dat" using 1:2:3 with image notitle
 set lmargin at screen 0.25
 set rmargin at screen 0.5
-set label 1 'Lehrpfad' at graph 0.76,0.03 font ',12' front textcolor rgb '#000000'
+set label 1 'Mine' at graph 0.76,0.03 font ',12' front textcolor rgb '#000000'
 plot "lehrpfad_distribution.dat" using 1:2:3 with image notitle
 set lmargin at screen 0.5
 set rmargin at screen 0.75

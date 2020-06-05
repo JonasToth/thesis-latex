@@ -31,8 +31,8 @@ fp_office = "`sed -ne 's/false_positives: \(\w\+\)$/\1/p' office_recognition.yml
 tp_synthethic = "`sed -ne 's/true_positives: \(\w\+\)$/\1/p' synthetic_recognition.yml | tr -d ' '`"+0
 fp_synthethic = "`sed -ne 's/false_positives: \(\w\+\)$/\1/p' synthetic_recognition.yml | tr -d ' '`"+0
 splot \
-      "lehrpfad_tp_distance.dat" using (0.1):1:($2/tp_lehrpfad):(0):($2/tp_lehrpfad) with zerrorfill ls 4 title "Lehrpfad TP",\
-      "lehrpfad_fp_distance.dat" using (0.1):1:($2/fp_lehrpfad):(0):($2/fp_lehrpfad) with zerrorfill ls 4 dt 2 title "Lehrpfad FP",\
+      "lehrpfad_tp_distance.dat" using (0.1):1:($2/tp_lehrpfad):(0):($2/tp_lehrpfad) with zerrorfill ls 4 title "Mine TP",\
+      "lehrpfad_fp_distance.dat" using (0.1):1:($2/fp_lehrpfad):(0):($2/fp_lehrpfad) with zerrorfill ls 4 dt 2 title "Mine FP",\
       "office_tp_distance.dat" using (0.2):1:($2/tp_office):(0):($2/tp_office) with zerrorfill ls 2 title "Office TP",\
       "office_fp_distance.dat" using (0.2):1:($2/fp_office):(0):($2/fp_office) with zerrorfill ls 2 dt 2 title "Office FP",\
       "synthetic_tp_distance.dat" using (0.3):1:($2/tp_synthethic):(0):($2/tp_synthethic) with zerrorfill ls 5 title "Synthetic TP",\

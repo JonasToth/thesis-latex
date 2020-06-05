@@ -34,7 +34,7 @@ cat <<EOF
 
 \rowcolor{white} \null &
 \textbf{Synthetic\$_{\mathbf{\mathcal{F}}}$} & \textbf{Synthetic\$_{\mathbf{\mathcal{\beta}}}$} &
-\textbf{Lehrpfad\$_{\mathbf{\mathcal{F}}}$} & \textbf{Lehrpfad\$_{\mathbf{\mathcal{\beta}}}$} &
+\textbf{Mine\$_{\mathbf{\mathcal{F}}}$} & \textbf{Mine\$_{\mathbf{\mathcal{\beta}}}$} &
 \textbf{Office\$_{\mathbf{\mathcal{F}}}$} & \textbf{Office\$_{\mathbf{\mathcal{\beta}}}$} \\\\
 \midrule
 

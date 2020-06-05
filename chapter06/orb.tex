@@ -9,7 +9,7 @@
 \acrshort{orb}'s detector finds less keypoints than \acrshort{sift} for both \glspl{flexion-image} and \glspl{bearing-angle-image}.
 But their size, response and location distribution (Appendix~\ref{sec:orb_stats}) indicate severe problems.
 Keypoints are not detected over multiple scales and the response shows a very inconsistent pattern over the different datasets.
-For \emph{Lehrpfad}, the keypoints cluster in the middle and the borders of the field-of-view of the depth sensors.
+For \emph{Mine}, the keypoints cluster in the middle and the borders of the field-of-view of the depth sensors.
 Those regions contains sharp edges from feature image to black because of missing range data.
 The \acrshort{fast} keypoint detector characteristics of comparing brightness values at different sampling points is likely to blame for the bad detector performance.
 Similar to \acrshort{surf}'s shortcoming, it does not deal well with the smoother gray changes but requires sharp edges.
@@ -27,7 +27,7 @@ As \acrshort{orb} employs blurring and scale space, too, the effect of missing c
 \end{figure}
 The descriptor distance in Figure~\ref{fig:orb_descriptor_distances} show some separation between true and false positives.
 This is better than \acrshort{surf}, but worse than \acrshort{sift}.
-The mixed results are reflected in ROC space (Figure~\ref{fig:orb_roc}) by the random performance for \emph{Lehrpfad} and OK performance for \emph{Synthetic} and \emph{Office}.
+The mixed results are reflected in ROC space (Figure~\ref{fig:orb_roc}) by the random performance for \emph{Mine} and OK performance for \emph{Synthetic} and \emph{Office}.
 Everything considered, \acrshort{orb} is not suitable for the proposed feature images.
 \begin{figure}[H]
 \begin{subfigure}[t]{0.45\linewidth}

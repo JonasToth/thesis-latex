@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Use image magic to crop the images
-# Lehrpfad: 
+# Mine:
 #     convert -crop 770x540+75+0 0000.png 0000_cropped.png
 
 crop_images() {

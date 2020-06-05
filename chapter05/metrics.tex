@@ -7,7 +7,7 @@ The following subsections describe each component of this evaluation pipeline in
 
 \subsubsection{Groundtruth Poses}
 
-The dataset \emph{Lehrpfad} provides groundthruth poses from a prior \gls{sfm} reconstruction.
+The dataset \emph{Mine} provides groundthruth poses from a prior \gls{sfm} reconstruction.
 Due to the global optimization of the \gls{sfm} algorithm, these poses do not match with the depth values of the depth images.
 The other datasets do not contain a precomputed pose.
 Therefore, each pose is computed and refined with an ICP algorithm, namely OpenCV's \texttt{FASTICPOdometry} that is based on the KinectFusion\cite{newcombe_ismar2011} work.

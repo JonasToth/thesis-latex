@@ -4,12 +4,12 @@
     \footnotesize
 \input{chapter06/results/SIFT/absolute_numbers}
     }
-    \caption[Keypoint and matching results for \texttt{\acrshort{sift}/raw/default}]{\emph{Keypoint and matching results for \texttt{\acrshort{sift}/raw/default}.} The \gls{flexion-image} results in more detected keypoints for all datasets and hence more correspondences. The recall of \acrshort{sift} is outstanding and above 80\% for even the demanding \emph{Lehrpfad} dataset.}
+    \caption[Keypoint and matching results for \texttt{\acrshort{sift}/raw/default}]{\emph{Keypoint and matching results for \texttt{\acrshort{sift}/raw/default}.} The \gls{flexion-image} results in more detected keypoints for all datasets and hence more correspondences. The recall of \acrshort{sift} is outstanding and above 80\% for even the demanding \emph{Mine} dataset.}
 \end{table}
 The number of detected keypoints is significantly higher for the \glspl{flexion-image} compared to the \glspl{bearing-angle-image} in each dataset.
 Approximately twice as many correspondences between keypoints are detected for \glspl{flexion-image}.
 The distribution of the keypoints in each dataset indicates no obvious problems in any regard (Figure~\ref{fig:sift_kp_distribution}).
-In \emph{Lehrpfad}, the keypoints are not as common in the ground area but denser on the walls.
+In \emph{Mine}, the keypoints are not as common in the ground area but denser on the walls.
 This is expected, as those have the most surface structure.
 Similarly in \emph{Synthetic}, the rotation of the camera shows a clear trace in the keypoint distribution, demonstrating that they stick to geometrically salient regions.
 Neither the keypoint sizes, responses or location distribution show surprising characteristics and their distributions are plotted in Appendix~\ref{sec:sift_stats}.
@@ -40,7 +40,7 @@ The very similar false positive rate in all datasets points to inherent similari
 
 Both feature image conversions demonstrate that the salient geometric regions can be recognized with \acrshort{sift}.
 The \gls{flexion-image} produces more keypoints and correspondences compared to the \gls{bearing-angle-image}.
-Additionally, the true positive rate in \emph{Lehrpfad} is slightly higher in this challenging dataset.
+Additionally, the true positive rate in \emph{Mine} is slightly higher in this challenging dataset.
 From these findings the author concludes that the \gls{flexion-image} performs better.
 The theoretical aspects, like rotation invariance and the inclusion of more information per pixel, are additional arguments to prefer the \gls{flexion-image}.
 \begin{figure}[ht]
