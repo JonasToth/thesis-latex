@@ -153,7 +153,7 @@ This section introduces the relevant principles of depth sensing, depth data rep
 Depth images are affected by different error sources and intrinsic noise of the sensory system.
 Common issues are reflections from water or glass, transparent objects and infrared light sources.
 Objects outside the range of the sensor or otherwise incorrect measurements result in a zero in the depth image.
-The continuous measurements are stored as depth images in conventional lossless image formats like \texttt{PNG}.
+The continuous measurements are stored as depth images in conventional lossless image formats like \texttt{PNG}\cite{rfc2083_png}.
 This requires to quantize the real valued distances to integers, adding a rounding error.
 
 \input{chapter04/filtering}
