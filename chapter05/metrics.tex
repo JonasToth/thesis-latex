@@ -10,7 +10,7 @@ The following subsections describe each component of this evaluation pipeline in
 The dataset \emph{Mine} provides groundthruth poses from a prior \gls{sfm} reconstruction.
 Due to the global optimization of the \gls{sfm} algorithm, these poses do not match with the depth values of the depth images.
 The other datasets do not contain a precomputed pose.
-Therefore, each pose is computed and refined with an ICP algorithm, namely OpenCV's \texttt{FASTICPOdometry} that is based on the KinectFusion\cite{newcombe_ismar2011} work.
+Therefore, each pose is computed and refined with an ICP algorithm, namely OpenCV's \texttt{FASTICPOdometry}\cite{opencv_library} that is based on the KinectFusion\cite{newcombe_ismar2011} work.
 This relative pose serves as foundation of the evaluation and is assumed to be correct within small tolerance.
 The accuracy assumption of the \texttt{FASTICPOdometry} poses is tested by manual inspection of the backprojection of obviously related keypoints and the results showed no systematic errornous poses.
 
@@ -30,7 +30,7 @@ Too many points create ambiguity with respect to the backprojection tolerance.
     \caption[Backprojection of keypoints visualized]{\emph{Backprojection of keypoints visualized.} The choosen approach of projecting keypoints between frames is demonstrated in this figure. Keypoints of image $I_1$ are blue dots in both images and the orange ones are only detected in image $I_2$. Actual correspondences result in very close points in $I_2$, indicated as blue dot with orange border, whereas unrelated points show no proximity. This assumption holds for small changes in pose and relatively sparse distribution of detected keypoints.}\label{fig:keypoint_projection}
 \end{figure}
 % \pagebreak[4]
-As first step, the matcher establishes correspondences based on the descriptor distance and applies crosschecking --- the descriptors must have minimal distance in both directions --- as only heuristic.
+As first step, OpenCV's \texttt{BFMatcher}\cite{opencv_library} matcher establishes correspondences based on the descriptor distance and applies crosschecking --- the descriptors must have minimal distance in both directions --- as only heuristic.
 The matches are partitioned into four sets: \emph{true-positive}, \emph{false-positive}, \emph{true-negative} and \emph{false-negative} as introduced in Section~\ref{sec:statistic_classifier}.
 The union of these sets are all detected keypoints.
 First, the matches are analyzed for true and false positives and true correspondences are removed from further analysis. 
