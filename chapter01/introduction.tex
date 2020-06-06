@@ -1,37 +1,40 @@
-Global and local pose estimation is a common problem solved in robotics.
-Visual odometry\cite{he_tvc2019} and \gls{feature}-based localization\cite{sattler_cvpr2018} are established solutions and a lot of research went into these various aspects of this field.
+Visual odometry\cite{he_tvc2019} and \gls{feature}-based localization with optical sensors\cite{sattler_cvpr2018} are established technologies in robotics.
 Additionally, the use of depth sensors increased with their availability and fast integration into robotic systems.
-This naturally leads to the task of exploiting the depth information for problems like localization and mapping, which at their core require a way to align multiple pointclouds to each other.
-
+This naturally leads to the task of exploiting the depth information for problems like localization and mapping, which at their core require to align multiple pointclouds to each other.
 One dominant algorithm to solve this problem is \acrshort{icp} (\acrlong{icp})\cite{besl_pami1992}.
 It has various characteristics and limitations that require an initial estimate for the relative pose between pointclouds\cite{rusinkiewicz_ieee2001}.
 Loop closure in \acrshort{slam} (\acrlong{slam})\cite{ho_ros2006}, global localization and place recognition\cite{sattler_2011} can not rely on such an initial estimate.
-Those problems are commonly solved with a \gls{feature}-based approach to detect salient points in color images that are recognized in optical sensor data.
+Those problems are commonly solved with a \gls{feature}-based approach, that detects distinctive points in different color images and finds correspondences of real world elements capture from multiple views.
 Detecting salient points in an image and describing the local neighbourhood in a recognizable manner is at the core of many solutions of computer vision related problems and a well researched topic\cite{andersson_2016}.
 
+The aim of this thesis is to transfer this technology from optical images to depth images and range data from \acrshort{LIDAR} scans by propsing the novel \Gls{flexion-image}.
+Visual features require local brightness gradients that are not present in raw depth images.
+Therefore, a conversion of the depth image to a derived image encodes local geometrical relationships of neighbouring depth pixels and results in an image that feature detectors can work on --- a feature image.
+Standard feature detectors and descriptors, namely \acrshort{sift}, \acrshort{surf}, \acrshort{orb} and \acrshort{akaze}, can then detect interesting geometrical shapes as normal keypoints.
+Their surroundings and real world context are captured with the keypoint descriptor.
+Scale and orientation detection are part of the keypoint detector.
+\begin{figure}[htb]
+    \includegraphics[width=\linewidth]{chapter01/masterarbeit_method.png}
+    \caption[Illustration of \Gls{flexion-image} and Feature Detection and Matching]{\emph{Illustration of \Gls{flexion-image} and Feature Detection and Matching.} This figure demonstrates the processing steps from depth image to features detected (red) on a converted \gls{flexion-image} that are then matched between multiple views. Green points indicate correctly identified keypoints between two images. Missed keypoints are purple and orange lines are incorrectly matched keypoints.}\label{fig:method_example}
+\end{figure}
+The proposed feature images have different visual characteristics than color images.
+A \gls{feature}-based depth data registration requires stable keypoints between multiple views and a discriminating descriptor between different geometries (Figure~\ref{fig:method_example}).
+Researching the properties of both the keypoints and the descriptors for common state-of-the-art algorithms is therefore mandatory work before solving more complex tasks like global localization.
 The context of this thesis is research of robotic systems in underground mining environments.
 It is common to have detailed \acrshort{LIDAR} scans of the whole mine, which is a part of mine surveying.
 Bad lighting conditions challenge the classical optical systems and algorithms to achieve global localization.
 Other techniques, like GPS, are outright impossible to use.
+A positive outcome of the proposed method can be the first step towards using \acrshort{LIDAR} scans as map.
 
-The aim of this thesis is to develop the foundation to process depth sensor data and \acrshort{LIDAR} scans, such that well developed computer vision algorithms become applicable to depth and range data.
-Each depth image is first converted into a derived feature image that visualizes the geometrical relationship between neighbouring, three-dimensional points.
-The \gls{feature} detectors and descriptors are then run on the feature image to detect salient point constellations consistently.
-
-The proposed feature images have different visual characteristics than color images.
-For successfull usage of \gls{feature}-based depth data registration, the detected keypoints need to be stable between multiple views and the descriptors for each keypoint must discriminate between different sections.
-Researching the properties of both the keypoints and the descriptors for common state-of-the-art algorithms is therefore mandatory work before solving more complex tasks like global localization, that use \glspl{feature} at their core.
-The findings shall be used in a simple visual odometry experiment to demonstrate principal applicability of the final result.
-
-The main contribution of this thesis is a novel way to convert depth data into a derived feature image and the analysis of the performance of state-of-the-art keypoint detectors and descriptors on this derived image.
+The main contribution of this thesis is a novel way to convert depth data into a derived feature image and the analysis of the performance of keypoint detectors and descriptors on this derived image.
 All developed tools can be reused as both library code and executable binary to create such images and run \gls{feature} algorithms on them.
-Both the qualitative and quantitative findings will build an empirical foundation on developing this approach further for more complex tasks such as place recognition, global localization in a known environment and visual odometry with the novel feature images as input.
+Both the qualitative and quantitative findings will build an empirical foundation on developing this approach further for more complex feature-based tasks.
 
-The structure of this thesis is based on the necessary steps to extract visual keypoints from converted depth images.
-Section~\ref{sec:related_work} introduces the related work on state-of-the-art algorithms for pointcloud registration and \gls{feature} performance comparisons.
+Section~\ref{sec:related_work} introduces the related work on pointcloud registration and \gls{feature} performance comparisons.
 Necessary foundational knowledge on depth sensors and the math of modeling their data is presented in Section~\ref{sec:fundamentals}.
 Additionally, it gives a high level introduction on keypoint detectors and descriptors and how their performance can be evaluated.
-Section~\ref{sec:image_processing} describes the novel depth data processing, starting with edge-preserving filtering followed by conversion to feature images and finally explaining the evaluated \gls{feature} detection and description algorithms.
-The proposed pipeline is evaluated in Section~\ref{sec:experiments}, describing the approach and metrics.
+Section~\ref{sec:image_processing} describes the novel depth data processing pipeline, starting with edge-preserving filtering followed by conversion to feature images and finally explaining the evaluated \gls{feature} detection and description algorithms.
+The experiments evaluate this process.
+Section~\ref{sec:experiments} describes the metrics, datasets and algorithm configurations.
 Section~\ref{sec:results} presents and discusses the results.
-Finally, Section~\ref{sec:conclusion} concludes the work and proposes further research areas to develop this new approach for depth image registration.
+Finally, Section~\ref{sec:conclusion} concludes the work and proposes further research areas.
