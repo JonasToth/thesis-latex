@@ -59,8 +59,20 @@
 \usepackage{booktabs}
 % Images end
 
+\usepackage{tocloft} % Formatting list of figures
 \usepackage{setspace}
 \renewcommand{\baselinestretch}{1.5}
+
+% \renewcommand{\cfttoctitlefont}{\large\bfseries}
+% \renewcommand{\cftloftitlefont}{\large\bfseries}
+% \renewcommand{\cftlottitlefont}{\large\bfseries}
+\renewcommand{\cftbeforefigskip}{-0.5pt}
+% \renewcommand{\cftloftitlefont}{\normalfont\hfill}
+% \renewcommand{\cftafterloftitle}{\hfill}
+% \setlength{\cftafterloftitleskip}{0.0pt}
+% \setlength{\cftbeforeloftitleskip}{0in}
+% \setlength{\cftbeforefigskip}{\cftbeforechapskip} % for spacing after each entry
+
 
 \let\oldthebibliography\thebibliography
 \let\endoldthebibliography\endthebibliography
