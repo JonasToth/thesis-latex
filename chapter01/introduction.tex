@@ -15,18 +15,19 @@ Their surroundings and real world context are captured with the keypoint descrip
 Scale and orientation detection are part of the keypoint detector.
 \begin{figure}[htb]
     \includegraphics[width=\linewidth]{chapter01/masterarbeit_method.png}
-    \caption[Illustration of Feature Detection and Matching on \Glspl{flexion-image}]{\emph{Illustration of Feature Detection and Matching on \Glspl{flexion-image}.} This figure demonstrates the processing steps from depth image to features detected (red) on a converted \gls{flexion-image} that are then matched between multiple views. Green points indicate correctly identified keypoints between two images. Missed keypoints are purple and orange lines indicate incorrect matches.}\label{fig:method_example}
+    \caption[Illustration of Feature Detection and Matching on \Glspl{flexion-image}]{\emph{Illustration of Feature Detection and Matching on \Glspl{flexion-image}.} This figure demonstrates the processing steps from depth image (left) to features detected on a converted \gls{flexion-image} (middle) that are matched between multiple views (right). Green points indicate correctly identified keypoints between two images. Undetected correspondences are purple and orange lines indicate incorrect matches.}\label{fig:method_example}
 \end{figure}
+
 The proposed feature images have different visual characteristics than color images.
 A \gls{feature}-based depth data registration requires stable keypoints between multiple views and a discriminating descriptor between different geometries (Figure~\ref{fig:method_example}).
-Researching the properties of both the keypoints and the descriptors for common state-of-the-art algorithms is therefore mandatory work before solving more complex tasks like global localization.
-The context of this thesis is research of robotic systems in underground mining environments.
+Researching the properties of both the keypoints and the descriptors is therefore mandatory work before solving more complex tasks like global localization.
+This work is part of researching robotic systems in underground mining environments.
 It is common to have detailed \acrshort{LIDAR} scans of the whole mine, which is a part of mine surveying.
-Bad lighting conditions challenge the classical optical systems and algorithms to achieve global localization.
+Bad lighting conditions challenge the classical optical systems and algorithms.
 Other techniques, like GPS, are outright impossible to use.
 A positive outcome of the proposed method can be the first step towards using \acrshort{LIDAR} scans as map.
 
-The main contribution of this thesis is a novel way to convert depth data into a derived feature image and the analysis of the performance of keypoint detectors and descriptors on this derived image.
+The main contribution of this thesis is a novel way to convert depth data into a derived feature image and the in-depth analysis of the performance of keypoint detectors and descriptors on feature images.
 All developed tools can be reused as both library code and executable binary to create such images and run \gls{feature} algorithms on them.
 Both the qualitative and quantitative findings will build an empirical foundation on developing this approach further for more complex feature-based tasks.
 

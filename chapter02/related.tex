@@ -13,10 +13,10 @@ The cited publications are novel approaches to a well researched and developed a
 Range sensors produce a set of points and one natural task is to determine the relative transformation between two such sets.
 This task has many applications in photogrammetry, robotics and engineering.
 
-\acrshort{icp}, originally formulated by Besl\cite{besl_pami1992} is a robust and easy to implement algorithm to achieve this registration.
+\acrshort{icp}, originally formulated by Besl\cite{besl_pami1992}, is a robust and easy to implement algorithm to achieve this registration.
 At its core is the assignment of point correspondences between both sets, calculating a relative pose that results in the lowest distance between the choosen points and evaluating the disparity of both pointclouds.
 The mismatch of the pose is iteratively reduced by finding better correspondences using the distance between the points of the pointclouds as error metric.
-This basic approach received multiple improvements with the generalized \acrshort{icp}\cite{segal_2009,korn_2014} providing a fully probabilistic formulation.
+This basic approach received multiple improvements with generalized \acrshort{icp}\cite{segal_2009,korn_2014} providing a fully probabilistic formulation.
 \acrshort{icp} provides a 6 \acrlong{DoF} (\acrshort{DoF}) registration consisting of a rotation and translation.
 Convergence or an upper bound of the error is not guaranteed and in general relies on a good initial estimate of the relative pose of both pointclouds, rendering it useless for global registration problems without prior knowledge.
 Failure to converge on a relative pose can happen both due to a bad initial pose or not corresponding pointclouds.
@@ -34,6 +34,8 @@ A pointcloud is modelled with a \acrlong{GMM} (\acrshort{GMM}) defined through m
 Again, alignment of two pointclouds means the maximal probability of the data points under the \acrshort{GMM}.
 In iterative refinement steps of the relative pose the centeroids of the \acrshort{GMM} are enforced to move in topological consistent fashion, hence coherent point drift.
 The review articles~\cite{bellekens_ambient2014,pomerleau_2015} introduce state-of-the-art pointcloud registration algorithms both in general and for robotic applications.
+All these methods for pointcloud registration are not suitable to search for a matching segment of a pointcloud or to even select a suitable pointcloud from a database.
+For such a task features come into play because they provide a tool to discard unrelated pointclouds fast.
 
 Elbaz et al.\cite{elbaz_cvpr2017} extract subsets of a pointcloud, analyze its main directional components using a principal component analysis and synthesize a depth map for these patches.
 A deep neural network based auto-encoder computes a low-dimensional descriptor for each patch.
@@ -41,14 +43,13 @@ Registration of pointclouds is achieved by matching these descriptors followed b
 
 Steder et al.\cite{steder_robot2010} proposed an interest point detector for pointclouds.
 The image's curvature is analyzed by first smoothing with a Gaussian and then computing the second derivatives of the range data.
-High curvature is used for saliency, but special points on an edge and regions of occlusion are filtered out first.
-Interest points must succeed an empirical found threshold to be selected.
-The selected points are used to calculate transformations between different pointclouds and each potential transformation is scored by the reprojection error.
+High curvature is used for saliency, but special points on edges and regions of occlusion are filtered out first.
+Interest points must succeed an empirical found saliency threshold to be selected.
+Image based features are suprior in terms of experience in the field, availability and success in a diverse set of use cases\cite{lynen_ros2015,sivic_pami2009,aqel_2016}.
 
 \subsection{Feature Algorithm Comparison}
 
-Keypoint detectors and \gls{feature} descriptors are a well established technique in the computer vision community.
-They provide a way to detect salient regions of a gray-scale image that can be consistently detected between different views of a scene.
+Keypoint detectors and \gls{feature} descriptors provide a way to detect salient regions of a gray-scale image that can be consistently detected between different views of a scene.
 The breakthrough development is Lowe's SIFT\cite{lowe_ijcv04} algorithm.
 The early benchmark\cite{mikolajczyk_pami2005} of SIFT to other classical algorithms, like the Harris corner detector\cite{harris_1988}, demonstrated the strong performance of SIFT.
 Since the early 2000s more work on improving upon SIFT in terms of performance, compute requirements and diverse applications lead to more competitors like SURF\cite{bay_eccv06}, ORB\cite{rublee_iccv11} and AKAZE\cite{alcantarilla_bmva13}.
@@ -59,4 +60,4 @@ They conclude that the detectors result in many correct matches within on modali
 Correct intermodal matching on the other hand is harder and depends on the modalities used.
 They note that combining thermal and depth images yield the worst performance regardless of the used registration technique.
 The result is encouraging that algorithms like SIFT\cite{lowe_ijcv04} are not bound to color images but can be used in scenarios with vastly different appearance.
-It also motivates to search for better ways to process range data with \gls{feature}-based matching.
+It also motivates the search for better ways to process depth data for \gls{feature}-based matching.
