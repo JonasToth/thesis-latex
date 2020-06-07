@@ -5,7 +5,7 @@ A surface normal is a vector perpendicular to the surface of the object.
 The core idea of the \Gls{flexion-image} is the approximation of the surface normal with two different sets of neighbouring pixels and measuring their difference.
 
 Each measured pixel is backprojected to camera coordinates, scaling the spherical coordinates with its measured range as first step.
-The normal for a measured surface point $\mathbf{P_{i,j}}$ is calculated with the cross product of vectors connecting the neighbouring points of $\mathbf{P_{i,j}}$.
+The normal for a measured surface point $\mathbf{P_{i,j}}$ is calculated with the cross product of vectors connecting the neighbouring points of $\mathbf{P_{i,j}}$ (Equation~\ref{eq:flexion_normals}).
 This point relationship is visualized in Figure~\ref{fig:flexion_normals_plane}.
 \begin{figure}[ht]
     \begin{subfigure}[t]{0.48\linewidth}
@@ -27,6 +27,7 @@ This point relationship is visualized in Figure~\ref{fig:flexion_normals_plane}.
 \end{figure}
 Using the diagonal and vertical neighbouring points (blue) results in a different normal than the diagonal neighbours (orange) do.
 As Figure~\ref{fig:flexion_space} demonstrates, both normals span an angle.
+
 \begin{equation}
 \begin{aligned}
     \vec{n_1} &= \frac{\vec{P_{i,j-1}} - \vec{P_{i,j+1}}}{\lnorm{\vec{P_{i,j-1}} - \vec{P_{i,j+1}}}}

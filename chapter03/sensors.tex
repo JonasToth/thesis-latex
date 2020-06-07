@@ -58,13 +58,13 @@ It determines the distance of an object using roundtrip time measurements.
 The difference between \acrshort{LIDAR} and \acrshort{ToF} cameras is the usage of a \acrshort{laser} as light source and the overall setup of the sensor system.
 The most common configurations use a horizontally rotating mirror that reflects the beam into the room.
 For vertical coverage, the measurement head is rotated in total.
-Each complete horizontal measurement is called a scan line.
+Each complete horizontal turn is called a scan line.
 
 Some \acrshort{LIDAR}s, especially mobile systems with real time requirements, measure tens of scan lines.
 Such systems achieve a higher frame rate.
 A dense \acrshort{LIDAR} scan is required for the optical feature-based registration approach.
 Such scans can be created with terrestrial \acrshort{LIDAR} stations, common in geodesic applications.
-Additionally, the intensity of the reflected light beam might be obtained as second measurement channel.
+Additionally, the intensity of the reflected light beam might be obtained as second channel.
 
 Flash \acrshort{LIDAR} is a scannerless type of \acrshort{LIDAR} that does not require a rotating mirror or other mechanical system\cite{natale_ssiai2010}.
 A flash \acrshort{LIDAR} uses the measurement principles described for \acrshort{ToF} cameras and measures a dense depth image in one shot.

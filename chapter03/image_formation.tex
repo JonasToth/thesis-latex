@@ -11,9 +11,9 @@ On some robotic platforms, like \acrshort{ROS} (\acrlong{ROS}), this is done aut
 
 \subsubsection{Pinhole Camera Model}\label{sec:pinhole_model}
 
-\begin{figure}[b!]
+\begin{figure}[htb]
     \includegraphics[width=0.6\textwidth]{chapter03/img/pinhole_camera_model.png}
-    \caption[Pinhole camera model]{\emph{Pinhole camera model.} The pinhole camera model performs the perspective projection of three dimensional points into the plane. Real cameras additionally have a lense system that can result in radial and tangential distortion. These effects must be compensated with a proper calibration of distortion models. The camera-coordinate-to-pixel-coordinate projection looses information on the depth. Therefore, the back projection results only in the direction of the light ray. The depth sensor gives the additional distance information to recover the point in camera coordinates. Graphic adopted from\cite{opencv_pinhole}.}\label{fig:pinhole_model}
+    \caption[Pinhole camera model]{\emph{Pinhole camera model.} The pinhole camera model performs the perspective projection of three dimensional points into the plane. Real cameras additionally have a lense system that can result in radial and tangential distortion. These effects must be compensated with a proper calibration of distortion models. The camera-coordinate-to-pixel-coordinate projection loses information on the depth. Therefore, the back projection results only in the direction of the light ray. The depth sensor gives the additional distance information to recover the point in camera coordinates. Graphic adopted from\cite{opencv_pinhole}.}\label{fig:pinhole_model}
 \end{figure}
 The pinhole camera model is used for both classical and depth cameras.
 Figure~\ref{fig:pinhole_model} shows the perspective projection of three-dimensional points onto the plane\cite[p. 25-35]{hartley_2004}.
@@ -30,16 +30,16 @@ The perspective projection
     \vec{P_\mathcal{I}} = \colvecxxx{x}{y}{1} = \frac{1}{Z}\colvecxxx{X}{Y}{Z}
     \label{eq:pinhole_forward}
 \end{equation}
-results in the point $\vec{P_\mathcal{W}}$ in image coordinates $\vec{P_\mathcal{I}}$. This step looses the depth information.
+results in the point $\vec{P_\mathcal{W}}$ in image coordinates $\vec{P_\mathcal{I}}$.
 The image coordinates could be distorted and any correction would happen at this stage.
 Multiplication of the $3 \times 3$ upper triangular camera matrix $K$ and the homogeneous image coordinates results in the final pixel coordinates:
 \begin{equation}
 \begin{aligned}
-K &= \begin{pmatrix}
-        f_x & f_x s & c_x \\
-        0   & f_y   & c_y \\
-        0   & 0     & 1
-     \end{pmatrix} \\
+    % K &= \begin{pmatrix}
+        % f_x & f_x s & c_x \\
+        % 0   & f_y   & c_y \\
+        % 0   & 0     & 1
+     % \end{pmatrix} \\
     K \vec{P_\mathcal{I}} &= \begin{pmatrix}
         f_x & f_x s & c_x \\
         0   & f_y   & c_y \\
@@ -131,13 +131,6 @@ In general, $r = 1$ as the resulting vector is of unit length:
 
 \subsubsection{Range and Depth Conversion}\label{sec:range_depth_conversion}
 
-\begin{figure}[tb]
-    \scalebox{0.8}{%
-    \input{chapter03/img/depth_range}
-    }
-    \caption[Orthographic depth and range visualized]{\emph{Orthographic depth and range visualized.} The distance information of a point relative to the center of a sensor at $\vec{C_\mathcal{C}}$ can either be stored as the orthographic depth, mathematically the $Z$ component of the camera coordinates or the range, equivalent to the Euclidean norm of the point $\vec{P_\mathcal{C}}$ in camera coordinates. The orthographic depth is commonly provided by depth cameras and the range by \acrshort{LIDAR} systems.}
-    \label{fig:range_depth}
-\end{figure}
 There are two possible conventions on how to store depth data, both demonstrated in Figure~\ref{fig:range_depth}.
 The orthographic depth~$d$ is the distance from the image plane and commonly returned by pinhole depth sensors like the Kinectv2\cite{wasenmuller_accv2016}.
 On the other hand, the range~$r$ is the Euclidean norm of the vector from the camera origin to $\vec{P_\mathcal{C}}$.
@@ -145,6 +138,7 @@ For consistency and generality, depth data is converted to range data before fur
 This simplifies later conversion and mixing of different camera models in a coherent fashion.
 The conversion depends on the camera model and only the pinhole model is subject to analysis here because \acrshort{LIDAR} scanner return range values.
 
+\pagebreak
 From the forward projection function of the pinhole model (Equation~\ref{eq:pinhole_forward}) follows the connection of the range and orthographic depth of the camera coordinates $\vec{P_\mathcal{C}}$ and image coordinates $\vec{P_\mathcal{I}}$ of the point $\mathbf{P}$ (Equation~\ref{eq:range_depth}).
 \begin{equation}
 \begin{aligned}
@@ -159,3 +153,10 @@ Consequently, the range~$r$ for the depth~$d$ at image coordiantes $\rowvecxx{x}
 \begin{equation}
     r = \frac{d}{Z_s} = d \sqrt{x^2 + y^2 + 1}\text{.}
 \end{equation}
+\begin{figure}[hb]
+    \scalebox{0.8}{%
+    \input{chapter03/img/depth_range}
+    }
+    \caption[Orthographic depth and range visualized]{\emph{Orthographic depth and range visualized.} The distance information of a point relative to the center of a sensor at $\vec{C_\mathcal{C}}$ can either be stored as the orthographic depth, mathematically the $Z$ component of the camera coordinates or the range, equivalent to the Euclidean norm of the point $\vec{P_\mathcal{C}}$ in camera coordinates. The orthographic depth is commonly provided by depth cameras and the range by \acrshort{LIDAR} systems.}
+    \label{fig:range_depth}
+\end{figure}
