@@ -4,7 +4,7 @@
 
 The first dataset is a manually created scene in Blender\cite{blender} demonstrating the principle effects of rotation and translation on the conversion results.
 Both rotation and translation are done in isolation as well combined.
-The scene consists of a sphere, a cylinder, a cube-like object with additional edges of different smootheness and a complex monkey head in a room (Figure~\ref{fig:blender_scene}).
+The scene consists of a sphere, a cylinder, a cube-like object with additional edges of different smoothness and a complex monkey head in a room (Figure~\ref{fig:blender_scene}).
 The camera movement is rendered as an animation and the depth buffer of each frame is extracted and used as depth image.
 The camera matrix is calculated from the rendering settings and its parameters are provided in Table~\ref{tab:blender_intrinsic}.
 The total animation consists of 211 images and no noise is applied to the depth image (example images in Appendix~\ref{sec:synthetic_conversions}).
@@ -70,7 +70,7 @@ It is a challenging dataset with high amount of noise, many missing depth values
 
 \subsubsection{Office}
 
-The second Kinectv2 dataset is taken in an office with many smaller elements, wires and other manmade objects.
+The second Kinectv2 dataset is taken in an office with many smaller elements, wires and other man-made objects.
 It contains 57 images composed of translation and rotation of the depth sensor (example images in Appendix~\ref{sec:office_conversions}).
 No trajectory reconstruction other than the ICP is used for the relative poses.
 It contains similar measurement errors as the Mine dataset, but has more distinctive shapes and better overall conditions for the depth sensor.
@@ -107,7 +107,7 @@ Full \acrshort{LIDAR} scans are taken as part of classical mine surveying in the
 The scans were done in the section \emph{Wilhelm-Stehender-Süd} of the mine.
 These scans are examined for the conversions, too.
 Because they were done with classical artificial marker based registration in mind, the overlap between those scans is minimal.
-This unfortunatly means, that a direct matching between scans would be meaningless.
+This unfortunately means, that a direct matching between scans would be meaningless.
 The distribution and characteristics of the extracted features is analyzed, though.
 From the raw dataset only 6 scans are selected, because each scan had a slightly different resolution and aspect ratio (example scans in Appendix~\ref{sec:laserscan_conversions}).
 The selected scans were manually processed to have a common resolution and aspect ratio.
@@ -158,7 +158,7 @@ The selected scans were manually processed to have a common resolution and aspec
 
 The datasets presented before evaluate the feature algorithms and show their potential and performance.
 To demonstrate, that the results are applicable in other scenarios, the most promising algorithms are used to compute a visual odometry.
-A synthetic city dataset (Section~\ref{sec:odometry_images}), developed by Zhang et al.\cite{zhang_icra2016}, that provides a groundthruth trajectory serves as test.
+A synthetic city dataset (Section~\ref{sec:odometry_images}), developed by Zhang et al.\cite{zhang_icra2016}, that provides a ground truth trajectory serves as test.
 The in-house visual odometry implementation, based on Singh's\cite{singh_report2015} work, is very basic with the following four steps.
 First, the features are detected and their descriptors extracted.
 The descriptors are matched.

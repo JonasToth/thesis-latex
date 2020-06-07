@@ -14,7 +14,7 @@ Range sensors produce a set of points and one natural task is to determine the r
 This task has many applications in photogrammetry, robotics and engineering.
 
 \acrshort{icp}, originally formulated by Besl\cite{besl_pami1992}, is a robust and easy to implement algorithm to achieve this registration.
-At its core is the assignment of point correspondences between both sets, calculating a relative pose that results in the lowest distance between the choosen points and evaluating the disparity of both pointclouds.
+At its core is the assignment of point correspondences between both sets, calculating a relative pose that results in the lowest distance between the chosen points and evaluating the disparity of both pointclouds.
 The mismatch of the pose is iteratively reduced by finding better correspondences using the distance between the points of the pointclouds as error metric.
 This basic approach received multiple improvements with generalized \acrshort{icp}\cite{segal_2009,korn_2014} providing a fully probabilistic formulation.
 \acrshort{icp} provides a 6 \acrlong{DoF} (\acrshort{DoF}) registration consisting of a rotation and translation.
@@ -30,9 +30,9 @@ The normal distributions are differentiable and classical numerical algorithms, 
 
 Myronenko and Song\cite{myronenko_ieee2010} proposed the \acrlong{CPD} (\acrshort{CPD}) algorithm.
 Similar to \acrshort{NDT} the algorithm utilizes probabilistic methods to achieve the registration.
-A pointcloud is modelled with a \acrlong{GMM} (\acrshort{GMM}) defined through multiple centeroids and their variances.
+A pointcloud is modelled with a \acrlong{GMM} (\acrshort{GMM}) defined through multiple centroids and their variances.
 Again, alignment of two pointclouds means the maximal probability of the data points under the \acrshort{GMM}.
-In iterative refinement steps of the relative pose the centeroids of the \acrshort{GMM} are enforced to move in topological consistent fashion, hence coherent point drift.
+In iterative refinement steps of the relative pose the centroids of the \acrshort{GMM} are enforced to move in topological consistent fashion, hence coherent point drift.
 The review articles~\cite{bellekens_ambient2014,pomerleau_2015} introduce state-of-the-art pointcloud registration algorithms both in general and for robotic applications.
 All these methods for pointcloud registration are not suitable to search for a matching segment of a pointcloud or to even select a suitable pointcloud from a database.
 For such a task features come into play because they provide a tool to discard unrelated pointclouds fast.
@@ -45,7 +45,7 @@ Steder et al.\cite{steder_robot2010} proposed an interest point detector for poi
 The image's curvature is analyzed by first smoothing with a Gaussian and then computing the second derivatives of the range data.
 High curvature is used for saliency, but special points on edges and regions of occlusion are filtered out first.
 Interest points must succeed an empirical found saliency threshold to be selected.
-Image based features are suprior in terms of experience in the field, availability and success in a diverse set of use cases\cite{lynen_ros2015,sivic_pami2009,aqel_2016}.
+Image based features are superior in terms of experience in the field, availability and success in a diverse set of use cases\cite{lynen_ros2015,sivic_pami2009,aqel_2016}.
 
 \subsection{Feature Algorithm Comparison}
 
@@ -57,7 +57,7 @@ A recent comparison between those modern, well established algorithms by Anderss
 ORB\cite{rublee_iccv11} on the other hand is less accurate but due to its lower computational cost still a viable option, especially for mobile applications\cite{andersson_2016}.
 The use of classical \gls{feature} descriptors and template based matching for different modalities, like thermal imaging, is evaluated by Gesto-Diaz et al.\cite{gesto-diaz_2017}.
 They conclude that the detectors result in many correct matches within on modality.
-Correct intermodal matching on the other hand is harder and depends on the modalities used.
+Correct inter-modal matching on the other hand is harder and depends on the modalities used.
 They note that combining thermal and depth images yield the worst performance regardless of the used registration technique.
 The result is encouraging that algorithms like SIFT\cite{lowe_ijcv04} are not bound to color images but can be used in scenarios with vastly different appearance.
 It also motivates the search for better ways to process depth data for \gls{feature}-based matching.

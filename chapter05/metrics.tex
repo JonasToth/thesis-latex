@@ -5,29 +5,29 @@ For a keypoint correspondence between two images, the classification task is to 
 The correspondence is computed based on the relative pose of consecutive images and only two consecutive images are analyzed.
 The following subsections describe each component of this evaluation pipeline in more detail.
 
-\subsubsection{Groundtruth Poses}
+\subsubsection{Ground truth Poses}
 
-The dataset \emph{Mine} provides groundthruth poses from a prior \gls{sfm} reconstruction.
+The dataset \emph{Mine} provides ground truth poses from a prior \gls{sfm} reconstruction.
 Due to the global optimization of the \gls{sfm} algorithm, these poses do not match with the depth values of the depth images.
 The other datasets do not contain a precomputed pose.
 Therefore, each pose is computed and refined with an ICP algorithm, namely OpenCV's \texttt{FASTICPOdometry}\cite{opencv_library} that is based on the KinectFusion\cite{newcombe_ismar2011} work.
 This relative pose serves as foundation of the evaluation and is assumed to be correct within small tolerance.
-The accuracy assumption of the \texttt{FASTICPOdometry} poses is tested by manual inspection of the backprojection of obviously related keypoints and the results showed no systematic errornous poses.
+The accuracy assumption of the \texttt{FASTICPOdometry} poses is tested by manual inspection of the backprojection of obviously related keypoints and the results showed no systematic erroneous poses.
 
 \subsubsection{Backprojection and Distance Threshold}
 
-In two consecutive images, all keypoints are extracted with the choosen algorithm and settings.
+In two consecutive images, all keypoints are extracted with the chosen algorithm and settings.
 Each keypoint of the first image $I_1$ is projected to the unit sphere, e.g. with Equation~\ref{eq:pinhole_backward}, multiplied with the range value of the corresponding pixel and the resulting camera coordinate transformed to the second camera coordinate system (Equation~\ref{eq:homogeneous_matrix}).
 Projecting the keypoint into the second camera with the matching forward projection (e.g. Equation~\ref{eq:pinhole_forward}) finalizes the procedure, demonstrated in Figure~\ref{fig:keypoint_projection}.
 This results in two sets of keypoints in the second image $I_2$, the keypoints detected in this frame and the keypoints detected in the previous frame, seen from this frame's pose.
 Assuming a correct relative pose, the corresponding keypoints have a small pixel distance between each other.
-\emph{Small} is a relative value and the choosen threshold in the experiments is 2\,px.
+\emph{Small} is a relative value and the chosen threshold in the experiments is 2\,px.
 This approach can only result in a proper analysis for a sparse distribution of keypoints that actually correspond to image structure and requires small changes in pose.
 When the pose difference is big, it can happen that keypoints get projected to the same position as some other valid keypoint without referencing the same world point.
 Too many points create ambiguity with respect to the backprojection tolerance.
 \begin{figure}[b!]
     \input{chapter05/img/backprojection}
-    \caption[Backprojection of keypoints visualized]{\emph{Backprojection of keypoints visualized.} The choosen approach of projecting keypoints between frames is demonstrated in this figure. Keypoints of image $I_1$ are blue dots in both images and the orange ones are only detected in image $I_2$. Actual correspondences result in very close points in $I_2$, indicated as blue dot with orange border, whereas unrelated points show no proximity. This assumption holds for small changes in pose and relatively sparse distribution of detected keypoints.}\label{fig:keypoint_projection}
+    \caption[Backprojection of keypoints visualized]{\emph{Backprojection of keypoints visualized.} The chosen approach of projecting keypoints between frames is demonstrated in this figure. Keypoints of image $I_1$ are blue dots in both images and the orange ones are only detected in image $I_2$. Actual correspondences result in very close points in $I_2$, indicated as blue dot with orange border, whereas unrelated points show no proximity. This assumption holds for small changes in pose and relatively sparse distribution of detected keypoints.}\label{fig:keypoint_projection}
 \end{figure}
 % \pagebreak[4]
 As first step, OpenCV's \texttt{BFMatcher}\cite{opencv_library} matcher establishes correspondences based on the descriptor distance and applies crosschecking --- the descriptors must have minimal distance in both directions --- as only heuristic.
@@ -91,7 +91,7 @@ Summary statistics reduce the statistical distributions to a few representative 
 Combining different measures, such as the measure of location, distribution and shape gives key insights.
 
 Both histograms and its summary statistics are created for the keypoint size, keypoint response, descriptor distance between all keypoints and both descriptor distance for \emph{true-positives} and \emph{false-positives}.
-The quantitive measures for each property are the \emph{minimum} and \emph{maximum} value, \emph{median} and \emph{arithmetic mean}, \emph{variance} and \emph{standard deviation} and \emph{skeweness} of the distribution.
+The quantitative measures for each property are the \emph{minimum} and \emph{maximum} value, \emph{median} and \emph{arithmetic mean}, \emph{variance} and \emph{standard deviation} and \emph{skeweness} of the distribution.
 
 \subsubsection{Classification Evaluation}
 

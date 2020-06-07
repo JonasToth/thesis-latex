@@ -18,7 +18,7 @@ The extracted descriptor has a high dimension with tens to hundreds of elements 
 
 Connecting the keypoints between different images uses the extracted descriptors for each keypoint.
 \emph{Similar} descriptors are associated.
-Similarity of the descriptors is calculated with a matching norm depdendent on the structure of the descriptor.
+Similarity of the descriptors is calculated with a matching norm dependent on the structure of the descriptor.
 Dense real descriptors commonly use the Euclidean norm where as binary descriptors use the hamming norm.
 Additional constraints, like geometric consistency, improve the accuracy of the matching result.
 For the provided example a potential matching result might be
@@ -57,4 +57,4 @@ Improvements to \acrshort{RANSAC}\cite{sattler_iccv2009,chum_cvpr2005} use more 
 More complicated keypoint preprocessing can be done to reduce the number of descriptors to match.
 Keypoints can be discarded to achieve a higher spread over the image and avoid clusters of keypoints that provoke descriptor ambiguity.
 The detector response is another important criteria for sorting keypoints by quality.
-If apriori information of the approximate motion of the camera is known matches can be ranked based on the expected displacement of the keypoint.
+If a priori information of the approximate motion of the camera is known matches can be ranked based on the expected displacement of the keypoint.

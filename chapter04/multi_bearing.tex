@@ -9,21 +9,21 @@ For $\gamma$ the values of $d_{i,j}$ and $d_{i-1,j}$ need to be swapped.
     \scalebox{0.9}{%
     \input{chapter04/img/max-curve.tikz}
     }
-    \caption[Schematic representation of the \gls{multi-directional-bearing-angle-image}]{\emph{Schematic representation of the \gls{multi-directional-bearing-angle-image}.} The \gls{multi-directional-bearing-angle-image} composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and antidiagonal direction. The maximum angle is then selected as pixel value.}\label{fig:max-curve}
+    \caption[Schematic representation of the \gls{multi-directional-bearing-angle-image}]{\emph{Schematic representation of the \gls{multi-directional-bearing-angle-image}.} The \gls{multi-directional-bearing-angle-image} composes two \Glspl{bearing-angle} in vertical, horizontal, diagonal and anti-diagonal direction. The maximum angle is then selected as pixel value.}\label{fig:max-curve}
 \end{figure}
 Both angles are added together, resulting in the angle of the surface at this position.
 \begin{equation}
     \mathcal{B_{\textit{direction}}}= \beta + \gamma
 \end{equation}
 This calculation is again defined for only one direction and not rotation invariant but already symmetrical.
-The value $\mathcal{B_{\textit{direction}}}$ can be defined for diagonal, antidiagonal, horizontal and vertical sampling of the image.
+The value $\mathcal{B_{\textit{direction}}}$ can be defined for diagonal, anti-diagonal, horizontal and vertical sampling of the image.
 The final step for rotation invariance is the reduction of these four values to their maximum:
 \vspace{-2mm}
 \begin{align}
-    \mathcal{B} &= \max{\{\mathcal{B}_{diagonal}, \mathcal{B}_{antidiagonal}, \mathcal{B}_{horizontal}, \mathcal{B}_{vertical}\}}
+    \mathcal{B} &= \max{\{\mathcal{B}_{diagonal}, \mathcal{B}_{anti-diagonal}, \mathcal{B}_{horizontal}, \mathcal{B}_{vertical}\}}
 \end{align}
 The converted images in Figure~\ref{fig:max-curve-images} show the same scene and positions as for the \gls{bearing-angle-image}.
-The goal of rotational invariance is achieved, unfortunatly the image lacks texture and contrast.
+The goal of rotational invariance is achieved, unfortunately the image lacks texture and contrast.
 Qualitative tests with common feature detectors yielded weak keypoint responses.
 Therefore, this approach received no further attention.
 \begin{figure}[H]

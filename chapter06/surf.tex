@@ -41,11 +41,11 @@ This impression is solidified with the descriptor distance analysis in Figure~\r
     \includegraphics[width=\linewidth]{chapter06/results/SURF/bearing/descriptor_distances.pdf}%
     \caption{\gls{bearing-angle-image}}
 \end{subfigure}
-\caption[\acrshort{surf} descriptor distances]{\emph{\acrshort{surf} descriptor distances.} The descriptor of \acrshort{surf} does not discriminate regions well. True positives barely seperate from false positives.}\label{fig:surf_descriptor_distance}
+\caption[\acrshort{surf} descriptor distances]{\emph{\acrshort{surf} descriptor distances.} The descriptor of \acrshort{surf} does not discriminate regions well. True positives barely separate from false positives.}\label{fig:surf_descriptor_distance}
 \end{figure}
 A slight separation of true and false positives exists for \glspl{flexion-image}, which is not the case for \glspl{bearing-angle-image}.
-Even this slight seperation is neglected by drastically higher numbers of false positives.
-Seperating both distributions through a maximum matching distance is hard to justify.
+Even this slight separation is neglected by drastically higher numbers of false positives.
+Separating both distributions through a maximum matching distance is hard to justify.
 For a 64 element descriptor that \acrshort{surf} deploys, the match distance around \num{0.3} seems very low, too.
 The \acrshort{ROC} analysis (Figure~\ref{fig:roc_surf}) points in the same direction showing performance around the \emph{Random Guess} quality, for \emph{Mine} even below.
 \begin{figure}[b!]

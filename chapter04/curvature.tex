@@ -1,6 +1,6 @@
 \subsubsection{Curvature Image}
 
-Differential geometry provides a scalar quantity assignable to each point of a one-dimensional differntiable function, the \emph{\gls{curvature}} $\kappa$\cite[p. 10]{Kuhnel2008}.
+Differential geometry provides a scalar quantity assignable to each point of a one-dimensional differentiable function, the \emph{\gls{curvature}} $\kappa$\cite[p. 10]{Kuhnel2008}.
 This concept can be generalized to higher dimensions and two common \glspl{curvature} exist for surfaces in three-dimensional space, \emph{\gls{gaussian-curvature}} and \emph{\gls{mean-curvature}}.
 \begin{figure}[t]
     \begin{subfigure}[t]{0.48\textwidth}
@@ -25,7 +25,7 @@ The \gls{curvature} of a circle is defined is the inverse of its radius
     \kappa_{circle} = \frac{1}{r}\text{.}
 \end{equation}
 Any point's \gls{curvature} on a one-dimensional, twice differentiable function is defined as the \gls{curvature} of its osculating circle, visualized in Figure~\ref{fig:osculating_circle}.
-The \gls{curvature} of any point of a surface in three-dimensional space is ambigous, because it has infinite many curves crossing through this point.
+The \gls{curvature} of any point of a surface in three-dimensional space is ambiguous, because it has infinite many curves crossing through this point.
 But a maximum and minimum \gls{curvature} exist, the \emph{principal curvatures} $k_1$ and $k_2$.
 Figure~\ref{fig:curvature_surface} visualizes the directions of the minimum and maximum \gls{curvature} of a surface in three-dimensional space as dotted black lines.
 The \emph{\Gls{gaussian-curvature}} $\mathcal{K}$ is defined as the product
@@ -38,7 +38,7 @@ and the \emph{\gls{mean-curvature}} $\mathcal{H}$ as the mean
 \end{equation}
 of the principal curvatures.
 
-Both quantities can be calculated differently, as the \gls{curvature} is related to the derivates of a function.
+Both quantities can be calculated differently, as the \gls{curvature} is related to the derivatives of a function.
 Let $f(u, v)$ be a two-dimensional function representing the depth image and $f_u$, $f_v$, $f_{uu}$ and $f_{vv}$ its partial derivatives.
 Then the \gls{gaussian-curvature} and \gls{mean-curvature} are computed with:
 \begin{equation}
@@ -73,7 +73,7 @@ Figure~\ref{fig:gaussian-curvature} shows the images for the \gls{gaussian-curva
 It is even more prone to noise in the input and suffers from the same range issue.
 
 Both the \gls{mean-curvature} and \gls{gaussian-curvature} are unbound and result in any real number.
-Simple scaling between the computed minimum and maximum value is unstable between images and results in completly gray images as these quantities have noticable outliers.
+Simple scaling between the computed minimum and maximum value is unstable between images and results in completely gray images as these quantities have noticeable outliers.
 As solution for this problem the computed values are clamped to a predefined range, for example $\mathcal{H},\mathcal{K} \in (-20, 20)$ and then scaled to the desired image depth of the feature image.
 \begin{figure}[tb]
     \begin{subfigure}[t]{0.32\textwidth}

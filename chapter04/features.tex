@@ -15,9 +15,9 @@ The design goal of the algorithm is to detect keypoints that are invariant with 
 Robustness against noise, change in illumination and affine transformations is additionally considered.
 \acrshort{sift}'s design influenced the design decisions of the other presented algorithms heavily.
 
-The input image is processed in a hierarchical pyramid of downscaled versions of the image, called octaves.
-On each octave a Gaussian filter is applied consecutivly with increased standard deviation on each run.
-The difference between two consecutive blurred images is computed, the so called \acrlong{DoG} (\acrshort{DoG}) forming an approximation of the Laplacion of the image.
+The input image is processed in a hierarchical pyramid of down-scaled versions of the image, called octaves.
+On each octave a Gaussian filter is applied consecutively with increased standard deviation on each run.
+The difference between two consecutive blurred images is computed, the so called \acrlong{DoG} (\acrshort{DoG}) forming an approximation of the Laplacian of the image.
 Lindeberg's\cite{lindeberg_ijcv98} work on scale space and automatic scale selection gives a theoretical introduction why this process gives a good way to select the scale of features.
 The underlying principle exploits that fine structures dissolve at bigger scales.
 This process is related to the diffusion equation that is strongly tied to the Laplacian of the image.
@@ -62,7 +62,7 @@ Again, the Haar wavelets response in $x$ and $y$ direction are used to derive th
 \subsubsection{\acrshort{orb} (\acrlong{orb})}
 
 \acrshort{orb}\cite{rublee_iccv11} combines the \acrshort{fast}\cite{rosten_eccv06} (\acrlong{fast}) feature detector and \acrshort{brief}\cite{calonder_eccv10} (\acrlong{brief}) descriptor with additional improvements to both algorithms.
-The design goal is to achieve similar matching performance to \acrshort{sift} and \acrshort{surf} but to be computationally cheaper to make usage in embedded devices feasable.
+The design goal is to achieve similar matching performance to \acrshort{sift} and \acrshort{surf} but to be computationally cheaper to make usage in embedded devices feasible.
 
 The \acrshort{fast} detector evaluates a each pixel by testing the brightness of 16~pixels on a circle around the corner.
 If there are enough consecutive pixels brighter or darker than the center with a certain threshold, the pixel is accepted as corner.
@@ -75,13 +75,13 @@ Each keypoint's descriptor uses a rotated version of \acrshort{brief}.
 \acrshort{brief} is a binary descriptor built from a set of binary intensity tests of consecutive pixels around the keypoint.
 The more recent publications, like \acrshort{brief}, \acrshort{orb} and \acrshort{mldb}, employ binary descriptors for their fast matching speed.
 The distance of binary descriptors can be computed with the Hamming distance that reduces to \emph{XOR} instructions on machine level.
-Ziegler et al.\cite{ziegler_anips2012} provide a theoretical analysis of \acrshort{brief} and its sibblings and show, that those are hashing schemes of Kendall's $\tau$ metric\cite{kendall_1938}.
+Ziegler et al.\cite{ziegler_anips2012} provide a theoretical analysis of \acrshort{brief} and its siblings and show, that those are hashing schemes of Kendall's $\tau$ metric\cite{kendall_1938}.
 
 \subsubsection{\acrshort{akaze}}
 
 \acrshort{kaze}'s\cite{alcantarilla_eccv12} (\acrlong{kaze}) and \acrshort{akaze}'s\cite{alcantarilla_bmva13} (\acrlong{akaze}) approaches are similar to \acrshort{sift}'s.
 Again, the diffusion of the brightness is the starting point for scale space analysis.
-\acrshort{kaze} applies non-linear diffusion filtering with a special computational scheme, that makes it feasable to solve the diffusion in real time.
+\acrshort{kaze} applies non-linear diffusion filtering with a special computational scheme, that makes it feasible to solve the diffusion in real time.
 The difference to the Gaussian blurring is the preservation of edges.
 The Gaussian blurs the whole image, reducing the signal crispness at higher scales.
 Contrary, the non-linear diffusion preserves edges over higher scales.

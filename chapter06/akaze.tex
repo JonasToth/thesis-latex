@@ -8,7 +8,7 @@
 \end{table}
 The final evaluated feature detection algorithm is \acrshort{akaze}.
 Its keypoint detector design is again closer to \acrshort{sift}.
-\acrshort{akaze} results in approximatly one order of magnitude more detected keypoints and correspondences compared to \acrshort{sift}.
+\acrshort{akaze} results in approximately one order of magnitude more detected keypoints and correspondences compared to \acrshort{sift}.
 Its keypoint characteristics show expected results (Appendix~\ref{sec:akaze_stats}).
 The detection does not result in as similar diverse keypoint sizes and the response is narrower with a stronger skew towards small responses compared to \acrshort{sift}.
 \begin{figure}[b!]
@@ -20,7 +20,7 @@ The detection does not result in as similar diverse keypoint sizes and the respo
     \includegraphics[width=\linewidth]{chapter06/results/AKAZE/bearing/descriptor_distances.pdf}%
     \caption{\glspl{bearing-angle-image}}
 \end{subfigure}
-\caption[\acrshort{akaze} descriptors distances]{\emph{\acrshort{akaze} descriptors distances.} The true and false positives are partially separable by the descriptor distance. The \gls{flexion-image} shows better separation than the \gls{bearing-angle-image}. The descriptor is binary and similar to \acrshort{orb}'s descriptor, but the improvements show measureable effects.}\label{fig:descriptor_akaze}
+\caption[\acrshort{akaze} descriptors distances]{\emph{\acrshort{akaze} descriptors distances.} The true and false positives are partially separable by the descriptor distance. The \gls{flexion-image} shows better separation than the \gls{bearing-angle-image}. The descriptor is binary and similar to \acrshort{orb}'s descriptor, but the improvements show measurable effects.}\label{fig:descriptor_akaze}
 \end{figure}
 The \acrshort{mldb} descriptor shows separation between true and false positives across the datasets and feature images (Figure~\ref{fig:descriptor_akaze}).
 This indicates good performance of the binary descriptor.

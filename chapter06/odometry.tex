@@ -1,6 +1,6 @@
 The final application of the feature detection and matching algorithms is the computation of a visual odometry.
 Only the promising candidates \acrshort{sift} and \acrshort{akaze} are compared.
-Both feature images and the color images are used separatly to determine the visual odometry for a given trajectory, the groundtruth.
+Both feature images and the color images are used separately to determine the visual odometry for a given trajectory, the ground truth.
 
 \acrshort{sift} neither results in a good odometry for color images nor for the feature images.
 Figure~\ref{fig:sift_odometry} shows random turns and barely straight trajectories for any conversion.
@@ -20,7 +20,7 @@ Figure~\ref{fig:sift_odometry} shows random turns and barely straight trajectori
 \caption[\acrshort{sift} odometry trajectories compared]{\emph{\acrshort{sift} odometry trajectories compared.} The presented odometry trajectories for the benchmark dataset from Zhang et al.\cite{zhang_icra2016} are calculated with an in-house implementation of a basic visual odometry system using \acrshort{sift}.}\label{fig:sift_odometry}
 \end{figure}
 \acrshort{akaze} on the other hand performs much better in all cases, as can be seen in Figure~\ref{fig:akaze_odometry}.
-The prinicpal shape of the trajectory is reconstructed well.
+The principal shape of the trajectory is reconstructed well.
 The \glspl{bearing-angle-image} have higher drift compared to the \glspl{flexion-image} or colored images, but only in certain areas where all inputs suffer from similar issues.
 \begin{figure}[b!]
 \begin{subfigure}[t]{0.31\linewidth}

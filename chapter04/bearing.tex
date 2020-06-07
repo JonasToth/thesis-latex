@@ -8,11 +8,11 @@
     \caption[Schematic representation of \glspl{bearing-angle}]{\emph{Schematic representation of \glspl{bearing-angle}.} This figure shows the relationship of the light rays that form the \gls{bearing-angle} $\beta$.}\label{fig:bearing_angle}
 \end{figure}
 Scaramuzza\cite{scaramuzza_iros2007} proposes the \Glspl{bearing-angle-image} that assigns each pixel the angle $\beta$, defined in Figure~\ref{fig:bearing_angle}.
-This angle is spanned by connecting the two idealized lightrays for pixels next to each other.
-The neighbourhood relationship between pixels can be choosen arbitrarily resulting in four \Glspl{bearing-angle-image}, horizontal, vertical, diagonal and antidiagonal.
-The second variable is the direction the angle is calculted, e.g.~for horizontal images it can be calculated from left-to-right or right-to-left.
-This does not exhibit new information, because the angle of the other direction is immediatly known from the fact that the sum of the angles is $180\degree$.
-Nontheless, the direction must be defined to obtain stable results.
+This angle is spanned by connecting the two idealized light rays for pixels next to each other.
+The neighbourhood relationship between pixels can be chosen arbitrarily resulting in four \Glspl{bearing-angle-image}, horizontal, vertical, diagonal and anti-diagonal.
+The second variable is the direction the angle is calculated, e.g.~for horizontal images it can be calculated from left-to-right or right-to-left.
+This does not exhibit new information, because the angle of the other direction is immediately known from the fact that the sum of the angles is $180\degree$.
+Nonetheless, the direction must be defined to obtain stable results.
 
 The formula for the \gls{bearing-angle} $\beta$ is derived with the cosine theorem.
 Both Scaramuzza\cite{scaramuzza_iros2007} and Lin et al.\cite{lin_easp2017} have typos in the formulae they provided.
@@ -77,4 +77,4 @@ Calculating the \gls{bearing-angle} from multiple directions could lead to some 
 The second apparent aspect is the change in shading, for example on the flat ground but on other surfaces, too.
 This effect is due to the perspective transformation and the distance of a point to the camera, as Figure~\ref{fig:bearing_angle_shading} demonstrates.
 Round objects, like spheres, experience no visual change in shading.
-The triangles of the lightrays are invariant to camera transformation for such objects.
+The triangles of the light rays are invariant to camera transformation for such objects.

@@ -7,7 +7,7 @@ Loop closure in \acrshort{slam} (\acrlong{slam})\cite{ho_ros2006}, global locali
 Those problems are commonly solved with a \gls{feature}-based approach, that detects distinctive points in different color images and finds correspondences of real world elements capture from multiple views.
 Detecting salient points in an image and describing the local neighbourhood in a recognizable manner is at the core of many solutions of computer vision related problems and a well researched topic\cite{andersson_2016}.
 
-The aim of this thesis is to transfer this technology from optical images to depth images and range data from \acrshort{LIDAR} scans by propsing the novel \Gls{flexion-image}.
+The aim of this thesis is to transfer this technology from optical images to depth images and range data from \acrshort{LIDAR} scans by proposing the novel \Gls{flexion-image}.
 Visual features require local brightness gradients that are not present in raw depth images.
 Therefore, a conversion of the depth image to a derived image encodes local geometrical relationships of neighbouring depth pixels and results in an image that feature detectors can work on --- a feature image.
 Standard feature detectors and descriptors, namely \acrshort{sift}, \acrshort{surf}, \acrshort{orb} and \acrshort{akaze}, can then detect interesting geometrical shapes as normal keypoints.
