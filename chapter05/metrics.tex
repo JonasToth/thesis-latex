@@ -5,7 +5,7 @@ For a keypoint correspondence between two images, the classification task is to 
 The correspondence is computed based on the relative pose of consecutive images and only two consecutive images are analyzed.
 The following subsections describe each component of this evaluation pipeline in more detail.
 
-\subsubsection{Ground truth Poses}
+\subsubsection{Ground Truth Poses}
 
 The dataset \emph{Mine} provides ground truth poses from a prior \gls{sfm} reconstruction.
 Due to the global optimization of the \gls{sfm} algorithm, these poses do not match with the depth values of the depth images.
@@ -17,7 +17,8 @@ The accuracy assumption of the \texttt{FASTICPOdometry} poses is tested by manua
 \subsubsection{Backprojection and Distance Threshold}
 
 In two consecutive images, all keypoints are extracted with the chosen algorithm and settings.
-Each keypoint of the first image $I_1$ is projected to the unit sphere, e.g. with Equation~\ref{eq:pinhole_backward}, multiplied with the range value of the corresponding pixel and the resulting camera coordinate transformed to the second camera coordinate system (Equation~\ref{eq:homogeneous_matrix}).
+Each keypoint of the first image $I_1$ is projected to the unit sphere, e.g. with Equation~\ref{eq:pinhole_backward}, multiplied with the range value of the corresponding pixel.
+The resulting camera coordinate is transformed to the second camera coordinate system (Equation~\ref{eq:homogeneous_matrix}).
 Projecting the keypoint into the second camera with the matching forward projection (e.g. Equation~\ref{eq:pinhole_forward}) finalizes the procedure, demonstrated in Figure~\ref{fig:keypoint_projection}.
 This results in two sets of keypoints in the second image $I_2$, the keypoints detected in this frame and the keypoints detected in the previous frame, seen from this frame's pose.
 Assuming a correct relative pose, the corresponding keypoints have a small pixel distance between each other.
@@ -29,8 +30,8 @@ Too many points create ambiguity with respect to the backprojection tolerance.
     \input{chapter05/img/backprojection}
     \caption[Backprojection of keypoints visualized]{\emph{Backprojection of keypoints visualized.} The chosen approach of projecting keypoints between frames is demonstrated in this figure. Keypoints of image $I_1$ are blue dots in both images and the orange ones are only detected in image $I_2$. Actual correspondences result in very close points in $I_2$, indicated as blue dot with orange border, whereas unrelated points show no proximity. This assumption holds for small changes in pose and relatively sparse distribution of detected keypoints.}\label{fig:keypoint_projection}
 \end{figure}
-% \pagebreak[4]
-As first step, OpenCV's \texttt{BFMatcher}\cite{opencv_library} matcher establishes correspondences based on the descriptor distance and applies crosschecking --- the descriptors must have minimal distance in both directions --- as only heuristic.
+
+First, OpenCV's \texttt{BFMatcher}\cite{opencv_library} matcher establishes correspondences based on the descriptor distance and applies crosschecking --- the descriptors must have minimal distance in both directions --- as only heuristic.
 The matches are partitioned into four sets: \emph{true-positive}, \emph{false-positive}, \emph{true-negative} and \emph{false-negative} as introduced in Section~\ref{sec:statistic_classifier}.
 The union of these sets are all detected keypoints.
 First, the matches are analyzed for true and false positives and true correspondences are removed from further analysis. 
@@ -80,7 +81,7 @@ After this process some keypoints detected in $I_2$ might be left to analyze for
 \end{algorithmic}
 \caption{The unmatched keypoints are classified as true or false negative.}\label{alg:false_negatives}
 \end{algorithm}
-To classify the negatives each keypoint's distance from $I_2$ to the backprojected keypoints from $I_1$ is tested to be within the defined threshold.
+To classify the negatives, each keypoint's distance from $I_2$ to the backprojected keypoints from $I_1$ is tested to be within the defined threshold.
 If this is the case, both keypoints are defined as corresponding and result in a false negative. The remaining points are true negatives.
 The partitioning of the keypoints allows to analyze more aspects of matches, e.g.~the descriptor distances for true and false positives.
 

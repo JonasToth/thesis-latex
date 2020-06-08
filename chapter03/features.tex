@@ -17,9 +17,9 @@ The \emph{keypoint descriptor} analyzes a predefined region around the centered 
 The extracted descriptor has a high dimension with tens to hundreds of elements that for example store local brightness gradients.
 
 Connecting the keypoints between different images uses the extracted descriptors for each keypoint.
-\emph{Similar} descriptors are associated.
+Similar descriptors are associated.
 Similarity of the descriptors is calculated with a matching norm dependent on the structure of the descriptor.
-Dense real descriptors commonly use the Euclidean norm where as binary descriptors use the hamming norm.
+Dense real descriptors commonly use the Euclidean norm whereas binary descriptors use the Hamming norm.
 Additional constraints, like geometric consistency, improve the accuracy of the matching result.
 For the provided example a potential matching result might be
 \begin{equation}
@@ -35,7 +35,7 @@ whereby green bullets indicate a correct match.
 An important descriptor design criteria is the trade-off between computational cost and descriptive power, as especially descriptor matching is computationally expensive.
 
 Features play a key role in multiple computer vision tasks.
-Place or object recognition and document searching rely on the identification of similar descriptors in queried image to already indexed descriptors of known images.
+Place or object recognition and visual vocabularies rely on the identification of similar descriptors in queried image to already indexed descriptors of known images.
 Typically, storage and computational constrains require preprocessing the descriptors with clustering techniques to reduce the number of descriptors to store and allow hierarchical matching.
 
 The second major application is visual odometry and \gls{sfm}.
@@ -57,4 +57,4 @@ Improvements to \acrshort{RANSAC}\cite{sattler_iccv2009,chum_cvpr2005} use more 
 More complicated keypoint preprocessing can be done to reduce the number of descriptors to match.
 Keypoints can be discarded to achieve a higher spread over the image and avoid clusters of keypoints that provoke descriptor ambiguity.
 The detector response is another important criteria for sorting keypoints by quality.
-If a priori information of the approximate motion of the camera is known matches can be ranked based on the expected displacement of the keypoint.
+If a priori information of the approximate motion of the camera is known, matches can be ranked based on the expected displacement of the keypoint.

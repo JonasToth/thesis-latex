@@ -70,11 +70,11 @@ The central differential quotients approximate the first and second derivatives 
 The result of the \gls{mean-curvature} conversion in Figure~\ref{fig:mean-curvature} is similar to the Multi-Directional \gls{bearing-angle-image}.
 The \gls{mean-curvature} is rotation invariant but the result is already very unstable to the noise induced by integer precision depth images.
 Figure~\ref{fig:gaussian-curvature} shows the images for the \gls{gaussian-curvature}.
-It is even more prone to noise in the input and suffers from the same range issue.
+It is even more prone to noise in the input.
 
 Both the \gls{mean-curvature} and \gls{gaussian-curvature} are unbound and result in any real number.
 Simple scaling between the computed minimum and maximum value is unstable between images and results in completely gray images as these quantities have noticeable outliers.
-As solution for this problem the computed values are clamped to a predefined range, for example $\mathcal{H},\mathcal{K} \in (-20, 20)$ and then scaled to the desired image depth of the feature image.
+As solution for this problem, the computed values are clamped to a predefined range, for example $\mathcal{H},\mathcal{K} \in (-20, 20)$ and then scaled to the desired image depth of the feature image.
 \begin{figure}[tb]
     \begin{subfigure}[t]{0.32\textwidth}
         \includegraphics[width=\linewidth]{chapter04/img/gauss-0001.png}

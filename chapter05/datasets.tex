@@ -57,7 +57,7 @@ It is a challenging dataset with high amount of noise, many missing depth values
     $c_x$, $c_y$ &  479.46, 272.74 \\
     \bottomrule
     \end{tabular}}
-    {\caption{Mine Kinectv2 intrinsic.}\label{tab:lehrpfad_intrinsic}}%
+    {\caption{\emph{Mine} Kinectv2 intrinsic.}\label{tab:lehrpfad_intrinsic}}%
     \ffigbox{%
     \includegraphics[width=0.5\linewidth]{chapter05/img/lehrpfad/color0000.jpg}%
     \includegraphics[width=0.5\linewidth]{chapter05/img/lehrpfad/depth-scaled-0000.png}\\
@@ -73,7 +73,7 @@ It is a challenging dataset with high amount of noise, many missing depth values
 The second Kinectv2 dataset is taken in an office with many smaller elements, wires and other man-made objects.
 It contains 57 images composed of translation and rotation of the depth sensor (example images in Appendix~\ref{sec:office_conversions}).
 No trajectory reconstruction other than the ICP is used for the relative poses.
-It contains similar measurement errors as the Mine dataset, but has more distinctive shapes and better overall conditions for the depth sensor.
+It contains similar measurement errors as the \emph{Mine} dataset, but has more distinctive shapes and better overall conditions for the depth sensor.
 \begin{figure}[H]
 \CenterFloatBoxes%
 \begin{floatrow}
@@ -90,7 +90,7 @@ It contains similar measurement errors as the Mine dataset, but has more distinc
     $c_x$, $c_y$ &  479.46, 272.74 \\
     \bottomrule
     \end{tabular}}
-    {\caption{Office Kinectv2 intrinsic.}\label{tab:office_intrinsic}}%
+    {\caption{\emph{Office} Kinectv2 intrinsic.}\label{tab:office_intrinsic}}%
     \ffigbox{%
     \includegraphics[width=0.5\linewidth]{chapter05/img/office/color_0024.jpg}%
     \includegraphics[width=0.5\linewidth]{chapter05/img/office/depth_scaled_0024.png}\\
@@ -158,10 +158,10 @@ The selected scans were manually processed to have a common resolution and aspec
 
 The datasets presented before evaluate the feature algorithms and show their potential and performance.
 To demonstrate, that the results are applicable in other scenarios, the most promising algorithms are used to compute a visual odometry.
-A synthetic city dataset (Section~\ref{sec:odometry_images}), developed by Zhang et al.\cite{zhang_icra2016}, that provides a ground truth trajectory serves as test.
+A synthetic city dataset (Section~\ref{sec:odometry_images}), developed by Zhang et al.\cite{zhang_icra2016}, that provides a ground truth trajectory, serves as test.
 The in-house visual odometry implementation, based on Singh's\cite{singh_report2015} work, is very basic with the following four steps.
 First, the features are detected and their descriptors extracted.
 The descriptors are matched.
 The essential matrix is computed using RANSAC and the consensus pose is used as relative pose.
 Each feature algorithm is executed with its default configuration.
-Both conditions imply that the result is not optimal and further optimizations would improve it further.
+These conditions imply that the result is not optimal and further optimizations would improve it further.

@@ -5,7 +5,7 @@ This unmet performance comes at the cost of high computational complexity and me
 Still, for global place recognition, loop closure and other tasks requiring such descriptive power, \acrshort{sift} seems to be the first choice for the feature images.
 The odometry results are a clear indication, that \acrshort{sift}'s keypoint detector does not produce enough features, at least for classical pinhole cameras and geometrically clean looking scenes.
 
-The very similar descriptor \acrshort{mldb} and \acrshort{brief}, used in \acrshort{akaze} and \acrshort{orb} respectively, proof their potential, too.
+The very similar descriptors \acrshort{mldb} and \acrshort{brief}, used in \acrshort{akaze} and \acrshort{orb} respectively, proof their potential, too.
 They function very different compared to \acrshort{sift}'s brightness histograms.
 The brightness sampling around the keypoint and construction of the binary descriptor is effective.
 Using an averaged value for the area around the sampling point improves the robustness of \acrshort{mldb}.

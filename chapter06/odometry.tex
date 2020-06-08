@@ -37,8 +37,8 @@ The \glspl{bearing-angle-image} have higher drift compared to the \glspl{flexion
 \end{subfigure}
 \caption[\acrshort{akaze} odometry trajectories compared]{\emph{\acrshort{akaze} odometry trajectories compared.} The presented odometry trajectories for the benchmark dataset from Zhang et al.\cite{zhang_icra2016} are calculated with an in-house implementation of a basic visual odometry system using \acrshort{akaze}.}\label{fig:akaze_odometry}
 \end{figure}
-The findings show that the higher number of keypoints results in better localization performance.
-Because the benchmark dataset is a synthetic, the colored image do not contain the same level of texture as in real life.
+The findings show that the higher number of keypoints results in better performance.
+Because the benchmark dataset is synthetic, the colored image do not contain the same level of texture as in real life.
 This explains the bad performance of \acrshort{sift} for the colored images.
 The range data conversions on the other hand are representative for real world cases.
 A higher number of keypoints, combined with false positive rejection through \acrshort{RANSAC} are enough to yield odometry performance similar to colored images.

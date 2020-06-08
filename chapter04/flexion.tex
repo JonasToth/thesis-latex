@@ -22,7 +22,7 @@ This point relationship is visualized in Figure~\ref{fig:flexion_normals_plane}.
         }
         \caption{The estimated normals span an angle depending on the local shape of the measured surface.}\label{fig:flexion_space}
     \end{subfigure}
-    \caption[Schematic representation of the \gls{flexion-image} calculation]{\emph{Schematic representation of the \gls{flexion-image} calculation.} This figure demonstrates how non-planar surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for flexion.}%
+    \caption[Schematic representation of the \gls{flexion-image} calculation]{\emph{Schematic representation of the \gls{flexion-image} calculation.} This figure demonstrates how non-planar surfaces have different normals for diagonal and non-diagonal estimation. This difference is utilized as measure for surface flexion.}%
     \label{fig:flexion-image-scetched}
 \end{figure}
 Using the diagonal and vertical neighbouring points (blue) results in a different normal than the diagonal neighbours (orange) do.
@@ -37,7 +37,7 @@ As Figure~\ref{fig:flexion_space} demonstrates, both normals span an angle.
     \label{eq:flexion_normals}
 \end{aligned}
 \end{equation}
-It shall be pointed out, that both normals $\vec{n_1}$ and $\vec{n_2}$ are not unit length.
+It shall be pointed out, that both normals $\vec{n_1}$ and $\vec{n_2}$ are not unit length but each factor of the cross product is.
 Finally, the Flexion $\mathcal{F}$ of point $\mathbf{P_{i,j}}$ is defined as:
 \begin{align}
     \mathcal{F} &= \abs{\vec{n_1} \cdotp \vec{n_2}}\text{.}
@@ -70,7 +70,7 @@ The norm of cross product is maximal if both multiplied vectors are perpendicula
     \lnorm{\vec{v_1} \times \vec{v_2}} = \lnorm{\vec{v_1}} \lnorm{\vec{v_2}} \sin \angle(\vec{v_1}, \vec{v_2})\text{.}
 \end{equation}
 Because the vectors multiplied to form the normals $n_1$ and $n_2$ have different angles based on their distance to the camera (Figure~\ref{fig:flexion_angle_decrease}), the lengths of the normals differ throughout the image.
-The lack of normalization in Equation~\ref{eq:flexion_normals} propagates this effect through to the scalar product, as the length of the both vectors are multiplied:
+The lack of normalization of $\vec{n_1}$ and $\vec{n_2}$ propagates this effect through to the scalar product, as the length of the both vectors are multiplied:
 \begin{equation}
     \vec{v_1} \cdot \vec{v_2} = \lnorm{\vec{v_1}} \lnorm{\vec{v_2}} \cos \angle(\vec{v_1}, \vec{v_2})\text{.}
 \end{equation}

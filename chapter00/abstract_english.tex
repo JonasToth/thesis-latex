@@ -8,7 +8,7 @@ This work proposes depth image processing steps to utilize feature detectors and
 In order to apply the algorithms SIFT, SURF, ORB and AKAZE on depth images, they are converted into derived feature images that encode the local geometry of the measured environment.
 Multiple possible transformations of the depth data, from the already proposed Bearing-Angle image to measures of curvature and finally the novel Flexion image are developed, analyzed and evaluated with respect to, among other things, keypoint stability and discrimination potential of the descriptors.
 The aspects keypoint count, size, response, the matching distance between true and false positives and additional measures like precision, recall and informedness are determined for four experimental datasets.
-They consist of a synthetic scene, a underground mining environment, an office scene and LiDAR scans.
+They consist of a synthetic scene, an underground mining environment, an office scene and LiDAR scans.
 In addition, the impact of filtering the depth data with edge-preserving filters is analyzed on the outcome.
 
 All experiments indicate a consistently better performance of the Flexion image compared to the Bearing-Angle image and proof that SIFT and AKAZE are suitable as feature detectors and descriptors whereas SURF and ORB are not.

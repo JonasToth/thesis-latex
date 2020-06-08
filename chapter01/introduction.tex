@@ -4,7 +4,7 @@ This naturally leads to the task of exploiting the depth information for problem
 One dominant algorithm to solve this problem is \acrshort{icp} (\acrlong{icp})\cite{besl_pami1992}.
 It has various characteristics and limitations that require an initial estimate for the relative pose between pointclouds\cite{rusinkiewicz_ieee2001}.
 Loop closure in \acrshort{slam} (\acrlong{slam})\cite{ho_ros2006}, global localization and place recognition\cite{sattler_2011} can not rely on such an initial estimate.
-Those problems are commonly solved with a \gls{feature}-based approach, that detects distinctive points in different color images and finds correspondences of real world elements capture from multiple views.
+Those problems are commonly solved with a \gls{feature}-based approach, that detects distinctive points in different color images and finds correspondences of real world elements captured from multiple views.
 Detecting salient points in an image and describing the local neighbourhood in a recognizable manner is at the core of many solutions of computer vision related problems and a well researched topic\cite{andersson_2016}.
 
 The aim of this thesis is to transfer this technology from optical images to depth images and range data from \acrshort{LIDAR} scans by proposing the novel \Gls{flexion-image}.
@@ -21,15 +21,15 @@ Scale and orientation detection are part of the keypoint detector.
 The proposed feature images have different visual characteristics than color images.
 A \gls{feature}-based depth data registration requires stable keypoints between multiple views and a discriminating descriptor between different geometries (Figure~\ref{fig:method_example}).
 Researching the properties of both the keypoints and the descriptors is therefore mandatory work before solving more complex tasks like global localization.
-This work is part of researching robotic systems in underground mining environments.
-It is common to have detailed \acrshort{LIDAR} scans of the whole mine, which is a part of mine surveying.
+This work is part of developing robotic systems for underground mining environments.
+It is common to have detailed \acrshort{LIDAR} scans of mine segments, which is a part of mine surveying.
 Bad lighting conditions challenge the classical optical systems and algorithms.
 Other techniques, like GPS, are outright impossible to use.
 A positive outcome of the proposed method can be the first step towards using \acrshort{LIDAR} scans as map.
 
 The main contribution of this thesis is a novel way to convert depth data into a derived feature image and the in-depth analysis of the performance of keypoint detectors and descriptors on feature images.
 All developed tools can be reused as both library code and executable binary to create such images and run \gls{feature} algorithms on them.
-Both the qualitative and quantitative findings will build an empirical foundation on developing this approach further for more complex feature-based tasks.
+Both the qualitative and quantitative findings build an empirical foundation on developing this approach further for more complex feature-based tasks.
 
 Section~\ref{sec:related_work} introduces the related work on pointcloud registration and \gls{feature} performance comparisons.
 Necessary foundational knowledge on depth sensors and the math of modeling their data is presented in Section~\ref{sec:fundamentals}.

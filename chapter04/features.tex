@@ -23,18 +23,18 @@ The underlying principle exploits that fine structures dissolve at bigger scales
 This process is related to the diffusion equation that is strongly tied to the Laplacian of the image.
 Keypoint candidates are local extrema in these \acrshort{DoG}s.
 Each candidate is filtered by a contrast threshold, its accurate position is determined using a local spline interpolation and its scale is assigned based on the octave and blurring factor.
-Edge-like responses are filtered out based on an estimate of the ratio between the principal curvatures.
+Edge-like responses are filtered with an estimate of the ratio between the principal curvatures.
 Highly skewed curvatures indicate an edge.
 
 Every keypoint candidate gets one or more orientations assigned.
-These are computed by storing the gradients of a local neighbourhood to the keypoints in the octave matching the keypoints scale in an orientation histogram.
-Each peak in this histogram reflects a dominant direction of gradients in the local neighbourhood and the corresponding angle is used as the orientation of the keypoint.
+These are computed by storing the brightness gradients of the local neighbourhood in an orientation histogram.
+Each peak in this histogram reflects a dominant direction of gradients and the corresponding angle is used as the orientation of the keypoint.
 According to Lowe\cite{lowe_ijcv04}, about 15\% of keypoints have multiple peaks and get multiple orientations assigned.
 The orientation is used to rotate the local neighbourhood of the keypoint to compute the descriptor consistently.
 
 The image gradients direction and magnitude are computed for each pixel in a local environment, first weighted by a Gaussian to magnify the influence of close pixels and then binned into orientation histograms.
 Each histogram reflects a fraction of the sampling grid.
-A 16$\times$16 grid around the keypoint that is stored to 4$\times$4 histograms with 8 bins for the orientations results in a vector of 128 elements in the descriptor.
+A 16$\times$16 grid around the keypoint, that is stored to 4$\times$4 histograms with 8 bins for the orientations, results in a vector of 128 elements in the descriptor.
 These dimensions can be adjusted, but the 128 element descriptor is most common.
 Finally, the histograms are normalized to increase robustness against illumination changes.
 The Euclidean distance of the descriptor vectors is the most common similarity measure.
@@ -55,16 +55,16 @@ The maximum of the Hessian determinant for the detected pixel is interpolated in
 The determinants value is the keypoint's response.
 
 Orientation assignment of \acrshort{surf} can be skipped for scenarios that do not involve camera rotation.
-The rotation is derived from the Haar wavelets\cite{haar_1911} response in $x$ and $y$ direction in the local neighbourhood.
+The rotation is derived from the Haar wavelets\cite{haar_1911} response in $x$- and $y$-direction in the local neighbourhood.
 The descriptor itself is constructed from a 4$\times$4 grid structure of sample points around the detected keypoint.
-Again, the Haar wavelets response in $x$ and $y$ direction are used to derive the elements of the descriptor.
+Again, the Haar wavelets response in $x$- and $y$-direction are used to derive the elements of the descriptor.
 
 \subsubsection{\acrshort{orb} (\acrlong{orb})}
 
 \acrshort{orb}\cite{rublee_iccv11} combines the \acrshort{fast}\cite{rosten_eccv06} (\acrlong{fast}) feature detector and \acrshort{brief}\cite{calonder_eccv10} (\acrlong{brief}) descriptor with additional improvements to both algorithms.
 The design goal is to achieve similar matching performance to \acrshort{sift} and \acrshort{surf} but to be computationally cheaper to make usage in embedded devices feasible.
 
-The \acrshort{fast} detector evaluates a each pixel by testing the brightness of 16~pixels on a circle around the corner.
+The \acrshort{fast} detector evaluates each pixel by testing the brightness of 16~pixels on a circle around it.
 If there are enough consecutive pixels brighter or darker than the center with a certain threshold, the pixel is accepted as corner.
 This approach results in a decision tree.
 The optimal traversal of this tree is learned by observing real world execution of the algorithm on predefined traversal.

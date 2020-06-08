@@ -25,12 +25,12 @@ For the horizontal left-to-right calculation the formula is as follows:
 \end{equation}
 The angular resolution $\Delta\varphi$ between two pixels of the depth image depends on the camera model in use.
 The pinhole model's angular resolution changes between pixel pairs, equirectangular image have a constant resolution.
-In general, the angle $\Delta\varphi$ can be calculated with the spherical coordinates $\vec{P_{\mathcal{S},1}}, \vec{P_{\mathcal{S},2}}$ (Equation~\ref{eq:dphi}).
+In general, the angle $\Delta\varphi$ can be calculated with the spherical coordinates $\vec{P_{\mathcal{S},i,j}}, \vec{P_{\mathcal{S},i-1,j}}$ (Equation~\ref{eq:dphi}).
 \pagebreak
 \begin{equation}
 \begin{aligned}
-    \abs{\vec{P_{\mathcal{S},1}}} &= \abs{\vec{P_{\mathcal{S},2}}} = 1 \implies \vec{P_{\mathcal{S},1}} \cdot \vec{P_{\mathcal{S},2}} = \cos \Delta\varphi \\
-    \Delta\varphi &= \arccos \vec{P_{\mathcal{S},1}} \cdot \vec{P_{\mathcal{S},2}}
+    \abs{\vec{P_{\mathcal{S},i,j}}} &= \abs{\vec{P_{\mathcal{S},i-1,j}}} = 1 \implies \vec{P_{\mathcal{S},i,j}} \cdot \vec{P_{\mathcal{S},i-1,j}} = \cos \Delta\varphi \\
+    \Delta\varphi &= \arccos \vec{P_{\mathcal{S},i,j}} \cdot \vec{P_{\mathcal{S},i-1,j}}
     \label{eq:dphi}
 \end{aligned}
 \end{equation}
@@ -62,7 +62,7 @@ This formulation can be used for different color depths and other potential angl
     \end{subfigure}
     \caption[\gls{bearing-angle-image} characteristics]{\emph{\gls{bearing-angle-image} characteristics.} The \gls{bearing-angle-image} is not invariant to rotation and viewpoint changes. This property limits its applicability for automatic registration of bigger discontinues changes of the camera pose. Each depth image was converted with the diagonal (top-left-to-bottom-right direction) implementation of the \gls{bearing-angle} formula.}\label{fig:bearing_characteristics}
 \end{figure}
-A deeper understanding of the \gls{bearing-angle-image} helps to understand advantages and disadvantages for its usage.
+A deeper analysis of the \gls{bearing-angle-image} helps to understand advantages and disadvantages for its usage.
 Figure~\ref{fig:bearing_characteristics} demonstrates the visual changes of a synthetic scene under certain camera transformations.
 
 The most notable property is the lack of rotation invariance.

@@ -2,11 +2,11 @@ The proposed \gls{flexion-image} bridges the gap between pointcloud processing a
 Common processes, such as visual odometry, global localisation and maybe even optical flow algorithms should be evaluated.
 The foundational insights on the descriptor performance of \acrshort{sift} and \acrshort{akaze} help to fine-tune heuristics, such as the maximum matching distance, for these tasks.
 The feature image conversions implementations can be optimized by better \acrshort{SIMD} support and caching intermediate results like the spherical coordinates for pixels.
-Each conversion is suited for \acrshort{GPGPU} computation and drastic speed-ups of their computations are expected.
+Each conversion is suited for \acrshort{GPGPU} computation and drastic speed-ups are expected.
 
 New formulations for visual odometry and relative pose calculation become possible because the range value for each pixel is available.
 This additional information reduces the required number of true correspondences to reconstruct the relative pose.
-Investigating the viability of a new formulation for this problem and potential speed and efficiency gains seems to be the highest value research targets.
+Investigating the viability of a new formulation for this problem and potential speed and efficiency gains seems to be the highest value research target.
 The classical \acrshort{icp} formulation relies on establishing explicit correspondences between points, too.
 Using the \gls{flexion-image} and classical feature descriptors might result in a new variation of this algorithm.
 Both problems are related and need further research.
